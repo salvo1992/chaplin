@@ -107,6 +107,7 @@ export async function getUserDoc(uid: string): Promise<UserDoc | null> {
 }
 
 async function ensureUserDoc(user: User) {
+  if (!isFirebaseConfigured || !db) return
   const ref = doc(db, "users", user.uid)
   const snap = await getDoc(ref)
 
@@ -137,6 +138,7 @@ async function ensureUserDoc(user: User) {
 
 // ---------- AUTH ----------
 export async function registerWithEmail(email: string, password: string, displayName?: string) {
+  if (!isFirebaseConfigured || !auth) throw new Error("Firebase non configurato")
   const cred = await createUserWithEmailAndPassword(auth, email, password)
   if (displayName) {
     await ensureUserDoc({ ...cred.user, displayName } as User)
@@ -148,6 +150,7 @@ export async function registerWithEmail(email: string, password: string, display
 }
 
 export async function loginWithEmail(email: string, password: string) {
+  if (!isFirebaseConfigured || !auth) throw new Error("Firebase non configurato")
   const cred = await signInWithEmailAndPassword(auth, email, password)
   await ensureUserDoc(cred.user)
   return cred.user
@@ -176,6 +179,7 @@ export async function loginWithGoogle() {
 }
 
 export async function handleGoogleRedirect() {
+  if (!isFirebaseConfigured || !auth) return null
   try {
     const result = await getRedirectResult(auth)
     if (result && result.user) {
@@ -190,10 +194,12 @@ export async function handleGoogleRedirect() {
 }
 
 export async function logout() {
+  if (!isFirebaseConfigured || !auth) return
   await signOut(auth)
 }
 
 export function onToken(cb: (token: string | null, user: User | null) => void) {
+  if (!isFirebaseConfigured || !auth) return () => {}
   return onIdTokenChanged(auth, async (user) => {
     if (!user) return cb(null, null)
     const token = await user.getIdToken(true)

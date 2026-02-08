@@ -55,6 +55,7 @@ function setRoleCookie(role: "user" | "admin" | "") {
 
 // ---------- HELPERS ----------
 async function readUserRole(uid: string): Promise<AppRole> {
+  if (!isFirebaseConfigured || !db) return "user"
   try {
     const snap = await getDoc(doc(db, "users", uid))
     if (!snap.exists()) {
