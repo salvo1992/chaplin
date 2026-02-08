@@ -258,8 +258,8 @@ export function Header() {
                         className="group flex items-center gap-3 text-white hover:text-primary transition-all duration-300 text-sm font-medium hover:translate-x-2 hover:scale-105 block"
                         onClick={() => setIsMenuOpen(false)}
                       >
-                        <div className="w-6 h-6 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center shadow-md group-hover:shadow-lg transition-all duration-300 border border-white/50">
-                          <Sparkles className="w-3 h-3 text-yellow-900" />
+                        <div className="w-6 h-6 sidebar-icon rounded-full flex items-center justify-center shadow-md group-hover:shadow-lg transition-all duration-300 border border-white/50">
+                          <Sparkles className="w-3 h-3 sidebar-icon-text" />
                         </div>
                         <span className="font-cinzel">{t("register")}</span>
                       </Link>
