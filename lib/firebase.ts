@@ -70,7 +70,8 @@ if (isFirebaseConfigured && process.env.NEXT_PUBLIC_USE_FUNCTIONS_EMULATOR === "
   connectFunctionsEmulator(functions, "127.0.0.1", 5001)
 }
 // Garantisce che il redirect mantenga la sessione tra le navigazioni
-if (isFirebaseConfigured && auth) {
+// Solo nel browser - evita crash durante SSR
+if (typeof window !== "undefined" && isFirebaseConfigured && auth) {
   ;(async () => {
     try {
       await setPersistence(auth, browserLocalPersistence)

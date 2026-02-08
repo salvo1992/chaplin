@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { getAllRooms } from "@/lib/firebase"
+import { getAllRooms, isFirebaseConfigured } from "@/lib/firebase"
 
 export function useRoomPrices() {
   const [prices, setPrices] = useState<Record<string, number>>({
@@ -11,6 +11,10 @@ export function useRoomPrices() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
+    if (!isFirebaseConfigured) {
+      setLoading(false)
+      return
+    }
     const fetchPrices = async () => {
       try {
         const rooms = await getAllRooms()

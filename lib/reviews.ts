@@ -1,6 +1,6 @@
 // lib/reviews.ts
 import { collection, getDocs, limit, orderBy, query, where, startAfter, type DocumentData } from "firebase/firestore"
-import { db } from "./firebase"
+import { db, isFirebaseConfigured } from "./firebase"
 
 export type Review = {
   id: string
@@ -26,6 +26,7 @@ const REVIEWS_COL = "reviews"
  * Prevede campi opzionali featuredScore o createdAt, ma funziona anche senza.
  */
 export async function getTop4Reviews(): Promise<Review[]> {
+  if (!isFirebaseConfigured || !db) return []
   const col = collection(db, REVIEWS_COL)
   // 1) prova per featuredScore
   const q = query(col, where("rating", ">=", 4), orderBy("rating", "desc"), limit(4))
@@ -47,6 +48,7 @@ export async function getAllReviewsPage(opts?: {
   startAfterDoc?: DocumentData | null
   minRating?: number
 }) {
+  if (!isFirebaseConfigured || !db) return { items: [], lastDoc: null }
   const pageSize = opts?.pageSize ?? 12
   const col = collection(db, REVIEWS_COL)
 
