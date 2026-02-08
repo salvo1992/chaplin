@@ -36,37 +36,47 @@ import { setPersistence, browserLocalPersistence } from "firebase/auth"
 
 // ---------- INIT ----------
 const firebaseConfig = {
-  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY!,
-  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN!,
-  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID!,
-  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET!,
-  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID!,
-  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID!,
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY ?? "",
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN ?? "",
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID ?? "",
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET ?? "",
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID ?? "",
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID ?? "",
 }
 
-const app = getApps().length ? getApp() : initializeApp(firebaseConfig)
+// Check if Firebase is properly configured
+export const isFirebaseConfigured = Boolean(firebaseConfig.apiKey && firebaseConfig.projectId)
 
-export const auth = getAuth(app)
-export const db = getFirestore(app)
-export const storage = getStorage(app)
-export const functions = getFunctions(app)
+let app: ReturnType<typeof initializeApp> | null = null
+if (isFirebaseConfigured) {
+  app = getApps().length ? getApp() : initializeApp(firebaseConfig)
+}
+
+export const auth = app ? getAuth(app) : (null as unknown as ReturnType<typeof getAuth>)
+export const db = app ? getFirestore(app) : (null as unknown as ReturnType<typeof getFirestore>)
+export const storage = app ? getStorage(app) : (null as unknown as ReturnType<typeof getStorage>)
+export const functions = app ? getFunctions(app) : (null as unknown as ReturnType<typeof getFunctions>)
 const IS_BROWSER = typeof window !== "undefined"
 const IS_DEV = IS_BROWSER && window.location.hostname.includes("localhost")
 const IS_PROD = !IS_DEV
 
-const googleProvider = new GoogleAuthProvider()
-// Suggerisce la scelta dell'account ad ogni login (utile se l’utente è già loggato con altro account)
-googleProvider.setCustomParameters({ prompt: "select_account" })
+let googleProvider: GoogleAuthProvider | null = null
+if (isFirebaseConfigured) {
+  googleProvider = new GoogleAuthProvider()
+  googleProvider.setCustomParameters({ prompt: "select_account" })
+}
 
-if (process.env.NEXT_PUBLIC_USE_FUNCTIONS_EMULATOR === "true") {
+if (isFirebaseConfigured && process.env.NEXT_PUBLIC_USE_FUNCTIONS_EMULATOR === "true") {
   connectFunctionsEmulator(functions, "127.0.0.1", 5001)
 }
 // Garantisce che il redirect mantenga la sessione tra le navigazioni
-;(async () => {
-  try {
-    await setPersistence(auth, browserLocalPersistence)
-  } catch {}
-})()
+if (isFirebaseConfigured && auth) {
+  ;(async () => {
+    try {
+      await setPersistence(auth, browserLocalPersistence)
+    } catch {}
+  })()
+}
 
 // ---------- USER DOC ----------
 export type UserDoc = {
@@ -142,6 +152,9 @@ export async function loginWithEmail(email: string, password: string) {
 }
 
 export async function loginWithGoogle() {
+  if (!isFirebaseConfigured || !googleProvider) {
+    throw new Error("Firebase is not configured. Please set environment variables.")
+  }
   try {
     if (IS_DEV) {
       // in dev usa popup: più affidabile con Next fast-refresh

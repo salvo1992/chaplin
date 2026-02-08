@@ -10,6 +10,7 @@ import {
   loginWithGoogle,
   handleGoogleRedirect, // Import new redirect handler
   logout as fbLogout,
+  isFirebaseConfigured,
 } from "../lib/firebase"
 import { doc, getDoc } from "firebase/firestore"
 import { useRef } from "react"
@@ -82,28 +83,30 @@ function firebaseToAppUser(fbUser: FirebaseUser, idToken: string, role: AppRole)
 // ---------- PROVIDER ----------
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<AppUser | null>(null)
-  const [isLoading, setIsLoading] = useState(true)
-  const [isCheckingRedirect, setIsCheckingRedirect] = useState(true) // Track redirect check
+  const [isLoading, setIsLoading] = useState(isFirebaseConfigured)
+  const [isCheckingRedirect, setIsCheckingRedirect] = useState(isFirebaseConfigured) // Track redirect check
   const hasCheckedRedirectRef = useRef(false)
+
   useEffect(() => {
+    if (!isFirebaseConfigured) {
+      setIsLoading(false)
+      setIsCheckingRedirect(false)
+      return
+    }
     if (hasCheckedRedirectRef.current) return
     hasCheckedRedirectRef.current = true
 
     const checkRedirect = async () => {
-      console.log("[v0] Checking for Google redirect result...")
       try {
         const fbUser = await handleGoogleRedirect()
         if (fbUser) {
-          console.log("[v0] Google redirect successful, user:", fbUser.email)
           const [idToken, role] = await Promise.all([fbUser.getIdToken(true), readUserRole(fbUser.uid)])
           setUser(firebaseToAppUser(fbUser, idToken, role))
           setRoleCookie(role)
           sessionStorage.removeItem("google_auth_error")
-        } else {
-          console.log("[v0] No redirect result found")
         }
       } catch (error: any) {
-        console.error("[v0] Google redirect error:", error)
+        console.error("[auth] Google redirect error:", error)
         if (error?.code) sessionStorage.setItem("google_auth_error", error.code)
       } finally {
         setIsCheckingRedirect(false)
@@ -115,6 +118,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   // Sottoscrizione token/utente
   useEffect(() => {
+    if (!isFirebaseConfigured || !auth) {
+      setIsLoading(false)
+      return
+    }
     const unsub = onIdTokenChanged(auth, async (fbUser) => {
       try {
         if (!fbUser) {
