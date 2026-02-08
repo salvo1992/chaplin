@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Wifi, Car, Waves, Space as Spa, Wine, Mountain, Camera, Users, Bus, Utensils, MapPin } from "lucide-react"
+import { Wifi, Car, Waves, Sparkles, Wine, Mountain, Camera, Users, Bus, Utensils, MapPin } from "lucide-react"
 import { useLanguage } from "@/components/language-provider"
 
 export function ServicesSection() {
@@ -28,7 +28,7 @@ export function ServicesSection() {
       color: "bg-purple-100 text-purple-700",
     },
     {
-      icon: Spa,
+      icon: Sparkles,
       titleKey: "wellnessCenter",
       descriptionKey: "wellnessCenterDesc",
       color: "bg-pink-100 text-pink-700",

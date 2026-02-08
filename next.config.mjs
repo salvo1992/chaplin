@@ -3,7 +3,6 @@ const nextConfig = {
   eslint: { ignoreDuringBuilds: true },
   typescript: { ignoreBuildErrors: true },
   images: { unoptimized: true },
-  output: "standalone",
   reactStrictMode: true,
 
   // ⬇️ Aggiunto: header solo per le pagine auth

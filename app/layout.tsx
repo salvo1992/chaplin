@@ -10,8 +10,6 @@ import { AuthProvider } from "../components/auth-provider"
 import { CookieConsent } from "../components/cookie-consent"
 import { WhatsAppButton } from "../components/whatsapp-button"
 import "./globals.css"
-export const dynamic = "force-dynamic"
-export const revalidate = 0
 
 const playfairDisplay = Playfair_Display({
   subsets: ["latin"],
@@ -73,7 +71,7 @@ export default function RootLayout({
   const gtmId = process.env.NEXT_PUBLIC_GTM_ID || "GTM-XXXXXXX"
 
   return (
-    <html lang="it">
+    <html lang="it" className={`${GeistSans.variable} ${GeistMono.variable} ${playfairDisplay.variable} ${cinzel.variable} antialiased`}>
       <head>
         <script
           dangerouslySetInnerHTML={{
@@ -85,9 +83,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           }}
         />
       </head>
-      <body
-        className={`font-sans ${GeistSans.variable} ${GeistMono.variable} ${playfairDisplay.variable} ${cinzel.variable}`}
-      >
+      <body className="font-sans">
         <noscript>
           <iframe
             src={`https://www.googletagmanager.com/ns.html?id=${gtmId}`}

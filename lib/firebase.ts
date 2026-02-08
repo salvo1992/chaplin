@@ -36,37 +36,42 @@ import { setPersistence, browserLocalPersistence } from "firebase/auth"
 
 // ---------- INIT ----------
 const firebaseConfig = {
-  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY!,
-  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN!,
-  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID!,
-  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET!,
-  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID!,
-  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID!,
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY || "",
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN || "",
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID || "",
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET || "",
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID || "",
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID || "",
 }
 
-const app = getApps().length ? getApp() : initializeApp(firebaseConfig)
+const IS_BROWSER = typeof window !== "undefined"
+
+let app: ReturnType<typeof initializeApp>
+try {
+  app = getApps().length ? getApp() : initializeApp(firebaseConfig)
+} catch (e) {
+  console.error("[v0] Firebase init error:", e)
+  app = getApps().length ? getApp() : initializeApp(firebaseConfig)
+}
 
 export const auth = getAuth(app)
 export const db = getFirestore(app)
 export const storage = getStorage(app)
 export const functions = getFunctions(app)
-const IS_BROWSER = typeof window !== "undefined"
 const IS_DEV = IS_BROWSER && window.location.hostname.includes("localhost")
 const IS_PROD = !IS_DEV
 
 const googleProvider = new GoogleAuthProvider()
-// Suggerisce la scelta dell'account ad ogni login (utile se l’utente è già loggato con altro account)
+// Suggerisce la scelta dell'account ad ogni login (utile se l'utente è già loggato con altro account)
 googleProvider.setCustomParameters({ prompt: "select_account" })
 
 if (process.env.NEXT_PUBLIC_USE_FUNCTIONS_EMULATOR === "true") {
   connectFunctionsEmulator(functions, "127.0.0.1", 5001)
 }
 // Garantisce che il redirect mantenga la sessione tra le navigazioni
-;(async () => {
-  try {
-    await setPersistence(auth, browserLocalPersistence)
-  } catch {}
-})()
+if (IS_BROWSER) {
+  setPersistence(auth, browserLocalPersistence).catch(() => {})
+}
 
 // ---------- USER DOC ----------
 export type UserDoc = {
