@@ -7,7 +7,7 @@ type Language = "it" | "en" | "fr" | "es" | "de"
 interface LanguageContextType {
   language: Language
   setLanguage: (lang: Language) => void
-  t: (key: string) => string
+  t: (key: string, fallback?: string) => string
 }
 
 const translations = { 
@@ -3363,8 +3363,8 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     }
   }
 
-  const t = (key: string): string => {
-    return translations[language][key as keyof typeof translations.it] || key
+  const t = (key: string, fallback?: string): string => {
+    return translations[language][key as keyof typeof translations.it] || fallback || key
   }
 
   return <LanguageContext.Provider value={{ language, setLanguage, t }}>{children}</LanguageContext.Provider>
