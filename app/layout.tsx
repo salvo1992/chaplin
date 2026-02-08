@@ -69,6 +69,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   const gtmId = process.env.NEXT_PUBLIC_GTM_ID || "GTM-XXXXXXX"
+  console.log("[v0] RootLayout rendering, gtmId:", gtmId)
 
   return (
     <html lang="it" className={`${GeistSans.variable} ${GeistMono.variable} ${playfairDisplay.variable} ${cinzel.variable} antialiased`}>
