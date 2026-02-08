@@ -100,6 +100,7 @@ export type UserDoc = {
 }
 
 export async function getUserDoc(uid: string): Promise<UserDoc | null> {
+  if (!isFirebaseConfigured || !db) return null
   const ref = doc(db, "users", uid)
   const snap = await getDoc(ref)
   return snap.exists() ? (snap.data() as UserDoc) : null
@@ -364,11 +365,13 @@ export type RoomData = {
 }
 
 export async function getRoomById(roomId: string): Promise<RoomData | null> {
+  if (!isFirebaseConfigured || !db) return null
   const snap = await getDoc(doc(db, "rooms", roomId))
   return snap.exists() ? (snap.data() as RoomData) : null
 }
 
 export async function getAllRooms(): Promise<RoomData[]> {
+  if (!isFirebaseConfigured || !db) return []
   const snap = await getDocs(collection(db, "rooms"))
   return snap.docs.map((d) => ({ id: d.id, ...d.data() }) as RoomData)
 }

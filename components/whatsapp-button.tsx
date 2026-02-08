@@ -9,7 +9,8 @@ export function WhatsAppButton() {
   const [isHovered, setIsHovered] = useState(false)
 
   const whatsappNumber = "393757017689"
-  const message = encodeURIComponent(t("whatsappMessage", "Ciao! Vorrei informazioni su AL 22 Suite & SPA"))
+  const rawMessage = t("whatsappMessage") || "Ciao! Vorrei informazioni su AL 22 Suite & SPA"
+  const message = encodeURIComponent(rawMessage)
 
   const handleClick = () => {
     window.open(`https://wa.me/${whatsappNumber}?text=${message}`, "_blank")
