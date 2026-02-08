@@ -1,10 +1,21 @@
+import { Header } from "@/components/header"
+import { HeroSection } from "@/components/hero-section"
+import { StorySection } from "@/components/story-section"
+import { ServicesSection } from "@/components/services-section"
+import { RoomsPreview } from "@/components/rooms-preview"
+import ReviewsSection from "@/components/ReviewsSection"
+import { Footer } from "@/components/footer"
+
 export default function HomePage() {
   return (
-    <main className="min-h-screen flex items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold text-foreground mb-4">AL 22 Suite & SPA</h1>
-        <p className="text-muted-foreground">Loading...</p>
-      </div>
+    <main className="min-h-screen">
+      <Header />
+      <HeroSection />
+      <StorySection />
+      <ServicesSection />
+      <RoomsPreview />
+      <ReviewsSection />
+      <Footer />
     </main>
   )
 }
