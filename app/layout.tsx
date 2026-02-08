@@ -1,7 +1,6 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { GeistSans } from "geist/font/sans"
-import { GeistMono } from "geist/font/mono"
+import { Geist, Geist_Mono } from "next/font/google"
 import { Playfair_Display, Cinzel } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { Suspense } from "react"
@@ -10,6 +9,18 @@ import { AuthProvider } from "../components/auth-provider"
 import { CookieConsent } from "../components/cookie-consent"
 import { WhatsAppButton } from "../components/whatsapp-button"
 import "./globals.css"
+
+const geistSans = Geist({
+  subsets: ["latin"],
+  variable: "--font-geist-sans",
+  display: "swap",
+})
+
+const geistMono = Geist_Mono({
+  subsets: ["latin"],
+  variable: "--font-geist-mono",
+  display: "swap",
+})
 
 const playfairDisplay = Playfair_Display({
   subsets: ["latin"],
@@ -69,10 +80,9 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   const gtmId = process.env.NEXT_PUBLIC_GTM_ID || "GTM-XXXXXXX"
-  console.log("[v0] RootLayout rendering, gtmId:", gtmId)
 
   return (
-    <html lang="it" className={`${GeistSans.variable} ${GeistMono.variable} ${playfairDisplay.variable} ${cinzel.variable} antialiased`}>
+    <html lang="it" className={`${geistSans.variable} ${geistMono.variable} ${playfairDisplay.variable} ${cinzel.variable} antialiased`}>
       <head>
         <script
           dangerouslySetInnerHTML={{
