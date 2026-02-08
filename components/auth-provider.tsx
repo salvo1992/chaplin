@@ -10,7 +10,7 @@ import {
   loginWithGoogle,
   handleGoogleRedirect, // Import new redirect handler
   logout as fbLogout,
-} from "@/lib/firebase"
+} from "../lib/firebase"
 import { doc, getDoc } from "firebase/firestore"
 import { useRef } from "react"
 
