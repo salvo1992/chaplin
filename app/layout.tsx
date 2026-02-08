@@ -1,9 +1,13 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { GeistSans } from "geist/font/sans"
-import { GeistMono } from "geist/font/mono"
-import { Playfair_Display, Cinzel } from "next/font/google"
+import { Inter, Playfair_Display, Cinzel } from "next/font/google"
 import "./globals.css"
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-geist-sans",
+  display: "swap",
+})
 
 const playfairDisplay = Playfair_Display({
   subsets: ["latin"],
@@ -31,7 +35,7 @@ export default function RootLayout({
   return (
     <html
       lang="it"
-      className={`${GeistSans.variable} ${GeistMono.variable} ${playfairDisplay.variable} ${cinzel.variable} antialiased`}
+      className={`${inter.variable} ${playfairDisplay.variable} ${cinzel.variable} antialiased`}
     >
       <body className="font-sans">{children}</body>
     </html>
