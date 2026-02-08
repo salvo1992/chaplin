@@ -1,6 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
-@import "react-day-picker/dist/style.css";
+@import "react-day-picker/style.css";
 
 
 @custom-variant dark (&:is(.dark *));
@@ -76,6 +76,9 @@
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-display: var(--font-playfair);
+  --font-cinzel: var(--font-cinzel-face);
+  --transition-duration-1500: 1500ms;
+  --transition-duration-2000: 2000ms;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -391,11 +394,11 @@
 
 /* Enhanced Roman-inspired typography with better gradients */
 .font-display {
-  font-family: "Playfair Display", serif;
+  font-family: var(--font-playfair), "Playfair Display", serif;
 }
 
 .font-roman {
-  font-family: "Cinzel", serif;
+  font-family: var(--font-cinzel-face), "Cinzel", serif;
 }
 
 .text-roman-gradient {

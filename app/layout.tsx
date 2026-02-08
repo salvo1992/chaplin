@@ -21,7 +21,7 @@ const playfairDisplay = Playfair_Display({
 
 const cinzel = Cinzel({
   subsets: ["latin"],
-  variable: "--font-cinzel",
+  variable: "--font-cinzel-face",
   display: "swap",
 })
 
@@ -86,7 +86,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         />
       </head>
       <body
-        className={`font-sans ${GeistSans.variable} ${GeistMono.variable} ${playfairDisplay.variable} ${cinzel.variable}`}
+        className={`font-sans antialiased ${GeistSans.variable} ${GeistMono.variable} ${playfairDisplay.variable} ${cinzel.variable}`}
       >
         <noscript>
           <iframe
