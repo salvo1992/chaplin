@@ -43,33 +43,33 @@
 }
 
 .dark {
-  --background: rgb(42, 100, 115);
+  --background: rgb(42, 115, 65);
   --foreground: oklch(0% 0 0);
   --card: oklch(0.15 0.02 25);
   --card-foreground: oklch(0.95 0.01 80);
   --popover: oklch(0.12 0.02 25);
   --popover-foreground: oklch(0.95 0.01 80);
-  --primary: oklch(66.453% 0.11803 256.975);
+  --primary: oklch(80.582% 0.14274 157.562);
   --primary-foreground: oklch(0.12 0.02 25);
   --secondary: oklch(0.25 0.03 35);
   --secondary-foreground: oklch(0.95 0.01 80);
   --muted: oklch(0.18 0.02 30);
-  --muted-foreground: oklch(69.799% 0.01962 218.646);
+  --muted-foreground: oklch(70.502% 0.03005 158.519);
   --accent: oklch(30.537% 0.07581 294.33);
   --accent-foreground: oklch(0.95 0.01 80);
-  --destructive: oklch(63.466% 0.13322 265.297);
+  --destructive: oklch(81.006% 0.12787 165.481);
   --destructive-foreground: oklch(0.95 0.01 80);
   --border: oklch(0.22 0.02 30);
   --input: oklch(0.18 0.02 30);
-  --ring: oklch(63.886% 0.1309 264.233);
-  --sidebar: rgb(42, 100, 115);
+  --ring: oklch(80.453% 0.1481 155.374);
+  --sidebar: rgb(42, 115, 80);
   --sidebar-foreground: oklch(95.093% 0.01077 204.654);
-  --sidebar-primary: oklch(62.219% 0.1404 268.265);
-  --sidebar-primary-foreground:rgb(42, 100, 115);
+  --sidebar-primary: oklch(80.252% 0.15729 152.163);
+  --sidebar-primary-foreground:rgb(42, 115, 92);
   --sidebar-accent:rgb(238, 238, 238);
   --sidebar-accent-foreground: oklch(15.434% 0.00002 271.152);
-  --sidebar-border: rgb(42, 100, 115);
-  --sidebar-ring: oklch(62.632% 0.13797 267.312);
+  --sidebar-border: rgb(42, 115, 80);
+  --sidebar-ring: oklch(80.252% 0.15729 152.163);
 }
 
 @theme inline {
@@ -120,7 +120,7 @@
   }
   body {
     @apply bg-background text-foreground relative overflow-x-hidden;
-        background-color: #daf5fb;
+        background-color: #caefdb;
   }
 
   /* Updated to sand background with subtle texture animation */
@@ -131,7 +131,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(circle at 20% 80%, #e3f0f3 0%, transparent 50%),
+    background: radial-gradient(circle at 20% 80%, #e4f3e3 0%, transparent 50%),
       radial-gradient(circle at 80% 20%, rgba(218, 165, 32, 0.08) 0%, transparent 50%),
       linear-gradient(135deg, rgba(222, 184, 135, 0.05) 0%, rgba(245, 222, 179, 0.05) 100%);
     z-index: -2;
@@ -150,8 +150,8 @@
         45deg,
         transparent,
         transparent 3px,
-        rgba(169, 229, 240, 0.02) 3px,
-        rgba(238, 242, 243, 0.02) 6px
+        rgba(169, 240, 208, 0.02) 3px,
+        rgba(238, 243, 241, 0.02) 6px
       ),
       repeating-linear-gradient(
         -45deg,
@@ -363,7 +363,7 @@
 }
 
 .animate-shimmer {
-  background: linear-gradient(90deg, transparent, rgb(42, 100, 115), transparent);
+  background: linear-gradient(90deg, transparent, rgb(42, 115, 63), transparent);
   background-size: 200% 100%;
   animation: shimmer 2s infinite;
 }
@@ -401,12 +401,12 @@
 .text-roman-gradient {
   background: linear-gradient(
     135deg,
-    rgb(42, 100, 115) 0%,
-    oklch(67.616% 0.11557 251.66) 20%,
-    oklch(86.934% 0.11657 185.089) 40%,
-    oklch(91.846% 0.08953 186.198) 60%,
-    oklch(83.424% 0.09579 214.384) 80%,
-    rgb(42, 100, 115) 100%
+    rgb(42, 115, 68) 0%,
+    oklch(80.024% 0.17812 147.813) 20%,
+    oklch(85.264% 0.16299 153.312) 40%,
+    oklch(90.826% 0.11178 159.871) 60%,
+    oklch(85.907% 0.17594 146.735) 80%,
+    rgb(42, 115, 74) 100%
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -425,7 +425,7 @@
     135deg,
     rgba(255, 255, 255, 0.95) 0%,
     rgba(255, 255, 255, 0.85) 50%,
-    rgba(248, 250, 252, 0.9) 100%
+    rgba(248, 252, 250, 0.9) 100%
   );
   backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.3);
@@ -458,7 +458,7 @@
     135deg,
     rgba(255, 255, 255, 0.6) 0%,
     rgba(255, 255, 255, 0.5) 50%,
-    rgba(248, 250, 252, 0.55) 100%
+    rgba(248, 252, 249, 0.55) 100%
   );
   backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -489,13 +489,13 @@
   border-left: 1px solid rgba(255,255,255,0.2);
 }
 .bg-black\/80 {
-  background-color: rgba(42, 100, 115, 0.8);
+  background-color: rgba(42, 115, 66, 0.8);
 }
 .text-yellow-900 {
   color: white;
 }
 .to-yellow-600 {
-  --tw-gradient-from: rgba(42, 100, 115, 0.8);
+  --tw-gradient-from: rgba(42, 115, 70, 0.8);
   --tw-gradient-to: transparent;
 }
 .from-yellow-400 {

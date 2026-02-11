@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic"
+export const revalidate = 0
 import type React from "react"
 import type { Metadata } from "next"
 import { GeistSans } from "geist/font/sans"
@@ -10,8 +12,7 @@ import { AuthProvider } from "../components/auth-provider"
 import { CookieConsent } from "../components/cookie-consent"
 import { WhatsAppButton } from "../components/whatsapp-button"
 import "./globals.css"
-export const dynamic = "force-dynamic"
-export const revalidate = 0
+
 
 const playfairDisplay = Playfair_Display({
   subsets: ["latin"],
@@ -26,9 +27,9 @@ const cinzel = Cinzel({
 })
 
 export const metadata: Metadata = {
-  title: "AL 22 Suite & SPA LUXURY EXPERIENCE",
+  title: "",
   description:
-    "Experience authentic Italian hospitality at AL 22 Suite & SPA, a luxury bed & breakfast in the heart of Polignano a Mare",
+    "Experience authentic Italian hospitality at CHAPLIN Luxury Holiday House bed & breakfast in the Viterbo, Italia",
   generator: "next.js",
   icons: {
     icon: [
@@ -40,11 +41,11 @@ export const metadata: Metadata = {
   },
   metadataBase: new URL("https://al22suite.com"),
   openGraph: {
-    title: "AL 22 Suite & SPA LUXURY EXPERIENCE",
+    title: "CHAPLIN Luxury Holiday House",
     description:
-      "Experience authentic Italian hospitality at AL 22 Suite & SPA, a luxury bed & breakfast in the heart of Polignano a Mare",
+      "Experience authentic Italian hospitality at CHAPLIN Luxury Holiday House bed & breakfast in the Posizione eccellente, valutata 9.6/10!(punteggio ottenuto da 110 giudizi)",
     url: "https://al22suite.com",
-    siteName: "AL 22 Suite & SPA",
+    siteName: "CHAPLIN Luxury Holiday House",
     images: [
       {
         url: "/images/logo22.jpg",
@@ -58,9 +59,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "AL 22 Suite & SPA LUXURY EXPERIENCE",
+    title: "",
     description:
-      "Experience authentic Italian hospitality at AL 22 Suite & SPA, a luxury bed & breakfast in the heart of Polignano a Mare",
+      "Experience authentic Italian hospitality at CHAPLIN Luxury Holiday House bed & breakfast in the Valutata dagli ospiti dopo il soggiorno presso CHAPLIN Luxury Holiday House.",
     images: ["/images/logo22.jpg"],
   },
 }

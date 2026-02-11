@@ -38,7 +38,7 @@ export function Header() {
   <div className="relative w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14">
     <Image
       src="/images/logo22.jpg"
-      alt="Logo Al 22 Suite & Spa Luxury Experience"
+      alt="Logo CHAPLIN Luxury Holiday House"
       fill
       className="object-contain"
       priority
@@ -48,10 +48,10 @@ export function Header() {
 
   {/* Testo come già impostato */}
   <span className="font-cinzel text-xs sm:hidden font-bold text-roman-gradient max-w-[55vw] overflow-hidden text-ellipsis whitespace-nowrap">
-    AL 22 Suite & SPA
+    CHAPLIN Luxury Holiday House
   </span>
   <span className="hidden sm:inline font-cinzel text-sm md:text-xl font-bold text-roman-gradient whitespace-nowrap">
-    AL 22 Suite & SPA LUXURY EXPERIENCE
+    CHAPLIN Luxury Holiday House
   </span>
 </Link>
 

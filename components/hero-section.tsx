@@ -15,7 +15,7 @@ export function HeroSection() {
   const heroImages = [
     {
       src: "/images/bb-hero.jpg",
-      alt: "al 22 Suite & Spa Luxury Experience - Vista principale",
+      alt: "CHAPLIN Luxury Holiday House - Vista principale",
       titleKey: "heroTitle",
       subtitleKey: "heroSubtitle",
     },
@@ -97,7 +97,7 @@ export function HeroSection() {
               <div className="bg-primary/20 backdrop-blur-sm rounded-full p-2">
                 <MapPin className="w-6 h-6 text-primary animate-pulse" />
               </div>
-              <span className="text-xl font-medium">Polignano a Mare, Puglia, Italia</span>
+              <span className="text-xl font-medium">Viterbo, Italia</span>
             </div>
 
             <div

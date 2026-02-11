@@ -12,8 +12,8 @@ interface LanguageContextType {
 
 const translations = { 
   // ==== COMMON ====
-  companyName: "ALL22SUITE & SPA",
-  lastUpdated: "Ultimo aggiornamento: 28 ottobre 2025",
+  companyName: "CHAPLIN Luxury Holiday House",
+  lastUpdated: "Ultimo aggiornamento: 8 febbraio 2026",
   contactUs: "Contattaci",
 
   // ==== ITALIANO ====
@@ -36,8 +36,8 @@ const translations = {
     or: "oppure",
 
     // Hero Section
-    heroTitle: "Benvenuti al 22 Suite & Spa Luxury Experience",
-    heroSubtitle: "Un'esperienza autentica nel cuore di Polignano a Mare",
+    heroTitle: "Benvenuti al CHAPLIN Luxury Holiday House",
+    heroSubtitle: "Un'esperienza di soggiorno indimenticabile nel cuore di viterbo",
     heroTitle2: "Relax e Tranquillità",
     heroSubtitle2: "Goditi la nostra Spa Luxury Experience",
     bookYourStay: "Prenota il Tuo Soggiorno",
@@ -46,12 +46,12 @@ const translations = {
     // Story Section
     storyTitle: "La Nostra Storia",
     storyDescription:
-      "Nel cuore di Polignano a Mare, AL 22 Suite & SPA rappresenta l'essenza dell'ospitalità pugliese. La nostra struttura combina il fascino della tradizione con il comfort moderno, offrendo un'esperienza unica ai nostri ospiti.",
+      "Nel cuore di viterbo, AL CHAPLIN Luxury Holiday Houserappresenta l'essenza dell'ospitalità pugliese. La nostra struttura combina il fascino della tradizione con il comfort moderno, offrendo un'esperienza unica ai nostri ospiti.",
 
     // Services
     servicesTitle: "I Nostri Servizi",
     servicesDescription:
-      "Scopri tutti i servizi che rendono il tuo soggiorno AL 22 Suite & SPA LUXURY EXPERIENCE un'esperienza indimenticabile",
+      "Scopri tutti i servizi che rendono il tuo soggiorno AL CHAPLIN Luxury Holiday House un'esperienza indimenticabile",
     outdoorPool: "Piscina Scoperta",
     outdoorPoolDesc: "Rilassati nella nostra piscina scoperta",
     freeWifi: "WiFi Gratuito",
@@ -63,7 +63,7 @@ const translations = {
     bar: "Bar",
     barDesc: "Come rilassarti e goderti il nostro soggiorno",
     guidedTours: "Escursioni Guidate",
-    guidedToursDesc: "Esplora la bellezza di Polignano a Mare",
+    guidedToursDesc: "Esplora la bellezza di viterbo",
     terrace: "La nostra Terrazza",
     terraceDesc: "Con vista sulla città",
     airportShuttle: "Navetta aeroportuale",
@@ -107,7 +107,7 @@ const translations = {
     allReviewsSeen: "Hai visto tutte le recensioni",
 
     // Footer
-    footerDescription: "Esperienza autentica nel cuore di Polignano a Mare",
+    footerDescription: "Esperienza autentica nel cuore di viterbo",
     quickLinks: "Link Rapidi",
     followUs: "Seguici",
     allRightsReserved: "Tutti i diritti riservati",
@@ -167,7 +167,7 @@ const translations = {
 
     // Auth Pages
     loginTitle: "Accedi",
-    loginSubtitle: "Benvenuto di nuovo a AL 22 Suite & SPA",
+    loginSubtitle: "Benvenuto di nuovo a AL CHAPLIN Luxury Holiday House",
     loginToAccount: "Accedi al tuo Account",
     enterCredentials: "Inserisci le tue credenziali per continuare",
     loggingIn: "Accesso in corso...",
@@ -209,8 +209,8 @@ const translations = {
     // Rooms Page
     roomsPageTitle: "Le Nostre Camere",
     roomsPageSubtitle:
-      "Scopri il comfort e l'eleganza delle nostre camere, ognuna progettata per offrirti un'esperienza di soggiorno indimenticabile nel cuore di Polignano a Mare",
-    centerPolignano: "Centro Polignano a Mare",
+      "Scopri il comfort e l'eleganza delle nostre camere, ognuna progettata per offrirti un'esperienza di soggiorno indimenticabile nel cuore di viterbo",
+    centerPolignano: "Centro viterbo",
     freeWifiShort: "WiFi Gratuito",
     parking: "Parcheggio",
     service5Star: "Servizio 5★",
@@ -218,7 +218,7 @@ const translations = {
 
     // Services Page
     servicesPageTitle: "I Nostri Servizi Esclusivi",
-    servicesPageSubtitle: "Scopri un mondo di lusso e relax nel cuore di Polignano a Mare",
+    servicesPageSubtitle: "Scopri un mondo di lusso e relax nel cuore di viterbo",
     servicesPageDescription:
       "Ogni servizio è pensato per offrirti un'esperienza indimenticabile, combinando la tradizione pugliese con il comfort moderno",
     serviceCategories: "Categorie di Servizi",
@@ -242,13 +242,13 @@ servicesPageDescription: "Dalla prenotazione all’accoglienza, gestiamo ogni de
 
 // --- Alias legacy (non toccare: tengono compatibile il vecchio codice)
 bookYourStay: "Prenota il Tuo Soggiorno",
-bookingSubtitle: "Vivi un'esperienza indimenticabile nel cuore di Polignano a Mare",
+bookingSubtitle: "Vivi un'esperienza indimenticabile nel cuore di viterbo",
 checkInTime: "Check-in: 15:00 – 20:00",
 checkOutTime: "Check-out: 08:00 – 11:00",
 maxGuests: "Max 4 ospiti per camera",
 howToReach: "Come Raggiungerci",
-historicCenter: "Centro storico, Polignano a Mare (BA)",
-airport: "Aeroporto di Bari",
+historicCenter: "Centro storico, viterbo ",
+airport: "Aereoporto di Roma Fiumicino (FCO)",
 trainStation: "Stazione FS",
 beach: "Lama Monachile",
 estimatedPrice: "Prezzo stimato",
@@ -281,7 +281,7 @@ ok: "Ok",
 
 // --- Set unificato e usato nella nuova pagina
 bookingPageTitle: "Prenota il Tuo Soggiorno",
-bookingPageSubtitle: "Vivi un'esperienza indimenticabile nel cuore di Polignano a Mare",
+bookingPageSubtitle: "Vivi un'esperienza indimenticabile nel cuore di viterbo",
 
 bookingCheckInOutTitle: "Check-in / Check-out",
 bookingCheckIn: "Check-in: 15:00 – 20:00",
@@ -289,8 +289,8 @@ bookingCheckOut: "Check-out: 08:00 – 11:00",
 bookingMaxGuests: "Max 4 ospiti per camera",
 
 bookingHowToReachTitle: "Come Raggiungerci",
-bookingLocation: "Centro storico, Polignano a Mare (BA)",
-bookingAirport: "Aeroporto di Bari: ~45 min",
+bookingLocation: "Centro storico, viterbo ",
+bookingAirport: "Aereoporto di Roma Fiumicino (FCO): ~45 min",
 bookingStation: "Stazione FS: ~10 min a piedi",
 bookingBeach: "Lama Monachile: ~5 min a piedi",
 
@@ -740,8 +740,8 @@ bookingErrorOkButton: "Ok",
 
 
     // Hero Section
-    heroTitle: "Welcome to AL 22 Suite & Spa Luxury Experience",
-    heroSubtitle: "An authentic experience in the heart of Polignano a Mare",
+    heroTitle: "Welcome to AL CHAPLIN Luxury Holiday House",
+    heroSubtitle: "An authentic experience in the heart of viterbo",
     heroTitle2: "Relax and Tranquility",
     heroSubtitle2: "Enjoy our Luxury Spa Experience",
     bookYourStay: "Book Your Stay",
@@ -750,12 +750,12 @@ bookingErrorOkButton: "Ok",
     // Story Section
     storyTitle: "Our Story",
     storyDescription:
-      "In the heart of Polignano a Mare, AL 22 Suite & SPA represents the essence of Apulian hospitality. Our property combines the charm of tradition with modern comfort, offering a unique experience to our guests.",
+      "In the heart of viterbo, AL CHAPLIN Luxury Holiday Houserepresents the essence of Apulian hospitality. Our property combines the charm of tradition with modern comfort, offering a unique experience to our guests.",
 
     // Services
     servicesTitle: "Our Services",
     servicesDescription:
-      "Discover all the services that make your stay at AL 22 Suite & SPA LUXURY EXPERIENCE an unforgettable experience",
+      "Discover all the services that make your stay at AL CHAPLIN Luxury Holiday House an unforgettable experience",
     outdoorPool: "Outdoor Pool",
     outdoorPoolDesc: "Relax in our outdoor pool",
     freeWifi: "Free WiFi",
@@ -767,7 +767,7 @@ bookingErrorOkButton: "Ok",
     bar: "Bar",
     barDesc: "How to relax and enjoy your stay",
     guidedTours: "Guided Tours",
-    guidedToursDesc: "Explore the beauty of Polignano a Mare",
+    guidedToursDesc: "Explore the beauty of viterbo",
     terrace: "Our Terrace",
     terraceDesc: "With city view",
     airportShuttle: "Airport Shuttle",
@@ -811,7 +811,7 @@ bookingErrorOkButton: "Ok",
     allReviewsSeen: "You've seen all reviews",
 
     // Footer
-    footerDescription: "Authentic experience in the heart of Polignano a Mare",
+    footerDescription: "Authentic experience in the heart of viterbo",
     quickLinks: "Quick Links",
     followUs: "Follow Us",
     allRightsReserved: "All rights reserved",
@@ -871,7 +871,7 @@ bookingErrorOkButton: "Ok",
 
     // Auth Pages
     loginTitle: "Login",
-    loginSubtitle: "Welcome back to AL 22 Suite & SPA",
+    loginSubtitle: "Welcome back to AL CHAPLIN Luxury Holiday House",
     loginToAccount: "Login to Your Account",
     enterCredentials: "Enter your credentials to continue",
     loggingIn: "Logging in...",
@@ -912,8 +912,8 @@ bookingErrorOkButton: "Ok",
     // Rooms Page
     roomsPageTitle: "Our Rooms",
     roomsPageSubtitle:
-      "Discover the comfort and elegance of our rooms, each designed to offer you an unforgettable stay experience in the heart of Polignano a Mare",
-    centerPolignano: "Polignano a Mare Center",
+      "Discover the comfort and elegance of our rooms, each designed to offer you an unforgettable stay experience in the heart of viterbo",
+    centerPolignano: "viterbo Center",
     freeWifiShort: "Free WiFi",
     parking: "Parking",
     service5Star: "5★ Service",
@@ -921,7 +921,7 @@ bookingErrorOkButton: "Ok",
 
     // Services Page
     servicesPageTitle: "Our Exclusive Services",
-    servicesPageSubtitle: "Discover a world of luxury and relaxation in the heart of Polignano a Mare",
+    servicesPageSubtitle: "Discover a world of luxury and relaxation in the heart of viterbo",
     servicesPageDescription:
       "Every service is designed to offer you an unforgettable experience, combining Apulian tradition with modern comfort",
     serviceCategories: "Service Categories",
@@ -940,7 +940,7 @@ bookingErrorOkButton: "Ok",
 
   // Booking Page
   bookingPageTitle: "Book Your Stay",
-  bookingPageSubtitle: "Live an unforgettable experience in the heart of Polignano a Mare",
+  bookingPageSubtitle: "Live an unforgettable experience in the heart of viterbo",
 
   bookingCheckInOutTitle: "Check-in / Check-out",
   bookingCheckIn: "Check-in: 3:00 PM – 8:00 PM",
@@ -948,7 +948,7 @@ bookingErrorOkButton: "Ok",
   bookingMaxGuests: "Max 4 guests per room",
 
   bookingHowToReachTitle: "How to Reach Us",
-  bookingLocation: "Historic Center, Polignano a Mare (BA)",
+  bookingLocation: "Historic Center, viterbo ",
   bookingAirport: "Bari Airport: ~45 min",
   bookingStation: "Train Station: ~10 min walk",
   bookingBeach: "Lama Monachile: ~5 min walk",
@@ -1394,8 +1394,8 @@ bookingErrorOkButton: "Ok",
 
      
     // Hero Section
-    heroTitle: "Bienvenue à AL 22 Suite & Spa Luxury Experience",
-    heroSubtitle: "Une expérience authentique au cœur de Polignano a Mare",
+    heroTitle: "Bienvenue à AL CHAPLIN Luxury Holiday House",
+    heroSubtitle: "Une expérience authentique au cœur de viterbo",
     heroTitle2: "Détente et Tranquillité",
     heroSubtitle2: "Profitez de notre Expérience Spa de Luxe",
     bookYourStay: "Réservez Votre Séjour",
@@ -1404,12 +1404,12 @@ bookingErrorOkButton: "Ok",
     // Story Section
     storyTitle: "Notre Histoire",
     storyDescription:
-      "Au cœur de Polignano a Mare, AL 22 Suite & SPA représente l'essence de l'hospitalité des Pouilles. Notre établissement combine le charme de la tradition avec le confort moderne, offrant une expérience unique à nos clients.",
+      "Au cœur de viterbo, AL CHAPLIN Luxury Holiday Housereprésente l'essence de l'hospitalité des Pouilles. Notre établissement combine le charme de la tradition avec le confort moderne, offrant une expérience unique à nos clients.",
 
     // Services
     servicesTitle: "Nos Services",
     servicesDescription:
-      "Découvrez tous les services qui rendent votre séjour à AL 22 Suite & SPA LUXURY EXPERIENCE une expérience inoubliable",
+      "Découvrez tous les services qui rendent votre séjour à AL CHAPLIN Luxury Holiday House une expérience inoubliable",
     outdoorPool: "Piscine Extérieure",
     outdoorPoolDesc: "Détendez-vous dans notre piscine extérieure",
     freeWifi: "WiFi Gratuit",
@@ -1421,7 +1421,7 @@ bookingErrorOkButton: "Ok",
     bar: "Bar",
     barDesc: "Comment vous détendre et profiter de votre séjour",
     guidedTours: "Visites Guidées",
-    guidedToursDesc: "Explorez la beauté de Polignano a Mare",
+    guidedToursDesc: "Explorez la beauté de viterbo",
     terrace: "Notre Terrasse",
     terraceDesc: "Avec vue sur la ville",
     airportShuttle: "Navette Aéroport",
@@ -1465,7 +1465,7 @@ bookingErrorOkButton: "Ok",
     allReviewsSeen: "Vous avez vu tous les avis",
 
     // Footer
-    footerDescription: "Expérience authentique au cœur de Polignano a Mare",
+    footerDescription: "Expérience authentique au cœur de viterbo",
     quickLinks: "Liens Rapides",
     followUs: "Suivez-nous",
     allRightsReserved: "Tous droits réservés",
@@ -1525,7 +1525,7 @@ bookingErrorOkButton: "Ok",
 
     // Auth Pages
     loginTitle: "Connexion",
-    loginSubtitle: "Bienvenue à AL 22 Suite & SPA",
+    loginSubtitle: "Bienvenue à AL CHAPLIN Luxury Holiday House",
     loginToAccount: "Connectez-vous à Votre Compte",
     enterCredentials: "Entrez vos identifiants pour continuer",
     loggingIn: "Connexion en cours...",
@@ -1567,8 +1567,8 @@ bookingErrorOkButton: "Ok",
     // Rooms Page
     roomsPageTitle: "Nos Chambres",
     roomsPageSubtitle:
-      "Découvrez le confort et l'élégance de nos chambres, chacune conçue pour vous offrir une expérience de séjour inoubliable au cœur de Polignano a Mare",
-    centerPolignano: "Centre de Polignano a Mare",
+      "Découvrez le confort et l'élégance de nos chambres, chacune conçue pour vous offrir une expérience de séjour inoubliable au cœur de viterbo",
+    centerPolignano: "Centre de viterbo",
     freeWifiShort: "WiFi Gratuit",
     parking: "Parking",
     service5Star: "Service 5★",
@@ -1576,7 +1576,7 @@ bookingErrorOkButton: "Ok",
 
     // Services Page
     servicesPageTitle: "Nos Services Exclusifs",
-    servicesPageSubtitle: "Découvrez un monde de luxe et de détente au cœur de Polignano a Mare",
+    servicesPageSubtitle: "Découvrez un monde de luxe et de détente au cœur de viterbo",
     servicesPageDescription:
       "Chaque service est conçu pour vous offrir une expérience inoubliable, combinant la tradition des Pouilles avec le confort moderne",
     serviceCategories: "Catégories de Services",
@@ -1596,7 +1596,7 @@ bookingErrorOkButton: "Ok",
 
   // Booking Page
   bookingPageTitle: "Réservez Votre Séjour",
-  bookingPageSubtitle: "Vivez une expérience inoubliable au cœur de Polignano a Mare",
+  bookingPageSubtitle: "Vivez une expérience inoubliable au cœur de viterbo",
 
   bookingCheckInOutTitle: "Arrivée / Départ",
   bookingCheckIn: "Arrivée : 15h00 – 20h00",
@@ -1604,7 +1604,7 @@ bookingErrorOkButton: "Ok",
   bookingMaxGuests: "Max 4 personnes par chambre",
 
   bookingHowToReachTitle: "Comment Nous Rejoindre",
-  bookingLocation: "Centre historique, Polignano a Mare (BA)",
+  bookingLocation: "Centre historique, viterbo ",
   bookingAirport: "Aéroport de Bari : ~45 min",
   bookingStation: "Gare : ~10 min à pied",
   bookingBeach: "Lama Monachile : ~5 min à pied",
@@ -2049,8 +2049,8 @@ bookingErrorOkButton: "Ok",
 
    
     // Hero Section
-    heroTitle: "Bienvenido a AL 22 Suite & Spa Luxury Experience",
-    heroSubtitle: "Una experiencia auténtica en el corazón de Polignano a Mare",
+    heroTitle: "Bienvenido a AL CHAPLIN Luxury Holiday House",
+    heroSubtitle: "Una experiencia auténtica en el corazón de viterbo",
     heroTitle2: "Relajación y Tranquilidad",
     heroSubtitle2: "Disfruta de nuestra Experiencia de Spa de Lujo",
     bookYourStay: "Reserva Tu Estancia",
@@ -2059,12 +2059,12 @@ bookingErrorOkButton: "Ok",
     // Story Section
     storyTitle: "Nuestra Historia",
     storyDescription:
-      "En el corazón de Polignano a Mare, AL 22 Suite & SPA representa la esencia de la hospitalidad de Apulia. Nuestro establecimiento combina el encanto de la tradición con el confort moderno, ofreciendo una experiencia única a nuestros huéspedes.",
+      "En el corazón de viterbo, AL CHAPLIN Luxury Holiday Houserepresenta la esencia de la hospitalidad de Apulia. Nuestro establecimiento combina el encanto de la tradición con el confort moderno, ofreciendo una experiencia única a nuestros huéspedes.",
 
     // Services
     servicesTitle: "Nuestros Servicios",
     servicesDescription:
-      "Descubre todos los servicios que hacen de tu estancia en AL 22 Suite & SPA LUXURY EXPERIENCE una experiencia inolvidable",
+      "Descubre todos los servicios que hacen de tu estancia en AL CHAPLIN Luxury Holiday House una experiencia inolvidable",
     outdoorPool: "Piscina Exterior",
     outdoorPoolDesc: "Relájate en nuestra piscina exterior",
     freeWifi: "WiFi Gratuito",
@@ -2076,7 +2076,7 @@ bookingErrorOkButton: "Ok",
     bar: "Bar",
     barDesc: "Cómo relajarte y disfrutar de tu estancia",
     guidedTours: "Tours Guiados",
-    guidedToursDesc: "Explora la belleza de Polignano a Mare",
+    guidedToursDesc: "Explora la belleza de viterbo",
     terrace: "Nuestra Terraza",
     terraceDesc: "Con vista a la ciudad",
     airportShuttle: "Servicio de Traslado al Aeropuerto",
@@ -2120,7 +2120,7 @@ bookingErrorOkButton: "Ok",
     allReviewsSeen: "Has visto todas las reseñas",
 
     // Footer
-    footerDescription: "Experiencia auténtica en el corazón de Polignano a Mare",
+    footerDescription: "Experiencia auténtica en el corazón de viterbo",
     quickLinks: "Enlaces Rápidos",
     followUs: "Síguenos",
     allRightsReserved: "Todos los derechos reservados",
@@ -2180,7 +2180,7 @@ bookingErrorOkButton: "Ok",
 
     // Auth Pages
     loginTitle: "Iniciar Sesión",
-    loginSubtitle: "Bienvenido de nuevo a AL 22 Suite & SPA",
+    loginSubtitle: "Bienvenido de nuevo a AL CHAPLIN Luxury Holiday House",
     loginToAccount: "Inicia Sesión en Tu Cuenta",
     enterCredentials: "Ingresa tus credenciales para continuar",
     loggingIn: "Iniciando sesión...",
@@ -2222,8 +2222,8 @@ bookingErrorOkButton: "Ok",
     // Rooms Page
     roomsPageTitle: "Nuestras Habitaciones",
     roomsPageSubtitle:
-      "Descubre el confort y la elegancia de nuestras habitaciones, cada una diseñada para ofrecerte una experiencia de estancia inolvidable en el corazón de Polignano a Mare",
-    centerPolignano: "Centro de Polignano a Mare",
+      "Descubre el confort y la elegancia de nuestras habitaciones, cada una diseñada para ofrecerte una experiencia de estancia inolvidable en el corazón de viterbo",
+    centerPolignano: "Centro de viterbo",
     freeWifiShort: "WiFi Gratuito",
     parking: "Aparcamiento",
     service5Star: "Servicio 5★",
@@ -2231,7 +2231,7 @@ bookingErrorOkButton: "Ok",
 
     // Services Page
     servicesPageTitle: "Nuestros Servicios Exclusivos",
-    servicesPageSubtitle: "Descubre un mundo de lujo y relajación en el corazón de Polignano a Mare",
+    servicesPageSubtitle: "Descubre un mundo de lujo y relajación en el corazón de viterbo",
     servicesPageDescription:
       "Cada servicio está diseñado para ofrecerte una experiencia inolvidable, combinando la tradición de Apulia con el confort moderno",
     serviceCategories: "Categorías de Servicios",
@@ -2250,7 +2250,7 @@ bookingErrorOkButton: "Ok",
 
   // Booking Page
   bookingPageTitle: "Reserva tu Estancia",
-  bookingPageSubtitle: "Vive una experiencia inolvidable en el corazón de Polignano a Mare",
+  bookingPageSubtitle: "Vive una experiencia inolvidable en el corazón de viterbo",
 
   bookingCheckInOutTitle: "Check-in / Check-out",
   bookingCheckIn: "Check-in: 15:00 – 20:00",
@@ -2258,7 +2258,7 @@ bookingErrorOkButton: "Ok",
   bookingMaxGuests: "Máx. 4 huéspedes por habitación",
 
   bookingHowToReachTitle: "Cómo Llegar",
-  bookingLocation: "Centro histórico, Polignano a Mare (BA)",
+  bookingLocation: "Centro histórico, viterbo ",
   bookingAirport: "Aeropuerto de Bari: ~45 min",
   bookingStation: "Estación de tren: ~10 min a pie",
   bookingBeach: "Lama Monachile: ~5 min a pie",
@@ -2699,8 +2699,8 @@ bookingErrorOkButton: "Ok",
 
    
     // Hero Section
-    heroTitle: "Willkommen im AL 22 Suite & Spa Luxury Experience",
-    heroSubtitle: "Ein authentisches Erlebnis im Herzen von Polignano a Mare",
+    heroTitle: "Willkommen im AL CHAPLIN Luxury Holiday House",
+    heroSubtitle: "Ein authentisches Erlebnis im Herzen von viterbo",
     heroTitle2: "Entspannung und Ruhe",
     heroSubtitle2: "Genießen Sie unser Luxus-Spa-Erlebnis",
     bookYourStay: "Buchen Sie Ihren Aufenthalt",
@@ -2709,12 +2709,12 @@ bookingErrorOkButton: "Ok",
     // Story Section
     storyTitle: "Unsere Geschichte",
     storyDescription:
-      "Im Herzen von Polignano a Mare repräsentiert AL 22 Suite & SPA die Essenz der apulischen Gastfreundschaft. Unsere Unterkunft verbindet den Charme der Tradition mit modernem Komfort und bietet unseren Gästen ein einzigartiges Erlebnis.",
+      "Im Herzen von viterbo repräsentiert AL CHAPLIN Luxury Holiday Housedie Essenz der apulischen Gastfreundschaft. Unsere Unterkunft verbindet den Charme der Tradition mit modernem Komfort und bietet unseren Gästen ein einzigartiges Erlebnis.",
 
     // Services
     servicesTitle: "Unsere Dienstleistungen",
     servicesDescription:
-      "Entdecken Sie alle Dienstleistungen, die Ihren Aufenthalt im AL 22 Suite & SPA LUXURY EXPERIENCE zu einem unvergesslichen Erlebnis machen",
+      "Entdecken Sie alle Dienstleistungen, die Ihren Aufenthalt im AL CHAPLIN Luxury Holiday House zu einem unvergesslichen Erlebnis machen",
     outdoorPool: "Außenpool",
     outdoorPoolDesc: "Entspannen Sie in unserem Außenpool",
     freeWifi: "Kostenloses WLAN",
@@ -2726,7 +2726,7 @@ bookingErrorOkButton: "Ok",
     bar: "Bar",
     barDesc: "Wie Sie sich entspannen und Ihren Aufenthalt genießen können",
     guidedTours: "Geführte Touren",
-    guidedToursDesc: "Erkunden Sie die Schönheit von Polignano a Mare",
+    guidedToursDesc: "Erkunden Sie die Schönheit von viterbo",
     terrace: "Unsere Terrasse",
     terraceDesc: "Mit Stadtblick",
     airportShuttle: "Flughafentransfer",
@@ -2770,7 +2770,7 @@ bookingErrorOkButton: "Ok",
     allReviewsSeen: "Sie haben alle Bewertungen gesehen",
 
     // Footer
-    footerDescription: "Authentisches Erlebnis im Herzen von Polignano a Mare",
+    footerDescription: "Authentisches Erlebnis im Herzen von viterbo",
     quickLinks: "Schnelllinks",
     followUs: "Folgen Sie Uns",
     allRightsReserved: "Alle Rechte vorbehalten",
@@ -2830,7 +2830,7 @@ bookingErrorOkButton: "Ok",
 
     // Auth Pages
     loginTitle: "Anmelden",
-    loginSubtitle: "Willkommen zurück bei AL 22 Suite & SPA",
+    loginSubtitle: "Willkommen zurück bei AL CHAPLIN Luxury Holiday House",
     loginToAccount: "Melden Sie sich bei Ihrem Konto an",
     enterCredentials: "Geben Sie Ihre Anmeldedaten ein, um fortzufahren",
     loggingIn: "Anmeldung läuft...",
@@ -2873,8 +2873,8 @@ bookingErrorOkButton: "Ok",
     // Rooms Page
     roomsPageTitle: "Unsere Zimmer",
     roomsPageSubtitle:
-      "Entdecken Sie den Komfort und die Eleganz unserer Zimmer, jedes entworfen, um Ihnen ein unvergessliches Aufenthaltserlebnis im Herzen von Polignano a Mare zu bieten",
-    centerPolignano: "Zentrum von Polignano a Mare",
+      "Entdecken Sie den Komfort und die Eleganz unserer Zimmer, jedes entworfen, um Ihnen ein unvergessliches Aufenthaltserlebnis im Herzen von viterbo zu bieten",
+    centerPolignano: "Zentrum von viterbo",
     freeWifiShort: "Kostenloses WLAN",
     parking: "Parkplatz",
     service5Star: "5★ Service",
@@ -2882,7 +2882,7 @@ bookingErrorOkButton: "Ok",
 
     // Services Page
     servicesPageTitle: "Unsere Exklusiven Dienstleistungen",
-    servicesPageSubtitle: "Entdecken Sie eine Welt des Luxus und der Entspannung im Herzen von Polignano a Mare",
+    servicesPageSubtitle: "Entdecken Sie eine Welt des Luxus und der Entspannung im Herzen von viterbo",
     servicesPageDescription:
       "Jede Dienstleistung ist darauf ausgelegt, Ihnen ein unvergessliches Erlebnis zu bieten, das apulische Tradition mit modernem Komfort verbindet",
     serviceCategories: "Servicekategorien",
@@ -2901,7 +2901,7 @@ bookingErrorOkButton: "Ok",
     
   // Booking Page
   bookingPageTitle: "Buche deinen Aufenthalt",
-  bookingPageSubtitle: "Erlebe einen unvergesslichen Aufenthalt im Herzen von Polignano a Mare",
+  bookingPageSubtitle: "Erlebe einen unvergesslichen Aufenthalt im Herzen von viterbo",
 
   bookingCheckInOutTitle: "Check-in / Check-out",
   bookingCheckIn: "Check-in: 15:00 – 20:00",
@@ -2909,7 +2909,7 @@ bookingErrorOkButton: "Ok",
   bookingMaxGuests: "Maximal 4 Gäste pro Zimmer",
 
   bookingHowToReachTitle: "Anreise",
-  bookingLocation: "Altstadt, Polignano a Mare (BA)",
+  bookingLocation: "Altstadt, viterbo ",
   bookingAirport: "Flughafen Bari: ~45 Min",
   bookingStation: "Bahnhof: ~10 Min zu Fuß",
   bookingBeach: "Lama Monachile: ~5 Min zu Fuß",
