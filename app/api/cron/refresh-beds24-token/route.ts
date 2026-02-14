@@ -1,4 +1,4 @@
-import { NextResponse } from 'next/server'
+/*import { NextResponse } from 'next/server'
 import { Resend } from 'resend'
 import { beds24Client } from '@/lib/beds24-client'
 
@@ -64,7 +64,7 @@ export async function GET(request: Request) {
     }, { status: 500 })
   }
 }
-
+*/
 
 
 

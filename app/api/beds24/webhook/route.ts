@@ -1,12 +1,21 @@
-import { NextResponse } from "next/server"
+/*import { NextResponse } from "next/server"
 import { db } from "@/lib/firebase"
 import { collection, doc, setDoc, query, where, getDocs } from "firebase/firestore"
 
+
+export const dynamic = "force-dynamic"
+
+export async function GET() {
+  return Response.json(
+    { disabled: true, provider: "beds24", message: "Beds24 disabled (using Smoobu)" },
+    { status: 503 }
+  )
+}
 /**
  * Webhook endpoint for Beds24 to push real-time booking updates
  * This allows instant sync when bookings are made on Airbnb or Booking.com
  */
-export async function POST(request: Request) {
+/*export async function POST(request: Request) {
   try {
     const data = await request.json()
 
@@ -119,3 +128,4 @@ function getRoomName(roomId: string): string {
   }
   return roomMap[roomId] || "Camera Sconosciuta"
 }
+*/

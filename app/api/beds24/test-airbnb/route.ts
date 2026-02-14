@@ -1,5 +1,9 @@
 import { NextResponse } from "next/server"
 
+export const dynamic = "force-dynamic"
+
+
+
 export async function GET() {
   try {
     const apiUrl = process.env.BEDS24_API_URL || "https://beds24.com/api/v2"

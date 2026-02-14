@@ -1,4 +1,4 @@
-import { NextResponse } from 'next/server'
+/*import { NextResponse } from 'next/server'
 import { db } from '@/lib/firebase'
 import { doc, getDoc, setDoc } from 'firebase/firestore'
 import { Resend } from 'resend'
@@ -131,7 +131,7 @@ export async function GET(request: Request) {
   }
 }
 
-
+*/
 
 
 

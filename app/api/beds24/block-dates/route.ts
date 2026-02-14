@@ -1,16 +1,23 @@
-import { NextResponse } from "next/server"
+/*import { NextResponse } from "next/server"
 import { beds24Client } from "@/lib/beds24-client"
 import { db } from "@/lib/firebase"
 import { collection, addDoc, serverTimestamp } from "firebase/firestore"
 
 export const dynamic = 'force-dynamic'
+export async function GET() {
+  return Response.json(
+    { disabled: true, provider: "beds24", message: "Beds24 disabled (using Smoobu)" },
+    { status: 503 }
+  )
+}
+
 
 /**
  * Block dates on Beds24 (syncs to Airbnb and Booking.com)
  * Used for maintenance or manual blocking
  * Falls back to Firestore-only storage if Beds24 API fails
  */
-export async function POST(request: Request) {
+/*export async function POST(request: Request) {
   try {
     const { roomId, from, to, reason } = await request.json()
 
@@ -64,5 +71,5 @@ export async function POST(request: Request) {
     )
   }
 }
-
+*/
 

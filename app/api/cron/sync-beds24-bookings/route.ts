@@ -1,4 +1,4 @@
-import { NextResponse } from "next/server"
+/*import { NextResponse } from "next/server"
 import { beds24Client } from "@/lib/beds24-client"
 import { getAdminDb } from "@/lib/firebase-admin"
 import { Resend } from "resend"
@@ -16,7 +16,7 @@ const resend = new Resend(process.env.RESEND_API_KEY)
  * URL: https://al22suite.com/api/cron/sync-beds24-bookings
  * Frequenza: Ogni 2 ore
  */
-export async function GET(request: Request) {
+/*export async function GET(request: Request) {
   try {
     const authHeader = request.headers.get("authorization")
     const token = authHeader?.split(" ")[1]
@@ -323,4 +323,4 @@ function getRoomName(roomId: string): string {
     "3": "Camera Suite",
   }
   return roomMap[roomId] || `Camera ${roomId}`
-}
+}*/

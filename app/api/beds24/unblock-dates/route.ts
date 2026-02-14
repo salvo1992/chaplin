@@ -1,14 +1,21 @@
-import { NextResponse } from "next/server"
+/*import { NextResponse } from "next/server"
 import { beds24Client } from "@/lib/beds24-client"
 import { db } from "@/lib/firebase"
 import { doc, deleteDoc, getDoc } from "firebase/firestore"
 
-export const dynamic = 'force-dynamic'
+export const dynamic = "force-dynamic"
+
+export async function GET() {
+  return Response.json(
+    { disabled: true, provider: "beds24", message: "Beds24 disabled (using Smoobu)" },
+    { status: 503 }
+  )
+}
 
 /**
  * Unblock dates on Beds24 and remove from Firestore
  */
-export async function POST(request: Request) {
+/*export async function POST(request: Request) {
   try {
     const { blockId } = await request.json()
 
@@ -67,3 +74,4 @@ export async function POST(request: Request) {
     )
   }
 }
+*/

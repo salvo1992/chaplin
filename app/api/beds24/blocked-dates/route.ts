@@ -1,13 +1,15 @@
-import { NextResponse } from "next/server"
+/*import { NextResponse } from "next/server"
 import { db } from "@/lib/firebase"
 import { collection, query, where, getDocs } from "firebase/firestore"
 
-export const dynamic = 'force-dynamic'
+export const dynamic = "force-dynamic"
+
+
 
 /**
  * Get all blocked dates from Firestore
  */
-export async function GET(request: Request) {
+/*export async function GET(request: Request) {
   try {
     console.log("[v0] Fetching blocked dates from Firestore...")
     
@@ -38,5 +40,5 @@ export async function GET(request: Request) {
       { status: 500 }
     )
   }
-}
+}*/
 

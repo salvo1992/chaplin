@@ -1,11 +1,19 @@
-import { NextResponse } from "next/server"
+/*import { NextResponse } from "next/server"
 import { beds24Client } from "@/lib/beds24-client"
 
+export const dynamic = "force-dynamic"
+
+export async function GET() {
+  return Response.json(
+    { disabled: true, provider: "beds24", message: "Beds24 disabled (using Smoobu)" },
+    { status: 503 }
+  )
+}
 /**
  * Manual token refresh endpoint
  * Useful for testing or forcing a write token refresh
  */
-export async function POST() {
+/*export async function POST() {
   try {
     await beds24Client.forceRefreshWriteToken()
 
@@ -25,3 +33,4 @@ export async function POST() {
     )
   }
 }
+*/

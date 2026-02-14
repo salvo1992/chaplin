@@ -1,12 +1,16 @@
-import { NextResponse } from "next/server"
+/*import { NextResponse } from "next/server"
 import { beds24Client } from "@/lib/beds24-client"
 import { getFirestore } from "@/lib/firebase-admin"
+
+
+export const dynamic = "force-dynamic"
+
 
 /**
  * Sync reviews from Beds24 (Booking.com and Airbnb) to Firebase
  * Requires BEDS24_PROPERTY_ID environment variable
  */
-export async function POST() {
+/*export async function POST() {
   try {
     const reviews = await beds24Client.getReviews()
 
@@ -107,7 +111,7 @@ export async function POST() {
 /**
  * Get reviews from Beds24 (without syncing)
  */
-export async function GET() {
+/*export async function GET() {
   try {
     const reviews = await beds24Client.getReviews()
 
@@ -123,5 +127,5 @@ export async function GET() {
       { status: 500 },
     )
   }
-}
+}*/
 

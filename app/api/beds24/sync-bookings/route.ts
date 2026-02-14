@@ -1,7 +1,11 @@
-import { NextResponse } from "next/server"
+/*import { NextResponse } from "next/server"
 import { beds24Client } from "@/lib/beds24-client"
 import { db } from "@/lib/firebase"
 import { collection, doc, setDoc, getDocs, query, where } from "firebase/firestore"
+
+
+export const dynamic = "force-dynamic"
+
 
 /**
  * Sync bookings from Beds24 to Firebase
@@ -9,7 +13,7 @@ import { collection, doc, setDoc, getDocs, query, where } from "firebase/firesto
  * Prevents double bookings by checking existing bookings
  * Supports filtering by source: booking (apiSourceId=19) or airbnb (apiSourceId=10 and 46)
  */
-export async function POST(request: Request) {
+/*export async function POST(request: Request) {
   try {
     const body = await request.json()
     const { from, to, source } = body
@@ -195,7 +199,7 @@ export async function POST(request: Request) {
  * - to: End date (YYYY-MM-DD)
  * - source: Filter by source ('booking' or 'airbnb')
  */
-export async function GET(request: Request) {
+/*export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url)
     const from = searchParams.get("from") || undefined
@@ -264,4 +268,4 @@ function convertBeds24RoomIdToLocal(beds24RoomId: string): string {
     "621531": "3", // Camera Matrimoniale con Vasca Idromassaggio (Suite)
   }
   return roomIdMap[beds24RoomId] || beds24RoomId
-}
+}*/
