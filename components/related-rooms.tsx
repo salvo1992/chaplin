@@ -9,25 +9,12 @@ import { useLanguage } from "@/components/language-provider"
 import { useRoomPrices } from "@/hooks/use-room-prices"
 
 const relatedRooms = [
-  {
-    id: 2,
-    roomId: "1",
-    name: "Camera Familiare con Balcone",
-    description: "Elegante camera con arredi tradizionali Pugliesi e comfort moderni",
-    image: "/images/room-2.jpg",
-    guests: 4,
-    beds: 2,
-    bathrooms: 2,
-    size: 35,
-    rating: 4.8,
-    reviews: 32,
-    available: true,
-  },
+
   {
     id: 1,
-    roomId: "2",
-    name: "Camera Matrimoniale con Vasca Idromassaggio",
-    description: "Camera matrimoniale con Vasca Idromassaggio e sauna privata",
+    roomId: "1",
+    name: "Luxury Holiday House",
+    description: "Luxury Holiday House con piscina privata",
     image: "/images/room-1.jpg",
     guests: 2,
     beds: 1,

@@ -11,11 +11,11 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Mail, Phone, MapPin, Clock, Heart, Users, Award } from "lucide-react"
 
 const CONTACT_INFO = {
-  name: "AL 22 Suite & SPA LUXURY EXPERIENCE",
-  address: "Vico Gelso I n 22",
-  city: "70044 Polignano a Mare (BA), Italia",
-  phone: process.env.NEXT_PUBLIC_PRIVACY_PHONE || "+39 375 701 7689",
-  email: process.env.NEXT_PUBLIC_PRIVACY_EMAIL || "progettocale@gmail.com",
+  name: "CHAPLIN Luxury Holiday House",
+  address: "Via del mandorlo 8",
+  city: "05100 terni (tr),Viterbo, Italia",
+  phone: process.env.NEXT_PUBLIC_PRIVACY_PHONE || "+39 351 719 6320",
+  email: process.env.NEXT_PUBLIC_PRIVACY_EMAIL || "Chaplinviterbo@gmail.com",
 }
 
 export default function ContactsPage() {
@@ -55,9 +55,11 @@ export default function ContactsPage() {
           <div className="grid lg:grid-cols-3 gap-6 mb-12 animate-slide-in-right">
             <div className="card-invisible p-5">
               <div className="flex items-start gap-3">
-                <MapPin className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
+                <MapPin className="h-5 w-5 text-emerald-600 mt-1 flex-shrink-0" />
                 <div>
-                  <h3 className="font-cinzel font-semibold text-primary mb-2 text-base">Dove Siamo</h3>
+                  <h3 className="font-cinzel font-semibold text-emerald-700 dark:text-emerald-400 mb-2 text-base">
+                    Dove Siamo
+                  </h3>
                   <p className="text-sm font-medium">{CONTACT_INFO.name}</p>
                   <p className="text-sm text-muted-foreground">{CONTACT_INFO.address}</p>
                   <p className="text-sm text-muted-foreground">{CONTACT_INFO.city}</p>
@@ -67,9 +69,11 @@ export default function ContactsPage() {
 
             <div className="card-invisible p-5">
               <div className="flex items-start gap-3">
-                <Phone className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
+                <Phone className="h-5 w-5 text-emerald-600 mt-1 flex-shrink-0" />
                 <div>
-                  <h3 className="font-cinzel font-semibold text-primary mb-2 text-base">Contatti Diretti</h3>
+                  <h3 className="font-cinzel font-semibold text-emerald-700 dark:text-emerald-400 mb-2 text-base">
+                    Contatti Diretti
+                  </h3>
                   <div className="space-y-2">
                     <div>
                       <p className="text-sm font-medium">{CONTACT_INFO.phone}</p>
@@ -86,9 +90,11 @@ export default function ContactsPage() {
 
             <div className="card-invisible p-5">
               <div className="flex items-start gap-3">
-                <Clock className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
+                <Clock className="h-5 w-5 text-emerald-600 mt-1 flex-shrink-0" />
                 <div className="flex-1">
-                  <h3 className="font-cinzel font-semibold text-primary mb-2 text-base">Orari</h3>
+                  <h3 className="font-cinzel font-semibold text-emerald-700 dark:text-emerald-400 mb-2 text-base">
+                    Orari
+                  </h3>
                   <div className="space-y-1 text-sm">
                     <div className="flex justify-between gap-2">
                       <span className="font-medium">Lun-Ven</span>
@@ -108,23 +114,34 @@ export default function ContactsPage() {
             </div>
 
             <div className="lg:col-span-3 card-invisible p-5">
-              <h3 className="font-cinzel text-base font-semibold text-primary mb-2">Servizio Concierge</h3>
+              <h3 className="font-cinzel text-base font-semibold text-emerald-700 dark:text-emerald-400 mb-2">
+                Servizio Concierge
+              </h3>
               <p className="text-sm text-muted-foreground mb-3">
                 Il nostro team è a disposizione per organizzare esperienze uniche e personalizzate
               </p>
-              <Button variant="outline" size="sm" className="bg-transparent text-sm">
+
+              <Button
+                variant="outline"
+                size="sm"
+                className="bg-transparent text-sm border-emerald-300/70 hover:bg-emerald-500/10 hover:border-emerald-400"
+              >
                 Scopri i Servizi
               </Button>
             </div>
           </div>
+
           <div className="grid lg:grid-cols-3 gap-6">
             <div className="lg:col-span-3">
               <div className="mx-auto w-full max-w-3xl">
                 <Card className="card-semi-transparent animate-slide-in-left">
                   <CardHeader className="pb-4">
-                    <CardTitle className="text-xl font-cinzel text-primary">Invia un Messaggio</CardTitle>
+                    <CardTitle className="text-xl font-cinzel text-emerald-700 dark:text-emerald-400">
+                      Invia un Messaggio
+                    </CardTitle>
                     <CardDescription className="text-sm">Ti risponderemo entro 24 ore</CardDescription>
                   </CardHeader>
+
                   <CardContent>
                     <form onSubmit={handleSubmit} className="grid md:grid-cols-2 gap-4">
                       <div className="md:col-span-1">
@@ -137,7 +154,7 @@ export default function ContactsPage() {
                           value={formData.name}
                           onChange={handleInputChange}
                           required
-                          className="mt-1"
+                          className="mt-1 focus-visible:ring-emerald-500"
                         />
                       </div>
 
@@ -152,7 +169,7 @@ export default function ContactsPage() {
                           value={formData.email}
                           onChange={handleInputChange}
                           required
-                          className="mt-1"
+                          className="mt-1 focus-visible:ring-emerald-500"
                         />
                       </div>
 
@@ -166,7 +183,7 @@ export default function ContactsPage() {
                           value={formData.subject}
                           onChange={handleInputChange}
                           required
-                          className="mt-1"
+                          className="mt-1 focus-visible:ring-emerald-500"
                         />
                       </div>
 
@@ -180,14 +197,14 @@ export default function ContactsPage() {
                           value={formData.message}
                           onChange={handleInputChange}
                           placeholder="Scrivi il tuo messaggio..."
-                          className="mt-1"
+                          className="mt-1 focus-visible:ring-emerald-500"
                           rows={4}
                           required
                         />
                       </div>
 
                       <div className="md:col-span-2">
-                        <Button type="submit" className="w-full py-5">
+                        <Button type="submit" className="w-full py-5 bg-emerald-500 hover:bg-emerald-600 text-white">
                           Invia
                         </Button>
                       </div>
@@ -199,13 +216,16 @@ export default function ContactsPage() {
           </div>
 
           <div className="mt-8 sm:mt-12 mb-12 max-w-3xl mx-auto animate-fade-in-up">
-            <Card className="card-semi-transparent border-primary/20">
+            <Card className="card-semi-transparent border-emerald-500/20">
               <CardContent className="p-5">
                 <div className="text-center">
                   <div className="flex items-center justify-center gap-2 mb-2">
-                    <Mail className="w-5 h-5 text-primary" />
-                    <h2 className="text-lg font-cinzel font-bold text-primary">Newsletter Esclusiva</h2>
+                    <Mail className="w-5 h-5 text-emerald-600" />
+                    <h2 className="text-lg font-cinzel font-bold text-emerald-700 dark:text-emerald-400">
+                      Newsletter Esclusiva
+                    </h2>
                   </div>
+
                   <p className="text-sm text-muted-foreground mb-4">
                     Ricevi offerte speciali e aggiornamenti direttamente nella tua casella di posta
                   </p>
@@ -221,9 +241,9 @@ export default function ContactsPage() {
                         value={newsletterEmail}
                         onChange={(e) => setNewsletterEmail(e.target.value)}
                         required
-                        className="flex-1 h-10"
+                        className="flex-1 h-10 focus-visible:ring-emerald-500"
                       />
-                      <Button type="submit" size="sm" className="h-10">
+                      <Button type="submit" size="sm" className="h-10 bg-emerald-500 hover:bg-emerald-600 text-white">
                         Iscriviti
                       </Button>
                     </form>

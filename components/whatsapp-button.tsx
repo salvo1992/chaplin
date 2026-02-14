@@ -8,8 +8,8 @@ export function WhatsAppButton() {
   const { t } = useLanguage()
   const [isHovered, setIsHovered] = useState(false)
 
-  const whatsappNumber = "393757017689"
-  const message = encodeURIComponent(t("whatsappMessage", "Ciao! Vorrei informazioni su AL 22 Suite & SPA"))
+  const whatsappNumber = "+39 351 719 6320"
+  const message = encodeURIComponent(t("whatsappMessage", "Ciao! Vorrei informazioni per CHAPLIN Luxury Holiday House"))
 
   const handleClick = () => {
     window.open(`https://wa.me/${whatsappNumber}?text=${message}`, "_blank")

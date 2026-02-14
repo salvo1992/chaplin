@@ -13,31 +13,18 @@ const rooms = [
   {
     id: 1,
     roomId: "2",
-    name: "Aquarum co jacuzzi Privata e sauna ",
+    name: "Appartamento con piscina e spa ",
     description: "Camera matrimoniale con Vasca Idromassaggio",
     image: "/images/room-1.jpg",
-    guests: 2,
+    guests: 4,
     beds: 1,
     bathrooms: 1,
-    amenities: ["Vista panoramica", "Balcone privato", "WiFi gratuito", "Minibar"],
+    amenities: ["Piscina privata a uso esclusivo", "Spa & centro benessere", "WiFi gratuito", "Minibar"],
     rating: 4.9,
     reviews: 45,
     featured: true,
   },
-  {
-    id: 2,
-    roomId: "1",
-    name: "Acies con 2 bagni e balconcino privato",
-    description: "Elegante camera con arredi tradizionali Pugliesi e comfort moderni",
-    image: "/images/room-2.jpg",
-    guests: 2,
-    beds: 1,
-    bathrooms: 1,
-    amenities: ["Aria condizionata", "TV satellitare", "Cassaforte", "Asciugacapelli"],
-    rating: 4.8,
-    reviews: 32,
-    featured: false,
-  },
+
 ]
 
 export function RoomsPreview() {
@@ -53,7 +40,7 @@ export function RoomsPreview() {
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto text-balance">{t("roomsDescription")}</p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+        <div className="grid grid-cols-1 lg:grid-cols-1 gap-8 mb-12">
           {rooms.map((room, index) => {
             const roomPrice = roomPrices[room.roomId] || 0
             const priceDisplay = loading ? "..." : `€${roomPrice}`

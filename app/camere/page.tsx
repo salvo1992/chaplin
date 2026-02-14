@@ -4,14 +4,13 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 import { useLanguage } from "@/components/language-provider"
-import { ROOMS } from "@/lib/rooms-data"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Dialog, DialogContent } from "@/components/ui/dialog"
 import { Badge } from "@/components/ui/badge"
 import Image from "next/image"
 import Link from "next/link"
-import { useState } from "react"
+import { useMemo, useState } from "react"
 import {
   Sparkles,
   MapPin,
@@ -27,7 +26,6 @@ import {
   Coffee,
   Waves,
   Eye,
-  Building2,
   Droplets,
   Sofa,
   Shirt,
@@ -41,127 +39,147 @@ import {
   ChevronLeft,
   ChevronRight,
   X,
+  DoorClosed,
+  ShieldCheck,
+  Languages,
+  CalendarClock,
+  CigaretteOff,
 } from "lucide-react"
-import { useRoomPrices } from "@/hooks/use-room-prices"
+
+type GalleryPhoto = { src: string; alt: string }
 
 export default function CamerePage() {
   const { ref: heroRef, isVisible: heroVisible } = useScrollAnimation()
   const { ref: descRef, isVisible: descVisible } = useScrollAnimation()
   const { t } = useLanguage()
 
-  const { prices: roomPrices, loading } = useRoomPrices()
+  const HOME = useMemo(
+    () => ({
+      name: "CHAPLIN Luxury Holiday House",
+      location: "Via della Pettinara, 48, 01100 Viterbo, Italia",
+      guests: 2,
+      beds: "1",
+      bathrooms: 1,
+      size: 57,
+      priceLabel: "Prezzo variabile (verifica disponibilità)",
+      description:
+        "Splendida casa vacanze nel centro di Viterbo, a pochi passi dal cuore storico. Alloggio con area benessere e piscina, WiFi gratuito e cucina completa. Ideale per coppie che cercano relax, privacy e una posizione comoda per visitare Viterbo e i dintorni.",
+      chips: [
+        "Intero alloggio tutto per te",
+        "57 m²",
+        "Cucina",
+        "Vista",
+        "Piscina",
+        "WiFi gratuito",
+        "Aria condizionata",
+        "Bagno privato",
+        "Servizio pulizie giornaliero",
+        "Riscaldamento",
+      ],
+      rules: {
+        checkIn: "Dalle 15:00 alle 23:00 (comunicare l’orario di arrivo in anticipo)",
+        checkOut: "Dalle 07:00 alle 11:00",
+        notes:
+          "Le condizioni di cancellazione/pagamento anticipato possono variare: verificare prima della prenotazione.",
+      },
+    }),
+    [],
+  )
+
+  // ✅ FOTO: SOLO ASSET DA /public/chaplin/...
+  // Se non trovi un file, mostro placeholder (così non “scompare” tutto).
+  const photos: GalleryPhoto[] = [
+    { src: "/images/pool.JPG", alt: "Copertina" },
+     { src: "/chaplin/0004.JPG", alt: "Copertina" },
+
+  { src: "/chaplin/0007.JPG", alt: "Area benessere" },
+  { src: "/chaplin/0012.JPG", alt: "Piscina" },
+  { src: "/chaplin/0013.JPG", alt: "Dettagli spa" },
+
+  { src: "/chaplin/0024.JPG", alt: "Zona relax" },
+  { src: "/chaplin/0026.JPG", alt: "Interni" },
+  { src: "/chaplin/0028.JPG", alt: "Camera" },
+
+  { src: "/chaplin/0031.JPG", alt: "Bagno" },
+  { src: "/chaplin/0032.JPG", alt: "Dettagli" },
+  { src: "/chaplin/0035.JPG", alt: "Cucina" },
+
+  { src: "/chaplin/0037.JPG", alt: "Soggiorno" },
+  { src: "/chaplin/0041.JPG", alt: "Vista" },
+  { src: "/chaplin/0045.JPG", alt: "Ambiente" },
+  { src: "/chaplin/0046.JPG", alt: "Relax" },
+  { src: "/chaplin/0047.JPG", alt: "Atmosfera" },
+  { src: "/chaplin/0049.JPG", alt: "Dettagli interni" },
+
+  { src: "/chaplin/0053.JPG", alt: "Area comune" },
+  { src: "/chaplin/0058.JPG", alt: "Spa privata" },
+  { src: "/chaplin/0059.JPG", alt: "Illuminazione" },
+  { src: "/chaplin/0064.JPG", alt: "Zona wellness" },
+  { src: "/chaplin/0068.JPG", alt: "Relax totale" },
+  { src: "/chaplin/0069.JPG", alt: "Dettagli architettonici" },
+
+  { src: "/chaplin/0071.JPG", alt: "Camera matrimoniale" },
+  { src: "/chaplin/0072.JPG", alt: "Bagno spa" },
+  { src: "/chaplin/0073.JPG", alt: "Zona notte" },
+  { src: "/chaplin/0074.JPG", alt: "Dettagli di stile" },
+
+  { src: "/chaplin/0081.JPG", alt: "Interni luxury" },
+  { src: "/chaplin/0083.JPG", alt: "Finale gallery" },
+  ]
 
   const [galleryOpen, setGalleryOpen] = useState(false)
-  const [currentRoomId, setCurrentRoomId] = useState<string | null>(null)
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
 
-  const roomDescriptions = {
-    "1": "Immergiti nel lusso della nostra Camera Familiare con Balcone, dove l'eleganza incontra il comfort. Perfetta per famiglie o gruppi, questa spaziosa suite di 35m² offre una vista mozzafiato sul mare e sui luoghi storici di Polignano. Rilassati sul tuo balcone privato mentre ammiri il tramonto sulla costa pugliese, o goditi un momento di relax nella piscina panoramica all'ultimo piano. Ogni dettaglio è stato curato per offrirti un'esperienza indimenticabile.",
-    "2": "Scopri il paradiso del relax nella nostra Camera Matrimoniale con Vasca Idromassaggio. Questa elegante suite di 33m² è un'oasi di tranquillità, dotata di una lussuosa vasca idromassaggio privata e sauna per momenti di puro benessere. La vista panoramica sul mare e sulla città vecchia ti lascerà senza fiato, mentre gli arredi raffinati e i servizi premium garantiscono un soggiorno da sogno. Perfetta per coppie in cerca di romanticismo e relax assoluto.",
-  }
-
-  const roomPhotoGalleries = {
-    "1": [
-      { src: "/images/room-1.jpg", alt: "Camera Familiare" },
-      { src: "/camera/camera4.jpg", alt: "Vista mare dal balcone" },
-      { src: "/polignano-old-town-view.jpg", alt: "Vista centro storico" },
-      { src: "/camera/camera1.jpg", alt: "Piscina panoramica" },
-      { src: "/polignano-sunset-terrace.jpg", alt: "Terrazza al tramonto" },
-      { src: "/polignano-beach-cliffs.jpg", alt: "Spiaggia e scogliere" },
-      { src: "/polignano-historic-center.jpg", alt: "Centro storico" },
-      { src: "/polignano-adriatic-coast.jpg", alt: "Costa adriatica" },
-      { src: "/camera/camera6.jpg", alt: "Camera spaziosa" },
-      { src: "/camera/camera8.jpg", alt: "Camera spaziosa" },
-      { src: "/camera/camera9.jpg", alt: "Camera spaziosa" },
-      { src: "/camera/camera11.jpg", alt: "Camera spaziosa" },
-      { src: "/camera/camera15.jpg", alt: "Camera con vista" },
-    ],
-    "2": [
-      { src: "/images/room-2.jpg", alt: "Camera con Jacuzzi" },
-      { src: "/images/spa.jpg", alt: "Vasca idromassaggio" },
-      { src: "/camera/camera18.jpg", alt: "Sauna privata" },
-      { src: "/camera/camera17.jpg", alt: "Camera romantica" },
-      { src: "/polignano-sea-panorama.jpg", alt: "Panorama sul mare" },
-      { src: "/polignano-cala-porto.jpg", alt: "Cala Porto" },
-      { src: "/polignano-lama-monachile.jpg", alt: "Lama Monachile" },
-      { src: "/camera/camera5.jpg", alt: "Polignano di notte" },
-      { src: "/camera/camera.jpg", alt: "Camera con vista" },
-      { src: "/camera/camera3.jpg", alt: "Camera con vista" },
-      { src: "/camera/camera6.jpg", alt: "Camera con vista" },
-      { src: "/camera/camera7.jpg", alt: "Camera con vista" },
-      { src: "/camera/camera16.jpg", alt: "Camera con vista" },
-    ],
-  }
-
-  const openGallery = (roomId: string, imageIndex: number) => {
-    setCurrentRoomId(roomId)
-    setCurrentImageIndex(imageIndex)
+  const openGallery = (index: number) => {
+    setCurrentImageIndex(index)
     setGalleryOpen(true)
   }
 
-  const nextImage = () => {
-    if (!currentRoomId) return
-    const gallery = roomPhotoGalleries[currentRoomId as keyof typeof roomPhotoGalleries]
-    setCurrentImageIndex((prev) => (prev + 1) % gallery.length)
-  }
+  const nextImage = () => setCurrentImageIndex((p) => (p + 1) % photos.length)
+  const prevImage = () => setCurrentImageIndex((p) => (p - 1 + photos.length) % photos.length)
 
-  const prevImage = () => {
-    if (!currentRoomId) return
-    const gallery = roomPhotoGalleries[currentRoomId as keyof typeof roomPhotoGalleries]
-    setCurrentImageIndex((prev) => (prev - 1 + gallery.length) % gallery.length)
-  }
-
-  const currentGallery = currentRoomId ? roomPhotoGalleries[currentRoomId as keyof typeof roomPhotoGalleries] : []
-
-  const sharedAmenities = [
-    { icon: Bed, label: "1 letto matrimoniale large + 1 divano letto" },
-    { icon: Eye, label: "Vista mare" },
-    { icon: Building2, label: "Vista luogo di interesse" },
-    { icon: MapPin, label: "Vista città" },
-    { icon: Waves, label: "Piscina con vista" },
-    { icon: Waves, label: "Piscina all'ultimo piano" },
+  // ✅ SERVIZI (come già ok)
+  const amenities = [
+    { icon: DoorClosed, label: "Intero alloggio (appartamento privato in edificio)" },
+    { icon: UtensilsCrossed, label: "Cucina completa" },
+    { icon: Waves, label: "Piscina coperta (Gratis) • riscaldata • solo adulti • tutto l’anno" },
+    { icon: Sparkles, label: "Spa e centro benessere • sala relax" },
+    { icon: Wifi, label: "WiFi gratuito" },
     { icon: Wind, label: "Aria condizionata" },
-    { icon: Bath, label: "Bagno privato" },
-    { icon: Tv, label: "TV a schermo piatto" },
-    { icon: MapPin, label: "Terrazza" },
-    { icon: Coffee, label: "Macchina da caffè" },
-    { icon: Wifi, label: "WiFi gratis" },
-    { icon: Bath, label: "Vasca o doccia" },
-    { icon: Check, label: "Bidet" },
-    { icon: Tv, label: "Servizio streaming (es. Netflix)" },
-    { icon: Sofa, label: "Divano" },
-    { icon: Shirt, label: "Asciugamani" },
-    { icon: Bed, label: "Biancheria da letto" },
-    { icon: Zap, label: "Presa elettrica vicino al letto" },
-    { icon: Armchair, label: "Scrivania" },
-    { icon: Sofa, label: "Zona soggiorno" },
-    { icon: ParkingCircle, label: "Parcheggio" },
-    { icon: Refrigerator, label: "Frigorifero" },
-    { icon: Coffee, label: "Bollitore tè/macchina caffè" },
     { icon: Snowflake, label: "Riscaldamento" },
-    { icon: WashingMachine, label: "Asciugacapelli" },
-    { icon: Armchair, label: "Armadio o guardaroba" },
-    { icon: UtensilsCrossed, label: "Tavolo da pranzo" },
-    { icon: Bed, label: "Divano letto" },
-    { icon: Droplets, label: "Vasca idromassaggio" },
-    { icon: Waves, label: "Sauna" },
-    { icon: Refrigerator, label: "Minibar" },
+    { icon: Bath, label: "Bagno privato" },
+    { icon: Check, label: "Servizio pulizie giornaliero" },
+    { icon: CigaretteOff, label: "Struttura interamente non fumatori" },
+    { icon: ParkingCircle, label: "Parcheggio pubblico in zona (potrebbe essere a pagamento)" },
+    { icon: Car, label: "Parcheggio in strada" },
+    { icon: Tv, label: "TV a schermo piatto" },
+    { icon: Coffee, label: "Macchina da caffè • bollitore" },
+    { icon: Refrigerator, label: "Frigorifero" },
+    { icon: Droplets, label: "Vasca idromassaggio (Jacuzzi)" },
+    { icon: ShieldCheck, label: "Sicurezza: estintori • rilevatore monossido" },
+    { icon: Languages, label: "Lingue: Italiano • Inglese" },
+    { icon: CalendarClock, label: "Arrivo 15:00–23:00 • Partenza 07:00–11:00" },
   ]
+
+  // ✅ Verde WhatsApp
+  const greenText = "text-emerald-600 dark:text-emerald-400"
+  const greenBorder = "border-emerald-200/70 dark:border-emerald-800/60"
+  const greenSoftBg = "bg-emerald-500/10"
 
   return (
     <main className="min-h-screen overflow-x-hidden">
       <Header />
 
-      {/* Hero Section */}
-      <section className="pt-20 pb-12 bg-gradient-to-b from-secondary/20 to-background relative overflow-hidden">
+      {/* ✅ HERO: COME PRIMA (stile “Booking”, senza le card aggiunte) */}
+      <section className="pt-20 pb-10 bg-gradient-to-b from-emerald-500/10 to-background relative overflow-hidden">
         <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-20 left-10 w-32 h-32 bg-primary/10 rounded-full animate-float" />
+          <div className="absolute top-20 left-10 w-32 h-32 bg-emerald-500/10 rounded-full animate-float" />
           <div
-            className="absolute bottom-10 right-20 w-24 h-24 bg-accent/15 rounded-full animate-float"
+            className="absolute bottom-10 right-20 w-24 h-24 bg-emerald-500/10 rounded-full animate-float"
             style={{ animationDelay: "1s" }}
           />
           <div
-            className="absolute top-1/2 right-1/4 w-16 h-16 bg-secondary/20 rounded-full animate-float"
+            className="absolute top-1/2 right-1/4 w-16 h-16 bg-emerald-500/10 rounded-full animate-float"
             style={{ animationDelay: "2s" }}
           />
         </div>
@@ -170,189 +188,207 @@ export default function CamerePage() {
           <div className="text-center max-w-4xl mx-auto">
             <div
               ref={heroRef}
-              className={`transition-all duration-1000 ${heroVisible ? "animate-slide-in-up opacity-100" : "opacity-0 translate-y-[50px]"}`}
+              className={`transition-all duration-1000 ${
+                heroVisible ? "animate-slide-in-up opacity-100" : "opacity-0 translate-y-[50px]"
+              }`}
             >
-              <div className="flex items-center justify-center gap-3 mb-4">
-                <Sparkles className="w-8 h-8 text-primary animate-pulse" />
-                <h1 className="font-cinzel text-4xl md:text-6xl font-bold text-roman-gradient animate-text-shimmer">
-                  {t("roomsPageTitle")}
-                </h1>
-                <Sparkles className="w-8 h-8 text-accent animate-pulse" style={{ animationDelay: "0.5s" }} />
-              </div>
+              <h1 className="font-cinzel text-4xl md:text-6xl font-bold text-roman-gradient animate-text-shimmer">
+                {HOME.name}
+              </h1>
+
+              <p className="mt-2 text-sm md:text-base text-muted-foreground flex items-center justify-center gap-2">
+                <MapPin className={`w-4 h-4 ${greenText}`} />
+                {HOME.location}
+              </p>
             </div>
 
             <div
               ref={descRef}
-              className={`transition-all duration-1000 delay-300 ${descVisible ? "animate-fade-in-up opacity-100" : "opacity-0 translate-y-[30px]"}`}
+              className={`transition-all duration-1000 delay-200 ${
+                descVisible ? "animate-fade-in-up opacity-100" : "opacity-0 translate-y-[20px]"
+              }`}
             >
-              <p className="text-xl text-muted-foreground text-balance mb-8">{t("roomsPageSubtitle")}</p>
+              <p className="mt-6 text-lg md:text-xl text-muted-foreground leading-relaxed">
+                {HOME.description}
+              </p>
 
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-2xl mx-auto">
-                <div className="flex flex-col items-center gap-2 group hover:scale-110 transition-transform duration-300">
-                  <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-accent/20 rounded-full flex items-center justify-center group-hover:shadow-lg transition-shadow">
-                    <MapPin className="w-6 h-6 text-primary" />
+              {/* ✅ ICONCINE SOTTO (come nella tua foto “vecchia”) */}
+              <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto">
+                {[
+                  { icon: MapPin, label: "Centro Viterbo" },
+                  { icon: Wifi, label: "WiFi gratuito" },
+                  { icon: Waves, label: "Piscina & Benessere" },
+                  { icon: Sparkles, label: "Relax premium" },
+                ].map((f, i) => (
+                  <div key={i} className="flex flex-col items-center gap-2">
+                    <div className={`w-12 h-12 rounded-full ${greenSoftBg} flex items-center justify-center`}>
+                      <f.icon className={`w-6 h-6 ${greenText}`} />
+                    </div>
+                    <span className="text-sm font-medium">{f.label}</span>
                   </div>
-                  <span className="text-sm font-medium">{t("centerPolignano")}</span>
-                </div>
-                <div className="flex flex-col items-center gap-2 group hover:scale-110 transition-transform duration-300">
-                  <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-accent/20 rounded-full flex items-center justify-center group-hover:shadow-lg transition-shadow">
-                    <Wifi className="w-6 h-6 text-primary" />
-                  </div>
-                  <span className="text-sm font-medium">{t("freeWifiShort")}</span>
-                </div>
-                <div className="flex flex-col items-center gap-2 group hover:scale-110 transition-transform duration-300">
-                  <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-accent/20 rounded-full flex items-center justify-center group-hover:shadow-lg transition-shadow">
-                    <Car className="w-6 h-6 text-primary" />
-                  </div>
-                  <span className="text-sm font-medium">{t("parking")}</span>
-                </div>
-                <div className="flex flex-col items-center gap-2 group hover:scale-110 transition-transform duration-300">
-                  <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-accent/20 rounded-full flex items-center justify-center group-hover:shadow-lg transition-shadow">
-                    <Sparkles className="w-6 h-6 text-primary" />
-                  </div>
-                  <span className="text-sm font-medium">{t("service5Star")}</span>
-                </div>
+                ))}
+              </div>
+
+              {/* ✅ CHIP: come nella tua foto (quelli che non ti piacevano nella versione nuova li ho rimessi semplici) */}
+              <div className="mt-6 flex flex-wrap items-center justify-center gap-2">
+                {HOME.chips.map((c) => (
+                  <span
+                    key={c}
+                    className={`px-3 py-1 rounded-full text-xs sm:text-sm border ${greenBorder} bg-white/60 dark:bg-black/20`}
+                  >
+                    {c}
+                  </span>
+                ))}
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="py-12 bg-gradient-to-b from-background to-secondary/10 overflow-hidden">
+      {/* CONTENUTO */}
+      <section className="py-10 bg-gradient-to-b from-background to-emerald-500/5 overflow-hidden">
         <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-6 lg:gap-8 mb-16">
-            {ROOMS.map((room) => {
-              const currentPrice = roomPrices[room.id] || 0
-              const currentOriginalPrice = room.originalPrice
-              const gallery = roomPhotoGalleries[room.id as keyof typeof roomPhotoGalleries]
-              const totalPhotos = gallery.length
-              const visiblePhotos = 5
-              const remainingPhotos = totalPhotos - visiblePhotos
+          <Card className={`p-6 shadow-xl border-2 ${greenBorder} bg-white/60 dark:bg-black/20 max-w-6xl mx-auto`}>
+            <div className="text-center mb-6">
+              <h2 className={`font-cinzel text-2xl sm:text-3xl font-bold ${greenText}`}>
+                Casa vacanze — Intero alloggio
+              </h2>
+              <p className="mt-2 text-sm sm:text-base text-muted-foreground max-w-3xl mx-auto">
+                {HOME.description}
+              </p>
+            </div>
 
-              return (
-                <Card
-                  key={room.id}
-                  className="p-4 sm:p-6 shadow-xl hover:shadow-2xl transition-all duration-300 border-2 border-cyan-200/60 dark:border-cyan-800/60 bg-gradient-to-br from-cyan-50/40 via-blue-50/30 to-cyan-50/40 dark:from-cyan-950/20 dark:via-blue-950/15 dark:to-cyan-950/20 hover:border-cyan-300/80 dark:hover:border-cyan-700/80"
-                >
-                  {/* Room Header */}
-                  <div className="text-center mb-4">
-                    <h2 className="font-cinzel text-xl sm:text-2xl font-bold text-roman-gradient mb-3">{room.name}</h2>
-                    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed text-balance px-2">
-                      {roomDescriptions[room.id as keyof typeof roomDescriptions]}
-                    </p>
-                  </div>
-
-                  {/* Price Section */}
-                  <div className="mb-4 flex items-center justify-between p-3 sm:p-4 bg-gradient-to-r from-primary/5 via-accent/5 to-primary/5 rounded-lg border border-cyan-200/40 dark:border-cyan-800/40">
-                    <div>
-                      <p className="text-xs text-muted-foreground mb-1">A partire da</p>
-                      <div className="flex items-baseline gap-2 flex-wrap">
-                        <span className="text-2xl sm:text-3xl font-bold text-primary">
-                          €{loading ? "..." : currentPrice}
-                        </span>
-                        <span className="text-base sm:text-lg text-muted-foreground line-through">
-                          €{currentOriginalPrice}
-                        </span>
-                        <span className="text-xs sm:text-sm text-muted-foreground">/ notte</span>
-                      </div>
-                    </div>
-                    <div className="flex gap-2 shrink-0">
-                      <Button asChild size="sm" variant="outline" className="shadow-md bg-transparent">
-                        <Link href={`/camere/${room.id}`}>Dettagli</Link>
-                      </Button>
-                      <Button asChild size="sm" className="shadow-lg">
-                        <Link href={`/prenota?room=${room.id}`}>
-                          Prenota
-                          <Sparkles className="w-4 h-4 ml-1" />
-                        </Link>
-                      </Button>
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-3 gap-1.5 sm:gap-2 mb-4">
-                    {/* Large main image - takes 2 columns and 2 rows */}
-                    <button
-                      onClick={() => openGallery(room.id, 0)}
-                      className="col-span-2 row-span-2 relative aspect-square overflow-hidden rounded-lg shadow-md group cursor-pointer"
-                    >
-                      <Image
-                        src={gallery[0].src || "/placeholder.svg"}
-                        alt={gallery[0].alt}
-                        fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
-                    </button>
-
-                    {/* 4 smaller images with "+X foto" overlay on the last one */}
-                    {gallery.slice(1, 5).map((photo, i) => (
-                      <button
-                        key={i}
-                        onClick={() => openGallery(room.id, i + 1)}
-                        className="relative aspect-square overflow-hidden rounded-lg shadow-sm group cursor-pointer"
-                      >
-                        <Image
-                          src={photo.src || "/placeholder.svg"}
-                          alt={photo.alt}
-                          fill
-                          className="object-cover group-hover:scale-110 transition-transform duration-500"
-                        />
-                        {i === 3 && remainingPhotos > 0 && (
-                          <div className="absolute inset-0 bg-black/60 flex items-center justify-center backdrop-blur-[2px] pointer-events-none">
-                            <span className="text-white font-semibold text-sm sm:text-base">
-                              +{remainingPhotos} foto
-                            </span>
-                          </div>
-                        )}
-                      </button>
-                    ))}
-                  </div>
-
-                  {/* Room Details Cards */}
-                  <div className="grid grid-cols-4 gap-1.5 sm:gap-2">
-                    <div className="p-2 sm:p-3 text-center bg-secondary/20 rounded-lg hover:bg-secondary/30 transition-colors border border-cyan-200/30 dark:border-cyan-800/30">
-                      <Users className="w-4 sm:w-5 h-4 sm:h-5 text-primary mx-auto mb-1" />
-                      <p className="text-[10px] sm:text-xs text-muted-foreground mb-0.5">Ospiti</p>
-                      <p className="text-base sm:text-lg font-bold text-primary">{room.guests}</p>
-                    </div>
-                    <div className="p-2 sm:p-3 text-center bg-secondary/20 rounded-lg hover:bg-secondary/30 transition-colors border border-cyan-200/30 dark:border-cyan-800/30">
-                      <Bed className="w-4 sm:w-5 h-4 sm:h-5 text-primary mx-auto mb-1" />
-                      <p className="text-[10px] sm:text-xs text-muted-foreground mb-0.5">Letti</p>
-                      <p className="text-base sm:text-lg font-bold text-primary">{room.beds}</p>
-                    </div>
-                    <div className="p-2 sm:p-3 text-center bg-secondary/20 rounded-lg hover:bg-secondary/30 transition-colors border border-cyan-200/30 dark:border-cyan-800/30">
-                      <Bath className="w-4 sm:w-5 h-4 sm:h-5 text-primary mx-auto mb-1" />
-                      <p className="text-[10px] sm:text-xs text-muted-foreground mb-0.5">Bagni</p>
-                      <p className="text-base sm:text-lg font-bold text-primary">{room.bathrooms}</p>
-                    </div>
-                    <div className="p-2 sm:p-3 text-center bg-secondary/20 rounded-lg hover:bg-secondary/30 transition-colors border border-cyan-200/30 dark:border-cyan-800/30">
-                      <Maximize className="w-4 sm:w-5 h-4 sm:h-5 text-primary mx-auto mb-1" />
-                      <p className="text-[10px] sm:text-xs text-muted-foreground mb-0.5">m²</p>
-                      <p className="text-base sm:text-lg font-bold text-primary">{room.size}</p>
-                    </div>
-                  </div>
-                </Card>
-              )
-            })}
-          </div>
-
-          {/* Shared Amenities Section */}
-          <Card className="p-8 shadow-2xl bg-gradient-to-br from-cyan-50/50 to-blue-50/50 dark:from-cyan-950/20 dark:to-blue-950/20 max-w-6xl mx-auto border-2 border-cyan-200/50 dark:border-cyan-800/50">
-            <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
-              <div className="w-10 h-10 bg-cyan-500/10 rounded-full flex items-center justify-center">
-                <Sparkles className="w-6 h-6 text-cyan-600 dark:text-cyan-400" />
+            {/* disponibilità */}
+            <div className={`mb-6 p-4 rounded-2xl border ${greenBorder} bg-emerald-500/5 flex flex-col md:flex-row md:items-center md:justify-between gap-4`}>
+              <div>
+                <p className="text-xs text-muted-foreground mb-1">Disponibilità</p>
+                <p className={`text-lg sm:text-xl font-semibold ${greenText}`}>{HOME.priceLabel}</p>
+                <p className="text-xs text-muted-foreground mt-1">{HOME.rules.notes}</p>
               </div>
-              Servizi della Camera
+
+              <div className="flex gap-2 justify-end">
+                <Button
+                  asChild
+                  variant="outline"
+                  className="border-emerald-300/70 hover:border-emerald-400 hover:bg-emerald-500/10"
+                >
+                  <Link href="/contatti">Contatta</Link>
+                </Button>
+
+                <Button asChild className="bg-emerald-500 hover:bg-emerald-600 text-white shadow-lg">
+                  <Link href="/prenota">
+                    Controlla date <Sparkles className="w-4 h-4 ml-1" />
+                  </Link>
+                </Button>
+              </div>
+            </div>
+
+            {/* ✅ FOTO: FIX TOTALE (se non le trova, almeno non si rompe il layout) */}
+            <div className="grid grid-cols-12 gap-3">
+              {/* grande */}
+              <button
+                onClick={() => openGallery(0)}
+                className={`relative col-span-12 md:col-span-7 aspect-[16/11] overflow-hidden rounded-2xl border ${greenBorder} shadow-sm`}
+              >
+                <Image
+                  src={photos[0]?.src || "/placeholder.svg"}
+                  alt={photos[0]?.alt || "Copertina"}
+                  fill
+                  className="object-cover"
+                  onError={(e) => {
+                    // @ts-expect-error next/image fallback
+                    e.currentTarget.src = "/placeholder.svg"
+                  }}
+                  priority
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent" />
+                <div className="absolute bottom-3 left-3 flex items-center gap-2">
+                  <Badge className="bg-black/60 text-white border-white/10">Copertina</Badge>
+                  <Badge className="bg-black/60 text-white border-white/10">+{Math.max(0, photos.length - 1)} foto</Badge>
+                </div>
+              </button>
+
+              {/* 4 piccole */}
+              <div className="col-span-12 md:col-span-5 grid grid-cols-2 gap-3">
+                {photos.slice(1, 5).map((p, idx) => (
+                  <button
+                    key={p.src}
+                    onClick={() => openGallery(idx + 1)}
+                    className={`relative aspect-[16/11] overflow-hidden rounded-2xl border ${greenBorder} shadow-sm`}
+                  >
+                    <Image
+                      src={p.src || "/placeholder.svg"}
+                      alt={p.alt}
+                      fill
+                      className="object-cover"
+                      onError={(e) => {
+                        // @ts-expect-error next/image fallback
+                        e.currentTarget.src = "/placeholder.svg"
+                      }}
+                    />
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* mini stats */}
+            <div className="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-3">
+              {[
+                { icon: Users, label: "Ospiti", value: HOME.guests },
+                { icon: Bed, label: "Letto", value: HOME.beds },
+                { icon: Bath, label: "Bagni", value: HOME.bathrooms },
+                { icon: Maximize, label: "m²", value: HOME.size },
+              ].map((s, i) => (
+                <div key={i} className={`p-4 rounded-2xl border ${greenBorder} bg-white/60 dark:bg-black/20`}>
+                  <div className="flex items-center gap-3">
+                    <div className={`w-10 h-10 rounded-full ${greenSoftBg} flex items-center justify-center`}>
+                      <s.icon className={`w-5 h-5 ${greenText}`} />
+                    </div>
+                    <div>
+                      <p className="text-xs text-muted-foreground">{s.label}</p>
+                      <p className={`text-xl font-bold ${greenText}`}>{s.value}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* regole */}
+            <div className={`mt-6 p-4 rounded-2xl border ${greenBorder} bg-emerald-500/5`}>
+              <h3 className="text-lg font-semibold flex items-center gap-2 mb-2">
+                <CalendarClock className={`w-5 h-5 ${greenText}`} />
+                Regole della struttura
+              </h3>
+              <ul className="text-sm text-muted-foreground space-y-1">
+                <li>
+                  <span className="font-medium text-foreground">Arrivo:</span> {HOME.rules.checkIn}
+                </li>
+                <li>
+                  <span className="font-medium text-foreground">Partenza:</span> {HOME.rules.checkOut}
+                </li>
+              </ul>
+            </div>
+          </Card>
+
+          {/* Servizi */}
+          <Card className={`mt-10 p-8 shadow-2xl bg-white/60 dark:bg-black/20 max-w-6xl mx-auto border-2 ${greenBorder}`}>
+            <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
+              <div className={`w-11 h-11 ${greenSoftBg} rounded-full flex items-center justify-center`}>
+                <Sparkles className={`w-6 h-6 ${greenText}`} />
+              </div>
+              Servizi della casa
             </h3>
+
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
-              {sharedAmenities.map((amenity, i) => (
+              {amenities.map((a, i) => (
                 <div
                   key={i}
-                  className="flex items-center gap-3 p-3 rounded-lg hover:bg-cyan-100/50 dark:hover:bg-cyan-900/20 hover:shadow-md transition-all duration-300 border border-transparent hover:border-cyan-300/50 dark:hover:border-cyan-700/50"
+                  className={`flex items-center gap-3 p-3 rounded-2xl border ${greenBorder} bg-white/50 dark:bg-black/10`}
                 >
-                  <div className="w-8 h-8 bg-cyan-500/10 rounded-full flex items-center justify-center flex-shrink-0">
-                    <amenity.icon className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
+                  <div className={`w-9 h-9 rounded-full ${greenSoftBg} flex items-center justify-center flex-shrink-0`}>
+                    <a.icon className={`w-4 h-4 ${greenText}`} />
                   </div>
-                  <span className="text-sm font-medium">{amenity.label}</span>
+                  <span className="text-sm font-medium">{a.label}</span>
                 </div>
               ))}
             </div>
@@ -360,71 +396,62 @@ export default function CamerePage() {
         </div>
       </section>
 
-      {/* Photo Gallery Modal */}
+      {/* MODAL */}
       <Dialog open={galleryOpen} onOpenChange={setGalleryOpen}>
-        <DialogContent className="max-w-4xl max-h-[85vh] w-[95vw] md:w-full p-2 md:p-4 bg-black/95 border-none">
+        <DialogContent className="max-w-5xl max-h-[85vh] w-[95vw] md:w-full p-2 md:p-4 bg-black/95 border-none">
           <div className="relative w-full h-full flex items-center justify-center">
-            {/* Main Image */}
-            <div className="relative w-full h-[60vh] md:h-[70vh] flex items-center justify-center">
+            <div className="relative w-full h-[60vh] md:h-[72vh] flex items-center justify-center">
               <Image
-                src={currentGallery[currentImageIndex]?.src || "/placeholder.svg"}
-                alt={currentGallery[currentImageIndex]?.alt || ""}
+                src={photos[currentImageIndex]?.src || "/placeholder.svg"}
+                alt={photos[currentImageIndex]?.alt || ""}
                 fill
                 className="object-contain"
               />
             </div>
 
-            {/* Close Button */}
             <Button
               variant="secondary"
               size="icon"
-              className="absolute top-2 right-2 bg-black/50 hover:bg-black/70 text-white z-50 w-8 h-8 md:w-10 md:h-10"
+              className="absolute top-2 right-2 bg-black/50 hover:bg-black/70 text-white z-50 w-9 h-9"
               onClick={() => setGalleryOpen(false)}
             >
-              <X className="w-4 h-4 md:w-5 md:h-5" />
+              <X className="w-5 h-5" />
             </Button>
 
-            {/* Navigation Buttons */}
             <Button
               variant="secondary"
               size="icon"
-              className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white w-8 h-8 md:w-10 md:h-10"
+              className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white w-9 h-9"
               onClick={prevImage}
             >
-              <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" />
+              <ChevronLeft className="w-6 h-6" />
             </Button>
+
             <Button
               variant="secondary"
               size="icon"
-              className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white w-8 h-8 md:w-10 md:h-10"
+              className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white w-9 h-9"
               onClick={nextImage}
             >
-              <ChevronRight className="w-5 h-5 md:w-6 md:h-6" />
+              <ChevronRight className="w-6 h-6" />
             </Button>
 
-            {/* Image Counter */}
-            <Badge className="absolute top-2 left-2 bg-black/70 text-white text-xs md:text-sm px-2 md:px-3 py-1">
-              {currentImageIndex + 1} / {currentGallery.length}
+            <Badge className="absolute top-2 left-2 bg-black/70 text-white text-xs px-3 py-1 border-white/10">
+              {currentImageIndex + 1} / {photos.length}
             </Badge>
 
-            {/* Thumbnail Navigation */}
-            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1 md:gap-2 overflow-x-auto max-w-[90vw] pb-1 px-2">
-              {currentGallery.map((photo, index) => (
+            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-2 overflow-x-auto max-w-[92vw] pb-1 px-2">
+              {photos.map((p, index) => (
                 <button
-                  key={index}
+                  key={p.src}
                   onClick={() => setCurrentImageIndex(index)}
-                  className={`relative flex-shrink-0 w-12 h-9 md:w-16 md:h-12 rounded overflow-hidden border-2 transition-all ${
+                  className={`relative flex-shrink-0 w-16 h-12 rounded-lg overflow-hidden border-2 transition-all ${
                     index === currentImageIndex
-                      ? "border-primary shadow-lg scale-110"
+                      ? "border-emerald-400 shadow-lg scale-110"
                       : "border-white/30 hover:border-white/60"
                   }`}
                 >
-                  <Image
-                    src={photo.src || "/placeholder.svg"}
-                    alt={`Thumbnail ${index + 1}`}
-                    fill
-                    className="object-cover"
-                  />
+                  <Image src={p.src} alt={`Thumbnail ${index + 1}`} fill className="object-cover" />
                 </button>
               ))}
             </div>

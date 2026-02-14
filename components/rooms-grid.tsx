@@ -12,33 +12,10 @@ import { useDynamicPrice } from "@/hooks/use-dynamic-price"
 const SITE_URL = "https://22suite.ekobit.it" as const
 
 const rooms = [
+
   {
     id: 1,
-    name: "Camera Familiare con Balcone",
-    description: "Camera matrimoniale e balcone privato",
-    images: ["/images/room-2.jpg", "/images/room-1.jpg"],
-    originalPrice: 220,
-    guests: 4,
-    beds: 2,
-    bathrooms: 2,
-    size: 35,
-    amenities: [
-      "Vista luogo di interesse",
-      "vista mare",
-      "Balcone privato",
-      "WiFi gratuito",
-      "Minibar",
-      "Aria condizionata",
-      "TV satellitare",
-    ],
-    rating: 4.9,
-    reviews: 56,
-    featured: true,
-    available: true,
-  },
-  {
-    id: 2,
-    name: "Camera Matrimoniale con Vasca Idromassaggio",
+    name: "intero appartamento  con Vasca Idromassaggio",
     description: "Elegante camera con vasca idromassaggio e arredi di lusso",
     images: ["/images/room-1.jpg", "/images/room-2.jpg"],
     originalPrice: 180,

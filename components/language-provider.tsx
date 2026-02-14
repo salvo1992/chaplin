@@ -73,7 +73,7 @@ const translations = {
     receptionDesc: "Disponibilità 24/24",
     localCuisine: "Cucina Tipica",
     localCuisineDesc:
-      "Ti consiglieremo posti unici per Cene con piatti tradizionali Pugliesi preparati con ingredienti locali",
+      "Ti consiglieremo posti unici per Cene con piatti tradizionali di Viterbo preparati con ingredienti locali",
     conciergeService: "Concierge Service",
     conciergeServiceDesc: "Assistenza personalizzata per prenotazioni e consigli turistici",
 
@@ -511,7 +511,7 @@ bookingErrorOkButton: "Ok",
   termsSubtitle: "Condizioni di utilizzo dei nostri servizi di ospitalità.",
   generalInfo: "Informazioni generali",
   generalInfoDesc:
-    "La struttura è gestita da ALL22SUITE & SPA. Tutti i servizi sono forniti in conformità alla normativa italiana vigente.",
+    "La struttura è gestita da CHAPLIN Luxury Holiday House. Tutti i servizi sono forniti in conformità alla normativa italiana vigente.",
   termsAcceptance:
     "Usando il sito e i servizi accetti integralmente i presenti termini. Leggi con attenzione prima di prenotare.",
   bookingsAndCancellations: "Prenotazioni e cancellazioni",
@@ -777,7 +777,7 @@ bookingErrorOkButton: "Ok",
     receptionDesc: "24/7 availability",
     localCuisine: "Local Cuisine",
     localCuisineDesc:
-      "We will recommend unique places for dinners with traditional Apulian dishes prepared with local ingredients",
+      "We will recommend unique places for dinners with traditional Viterbo dishes prepared with local ingredients",
     conciergeService: "Concierge Service",
     conciergeServiceDesc: "Personalized assistance for reservations and tourist advice",
 
@@ -1059,7 +1059,7 @@ bookingErrorOkButton: "Ok",
     newBooking: "New booking",
 
    // ==== COMMON ====
-  companyName: "ALL22SUITE & SPA",
+  companyName: "CHAPLIN Luxury Holiday House",
   lastUpdated: "Last updated: 28 October 2025",
   contactUs: "Contact us",
 
@@ -1150,7 +1150,7 @@ bookingErrorOkButton: "Ok",
   termsSubtitle: "Conditions for using our hospitality services.",
   generalInfo: "General information",
   generalInfoDesc:
-    "The property is managed by ALL22SUITE & SPA. All services are provided in compliance with applicable Italian law.",
+    "The property is managed by CHAPLIN Luxury Holiday House. All services are provided in compliance with applicable Italian law.",
   termsAcceptance:
     "By using the site and our services, you fully accept these terms. Please read them carefully before booking.",
   bookingsAndCancellations: "Bookings and cancellations",
@@ -1431,7 +1431,7 @@ bookingErrorOkButton: "Ok",
     receptionDesc: "Disponibilité 24h/24",
     localCuisine: "Cuisine Locale",
     localCuisineDesc:
-      "Nous vous recommanderons des endroits uniques pour des dîners avec des plats traditionnels des Pouilles préparés avec des ingrédients locaux",
+      "Nous vous recommanderons des endroits uniques pour des dîners avec des plats traditionnels des Viterbo préparés avec des ingrédients locaux",
     conciergeService: "Service de Conciergerie",
     conciergeServiceDesc: "Assistance personnalisée pour les réservations et les conseils touristiques",
 
@@ -1727,7 +1727,7 @@ bookingErrorOkButton: "Ok",
     backToUserLogin: "Retour à la connexion utilisateur",
 
    // ==== COMMON ====
-  companyName: "ALL22SUITE & SPA",
+  companyName: "CHAPLIN Luxury Holiday House",
   lastUpdated: "Dernière mise à jour : 28 octobre 2025",
   contactUs: "Nous contacter",
 
@@ -1818,7 +1818,7 @@ bookingErrorOkButton: "Ok",
   termsSubtitle: "Conditions d’utilisation de nos services d’hospitalité.",
   generalInfo: "Informations générales",
   generalInfoDesc:
-    "L’établissement est géré par ALL22SUITE & SPA. Tous les services sont fournis conformément au droit italien applicable.",
+    "L’établissement est géré par CHAPLIN Luxury Holiday House. Tous les services sont fournis conformément au droit italien applicable.",
   termsAcceptance:
     "En utilisant le site et nos services, vous acceptez pleinement ces conditions. Veuillez les lire attentivement avant toute réservation.",
   bookingsAndCancellations: "Réservations et annulations",
@@ -2086,7 +2086,7 @@ bookingErrorOkButton: "Ok",
     receptionDesc: "Disponibilidad 24/7",
     localCuisine: "Cocina Local",
     localCuisineDesc:
-      "Te recomendaremos lugares únicos para cenas con platos tradicionales de Apulia preparados con ingredientes locales",
+      "Te recomendaremos lugares únicos para cenas con platos tradicionales de viterbo preparados con ingredientes locales",
     conciergeService: "Servicio de Conserjería",
     conciergeServiceDesc: "Asistencia personalizada para reservas y consejos turísticos",
 
@@ -2380,7 +2380,7 @@ bookingErrorOkButton: "Ok",
     backToUserLogin: "Volver al login de usuarios",
 
     // ==== COMMON ====
-  companyName: "ALL22SUITE & SPA",
+  companyName: "CHAPLIN Luxury Holiday House",
   lastUpdated: "Última actualización: 28 de octubre de 2025",
   contactUs: "Contáctanos",
 
@@ -2471,7 +2471,7 @@ bookingErrorOkButton: "Ok",
   termsSubtitle: "Condiciones para el uso de nuestros servicios de hospitalidad.",
   generalInfo: "Información general",
   generalInfoDesc:
-    "El establecimiento es gestionado por ALL22SUITE & SPA. Todos los servicios se prestan conforme a la legislación italiana aplicable.",
+    "El establecimiento es gestionado por CHAPLIN Luxury Holiday House. Todos los servicios se prestan conforme a la legislación italiana aplicable.",
   termsAcceptance:
     "Al usar el sitio y nuestros servicios aceptas íntegramente estos términos. Léelos atentamente antes de reservar.",
   bookingsAndCancellations: "Reservas y cancelaciones",
@@ -2736,7 +2736,7 @@ bookingErrorOkButton: "Ok",
     receptionDesc: "24/7 Verfügbarkeit",
     localCuisine: "Lokale Küche",
     localCuisineDesc:
-      "Wir empfehlen Ihnen einzigartige Orte für Abendessen mit traditionellen apulischen Gerichten, die mit lokalen Zutaten zubereitet werden",
+      "Wir empfehlen Ihnen einzigartige Orte für Abendessen mit traditionellen Viterbo Gerichten, die mit lokalen Zutaten zubereitet werden",
     conciergeService: "Concierge-Service",
     conciergeServiceDesc: "Persönliche Unterstützung bei Reservierungen und touristischen Ratschlägen",
 
@@ -3037,7 +3037,7 @@ bookingErrorOkButton: "Ok",
     backToUserLogin: "Zurück zum Benutzer-Login",
 
     // ==== COMMON ====
-  companyName: "ALL22SUITE & SPA",
+  companyName: "CHAPLIN Luxury Holiday House",
   lastUpdated: "Letzte Aktualisierung: 28. Oktober 2025",
   contactUs: "Kontakt",
 
@@ -3128,7 +3128,7 @@ bookingErrorOkButton: "Ok",
   termsSubtitle: "Bedingungen für die Nutzung unserer Hoteldienstleistungen.",
   generalInfo: "Allgemeine Informationen",
   generalInfoDesc:
-    "Die Unterkunft wird von ALL22SUITE & SPA betrieben. Sämtliche Leistungen erfolgen gemäß dem geltenden italienischen Recht.",
+    "Die Unterkunft wird von CHAPLIN Luxury Holiday House betrieben. Sämtliche Leistungen erfolgen gemäß dem geltenden italienischen Recht.",
   termsAcceptance:
     "Durch die Nutzung der Website und unserer Leistungen akzeptieren Sie diese Bedingungen vollständig. Bitte lesen Sie sie vor einer Buchung sorgfältig.",
   bookingsAndCancellations: "Buchungen und Stornierungen",

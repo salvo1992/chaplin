@@ -111,7 +111,7 @@ export function Footer() {
                 height={48}
                 className="rounded-lg"
               />
-              <span className="font-display text-xl font-semibold">Al 22 Suite & Spa Luxury Experience</span>
+              <span className="font-display text-xl font-semibold">CHAPLIN Luxury Holiday House</span>
             </div>
             <p className="text-background/80 mb-4 text-sm leading-relaxed">{t("footerDescription")}</p>
             <div className="flex items-center gap-1 mb-2">
@@ -129,21 +129,21 @@ export function Footer() {
               <div className="flex items-start gap-3">
                 <MapPin className="w-4 h-4 mt-1 text-primary flex-shrink-0" />
                 <div>
-                  <p>Vico Gelso I n 22</p>
-                  <p>70044 Polignano a Mare (BA)</p>
-                  <p>Puglia, Italia</p>
+                  <p>Via del mandorlo 8</p>
+                  <p>05100 terni (tr)</p>
+                  <p>Viterbo, Italia</p>
                 </div>
               </div>
               <div className="flex items-center gap-3">
                 <Phone className="w-4 h-4 text-primary" />
-                <a href="tel:+393283287303" className="hover:text-primary transition-colors">
-                  +393283287303
+                <a href="tel:+39 351 719 6320" className="hover:text-primary transition-colors">
+                  +39 351 719 6320
                 </a>
               </div>
               <div className="flex items-center gap-3">
                 <Mail className="w-4 h-4 text-primary" />
-                <a href="mailto:progettocale@gmail.com" className="hover:text-primary transition-colors">
-                  progettocale@gmail.com
+                <a href="mailto:Chaplinviterbo@gmail.com" className="hover:text-primary transition-colors">
+                  Chaplinviterbo@gmail.com
                 </a>
               </div>
               <div className="flex items-center gap-3">
@@ -261,7 +261,7 @@ export function Footer() {
           <div className="pt-8">
             <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-background/80">
               <p className="flex items-center gap-2">
-                © COPYRIGHT 2025 - AL 22 Suite & Spa Luxury Experience {t("allRightsReserved")}.
+                © COPYRIGHT 2025 - CHAPLIN Luxury Holiday House {t("allRightsReserved")}.
                 <Link
                   href="/admin"
                   className="inline-flex items-center opacity-30 hover:opacity-100 transition-opacity"
