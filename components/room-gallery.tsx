@@ -8,26 +8,42 @@ import { ChevronLeft, ChevronRight, Maximize2, X } from "lucide-react"
 
 // Sample room data - in a real app this would come from props or API
 const roomImages = [
-  "/camera/camera.jpg",
-  "/camera/camera0.jpg",
-  "/camera/camera1.jpg",
-  "/camera/camera2.jpg",
-  "/camera/camera3.jpg",
-  "/camera/camera4.jpg",
-  "/camera/camera5.jpg",
-  "/camera/camera6.jpg",
-  "/camera/camera7.jpg",
-  "/camera/camera8.jpg",
-  "/camera/camera9.jpg",
-  "/camera/camera10.jpg",
-  "/camera/camera11.jpg",
-  "/camera/camera12.jpg",
-  "/camera/camera13.jpg",
-  "/camera/camera14.jpg",
-  "/camera/camera15.jpg",
-  "/camera/camera16.jpg",
-  "/camera/camera17.jpg",
-  "/camera/camera18.jpg",
+    "/images/pool.JPG",
+    "/chaplin/0004.JPG",
+
+   "/chaplin/0007.JPG",  
+   "/chaplin/0012.JPG",  
+   "/chaplin/0013.JPG",  
+
+   "/chaplin/0024.JPG",   
+   "/chaplin/0026.JPG",  
+   "/chaplin/0028.JPG",  
+
+   "/chaplin/0031.JPG",
+   "/chaplin/0032.JPG",  
+   "/chaplin/0035.JPG",  
+
+   "/chaplin/0037.JPG",  
+   "/chaplin/0041.JPG",  
+   "/chaplin/0045.JPG",  
+   "/chaplin/0046.JPG",  
+   "/chaplin/0047.JPG",  
+   "/chaplin/0049.JPG",  
+
+   "/chaplin/0053.JPG", 
+   "/chaplin/0058.JPG",  
+   "/chaplin/0059.JPG",  
+   "/chaplin/0064.JPG",  
+   "/chaplin/0068.JPG",  
+   "/chaplin/0069.JPG",  
+
+   "/chaplin/0071.JPG",  
+   "/chaplin/0072.JPG",
+   "/chaplin/0073.JPG",  
+   "/chaplin/0074.JPG",  
+
+   "/chaplin/0081.JPG",  
+   "/chaplin/0083.JPG"
 ]
 
 interface RoomGalleryProps {
