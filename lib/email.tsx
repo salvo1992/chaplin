@@ -24,6 +24,12 @@ interface BookingEmailData {
   totalAmount: number // cents
   nights: number
   newUserPassword?: string
+
+  originalAmount?: number
+  newAmount?: number
+  penalty?: number
+  priceDifference?: number
+  modificationType?: "change_dates" | "add_guests"
 }
 
 interface CancellationEmailData {
