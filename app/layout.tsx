@@ -39,19 +39,19 @@ export const metadata: Metadata = {
     apple: "/apple-icon.jpg",
     shortcut: "/favicon.ico",
   },
-  metadataBase: new URL("https://al22suite.com"),
+  metadataBase: new URL("https://chaplinhome.vercel.app/"),
   openGraph: {
     title: "CHAPLIN Luxury Holiday House",
     description:
       "Experience authentic Italian hospitality at CHAPLIN Luxury Holiday House bed & breakfast in the Posizione eccellente, valutata 9.6/10!(punteggio ottenuto da 110 giudizi)",
-    url: "https://al22suite.com",
+    url: "https://chaplinhome.vercel.app/",
     siteName: "CHAPLIN Luxury Holiday House",
     images: [
       {
-        url: "/images/logo22.jpg",
+        url: "/logo22.jpg",
         width: 1200,
         height: 630,
-        alt: "AL 22 Suite & SPA",
+        alt: "CHAPLIN Luxury Holiday House",
       },
     ],
     locale: "it_IT",
@@ -62,7 +62,7 @@ export const metadata: Metadata = {
     title: "",
     description:
       "Experience authentic Italian hospitality at CHAPLIN Luxury Holiday House bed & breakfast in the Valutata dagli ospiti dopo il soggiorno presso CHAPLIN Luxury Holiday House.",
-    images: ["/images/logo22.jpg"],
+    images: ["/logo22.jpg"],
   },
 }
 
