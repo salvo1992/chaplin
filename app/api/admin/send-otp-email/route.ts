@@ -2,7 +2,12 @@ import { NextRequest, NextResponse } from "next/server"
 import { getAdminDb } from "@/lib/firebase-admin"
 import { Resend } from "resend"
 
-const resend = new Resend(process.env.RESEND_API_KEY)
+function getResend() {
+  const key = process.env.RESEND_API_KEY
+  if (!key) throw new Error("RESEND_API_KEY mancante")
+  return new Resend(key)
+}
+const resend = getResend()
 
 // Generate random 4-digit OTP
 function generateOTP(): string {

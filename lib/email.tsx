@@ -10,7 +10,14 @@ const BRAND = {
   fromFallback: "CHAPLIN <noreply@chaplin-house.com>",
 }
 
-const resend = new Resend(process.env.RESEND_API_KEY)
+let resendClient: Resend | null = null
+
+function getResendClient() {
+  const key = process.env.RESEND_API_KEY
+  if (!key) return null
+  if (!resendClient) resendClient = new Resend(key)
+  return resendClient
+}
 
 interface BookingEmailData {
   to: string
@@ -94,6 +101,8 @@ function moneyFromCents(cents: number) {
 }
 
 export async function sendBookingConfirmationEmail(data: BookingEmailData) {
+  const resend = getResendClient()
+if (!resend) return { success: false, error: "RESEND_API_KEY not configured" }
   try {
     const cfg = requireEmailConfig()
     if (!cfg.ok) return { success: false, error: cfg.error }
@@ -201,6 +210,8 @@ export async function sendBookingConfirmationEmail(data: BookingEmailData) {
 }
 
 export async function sendCancellationEmail(data: CancellationEmailData) {
+  const resend = getResendClient()
+if (!resend) return { success: false, error: "RESEND_API_KEY not configured" }
   try {
     const cfg = requireEmailConfig()
     if (!cfg.ok) return { success: false, error: cfg.error }
@@ -320,6 +331,8 @@ export async function sendCancellationEmail(data: CancellationEmailData) {
 }
 
 export async function sendModificationEmail(data: ModificationEmailData) {
+  const resend = getResendClient()
+if (!resend) return { success: false, error: "RESEND_API_KEY not configured" }
   try {
     const cfg = requireEmailConfig()
     if (!cfg.ok) return { success: false, error: cfg.error }
@@ -484,6 +497,8 @@ export async function sendModificationEmail(data: ModificationEmailData) {
  * usata da /app/api/bookings/update-after-payment/route.ts
  */
 export async function sendBookingUpdateEmail(data: BookingUpdateEmailData) {
+  const resend = getResendClient()
+if (!resend) return { success: false, error: "RESEND_API_KEY not configured" }
   try {
     const cfg = requireEmailConfig()
     if (!cfg.ok) return { success: false, error: cfg.error }
