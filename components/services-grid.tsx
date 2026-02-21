@@ -187,7 +187,7 @@ export function ServicesGrid() {
   }
 
   return (
-    <section className="py-16 bg-gradient-to-b from-background to-emerald-500/10">
+    <section className="py-16 bg-gradient-to-b from-background to-secondary/30">
       <div className="container mx-auto px-4">
         {/* Category Filter (verde WhatsApp) */}
         <div className="flex flex-wrap gap-3 mb-12 justify-center">
@@ -198,8 +198,8 @@ export function ServicesGrid() {
               onClick={() => setSelectedCategory(category)}
               className={`rounded-full px-7 py-3 text-base font-medium transition-all duration-300 hover:scale-105 ${
                 selectedCategory === category
-                  ? "bg-emerald-500 hover:bg-emerald-600 text-white shadow-lg"
-                  : "border-emerald-300/70 hover:bg-emerald-500/10"
+                  ? "bg-[#1a1a1a] hover:bg-[#333] text-[#f5f5f0] shadow-lg"
+                  : "border-[#c9a84c]/40 hover:bg-[#c9a84c]/10"
               }`}
               style={{ animationDelay: `${index * 0.05}s` }}
             >
@@ -214,7 +214,7 @@ export function ServicesGrid() {
             <div
               key={service.id}
               data-index={index}
-              className={`group overflow-hidden rounded-2xl border border-emerald-200/60 dark:border-emerald-800/60 bg-white/60 dark:bg-black/20 backdrop-blur card-invisible transition-all duration-500 hover:shadow-2xl ${
+              className={`group overflow-hidden rounded-2xl border border-[#c9a84c]/20 dark:border-[#c9a84c]/20 bg-white/60 dark:bg-black/20 backdrop-blur card-invisible transition-all duration-500 hover:shadow-2xl ${
                 visibleItems.has(index) ? "animate-fade-in-up" : "opacity-0 translate-y-10"
               }`}
               style={{ animationDelay: `${index * 0.08}s` }}
@@ -232,12 +232,12 @@ export function ServicesGrid() {
 
                 {/* Badges */}
                 <div className="absolute top-4 left-4 flex flex-col gap-2">
-                  <Badge className="bg-emerald-500/90 text-white text-sm font-medium backdrop-blur-sm">
+                  <Badge className="bg-[#1a1a1a]/90 text-white text-sm font-medium backdrop-blur-sm">
                     {service.category}
                   </Badge>
 
                   {service.popular && (
-                    <Badge className="bg-gradient-to-r from-emerald-500 to-emerald-600 text-white text-sm font-medium">
+                    <Badge className="bg-gradient-to-r from-[#c9a84c] to-[#d4af37] text-white text-sm font-medium">
                       <Sparkles className="w-3.5 h-3.5 mr-1" /> Consigliato
                     </Badge>
                   )}
@@ -282,12 +282,12 @@ export function ServicesGrid() {
 
               <div className="p-6">
                 <div className="flex items-start justify-between mb-3">
-                  <h3 className="font-bold text-xl text-foreground group-hover:text-emerald-600 transition-colors line-clamp-2 leading-tight">
+                  <h3 className="font-bold text-xl text-foreground group-hover:text-[#c9a84c] transition-colors line-clamp-2 leading-tight">
                     {service.name}
                   </h3>
 
-                  <div className="flex items-center gap-1 ml-3 bg-emerald-500/10 px-2 py-1 rounded-full border border-emerald-200/60">
-                    <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                  <div className="flex items-center gap-1 ml-3 bg-[#c9a84c]/10 px-2 py-1 rounded-full border border-[#c9a84c]/20">
+                    <Star className="w-4 h-4 fill-[#c9a84c] text-[#c9a84c]" />
                     <span className="text-sm font-bold">{service.rating}</span>
                   </div>
                 </div>
@@ -296,12 +296,12 @@ export function ServicesGrid() {
 
                 {/* Details */}
                 <div className="grid grid-cols-2 gap-3 mb-5 text-sm">
-                  <div className="flex items-center gap-2 bg-emerald-500/10 rounded-lg px-3 py-2 border border-emerald-200/60">
-                    <Clock className="w-4 h-4 text-emerald-600" />
+                  <div className="flex items-center gap-2 bg-[#c9a84c]/10 rounded-lg px-3 py-2 border border-[#c9a84c]/20">
+                    <Clock className="w-4 h-4 text-[#c9a84c]" />
                     <span className="font-medium">{service.duration}</span>
                   </div>
-                  <div className="flex items-center gap-2 bg-emerald-500/10 rounded-lg px-3 py-2 border border-emerald-200/60">
-                    <Users className="w-4 h-4 text-emerald-600" />
+                  <div className="flex items-center gap-2 bg-[#c9a84c]/10 rounded-lg px-3 py-2 border border-[#c9a84c]/20">
+                    <Users className="w-4 h-4 text-[#c9a84c]" />
                     <span className="font-medium">Max {service.capacity}</span>
                   </div>
                 </div>
@@ -316,7 +316,7 @@ export function ServicesGrid() {
                   <Button
                     size="sm"
                     className={`flex-1 text-sm font-medium transition-all duration-300 ${
-                      service.available ? "bg-emerald-500 hover:bg-emerald-600 text-white shadow-lg" : ""
+                      service.available ? "bg-[#1a1a1a] hover:bg-[#333] text-[#f5f5f0] shadow-lg" : ""
                     }`}
                     disabled={!service.available}
                     onClick={() => service.available && openWhatsApp(service)}
@@ -327,11 +327,11 @@ export function ServicesGrid() {
                   <Button
                     size="sm"
                     variant="outline"
-                    className="px-4 bg-transparent border-emerald-300/70 hover:bg-emerald-500/10 transition-all duration-300"
+                    className="px-4 bg-transparent border-emerald-300/70 hover:bg-[#c9a84c]/10 transition-all duration-300"
                     onClick={() => openWhatsApp(service)}
                     title="Contatta su WhatsApp"
                   >
-                    <Phone className="w-4 h-4 text-emerald-600" />
+                    <Phone className="w-4 h-4 text-[#c9a84c]" />
                   </Button>
                 </div>
               </div>

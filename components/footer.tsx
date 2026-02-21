@@ -116,7 +116,7 @@ export function Footer() {
             <p className="text-background/80 mb-4 text-sm leading-relaxed">{t("footerDescription")}</p>
             <div className="flex items-center gap-1 mb-2">
               {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                <Star key={i} className="w-4 h-4 fill-[#c9a84c] text-[#c9a84c]" />
               ))}
               <span className="text-sm ml-2">4.9/5 (127 {t("reviewsTitle").toLowerCase()})</span>
             </div>
@@ -237,7 +237,7 @@ export function Footer() {
             <p className="text-xs text-background/60 uppercase tracking-wider">Metodi di Pagamento Accettati</p>
             <div className="flex flex-wrap items-center justify-center gap-3">
               <div className="h-10 w-16 flex items-center justify-center bg-white rounded-md p-1.5 hover:scale-105 transition-transform">
-                <StripeIcon className="h-full w-full text-[#635BFF]" />
+                <StripeIcon className="h-full w-full text-[#1a1a1a]" />
               </div>
               <div className="h-10 w-16 flex items-center justify-center hover:scale-105 transition-transform">
                 <VisaIcon className="h-full w-full" />

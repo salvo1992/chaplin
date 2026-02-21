@@ -65,7 +65,7 @@ export function RoomDetails({ roomId }: RoomDetailsProps) {
                 </span>
               </div>
               <div className="flex items-center gap-1">
-                <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                <Star className="w-4 h-4 fill-[#c9a84c] text-[#c9a84c]" />
                 <span className="font-medium">{roomData.rating}</span>
                 <span>
                   ({roomData.reviews} {t("reviews")})

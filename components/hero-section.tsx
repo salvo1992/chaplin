@@ -59,7 +59,7 @@ export function HeroSection() {
             className="object-cover"
             priority={index === 0}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/30 to-black/50" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/40 to-black/60" />
         </div>
       ))}
 
