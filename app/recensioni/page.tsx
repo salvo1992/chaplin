@@ -118,7 +118,7 @@ export default function AllReviewsPage() {
                   {[...Array(5)].map((_, i) => (
                     <Star
                       key={i}
-                      className={`w-3 h-3 ${i < (r.rating ?? 0) ? "fill-yellow-400 text-yellow-400" : "text-gray-300"}`}
+                      className={`w-3 h-3 ${i < (r.rating ?? 0) ? "fill-[#c9a84c] text-[#c9a84c]" : "text-gray-300"}`}
                     />
                   ))}
                 </div>

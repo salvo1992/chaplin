@@ -83,7 +83,7 @@ export function RoomsPreview() {
                   <div className="flex items-center justify-between mb-2">
                     <h3 className="font-display text-xl font-bold text-foreground">{room.name}</h3>
                     <div className="flex items-center gap-1">
-                      <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                      <Star className="w-4 h-4 fill-[#c9a84c] text-[#c9a84c]" />
                       <span className="text-sm font-medium">{room.rating}</span>
                       <span className="text-xs text-muted-foreground">({room.reviews})</span>
                     </div>

@@ -30,7 +30,7 @@ export function Header() {
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-border/50">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border/50">
   <div className="container mx-auto px-3 sm:px-4">
     <div className="flex items-center justify-between h-14 sm:h-16 gap-2">
       <Link href="/" className="flex items-center gap-2 group shrink-0">
@@ -119,7 +119,7 @@ export function Header() {
       {isMenuOpen && (
         <div className="fixed inset-0 z-40 sidebar-overlay animate-fade-in-up" onClick={() => setIsMenuOpen(false)}>
           <div
-            className="fixed top-0 right-0 h-full w-80 bg-black/80 backdrop-blur-md shadow-2xl animate-slide-in-right overflow-y-auto"
+            className="fixed top-0 right-0 h-full w-80 bg-[#1a1a1a]/95 backdrop-blur-md shadow-2xl animate-slide-in-right overflow-y-auto border-l border-[#c9a84c]/20"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="p-8 pt-20">
@@ -130,8 +130,8 @@ export function Header() {
                   className="group flex items-center gap-3 text-white hover:text-primary transition-all duration-300 text-lg font-bold hover:translate-x-2 hover:scale-105"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  <div className="w-8 h-8 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:rotate-12 border-2 border-white/50">
-                    <Home className="w-4 h-4 text-yellow-900" />
+                    <div className="w-8 h-8 bg-gradient-to-br from-[#c9a84c] to-[#d4af37] rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:rotate-12 border-2 border-white/30">
+                    <Home className="w-4 h-4 text-[#1a1a1a]" />
                   </div>
                   <span className="font-cinzel">{t("home")}</span>
                 </Link>
@@ -141,8 +141,8 @@ export function Header() {
                   className="group flex items-center gap-3 text-white hover:text-primary transition-all duration-300 text-lg font-bold hover:translate-x-2 hover:scale-105"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  <div className="w-8 h-8 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:rotate-12 border-2 border-white/50">
-                    <Bed className="w-4 h-4 text-yellow-900" />
+                  <div className="w-8 h-8 bg-gradient-to-br from-[#c9a84c] to-[#d4af37] rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:rotate-12 border-2 border-white/30">
+                    <Bed className="w-4 h-4 text-[#1a1a1a]" />
                   </div>
                   <span className="font-cinzel">{t("rooms")}</span>
                 </Link>
@@ -152,8 +152,8 @@ export function Header() {
                   className="group flex items-center gap-3 text-white hover:text-primary transition-all duration-300 text-lg font-bold hover:translate-x-2 hover:scale-105"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  <div className="w-8 h-8 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:rotate-12 border-2 border-white/50">
-                    <Crown className="w-4 h-4 text-yellow-900" />
+                  <div className="w-8 h-8 bg-gradient-to-br from-[#c9a84c] to-[#d4af37] rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:rotate-12 border-2 border-white/30">
+                    <Crown className="w-4 h-4 text-[#1a1a1a]" />
                   </div>
                   <span className="font-cinzel">{t("services")}</span>
                 </Link>
@@ -163,8 +163,8 @@ export function Header() {
                   className="group flex items-center gap-3 text-white hover:text-primary transition-all duration-300 text-lg font-bold hover:translate-x-2 hover:scale-105"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  <div className="w-8 h-8 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:rotate-12 border-2 border-white/50">
-                    <Calendar className="w-4 h-4 text-yellow-900" />
+                  <div className="w-8 h-8 bg-gradient-to-br from-[#c9a84c] to-[#d4af37] rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:rotate-12 border-2 border-white/30">
+                    <Calendar className="w-4 h-4 text-[#1a1a1a]" />
                   </div>
                   <span className="font-cinzel">{t("booking")}</span>
                 </Link>
@@ -174,8 +174,8 @@ export function Header() {
                   className="group flex items-center gap-3 text-white hover:text-primary transition-all duration-300 text-lg font-bold hover:translate-x-2 hover:scale-105"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  <div className="w-8 h-8 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:rotate-12 border-2 border-white/50">
-                    <Phone className="w-4 h-4 text-yellow-900" />
+                  <div className="w-8 h-8 bg-gradient-to-br from-[#c9a84c] to-[#d4af37] rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:rotate-12 border-2 border-white/30">
+                    <Phone className="w-4 h-4 text-[#1a1a1a]" />
                   </div>
                   <span className="font-cinzel">{t("contacts")}</span>
                 </Link>
@@ -183,11 +183,11 @@ export function Header() {
                 {/* Language Selector Section */}
                 <div className="border-t border-white/20 pt-6 mt-6">
                   <div className="flex items-center gap-2 mb-4">
-                    <Globe className="w-4 h-4 text-yellow-400 animate-pulse" />
+                    <Globe className="w-4 h-4 text-[#c9a84c] animate-pulse" />
                     <span className="text-xs font-cinzel text-white uppercase tracking-wider font-bold">
                       {t("selectLanguage") || "Language"}
                     </span>
-                    <Globe className="w-4 h-4 text-yellow-400 animate-pulse" />
+                    <Globe className="w-4 h-4 text-[#c9a84c] animate-pulse" />
                   </div>
 
                   <div className="grid grid-cols-2 gap-2">
@@ -200,7 +200,7 @@ export function Header() {
                         }}
                         className={`flex items-center gap-2 px-3 py-2 rounded-lg transition-all duration-300 ${
                           language === lang.code
-                            ? "bg-gradient-to-br from-yellow-400 to-yellow-600 text-yellow-900 font-bold shadow-lg"
+                            ? "bg-gradient-to-br from-yellow-400 to-yellow-600 text-[#1a1a1a] font-bold shadow-lg"
                             : "bg-white/10 text-white hover:bg-white/20"
                         }`}
                       >
@@ -214,9 +214,9 @@ export function Header() {
                 {/* Account Section */}
                 <div className="border-t border-white/20 pt-6 mt-6">
                   <div className="flex items-center gap-2 mb-4">
-                    <Sparkles className="w-4 h-4 text-yellow-400 animate-pulse" />
+                    <Sparkles className="w-4 h-4 text-[#c9a84c] animate-pulse" />
                     <span className="text-xs font-cinzel text-white uppercase tracking-wider font-bold">Account</span>
-                    <Sparkles className="w-4 h-4 text-yellow-400 animate-pulse" />
+                    <Sparkles className="w-4 h-4 text-[#c9a84c] animate-pulse" />
                   </div>
 
                   {user ? (
@@ -226,8 +226,8 @@ export function Header() {
                         className="group flex items-center gap-3 text-white hover:text-primary transition-all duration-300 text-sm font-medium hover:translate-x-2 hover:scale-105 block mb-3"
                         onClick={() => setIsMenuOpen(false)}
                       >
-                        <div className="w-6 h-6 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center shadow-md group-hover:shadow-lg transition-all duration-300 border border-white/50">
-                          <Star className="w-3 h-3 text-yellow-900" />
+                        <div className="w-6 h-6 bg-gradient-to-br from-[#c9a84c] to-[#d4af37] rounded-full flex items-center justify-center shadow-md group-hover:shadow-lg transition-all duration-300 border border-white/30">
+                          <Star className="w-3 h-3 text-[#1a1a1a]" />
                         </div>
                         <span className="font-cinzel">{user.role === "admin" ? t("admin") : t("user")}</span>
                       </Link>
@@ -235,8 +235,8 @@ export function Header() {
                         onClick={handleLogout}
                         className="group flex items-center gap-3 text-white hover:text-primary transition-all duration-300 text-sm font-medium hover:translate-x-2 hover:scale-105 block"
                       >
-                        <div className="w-6 h-6 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center shadow-md group-hover:shadow-lg transition-all duration-300 border border-white/50">
-                          <LogOut className="w-3 h-3 text-yellow-900" />
+                        <div className="w-6 h-6 bg-gradient-to-br from-[#c9a84c] to-[#d4af37] rounded-full flex items-center justify-center shadow-md group-hover:shadow-lg transition-all duration-300 border border-white/30">
+                          <LogOut className="w-3 h-3 text-[#1a1a1a]" />
                         </div>
                         <span className="font-cinzel">{t("logout")}</span>
                       </button>
@@ -248,8 +248,8 @@ export function Header() {
                         className="group flex items-center gap-3 text-white hover:text-primary transition-all duration-300 text-sm font-medium hover:translate-x-2 hover:scale-105 block mb-3"
                         onClick={() => setIsMenuOpen(false)}
                       >
-                        <div className="w-6 h-6 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center shadow-md group-hover:shadow-lg transition-all duration-300 border border-white/50">
-                          <User className="w-3 h-3 text-yellow-900" />
+                        <div className="w-6 h-6 bg-gradient-to-br from-[#c9a84c] to-[#d4af37] rounded-full flex items-center justify-center shadow-md group-hover:shadow-lg transition-all duration-300 border border-white/30">
+                          <User className="w-3 h-3 text-[#1a1a1a]" />
                         </div>
                         <span className="font-cinzel">{t("login")}</span>
                       </Link>
@@ -258,8 +258,8 @@ export function Header() {
                         className="group flex items-center gap-3 text-white hover:text-primary transition-all duration-300 text-sm font-medium hover:translate-x-2 hover:scale-105 block"
                         onClick={() => setIsMenuOpen(false)}
                       >
-                        <div className="w-6 h-6 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center shadow-md group-hover:shadow-lg transition-all duration-300 border border-white/50">
-                          <Sparkles className="w-3 h-3 text-yellow-900" />
+                        <div className="w-6 h-6 bg-gradient-to-br from-[#c9a84c] to-[#d4af37] rounded-full flex items-center justify-center shadow-md group-hover:shadow-lg transition-all duration-300 border border-white/30">
+                          <Sparkles className="w-3 h-3 text-[#1a1a1a]" />
                         </div>
                         <span className="font-cinzel">{t("register")}</span>
                       </Link>

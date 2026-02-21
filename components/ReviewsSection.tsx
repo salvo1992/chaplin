@@ -112,7 +112,7 @@ export default function ReviewsSection({ className }: Props) {
                     {[...Array(5)].map((_, i) => (
                       <Star
                         key={i}
-                        className={`w-3 h-3 ${i < (review.rating ?? 0) ? "fill-yellow-400 text-yellow-400" : "text-gray-300"}`}
+                        className={`w-3 h-3 ${i < (review.rating ?? 0) ? "fill-[#c9a84c] text-[#c9a84c]" : "text-gray-300"}`}
                       />
                     ))}
                   </div>
@@ -146,7 +146,7 @@ export default function ReviewsSection({ className }: Props) {
             <div className="text-2xl font-bold text-primary">4.8</div>
             <div className="flex items-center justify-center gap-1 mb-1">
               {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-3 h-3 fill-yellow-400 text-yellow-400" />
+                <Star key={i} className="w-3 h-3 fill-[#c9a84c] text-[#c9a84c]" />
               ))}
             </div>
             <div className="text-xs text-muted-foreground">{t("averageRating")}</div>

@@ -6,70 +6,70 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Updated color palette to sand theme instead of green */
-  --background: #e3f0f3; /* Light sand */
-  --foreground: oklch(0.15 0.02 25); /* Deep brown */
-  --card: oklch(98.12% 0.01096 211.546);
-  --card-foreground: oklch(0.15 0.02 25);
-  --popover: oklch(97.501% 0.00926 232.797);
-  --popover-foreground: oklch(0.15 0.02 25);
-  --primary: rgb(67, 137, 184); /* Roman red */
-  --primary-foreground: oklch(0.98 0.01 85);
-  --secondary: oklch(84.241% 0.05601 249.365); /* Warm sand color */
-  --secondary-foreground: oklch(0.15 0.02 25);
-  --muted: oklch(0.92 0.02 60);
-  --muted-foreground: oklch(0.45 0.02 35);
-  --accent: oklch(60.642% 0.18442 278.003); /* Golden yellow accent */
-  --accent-foreground: oklch(0.15 0.02 25);
-  --destructive: rgb(42, 100, 115);
-  --destructive-foreground: oklch(98.092% 0.01069 204.678);
-  --border: oklch(69.824% 0.10463 219.238);
-  --input: oklch(93.728% 0.01939 230.911);
-  --ring: rgb(42, 100, 115);
-  --chart-1: rgb(42, 100, 115);
-  --chart-2: oklch(82.259% 0.07954 199.823);
-  --chart-3: oklch(84.072% 0.02931 238.418);
-  --chart-4: oklch(55.688% 0.1561 275.498);
-  --chart-5: oklch(34.616% 0.13122 290.354);
+  /* Charlie Chaplin retro palette: Black, White & Gold */
+  --background: #f5f5f0; /* Warm off-white, like aged film stock */
+  --foreground: #1a1a1a; /* Deep charcoal black */
+  --card: #ffffff;
+  --card-foreground: #1a1a1a;
+  --popover: #ffffff;
+  --popover-foreground: #1a1a1a;
+  --primary: #1a1a1a; /* Black - the primary Chaplin color */
+  --primary-foreground: #f5f5f0;
+  --secondary: #e8e4dc; /* Warm light gray, vintage paper */
+  --secondary-foreground: #1a1a1a;
+  --muted: #e0ddd5; /* Muted warm gray */
+  --muted-foreground: #6b6560; /* Medium warm gray */
+  --accent: #c9a84c; /* Antique gold accent */
+  --accent-foreground: #1a1a1a;
+  --destructive: #8b2500; /* Deep vintage red */
+  --destructive-foreground: #f5f5f0;
+  --border: #d4d0c8; /* Soft warm border */
+  --input: #eae7e0;
+  --ring: #c9a84c; /* Gold ring */
+  --chart-1: #1a1a1a;
+  --chart-2: #c9a84c;
+  --chart-3: #8b8680;
+  --chart-4: #d4af37;
+  --chart-5: #3d3d3d;
   --radius: 0.75rem;
-  --sidebar: rgb(42, 100, 115); /* Semi-transparent red */
-  --sidebar-foreground: oklch(0.98 0.01 85);
-  --sidebar-primary: oklch(99.308% 0.0034 37.997);
-  --sidebar-primary-foreground: rgb(235, 235, 235);
-  --sidebar-accent: oklch(81.934% 0.1094 185.002);
-  --sidebar-accent-foreground: oklch(97.895% 0.00996 213.071);
-  --sidebar-border: rgb(195, 232, 241);
-  --sidebar-ring: oklch(87.182% 0.11464 190.479);
+  --sidebar: #1a1a1a; /* Black sidebar */
+  --sidebar-foreground: #f5f5f0;
+  --sidebar-primary: #c9a84c;
+  --sidebar-primary-foreground: #1a1a1a;
+  --sidebar-accent: #c9a84c;
+  --sidebar-accent-foreground: #1a1a1a;
+  --sidebar-border: #333333;
+  --sidebar-ring: #c9a84c;
 }
 
 .dark {
-  --background: rgb(42, 115, 65);
-  --foreground: oklch(0% 0 0);
-  --card: oklch(0.15 0.02 25);
-  --card-foreground: oklch(0.95 0.01 80);
-  --popover: oklch(0.12 0.02 25);
-  --popover-foreground: oklch(0.95 0.01 80);
-  --primary: oklch(80.582% 0.14274 157.562);
-  --primary-foreground: oklch(0.12 0.02 25);
-  --secondary: oklch(0.25 0.03 35);
-  --secondary-foreground: oklch(0.95 0.01 80);
-  --muted: oklch(0.18 0.02 30);
-  --muted-foreground: oklch(70.502% 0.03005 158.519);
-  --accent: oklch(30.537% 0.07581 294.33);
-  --accent-foreground: oklch(0.95 0.01 80);
-  --destructive: oklch(81.006% 0.12787 165.481);
-  --destructive-foreground: oklch(0.95 0.01 80);
-  --border: oklch(0.22 0.02 30);
-  --input: oklch(0.18 0.02 30);
-  --ring: oklch(80.453% 0.1481 155.374);
-  --sidebar: rgb(42, 115, 80);
-  --sidebar-foreground: oklch(95.093% 0.01077 204.654);
-  --sidebar-primary: oklch(80.252% 0.15729 152.163);
-  --sidebar-primary-foreground:rgb(42, 115, 92);
-  --sidebar-accent:rgb(238, 238, 238);
-  --sidebar-accent-foreground: oklch(15.434% 0.00002 271.152);
-  --sidebar-border: rgb(42, 115, 80);
-  --sidebar-ring: oklch(80.252% 0.15729 152.163);
+  --background: #0d0d0d;
+  --foreground: #f5f5f0;
+  --card: #1a1a1a;
+  --card-foreground: #f5f5f0;
+  --popover: #1a1a1a;
+  --popover-foreground: #f5f5f0;
+  --primary: #c9a84c;
+  --primary-foreground: #0d0d0d;
+  --secondary: #2a2a2a;
+  --secondary-foreground: #f5f5f0;
+  --muted: #2a2a2a;
+  --muted-foreground: #a09a90;
+  --accent: #d4af37;
+  --accent-foreground: #0d0d0d;
+  --destructive: #a03020;
+  --destructive-foreground: #f5f5f0;
+  --border: #333333;
+  --input: #2a2a2a;
+  --ring: #c9a84c;
+  --sidebar: #0d0d0d;
+  --sidebar-foreground: #f5f5f0;
+  --sidebar-primary: #c9a84c;
+  --sidebar-primary-foreground: #0d0d0d;
+  --sidebar-accent: #c9a84c;
+  --sidebar-accent-foreground: #0d0d0d;
+  --sidebar-border: #333333;
+  --sidebar-ring: #c9a84c;
 }
 
 @theme inline {
@@ -120,10 +120,10 @@
   }
   body {
     @apply bg-background text-foreground relative overflow-x-hidden;
-        background-color: #caefdb;
+    background-color: #f5f5f0;
   }
 
-  /* Updated to sand background with subtle texture animation */
+  /* Retro film grain texture - subtle vintage feel */
   body::before {
     content: "";
     position: fixed;
@@ -131,14 +131,14 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(circle at 20% 80%, #e4f3e3 0%, transparent 50%),
-      radial-gradient(circle at 80% 20%, rgba(218, 165, 32, 0.08) 0%, transparent 50%),
-      linear-gradient(135deg, rgba(222, 184, 135, 0.05) 0%, rgba(245, 222, 179, 0.05) 100%);
+    background: radial-gradient(circle at 20% 80%, rgba(201, 168, 76, 0.04) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(201, 168, 76, 0.03) 0%, transparent 50%),
+      linear-gradient(135deg, rgba(26, 26, 26, 0.02) 0%, rgba(201, 168, 76, 0.02) 100%);
     z-index: -2;
     animation: sandShimmer 12s ease-in-out infinite;
   }
 
-  /* Sand texture overlay with subtle movement */
+  /* Vintage film grain overlay */
   body::after {
     content: "";
     position: fixed;
@@ -150,15 +150,15 @@
         45deg,
         transparent,
         transparent 3px,
-        rgba(169, 240, 208, 0.02) 3px,
-        rgba(238, 243, 241, 0.02) 6px
+        rgba(26, 26, 26, 0.01) 3px,
+        rgba(26, 26, 26, 0.01) 6px
       ),
       repeating-linear-gradient(
         -45deg,
         transparent,
         transparent 2px,
-        rgba(218, 165, 32, 0.01) 2px,
-        rgba(218, 165, 32, 0.01) 4px
+        rgba(201, 168, 76, 0.01) 2px,
+        rgba(201, 168, 76, 0.01) 4px
       );
     z-index: -1;
     animation: sandWave 8s ease-in-out infinite;
@@ -363,7 +363,7 @@
 }
 
 .animate-shimmer {
-  background: linear-gradient(90deg, transparent, rgb(42, 115, 63), transparent);
+  background: linear-gradient(90deg, transparent, rgba(201, 168, 76, 0.3), transparent);
   background-size: 200% 100%;
   animation: shimmer 2s infinite;
 }
@@ -401,12 +401,11 @@
 .text-roman-gradient {
   background: linear-gradient(
     135deg,
-    rgb(42, 115, 68) 0%,
-    oklch(80.024% 0.17812 147.813) 20%,
-    oklch(85.264% 0.16299 153.312) 40%,
-    oklch(90.826% 0.11178 159.871) 60%,
-    oklch(85.907% 0.17594 146.735) 80%,
-    rgb(42, 115, 74) 100%
+    #1a1a1a 0%,
+    #c9a84c 25%,
+    #d4af37 50%,
+    #c9a84c 75%,
+    #1a1a1a 100%
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -419,23 +418,23 @@
   text-wrap: balance;
 }
 
-/* Enhanced card styles with glass morphism and better animations */
+/* Enhanced card styles with vintage glass morphism */
 .card-enhanced {
   background: linear-gradient(
     135deg,
-    rgba(255, 255, 255, 0.95) 0%,
+    rgba(245, 245, 240, 0.95) 0%,
     rgba(255, 255, 255, 0.85) 50%,
-    rgba(248, 252, 250, 0.9) 100%
+    rgba(245, 245, 240, 0.9) 100%
   );
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(201, 168, 76, 0.2);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), 0 2px 8px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.4);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .card-enhanced:hover {
   transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15), 0 8px 24px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15), 0 8px 24px rgba(201, 168, 76, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.6);
 }
 
 /* Invisible card styles - removes all visual card styling while keeping content */
@@ -452,28 +451,28 @@
   box-shadow: none !important;
 }
 
-/* Semi-transparent card style for contact page */
+/* Semi-transparent card style - vintage feel */
 .card-semi-transparent {
   background: linear-gradient(
     135deg,
-    rgba(255, 255, 255, 0.6) 0%,
+    rgba(245, 245, 240, 0.6) 0%,
     rgba(255, 255, 255, 0.5) 50%,
-    rgba(248, 252, 249, 0.55) 100%
+    rgba(245, 245, 240, 0.55) 100%
   );
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(201, 168, 76, 0.15);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08), 0 1px 4px rgba(0, 0, 0, 0.04);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .card-semi-transparent:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12), 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12), 0 4px 12px rgba(201, 168, 76, 0.08);
   background: linear-gradient(
     135deg,
-    rgba(255, 255, 255, 0.7) 0%,
+    rgba(245, 245, 240, 0.7) 0%,
     rgba(255, 255, 255, 0.6) 50%,
-    rgba(248, 250, 252, 0.65) 100%
+    rgba(245, 245, 240, 0.65) 100%
   );
 }
 
@@ -485,37 +484,21 @@
 
 .sidebar-menu-enhanced {
   background: var(--color-sidebar) !important;
-  box-shadow: -10px 0 30px rgba(0,0,0,0.2);
-  border-left: 1px solid rgba(255,255,255,0.2);
+  box-shadow: -10px 0 30px rgba(0,0,0,0.3);
+  border-left: 1px solid rgba(201, 168, 76, 0.3);
 }
-.bg-black\/80 {
-  background-color: rgba(42, 115, 66, 0.8);
-}
-.text-yellow-900 {
-  color: white;
-}
-.to-yellow-600 {
-  --tw-gradient-from: rgba(42, 115, 70, 0.8);
-  --tw-gradient-to: transparent;
-}
-.from-yellow-400 {
-  --tw-gradient-from: transparent;
-} 
-/* Enhanced white text shadow utility for maximum contrast on golden text */
+/* Enhanced text shadow for vintage contrast */
 .text-shadow-white {
-  /* Maximum text shadow for perfect visibility on transparent background */
   text-shadow:
-    0 0 4px rgba(255, 255, 255, 1),
-    0 0 8px rgba(255, 255, 255, 0.8),
-    1px 1px 4px rgba(255, 255, 255, 0.7),
-    2px 2px 6px rgba(255, 255, 255, 0.5),
-    0 0 12px rgba(255, 255, 255, 0.4);
+    0 0 4px rgba(201, 168, 76, 0.6),
+    0 0 8px rgba(201, 168, 76, 0.4),
+    1px 1px 4px rgba(0, 0, 0, 0.3),
+    2px 2px 6px rgba(0, 0, 0, 0.2);
 }
 
-/* Added light white glow for golden text */
+/* Light gold glow for headings */
 .text-shadow-light {
-  /* Light white glow for golden text visibility */
-  text-shadow: 0 0 2px rgba(255, 255, 255, 0.6), 0 0 4px rgba(255, 255, 255, 0.4), 1px 1px 2px rgba(255, 255, 255, 0.3);
+  text-shadow: 0 0 2px rgba(201, 168, 76, 0.4), 0 0 4px rgba(201, 168, 76, 0.2), 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 /* Added scroll-triggered animation utilities */
