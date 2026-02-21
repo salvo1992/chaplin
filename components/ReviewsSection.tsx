@@ -67,7 +67,7 @@ function getSourceBadgeClass(source?: string) {
     case "airbnb":
       return "bg-pink-600 text-white"
     default:
-      return "bg-green-100 text-green-800"
+      return "bg-[#c9a84c]/15 text-[#1a1a1a]"
   }
 }
 

@@ -167,9 +167,9 @@ export function BookingBlockDates() {
         </div>
 
         {success && (
-          <Alert className="bg-green-50 border-green-200">
-            <CheckCircle2 className="h-4 w-4 text-green-600" />
-            <AlertDescription className="text-green-900">Date bloccate con successo!</AlertDescription>
+          <Alert className="bg-[#c9a84c]/10 border-[#c9a84c]/30">
+            <CheckCircle2 className="h-4 w-4 text-[#c9a84c]" />
+            <AlertDescription className="text-[#1a1a1a]">Date bloccate con successo!</AlertDescription>
           </Alert>
         )}
 

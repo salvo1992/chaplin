@@ -165,12 +165,12 @@ export default function CookiePage() {
 
                 <div className="grid gap-4">
                   {/* Necessary Cookies */}
-                  <div className="flex items-center justify-between p-4 border border-border/50 rounded-lg bg-green-50/50">
+                  <div className="flex items-center justify-between p-4 border border-border/50 rounded-lg bg-[#c9a84c]/5">
                     <div>
-                      <h4 className="font-semibold text-green-800">{t("necessaryCookiesTitle")}</h4>
-                      <p className="text-sm text-green-600">{t("necessaryCookiesAlwaysActive")}</p>
+                      <h4 className="font-semibold text-[#1a1a1a]">{t("necessaryCookiesTitle")}</h4>
+                      <p className="text-sm text-[#c9a84c]">{t("necessaryCookiesAlwaysActive")}</p>
                     </div>
-                    <div className="w-12 h-6 bg-green-500 rounded-full flex items-center justify-end px-1">
+                    <div className="w-12 h-6 bg-[#c9a84c] rounded-full flex items-center justify-end px-1">
                       <div className="w-4 h-4 bg-white rounded-full shadow-sm"></div>
                     </div>
                   </div>
@@ -259,8 +259,8 @@ export default function CookiePage() {
                   <li>{t("securityAuth")}</li>
                   <li>{t("bookingCart")}</li>
                 </ul>
-                <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-                  <p className="text-green-800 font-medium">{t("alwaysActiveNoConsent")}</p>
+                <div className="bg-[#c9a84c]/10 border border-[#c9a84c]/30 rounded-lg p-4">
+                  <p className="text-[#1a1a1a] font-medium">{t("alwaysActiveNoConsent")}</p>
                 </div>
               </CardContent>
             </Card>

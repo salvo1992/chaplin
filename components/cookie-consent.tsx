@@ -144,9 +144,9 @@ export function CookieConsent() {
                   <div className="flex items-center justify-between mb-3">
                     <div className="flex items-center gap-2">
                       <h3 className="font-semibold">{t("necessaryCookies")}</h3>
-                      <Badge className="bg-green-100 text-green-800 text-xs">{t("alwaysActive")}</Badge>
+                      <Badge className="bg-[#c9a84c]/15 text-[#1a1a1a] text-xs">{t("alwaysActive")}</Badge>
                     </div>
-                    <div className="w-12 h-6 bg-green-500 rounded-full flex items-center justify-end px-1">
+                    <div className="w-12 h-6 bg-[#c9a84c] rounded-full flex items-center justify-end px-1">
                       <div className="w-4 h-4 bg-white rounded-full"></div>
                     </div>
                   </div>

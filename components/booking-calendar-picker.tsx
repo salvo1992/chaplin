@@ -149,7 +149,7 @@ export function BookingCalendarPicker({ value, onChange, roomId, className, comp
       case "medio-alta":
         return "bg-yellow-500"
       case "media":
-        return "bg-green-500"
+        return "bg-[#c9a84c]"
       case "bassa":
         return "bg-blue-500"
     }

@@ -239,8 +239,8 @@ export default function CheckoutSuccess() {
       <div className="container mx-auto px-4 pt-24 pb-16">
         <Card className="max-w-xl mx-auto">
           <CardHeader className="text-center">
-            <div className="mx-auto mb-4 w-16 h-16 bg-green-100 rounded-full flex items-center justify-center">
-              <CheckCircle2 className="h-10 w-10 text-green-600" />
+            <div className="mx-auto mb-4 w-16 h-16 bg-[#c9a84c]/15 rounded-full flex items-center justify-center">
+              <CheckCircle2 className="h-10 w-10 text-[#c9a84c]" />
             </div>
             <CardTitle className="text-2xl font-cinzel text-primary">{t("paymentSuccessful")}</CardTitle>
           </CardHeader>

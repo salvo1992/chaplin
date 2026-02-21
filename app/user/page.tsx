@@ -643,7 +643,7 @@ function UserInner() {
                                       €{formatPrice(b.totalAmount)}
                                     </p>
                                     {b.refundAmount !== undefined && (
-                                      <p className="text-sm text-green-600 font-semibold">
+                                      <p className="text-sm text-[#c9a84c] font-semibold">
                                         {t("refundAmount")}: €{formatPrice(b.refundAmount)}
                                       </p>
                                     )}
