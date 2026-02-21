@@ -105,13 +105,12 @@ export function Footer() {
           <div>
             <div className="flex items-center space-x-3 mb-4">
               <Image
-                src="/images/logo22.jpg"
-                alt="Logo Al 22 Suite & Spa Luxury Experience"
-                width={48}
-                height={48}
-                className="rounded-lg"
+                src="/images/chaplin-logo.png"
+                alt="Chaplin Luxury Holiday House Logo"
+                width={160}
+                height={60}
+                className="brightness-0 invert"
               />
-              <span className="font-display text-xl font-semibold">CHAPLIN Luxury Holiday House</span>
             </div>
             <p className="text-background/80 mb-4 text-sm leading-relaxed">{t("footerDescription")}</p>
             <div className="flex items-center gap-1 mb-2">
@@ -129,9 +128,9 @@ export function Footer() {
               <div className="flex items-start gap-3">
                 <MapPin className="w-4 h-4 mt-1 text-primary flex-shrink-0" />
                 <div>
-                  <p>Via del mandorlo 8</p>
-                  <p>05100 terni (tr)</p>
-                  <p>Viterbo, Italia</p>
+                  <p>Via della Pettinara 48</p>
+                  <p>01100 Viterbo (VT)</p>
+                  <p>Italia</p>
                 </div>
               </div>
               <div className="flex items-center gap-3">
@@ -149,7 +148,7 @@ export function Footer() {
               <div className="flex items-center gap-3">
                 <Clock className="w-4 h-4 text-primary" />
                 <span>
-                  {t("checkIn")}: 15:00 - {t("checkOut")}: 11:00
+                  {t("checkIn")}: dalle 15:00 | {t("checkOut")}: entro le 11:00
                 </span>
               </div>
             </div>
@@ -257,6 +256,11 @@ export function Footer() {
             </div>
           </div>
 
+          {/* CIN */}
+          <div className="flex justify-center py-4 border-b border-background/20">
+            <p className="text-xs text-background/60 tracking-wider">CIN: IT056059CZYAQZBIX7</p>
+          </div>
+
           {/* Copyright - ora sotto i metodi di pagamento */}
           <div className="pt-8">
             <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-background/80">
@@ -267,7 +271,7 @@ export function Footer() {
                   className="inline-flex items-center opacity-30 hover:opacity-100 transition-opacity"
                   title="Admin"
                 >
-                  <Image src="/images/logo22.jpg" alt="Admin" width={20} height={20} className="rounded-sm" />
+                  <Image src="/images/chaplin-logo.png" alt="Admin" width={20} height={20} className="rounded-sm" />
                 </Link>
               </p>
 
