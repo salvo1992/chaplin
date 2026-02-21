@@ -34,25 +34,16 @@ export function Header() {
   <div className="container mx-auto px-3 sm:px-4">
     <div className="flex items-center justify-between h-14 sm:h-16 gap-2">
       <Link href="/" className="flex items-center gap-2 group shrink-0">
-  {/* Solo immagine, nessun cerchio dietro */}
-  <div className="relative w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14">
+  <div className="relative h-10 w-28 sm:h-12 sm:w-36 md:h-14 md:w-44">
     <Image
-      src="/images/logo22.jpg"
-      alt="Logo CHAPLIN Luxury Holiday House"
+      src="/images/chaplin-logo.png"
+      alt="Chaplin Luxury Holiday House"
       fill
       className="object-contain"
       priority
-      sizes="(max-width: 640px) 40px, (max-width: 768px) 48px, 56px"
+      sizes="(max-width: 640px) 112px, (max-width: 768px) 144px, 176px"
     />
   </div>
-
-  {/* Testo come già impostato */}
-  <span className="font-cinzel text-xs sm:hidden font-bold text-roman-gradient max-w-[55vw] overflow-hidden text-ellipsis whitespace-nowrap">
-    CHAPLIN Luxury Holiday House
-  </span>
-  <span className="hidden sm:inline font-cinzel text-sm md:text-xl font-bold text-roman-gradient whitespace-nowrap">
-    CHAPLIN Luxury Holiday House
-  </span>
 </Link>
 
             <div className="flex items-center gap-2 md:gap-4">

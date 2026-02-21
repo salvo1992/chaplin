@@ -48,10 +48,10 @@ export const metadata: Metadata = {
     siteName: "CHAPLIN Luxury Holiday House",
     images: [
       {
-        url: "/images/logo22.jpg",
+        url: "/images/chaplin-logo.png",
         width: 1200,
         height: 630,
-        alt: "CHAPLIN Luxury Holiday House",
+        alt: "Chaplin Luxury Holiday House",
       },
     ],
     locale: "it_IT",
@@ -62,7 +62,7 @@ export const metadata: Metadata = {
     title: "",
     description:
       "Experience authentic Italian hospitality at CHAPLIN Luxury Holiday House bed & breakfast in the Valutata dagli ospiti dopo il soggiorno presso CHAPLIN Luxury Holiday House.",
-    images: ["/images/logo22.jpg"],
+    images: ["/images/chaplin-logo.png"],
   },
 }
 
