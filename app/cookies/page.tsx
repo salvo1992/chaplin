@@ -161,7 +161,7 @@ export default function CookiesPage() {
                   <h4 className="font-semibold">{t("necessaryCookiesTitle")}</h4>
                   <p className="text-sm text-muted-foreground">{t("necessaryCookiesAlwaysActive")}</p>
                 </div>
-                <div className="w-12 h-6 bg-green-500/80 rounded-full flex items-center justify-end px-1">
+                <div className="w-12 h-6 bg-[#c9a84c] rounded-full flex items-center justify-end px-1">
                   <div className="w-4 h-4 bg-white rounded-full shadow" />
                 </div>
               </div>
@@ -247,7 +247,7 @@ export default function CookiesPage() {
                   <li>{t("technicalItem3")}</li>
                   <li>{t("technicalItem4")}</li>
                 </ul>
-                <div className="rounded-md border bg-green-50 p-3 text-sm">
+                <div className="rounded-md border bg-[#c9a84c]/10 p-3 text-sm">
                   {t("alwaysActive")}
                 </div>
               </CardContent>

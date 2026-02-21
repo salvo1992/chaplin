@@ -99,7 +99,7 @@ ${t("pricePerNightLabel")} €${price}${t("perNight")}`
               <div className="absolute top-4 left-4 flex flex-col gap-2">
                 {room.featured && <Badge className="bg-primary text-primary-foreground">{t("mostRequested")}</Badge>}
                 {!room.available && <Badge variant="destructive">{t("notAvailable")}</Badge>}
-                {room.originalPrice > price && <Badge className="bg-green-600 text-white">{t("specialOffer")}</Badge>}
+                {room.originalPrice > price && <Badge className="bg-[#c9a84c] text-[#1a1a1a]">{t("specialOffer")}</Badge>}
               </div>
 
               <div className="absolute top-4 right-4 flex flex-col gap-2">

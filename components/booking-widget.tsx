@@ -118,7 +118,7 @@ export function BookingWidget({ roomId }: BookingWidgetProps) {
             </CardTitle>
 
             {originalPrice > basePrice && (
-              <Badge className="w-fit bg-green-600 text-white">
+              <Badge className="w-fit bg-[#c9a84c] text-[#1a1a1a]">
                 {t("save")} {formatMoney(discount)}
               </Badge>
             )}

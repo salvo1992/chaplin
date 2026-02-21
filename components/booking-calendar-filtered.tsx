@@ -197,7 +197,7 @@ const filteredBookings = bookings.filter((booking) => {
 
       <div className="flex flex-wrap gap-2 sm:gap-3 p-3 bg-muted/30 rounded-lg text-xs justify-center sm:justify-start">
         <div className="flex items-center gap-1.5">
-          <div className="w-3 h-3 rounded bg-green-100 border border-green-300" />
+          <div className="w-3 h-3 rounded bg-[#f5f5f0] border border-[#d4d0c8]" />
           <span>Disponibile</span>
         </div>
         <div className="flex items-center gap-1.5">
@@ -213,7 +213,7 @@ const filteredBookings = bookings.filter((booking) => {
           <span>Expedia</span>
         </div>
         <div className="flex items-center gap-1.5">
-          <div className="w-3 h-3 rounded bg-emerald-100 border border-emerald-300" />
+          <div className="w-3 h-3 rounded bg-[#c9a84c]/15 border border-[#c9a84c]/40" />
           <span>Sito / Dirette</span>
         </div>
         <div className="flex items-center gap-1.5">
@@ -238,7 +238,7 @@ const filteredBookings = bookings.filter((booking) => {
           const hasBookings = dayBookings.length > 0
           const blocked = isDateBlocked(day)
 
-          let bgColor = "bg-green-50 border-green-200"
+          let bgColor = "bg-[#f5f5f0] border-[#d4d0c8]"
           if (blocked && !hasBookings) {
             bgColor = "bg-orange-50 border-orange-300"
           } else if (hasBookings) {
@@ -254,7 +254,7 @@ const filteredBookings = bookings.filter((booking) => {
             } else if (hasExpedia) {
               bgColor = "bg-yellow-50 border-yellow-300"
             } else if (hasSite) {
-              bgColor = "bg-emerald-50 border-emerald-300"
+              bgColor = "bg-[#c9a84c]/10 border-[#c9a84c]/30"
             }
           }
 
@@ -289,7 +289,7 @@ const filteredBookings = bookings.filter((booking) => {
                             ? "bg-pink-600 text-white"
                             : booking.origin === "expedia"
                               ? "bg-yellow-600 text-white"
-                              : "bg-emerald-600 text-white"
+                              : "bg-[#c9a84c] text-white"
                       }`}
                     >
                       {booking.origin === "direct" ? "diretta" : booking.origin}
@@ -347,7 +347,7 @@ const filteredBookings = bookings.filter((booking) => {
                             ? "bg-pink-600"
                             : booking.origin === "expedia"
                               ? "bg-yellow-600"
-                              : "bg-emerald-600"
+                              : "bg-[#c9a84c]"
                       }`}
                     >
                       {booking.origin === "direct" ? "Diretta" : booking.origin}
@@ -356,7 +356,7 @@ const filteredBookings = bookings.filter((booking) => {
                       variant="outline"
                       className={`text-xs ${
                         booking.status === "confirmed"
-                          ? "border-green-600 text-green-600"
+                          ? "border-[#c9a84c] text-[#c9a84c]"
                           : booking.status === "pending"
                             ? "border-yellow-600 text-yellow-600"
                             : "border-red-600 text-red-600"

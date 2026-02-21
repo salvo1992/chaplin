@@ -258,7 +258,7 @@ function AdminInner() {
                 <Card>
                   <CardHeader className="pb-2">
                     <CardTitle className="text-sm flex items-center gap-2">
-                      <Badge className="bg-emerald-600 text-white text-xs">Sito / Dirette</Badge>
+                      <Badge className="bg-[#c9a84c] text-white text-xs">Sito / Dirette</Badge>
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
@@ -301,7 +301,7 @@ function AdminInner() {
                                       ? "bg-pink-600"
                                       : b.origin === "expedia"
                                         ? "bg-yellow-600"
-                                        : "bg-emerald-600"
+                                        : "bg-[#c9a84c]"
                                 }`}
                               >
                                 {b.origin === "direct" ? "Diretta" : b.origin}
@@ -336,7 +336,7 @@ function AdminInner() {
                           <Badge
                             className={
                               r.status === "available"
-                                ? "bg-green-600 text-xs"
+                                ? "bg-[#c9a84c] text-xs"
                                 : r.status === "booked"
                                   ? "bg-red-600 text-xs"
                                   : "bg-yellow-600 text-xs"
@@ -415,7 +415,7 @@ function AdminInner() {
                                         ? "bg-pink-600"
                                         : b.origin === "expedia"
                                           ? "bg-yellow-600"
-                                          : "bg-emerald-600"
+                                          : "bg-[#c9a84c]"
                                   }`}
                                 >
                                   {b.origin === "direct" ? "Diretta" : b.origin}
@@ -565,7 +565,7 @@ function AdminInner() {
                                 </p>
                               </div>
                               <div className="flex gap-2 flex-shrink-0">
-                                <Badge className="bg-emerald-600 text-white text-xs">
+                                <Badge className="bg-[#c9a84c] text-white text-xs">
                                   {b.origin === "direct" ? "Diretta" : "Sito Web"}
                                 </Badge>
                                 <Badge className="text-xs">€{b.total || (b as any).totalAmount || "0"}</Badge>
@@ -616,7 +616,7 @@ function AdminInner() {
                                         ? "bg-pink-600"
                                         : b.origin === "expedia"
                                           ? "bg-yellow-600"
-                                          : "bg-emerald-600"
+                                          : "bg-[#c9a84c]"
                                   }`}
                                 >
                                   {b.origin === "direct" ? "Diretta" : b.origin}

@@ -13,28 +13,28 @@ export function ServiceCategories() {
       name: t("wellnessCategory"),
       description: t("wellnessCategoryDesc"),
       count: 8,
-      color: "bg-blue-100 text-blue-700",
+      color: "bg-[#1a1a1a]/10 text-[#1a1a1a]",
     },
     {
       icon: Utensils,
       name: t("gastronomyCategory"),
       description: t("gastronomyCategoryDesc"),
       count: 6,
-      color: "bg-orange-100 text-orange-700",
+      color: "bg-[#c9a84c]/15 text-[#c9a84c]",
     },
     {
       icon: Mountain,
       name: t("activitiesCategory"),
       description: t("activitiesCategoryDesc"),
       count: 12,
-      color: "bg-green-100 text-green-700",
+      color: "bg-[#1a1a1a]/10 text-[#1a1a1a]",
     },
     {
       icon: Dumbbell,
       name: t("fitnessCategory"),
       description: t("fitnessCategoryDesc"),
       count: 4,
-      color: "bg-purple-100 text-purple-700",
+      color: "bg-[#c9a84c]/15 text-[#c9a84c]",
     },
   ]
 

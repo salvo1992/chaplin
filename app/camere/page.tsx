@@ -162,24 +162,24 @@ export default function CamerePage() {
   ]
 
   // ✅ Verde WhatsApp
-  const greenText = "text-emerald-600 dark:text-emerald-400"
-  const greenBorder = "border-emerald-200/70 dark:border-emerald-800/60"
-  const greenSoftBg = "bg-emerald-500/10"
+  const greenText = "text-[#c9a84c] dark:text-[#d4af37]"
+  const greenBorder = "border-[#c9a84c]/20 dark:border-[#c9a84c]/30"
+  const greenSoftBg = "bg-[#c9a84c]/10"
 
   return (
     <main className="min-h-screen overflow-x-hidden">
       <Header />
 
       {/* ✅ HERO: COME PRIMA (stile “Booking”, senza le card aggiunte) */}
-      <section className="pt-20 pb-10 bg-gradient-to-b from-emerald-500/10 to-background relative overflow-hidden">
+      <section className="pt-20 pb-10 bg-gradient-to-b from-[#c9a84c]/5 to-background relative overflow-hidden">
         <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-20 left-10 w-32 h-32 bg-emerald-500/10 rounded-full animate-float" />
+          <div className="absolute top-20 left-10 w-32 h-32 bg-[#c9a84c]/10 rounded-full animate-float" />
           <div
-            className="absolute bottom-10 right-20 w-24 h-24 bg-emerald-500/10 rounded-full animate-float"
+            className="absolute bottom-10 right-20 w-24 h-24 bg-[#c9a84c]/10 rounded-full animate-float"
             style={{ animationDelay: "1s" }}
           />
           <div
-            className="absolute top-1/2 right-1/4 w-16 h-16 bg-emerald-500/10 rounded-full animate-float"
+            className="absolute top-1/2 right-1/4 w-16 h-16 bg-[#c9a84c]/10 rounded-full animate-float"
             style={{ animationDelay: "2s" }}
           />
         </div>
@@ -246,7 +246,7 @@ export default function CamerePage() {
       </section>
 
       {/* CONTENUTO */}
-      <section className="py-10 bg-gradient-to-b from-background to-emerald-500/5 overflow-hidden">
+      <section className="py-10 bg-gradient-to-b from-background to-[#c9a84c]/5 overflow-hidden">
         <div className="container mx-auto px-4">
           <Card className={`p-6 shadow-xl border-2 ${greenBorder} bg-white/60 dark:bg-black/20 max-w-6xl mx-auto`}>
             <div className="text-center mb-6">
@@ -259,7 +259,7 @@ export default function CamerePage() {
             </div>
 
             {/* disponibilità */}
-            <div className={`mb-6 p-4 rounded-2xl border ${greenBorder} bg-emerald-500/5 flex flex-col md:flex-row md:items-center md:justify-between gap-4`}>
+            <div className={`mb-6 p-4 rounded-2xl border ${greenBorder} bg-[#c9a84c]/5 flex flex-col md:flex-row md:items-center md:justify-between gap-4`}>
               <div>
                 <p className="text-xs text-muted-foreground mb-1">Disponibilità</p>
                 <p className={`text-lg sm:text-xl font-semibold ${greenText}`}>{HOME.priceLabel}</p>
@@ -270,12 +270,12 @@ export default function CamerePage() {
                 <Button
                   asChild
                   variant="outline"
-                  className="border-emerald-300/70 hover:border-emerald-400 hover:bg-emerald-500/10"
+                  className="border-[#c9a84c]/40 hover:border-[#c9a84c] hover:bg-[#c9a84c]/10"
                 >
                   <Link href="/contatti">Contatta</Link>
                 </Button>
 
-                <Button asChild className="bg-emerald-500 hover:bg-emerald-600 text-white shadow-lg">
+                <Button asChild className="bg-[#1a1a1a] hover:bg-[#333] text-[#f5f5f0] shadow-lg">
                   <Link href="/prenota">
                     Controlla date <Sparkles className="w-4 h-4 ml-1" />
                   </Link>
@@ -354,7 +354,7 @@ export default function CamerePage() {
             </div>
 
             {/* regole */}
-            <div className={`mt-6 p-4 rounded-2xl border ${greenBorder} bg-emerald-500/5`}>
+            <div className={`mt-6 p-4 rounded-2xl border ${greenBorder} bg-[#c9a84c]/5`}>
               <h3 className="text-lg font-semibold flex items-center gap-2 mb-2">
                 <CalendarClock className={`w-5 h-5 ${greenText}`} />
                 Regole della struttura
@@ -447,7 +447,7 @@ export default function CamerePage() {
                   onClick={() => setCurrentImageIndex(index)}
                   className={`relative flex-shrink-0 w-16 h-12 rounded-lg overflow-hidden border-2 transition-all ${
                     index === currentImageIndex
-                      ? "border-emerald-400 shadow-lg scale-110"
+                      ? "border-[#c9a84c] shadow-lg scale-110"
                       : "border-white/30 hover:border-white/60"
                   }`}
                 >

@@ -55,9 +55,9 @@ export default function ContactsPage() {
           <div className="grid lg:grid-cols-3 gap-6 mb-12 animate-slide-in-right">
             <div className="card-invisible p-5">
               <div className="flex items-start gap-3">
-                <MapPin className="h-5 w-5 text-emerald-600 mt-1 flex-shrink-0" />
+                <MapPin className="h-5 w-5 text-[#c9a84c] mt-1 flex-shrink-0" />
                 <div>
-                  <h3 className="font-cinzel font-semibold text-emerald-700 dark:text-emerald-400 mb-2 text-base">
+                  <h3 className="font-cinzel font-semibold text-[#c9a84c] dark:text-[#d4af37] mb-2 text-base">
                     Dove Siamo
                   </h3>
                   <p className="text-sm font-medium">{CONTACT_INFO.name}</p>
@@ -69,9 +69,9 @@ export default function ContactsPage() {
 
             <div className="card-invisible p-5">
               <div className="flex items-start gap-3">
-                <Phone className="h-5 w-5 text-emerald-600 mt-1 flex-shrink-0" />
+                <Phone className="h-5 w-5 text-[#c9a84c] mt-1 flex-shrink-0" />
                 <div>
-                  <h3 className="font-cinzel font-semibold text-emerald-700 dark:text-emerald-400 mb-2 text-base">
+                  <h3 className="font-cinzel font-semibold text-[#c9a84c] dark:text-[#d4af37] mb-2 text-base">
                     Contatti Diretti
                   </h3>
                   <div className="space-y-2">
@@ -90,9 +90,9 @@ export default function ContactsPage() {
 
             <div className="card-invisible p-5">
               <div className="flex items-start gap-3">
-                <Clock className="h-5 w-5 text-emerald-600 mt-1 flex-shrink-0" />
+                <Clock className="h-5 w-5 text-[#c9a84c] mt-1 flex-shrink-0" />
                 <div className="flex-1">
-                  <h3 className="font-cinzel font-semibold text-emerald-700 dark:text-emerald-400 mb-2 text-base">
+                  <h3 className="font-cinzel font-semibold text-[#c9a84c] dark:text-[#d4af37] mb-2 text-base">
                     Orari
                   </h3>
                   <div className="space-y-1 text-sm">
@@ -114,7 +114,7 @@ export default function ContactsPage() {
             </div>
 
             <div className="lg:col-span-3 card-invisible p-5">
-              <h3 className="font-cinzel text-base font-semibold text-emerald-700 dark:text-emerald-400 mb-2">
+              <h3 className="font-cinzel text-base font-semibold text-[#c9a84c] dark:text-[#d4af37] mb-2">
                 Servizio Concierge
               </h3>
               <p className="text-sm text-muted-foreground mb-3">
@@ -124,7 +124,7 @@ export default function ContactsPage() {
               <Button
                 variant="outline"
                 size="sm"
-                className="bg-transparent text-sm border-emerald-300/70 hover:bg-emerald-500/10 hover:border-emerald-400"
+                className="bg-transparent text-sm border-[#c9a84c]/40 hover:bg-[#c9a84c]/10 hover:border-[#c9a84c]"
               >
                 Scopri i Servizi
               </Button>
@@ -136,7 +136,7 @@ export default function ContactsPage() {
               <div className="mx-auto w-full max-w-3xl">
                 <Card className="card-semi-transparent animate-slide-in-left">
                   <CardHeader className="pb-4">
-                    <CardTitle className="text-xl font-cinzel text-emerald-700 dark:text-emerald-400">
+                    <CardTitle className="text-xl font-cinzel text-[#c9a84c] dark:text-[#d4af37]">
                       Invia un Messaggio
                     </CardTitle>
                     <CardDescription className="text-sm">Ti risponderemo entro 24 ore</CardDescription>
@@ -154,7 +154,7 @@ export default function ContactsPage() {
                           value={formData.name}
                           onChange={handleInputChange}
                           required
-                          className="mt-1 focus-visible:ring-emerald-500"
+                          className="mt-1 focus-visible:ring-[#c9a84c]"
                         />
                       </div>
 
@@ -169,7 +169,7 @@ export default function ContactsPage() {
                           value={formData.email}
                           onChange={handleInputChange}
                           required
-                          className="mt-1 focus-visible:ring-emerald-500"
+                          className="mt-1 focus-visible:ring-[#c9a84c]"
                         />
                       </div>
 
@@ -183,7 +183,7 @@ export default function ContactsPage() {
                           value={formData.subject}
                           onChange={handleInputChange}
                           required
-                          className="mt-1 focus-visible:ring-emerald-500"
+                          className="mt-1 focus-visible:ring-[#c9a84c]"
                         />
                       </div>
 
@@ -197,14 +197,14 @@ export default function ContactsPage() {
                           value={formData.message}
                           onChange={handleInputChange}
                           placeholder="Scrivi il tuo messaggio..."
-                          className="mt-1 focus-visible:ring-emerald-500"
+                          className="mt-1 focus-visible:ring-[#c9a84c]"
                           rows={4}
                           required
                         />
                       </div>
 
                       <div className="md:col-span-2">
-                        <Button type="submit" className="w-full py-5 bg-emerald-500 hover:bg-emerald-600 text-white">
+                        <Button type="submit" className="w-full py-5 bg-[#1a1a1a] hover:bg-[#333] text-[#f5f5f0]">
                           Invia
                         </Button>
                       </div>
@@ -216,12 +216,12 @@ export default function ContactsPage() {
           </div>
 
           <div className="mt-8 sm:mt-12 mb-12 max-w-3xl mx-auto animate-fade-in-up">
-            <Card className="card-semi-transparent border-emerald-500/20">
+            <Card className="card-semi-transparent border-[#c9a84c]/20">
               <CardContent className="p-5">
                 <div className="text-center">
                   <div className="flex items-center justify-center gap-2 mb-2">
-                    <Mail className="w-5 h-5 text-emerald-600" />
-                    <h2 className="text-lg font-cinzel font-bold text-emerald-700 dark:text-emerald-400">
+                    <Mail className="w-5 h-5 text-[#c9a84c]" />
+                    <h2 className="text-lg font-cinzel font-bold text-[#c9a84c] dark:text-[#d4af37]">
                       Newsletter Esclusiva
                     </h2>
                   </div>
@@ -241,15 +241,15 @@ export default function ContactsPage() {
                         value={newsletterEmail}
                         onChange={(e) => setNewsletterEmail(e.target.value)}
                         required
-                        className="flex-1 h-10 focus-visible:ring-emerald-500"
+                        className="flex-1 h-10 focus-visible:ring-[#c9a84c]"
                       />
-                      <Button type="submit" size="sm" className="h-10 bg-emerald-500 hover:bg-emerald-600 text-white">
+                      <Button type="submit" size="sm" className="h-10 bg-[#1a1a1a] hover:bg-[#333] text-[#f5f5f0]">
                         Iscriviti
                       </Button>
                     </form>
                   ) : (
-                    <div className="bg-green-50 border border-green-200 rounded-lg p-3 max-w-md mx-auto">
-                      <div className="flex items-center justify-center gap-2 text-green-800">
+                    <div className="bg-[#c9a84c]/10 border border-[#c9a84c]/30 rounded-lg p-3 max-w-md mx-auto">
+                      <div className="flex items-center justify-center gap-2 text-[#1a1a1a]">
                         <Heart className="w-4 h-4 fill-current" />
                         <span className="text-sm font-medium">Grazie per esserti iscritto!</span>
                       </div>
