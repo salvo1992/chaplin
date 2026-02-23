@@ -4,19 +4,20 @@ import { FieldValue } from "firebase-admin/firestore"
 import Stripe from "stripe"
 import { sendModificationEmail } from "@/lib/email"
 import { calculateNights, calculateDaysUntilCheckIn, calculateChangeDatesPenalty } from "@/lib/pricing"
+import { nexiClient } from "@/lib/nexi-client"
 
 if (!process.env.STRIPE_SECRET_KEY) {
   console.error("[v0 CRITICAL] ❌ STRIPE_SECRET_KEY is missing at module load!")
   throw new Error("STRIPE_SECRET_KEY environment variable is required")
 }
 
-console.log("[v0 DEBUG] 🔧 Module loaded - Stripe key present:", process.env.STRIPE_SECRET_KEY?.slice(0, 10) + "...")
+// Stripe + Nexi dual-gateway support for change-dates payments
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
   apiVersion: "2024-11-20.acacia",
 })
 
-console.log("[v0 DEBUG] ✅ Stripe client initialized successfully")
+
 
 function isDateInRecurringSeason(date: Date, startMMDD: string, endMMDD: string): boolean {
   const month = String(date.getMonth() + 1).padStart(2, "0")
@@ -244,74 +245,90 @@ export async function PUT(request: NextRequest) {
 
     if (priceDifference > 0) {
       const paymentAmount = priceDifference
+      const paymentProvider = bookingData?.paymentProvider || "stripe"
 
-      console.log("[v0 DEBUG] Price increased, creating Stripe checkout for full difference...")
-      console.log("[v0 DEBUG] Payment amount:", paymentAmount, "EUR")
+      console.log(`[v0] Price increased, creating ${paymentProvider} checkout for difference: €${paymentAmount}`)
 
       const baseUrl = process.env.NODE_ENV === "development" ? "http://localhost:3000" : "https://al22suite.com"
-
       const successUrl = `${baseUrl}/user/booking/${bookingId}?payment=processing`
       const cancelUrl = `${baseUrl}/user/booking/${bookingId}?payment=cancelled`
 
-      console.log("[v0 DEBUG] SUCCESS URL:", successUrl)
-      console.log("[v0 DEBUG] CANCEL URL:", cancelUrl)
-
       try {
-        const session = await stripe.checkout.sessions.create({
-          payment_method_types: ["card"],
-          client_reference_id: bookingId,
-          line_items: [
-            {
-              price_data: {
-                currency: "eur",
-                product_data: {
-                  name: `Pagamento Modifica Date - ${bookingData?.roomName || "Camera"}`,
-                  description: `Nuove date: ${checkIn} - ${checkOut}${penaltyAmount > 0 ? ` (include penale €${penaltyAmount.toFixed(2)})` : ""}\nDifferenza prezzo da pagare`,
-                },
-                unit_amount: Math.round(paymentAmount * 100),
-              },
-              quantity: 1,
-            },
-          ],
-          mode: "payment",
-          success_url: successUrl,
-          cancel_url: cancelUrl,
-          metadata: {
-            bookingId,
-            type: "change_dates",
-            checkIn,
-            checkOut,
-            newTotalAmount: totalAmount.toString(),
-            penalty: penaltyAmount.toString(),
-            originalAmount: originalAmount.toString(),
-            priceDifference: priceDifference.toString(),
-            paymentAmount: paymentAmount.toString(),
-          },
-        })
+        let paymentUrl: string | null = null
 
-        console.log("[v0 DEBUG] ✅ Checkout Session Created Successfully!")
-        console.log("[v0 DEBUG] Session ID:", session.id)
-        console.log("[v0 DEBUG] Checkout URL:", session.url)
+        if (paymentProvider === "nexi") {
+          // --- NEXI PAYMENT ---
+          const nexiOrder = await nexiClient.createOrder({
+            orderId: `CHANGE_${bookingId}_${Date.now()}`,
+            amount: Math.round(paymentAmount * 100),
+            currency: "EUR",
+            description: `Modifica date - ${bookingData?.roomName || "Camera"} (${checkIn} - ${checkOut})`,
+            customerEmail: bookingData?.email,
+            resultUrl: `${baseUrl}/api/payments/nexi/callback`,
+            cancelUrl,
+            language: "ITA",
+            metadata: {
+              bookingId,
+              type: "change_dates",
+              checkIn,
+              checkOut,
+              newTotalAmount: totalAmount.toString(),
+            },
+          })
+          paymentUrl = nexiOrder.hostedPage
+        } else {
+          // --- STRIPE PAYMENT ---
+          const session = await stripe.checkout.sessions.create({
+            payment_method_types: ["card"],
+            client_reference_id: bookingId,
+            line_items: [
+              {
+                price_data: {
+                  currency: "eur",
+                  product_data: {
+                    name: `Pagamento Modifica Date - ${bookingData?.roomName || "Camera"}`,
+                    description: `Nuove date: ${checkIn} - ${checkOut}${penaltyAmount > 0 ? ` (include penale €${penaltyAmount.toFixed(2)})` : ""}\nDifferenza prezzo da pagare`,
+                  },
+                  unit_amount: Math.round(paymentAmount * 100),
+                },
+                quantity: 1,
+              },
+            ],
+            mode: "payment",
+            success_url: successUrl,
+            cancel_url: cancelUrl,
+            metadata: {
+              bookingId,
+              type: "change_dates",
+              checkIn,
+              checkOut,
+              newTotalAmount: totalAmount.toString(),
+              penalty: penaltyAmount.toString(),
+              originalAmount: originalAmount.toString(),
+              priceDifference: priceDifference.toString(),
+              paymentAmount: paymentAmount.toString(),
+            },
+          })
+          paymentUrl = session.url
+        }
 
         return NextResponse.json({
           success: true,
           paymentRequired: true,
-          paymentUrl: session.url,
+          paymentUrl,
           paymentAmount,
           newTotalAmount: totalAmount,
           basePrice,
           penaltyAmount,
           originalAmount,
+          paymentProvider,
           message: `Differenza di prezzo da pagare: €${paymentAmount.toFixed(2)}`,
           instructions: "Dopo il pagamento, riceverai un'email di conferma con i nuovi dettagli della prenotazione",
         })
-      } catch (stripeError: any) {
-        console.error("[v0 DEBUG] ❌ Stripe Checkout Error:", stripeError)
+      } catch (paymentError: any) {
+        console.error(`[v0] ${paymentProvider} Checkout Error:`, paymentError)
         return NextResponse.json(
-          {
-            error: "Failed to create payment session",
-            details: stripeError.message,
-          },
+          { error: "Failed to create payment session", details: paymentError.message },
           { status: 500 },
         )
       }
@@ -319,8 +336,9 @@ export async function PUT(request: NextRequest) {
 
     if (priceDifference < 0) {
       const refundAmount = Math.abs(priceDifference)
+      const paymentProvider = bookingData?.paymentProvider || "stripe"
 
-      console.log("[v0] Price decreased - notifying customer about manual refund:", refundAmount)
+      console.log(`[v0] Price decreased - refund via ${paymentProvider}: €${refundAmount}`)
 
       await bookingRef.update({
         checkIn,
@@ -333,6 +351,7 @@ export async function PUT(request: NextRequest) {
           reason: "date_change_price_decrease",
           requestedAt: FieldValue.serverTimestamp(),
           status: "pending_manual_processing",
+          provider: paymentProvider,
         },
         updatedAt: FieldValue.serverTimestamp(),
       })
@@ -356,7 +375,7 @@ export async function PUT(request: NextRequest) {
         manualRefund: true,
       })
 
-      console.log("[API] Booking dates changed - refund will be processed manually:", bookingId)
+      console.log(`[API] Booking dates changed - refund via ${paymentProvider}:`, bookingId)
 
       return NextResponse.json({
         success: true,
@@ -370,7 +389,8 @@ export async function PUT(request: NextRequest) {
         newTotalAmount: totalAmount,
         refundPending: true,
         refundAmount,
-        message: `Date modificate. Rimborso di €${refundAmount.toFixed(2)} verrà elaborato manualmente entro 5-10 giorni lavorativi.`,
+        paymentProvider,
+        message: `Date modificate. Rimborso di €${refundAmount.toFixed(2)} verrà elaborato tramite ${paymentProvider === "nexi" ? "Nexi" : "Stripe"} entro 5-10 giorni lavorativi.`,
       })
     }
 

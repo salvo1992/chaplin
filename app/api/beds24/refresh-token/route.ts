@@ -1,36 +1,17 @@
-/*import { NextResponse } from "next/server"
-import { beds24Client } from "@/lib/beds24-client"
+import { NextResponse } from "next/server"
 
-export const dynamic = "force-dynamic"
+/* ============================================================================
+ * BEDS24 DISABLED - Sito personale, nessuna integrazione esterna
+ * ============================================================================ */
 
-export async function GET() {
-  return Response.json(
-    { disabled: true, provider: "beds24", message: "Beds24 disabled (using Smoobu)" },
-    { status: 503 }
-  )
+export const dynamic = 'force-dynamic'
+
+export async function POST() {
+  return NextResponse.json({ disabled: true, provider: "beds24", message: "Beds24 integration disabled" })
 }
-/**
- * Manual token refresh endpoint
- * Useful for testing or forcing a write token refresh
- */
-/*export async function POST() {
-  try {
-    await beds24Client.forceRefreshWriteToken()
 
-    return NextResponse.json({
-      success: true,
-      message: "Write token refreshed successfully",
-      timestamp: new Date().toISOString(),
-    })
-  } catch (error) {
-    console.error("[v0] Error refreshing write token:", error)
-    return NextResponse.json(
-      {
-        success: false,
-        error: error instanceof Error ? error.message : "Failed to refresh write token",
-      },
-      { status: 500 },
-    )
-  }
-}
+/*
+// ORIGINAL BEDS24 REFRESH-TOKEN CODE - DO NOT DELETE
+// This file refreshed Beds24 write tokens
+// When re-enabling, restore from git history
 */

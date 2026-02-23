@@ -49,8 +49,8 @@ export async function DELETE(request: NextRequest) {
     const penalty = Number.parseFloat(cancellationPolicy.penaltyAmount.toFixed(2))
     const isFullRefund = cancellationPolicy.refundPercentage === 100
 
-    console.log("[API] Booking cancelled - refund will be processed manually from Stripe dashboard")
-    console.log("[API] Refund amount:", refundAmount, "EUR", `(${cancellationPolicy.refundPercentage}%)`)
+    const paymentProvider = booking?.paymentProvider || "stripe"
+    console.log(`[API] Booking cancelled via ${paymentProvider} - refund: €${refundAmount} (${cancellationPolicy.refundPercentage}%)`)
 
     await bookingRef.update({
       status: "cancelled",
@@ -60,41 +60,34 @@ export async function DELETE(request: NextRequest) {
       refundPercentage: cancellationPolicy.refundPercentage,
       penaltyPercentage: cancellationPolicy.penaltyPercentage,
       cancellationReason: isFullRefund ? "full_refund" : "late_cancellation",
-      pendingRefund: {
-        amount: refundAmount,
-        reason: "booking_cancelled",
-        requestedAt: FieldValue.serverTimestamp(),
-        status: "pending_manual_processing",
-      },
+      ...(refundAmount > 0
+        ? {
+            pendingRefund: {
+              amount: refundAmount,
+              reason: "booking_cancelled",
+              requestedAt: FieldValue.serverTimestamp(),
+              status: "pending_manual_processing",
+              provider: paymentProvider,
+            },
+          }
+        : {}),
       updatedAt: FieldValue.serverTimestamp(),
     })
 
+    /* SMOOBU DISABLED - Unblocking dates now handled via Firebase only
     if (booking?.origin === "site" && booking?.roomId && booking?.checkIn && booking?.checkOut) {
       try {
         console.log("[Smoobu] Unblocking dates for cancelled booking")
         const unblockResponse = await fetch(
           `${process.env.NEXT_PUBLIC_SITE_URL || "https://al22suite.com"}/api/smoobu/unblock-booking-dates`,
-          {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              roomId: booking.roomId,
-              checkIn: booking.checkIn,
-              checkOut: booking.checkOut,
-            }),
-          },
-        )
-
-        if (unblockResponse.ok) {
-          console.log("[Smoobu] Dates unblocked successfully")
-        } else {
-          console.error("[Smoobu] Failed to unblock dates:", await unblockResponse.text())
-        }
+          { method: "POST", headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ roomId: booking.roomId, checkIn: booking.checkIn, checkOut: booking.checkOut }) })
+        if (unblockResponse.ok) console.log("[Smoobu] Dates unblocked successfully")
       } catch (error) {
         console.error("[Smoobu] Error unblocking dates:", error)
-        // Continue with cancellation even if unblock fails
       }
     }
+    */
 
     try {
       await sendCancellationEmail({
@@ -148,10 +141,11 @@ export async function DELETE(request: NextRequest) {
       refundPercentage: cancellationPolicy.refundPercentage,
       penaltyPercentage: cancellationPolicy.penaltyPercentage,
       isFullRefund,
+      paymentProvider,
       message:
         refundAmount > 0
-          ? `Prenotazione cancellata. Il rimborso di €${refundAmount.toFixed(2)} verrà elaborato manualmente da Stripe entro 5-10 giorni lavorativi.`
-          : "Prenotazione cancellata.",
+          ? `Prenotazione cancellata. Il rimborso di €${refundAmount.toFixed(2)} verrà elaborato tramite ${paymentProvider === "nexi" ? "Nexi" : "Stripe"} entro 5-10 giorni lavorativi.`
+          : "Prenotazione cancellata. Nessun rimborso previsto (cancellazione entro 7 giorni dal check-in).",
     })
   } catch (error) {
     console.error("Error cancelling booking:", error)
