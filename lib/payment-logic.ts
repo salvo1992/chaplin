@@ -44,9 +44,8 @@ export function calculatePaymentSchedule(
 
 /**
  * Calcola la policy di cancellazione basata sulla data di check-in
- * - Più di 7 giorni prima: 100% rimborso
- * - Meno di 7 giorni prima: 50% rimborso (penalità 50%)
- * - Meno di 48 ore prima: 0% rimborso (penalità 100%)
+ * - Più di 7 giorni prima del check-in: rimborso 100% (gratis)
+ * - 7 giorni o meno prima del check-in: penale 100% (nessun rimborso)
  */
 export function calculateCancellationPolicy(
   checkInDate: Date,
@@ -58,16 +57,12 @@ export function calculateCancellationPolicy(
   let refundPercentage = 0
   let penaltyPercentage = 100
 
-  if (daysUntilCheckIn >= 7) {
+  if (daysUntilCheckIn > 7) {
     // Più di 7 giorni: rimborso totale
     refundPercentage = 100
     penaltyPercentage = 0
-  } else if (daysUntilCheckIn >= 2) {
-    // Tra 2 e 7 giorni: rimborso 50%
-    refundPercentage = 50
-    penaltyPercentage = 50
   } else {
-    // Meno di 48 ore: nessun rimborso
+    // 7 giorni o meno: penale 100%, nessun rimborso
     refundPercentage = 0
     penaltyPercentage = 100
   }
@@ -86,20 +81,21 @@ export function calculateCancellationPolicy(
 
 /**
  * Calcola la penalità per cambio date
- * - Più di 7 giorni prima: gratis
- * - Meno di 7 giorni prima: €50 di penalità
+ * - Più di 7 giorni prima del check-in: gratis
+ * - 7 giorni o meno prima del check-in: penale 50% dell'importo totale
  */
-export function calculateChangeDatesPenalty(
+export function calculateChangeDatesPenaltyFromDate(
   checkInDate: Date,
+  amountPaid: number,
   changeDate: Date = new Date(),
-): { penalty: number; canChange: boolean } {
+): { penalty: number; canChange: boolean; penaltyPercentage: number } {
   const daysUntilCheckIn = Math.floor((checkInDate.getTime() - changeDate.getTime()) / (1000 * 60 * 60 * 24))
 
-  if (daysUntilCheckIn >= 7) {
-    return { penalty: 0, canChange: true }
-  } else if (daysUntilCheckIn >= 2) {
-    return { penalty: 5000, canChange: true } // €50 in centesimi
+  if (daysUntilCheckIn > 7) {
+    return { penalty: 0, canChange: true, penaltyPercentage: 0 }
   } else {
-    return { penalty: 0, canChange: false } // Non si può cambiare
+    // 7 giorni o meno: penale 50%
+    const penalty = Math.round(amountPaid * 0.5)
+    return { penalty, canChange: true, penaltyPercentage: 50 }
   }
 }

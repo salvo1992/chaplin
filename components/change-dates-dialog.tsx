@@ -44,7 +44,7 @@ export function ChangeDatesDialog({
   const [bookingData, setBookingData] = useState<any>(null)
 
   const daysUntilCheckIn = calculateDaysUntilCheckIn(currentCheckIn)
-  const isWithinSevenDays = daysUntilCheckIn < 7
+  const isWithinSevenDays = daysUntilCheckIn <= 7
 
   // Load booking data
   useEffect(() => {

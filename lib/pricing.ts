@@ -50,20 +50,26 @@ export function calculateDaysUntilCheckIn(checkIn: string): number {
   return diffDays
 }
 
+/**
+ * Cancellazione:
+ * - Più di 7 giorni prima del check-in: nessuna penale (rimborso 100%)
+ * - 7 giorni o meno: penale 100% (nessun rimborso)
+ */
 export function calculateCancellationPenalty(totalAmount: number, daysUntilCheckIn: number): number {
-  // If more than 7 days before check-in: no penalty
-  if (daysUntilCheckIn >= 7) {
+  if (daysUntilCheckIn > 7) {
     return 0
   }
-  // If less than 7 days: full amount penalty
   return totalAmount
 }
 
+/**
+ * Cambio date:
+ * - Più di 7 giorni prima del check-in: gratis
+ * - 7 giorni o meno: penale 50% dell'importo totale
+ */
 export function calculateChangeDatesPenalty(totalAmount: number, daysUntilCheckIn: number): number {
-  // If more than 7 days before check-in: no penalty
-  if (daysUntilCheckIn >= 7) {
+  if (daysUntilCheckIn > 7) {
     return 0
   }
-  // If less than 7 days: 50% penalty
   return Math.round(totalAmount * 0.5)
 }

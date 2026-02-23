@@ -49,8 +49,8 @@ export async function DELETE(request: NextRequest) {
     const penalty = Number.parseFloat(cancellationPolicy.penaltyAmount.toFixed(2))
     const isFullRefund = cancellationPolicy.refundPercentage === 100
 
-    console.log("[API] Booking cancelled - refund will be processed manually from Stripe dashboard")
-    console.log("[API] Refund amount:", refundAmount, "EUR", `(${cancellationPolicy.refundPercentage}%)`)
+    const paymentProvider = booking?.paymentProvider || "stripe"
+    console.log(`[API] Booking cancelled via ${paymentProvider} - refund: €${refundAmount} (${cancellationPolicy.refundPercentage}%)`)
 
     await bookingRef.update({
       status: "cancelled",
@@ -60,12 +60,17 @@ export async function DELETE(request: NextRequest) {
       refundPercentage: cancellationPolicy.refundPercentage,
       penaltyPercentage: cancellationPolicy.penaltyPercentage,
       cancellationReason: isFullRefund ? "full_refund" : "late_cancellation",
-      pendingRefund: {
-        amount: refundAmount,
-        reason: "booking_cancelled",
-        requestedAt: FieldValue.serverTimestamp(),
-        status: "pending_manual_processing",
-      },
+      ...(refundAmount > 0
+        ? {
+            pendingRefund: {
+              amount: refundAmount,
+              reason: "booking_cancelled",
+              requestedAt: FieldValue.serverTimestamp(),
+              status: "pending_manual_processing",
+              provider: paymentProvider,
+            },
+          }
+        : {}),
       updatedAt: FieldValue.serverTimestamp(),
     })
 
@@ -136,10 +141,11 @@ export async function DELETE(request: NextRequest) {
       refundPercentage: cancellationPolicy.refundPercentage,
       penaltyPercentage: cancellationPolicy.penaltyPercentage,
       isFullRefund,
+      paymentProvider,
       message:
         refundAmount > 0
-          ? `Prenotazione cancellata. Il rimborso di €${refundAmount.toFixed(2)} verrà elaborato manualmente da Stripe entro 5-10 giorni lavorativi.`
-          : "Prenotazione cancellata.",
+          ? `Prenotazione cancellata. Il rimborso di €${refundAmount.toFixed(2)} verrà elaborato tramite ${paymentProvider === "nexi" ? "Nexi" : "Stripe"} entro 5-10 giorni lavorativi.`
+          : "Prenotazione cancellata. Nessun rimborso previsto (cancellazione entro 7 giorni dal check-in).",
     })
   } catch (error) {
     console.error("Error cancelling booking:", error)
