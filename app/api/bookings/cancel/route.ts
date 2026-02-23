@@ -69,32 +69,20 @@ export async function DELETE(request: NextRequest) {
       updatedAt: FieldValue.serverTimestamp(),
     })
 
+    /* SMOOBU DISABLED - Unblocking dates now handled via Firebase only
     if (booking?.origin === "site" && booking?.roomId && booking?.checkIn && booking?.checkOut) {
       try {
         console.log("[Smoobu] Unblocking dates for cancelled booking")
         const unblockResponse = await fetch(
           `${process.env.NEXT_PUBLIC_SITE_URL || "https://al22suite.com"}/api/smoobu/unblock-booking-dates`,
-          {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              roomId: booking.roomId,
-              checkIn: booking.checkIn,
-              checkOut: booking.checkOut,
-            }),
-          },
-        )
-
-        if (unblockResponse.ok) {
-          console.log("[Smoobu] Dates unblocked successfully")
-        } else {
-          console.error("[Smoobu] Failed to unblock dates:", await unblockResponse.text())
-        }
+          { method: "POST", headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ roomId: booking.roomId, checkIn: booking.checkIn, checkOut: booking.checkOut }) })
+        if (unblockResponse.ok) console.log("[Smoobu] Dates unblocked successfully")
       } catch (error) {
         console.error("[Smoobu] Error unblocking dates:", error)
-        // Continue with cancellation even if unblock fails
       }
     }
+    */
 
     try {
       await sendCancellationEmail({

@@ -230,7 +230,7 @@ export type BookingPayload = {
   nights?: number
   status?: "pending" | "paid" | "confirmed" | "cancelled"
   origin?: "site" | "booking" | "airbnb" | "manual"
-  paymentProvider?: "stripe"
+  paymentProvider?: "stripe" | "nexi"
 }
 
 const BOOKINGS_COL = "bookings"
@@ -307,24 +307,18 @@ export async function cancelBooking(id: string) {
     updatedAt: serverTimestamp(),
   })
 
-  // Auto-unblock dates on Beds24 if booking was from the site
+  /* BEDS24 DISABLED - Unblocking dates now handled via Firebase only
   if (booking && booking.origin === "site") {
     try {
-      // Call unblock API to remove the blocked dates from Beds24
       await fetch("/api/beds24/unblock-booking-dates", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          roomId: booking.roomId,
-          checkIn: booking.checkIn,
-          checkOut: booking.checkOut,
-        }),
+        method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ roomId: booking.roomId, checkIn: booking.checkIn, checkOut: booking.checkOut }),
       })
-      console.log("[v0] Dates unblocked on Beds24 after cancellation")
     } catch (error) {
       console.error("[v0] Failed to unblock dates on Beds24:", error)
     }
   }
+  */
 }
 
 export async function confirmBooking(id: string) {
@@ -397,6 +391,24 @@ export async function createStripeCheckout(args: CreateCheckoutArgs): Promise<{ 
   if (!response.ok) {
     const error = await response.json()
     throw new Error(error.error || "Stripe checkout creation failed")
+  }
+
+  return response.json()
+}
+
+export async function createNexiCheckout(args: CreateCheckoutArgs): Promise<{ url: string }> {
+  const response = await fetch("/api/payments/nexi", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      ...args,
+      paymentType: "full",
+    }),
+  })
+
+  if (!response.ok) {
+    const error = await response.json()
+    throw new Error(error.error || "Nexi checkout creation failed")
   }
 
   return response.json()

@@ -56,10 +56,10 @@ export default function CheckoutSuccess() {
       setBooking(data.booking)
       setEmailSent(true) // Email already sent by process-session API
 
+      /* SMOOBU DISABLED - Date blocking now handled via Firebase only
       if (data.booking?.roomId && data.booking?.checkIn && data.booking?.checkOut) {
         try {
           console.log("[Smoobu] Blocking dates for booking:", data.booking.id)
-          
           const blockResponse = await fetch("/api/smoobu/block-dates", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -70,18 +70,13 @@ export default function CheckoutSuccess() {
               reason: `website_booking_${data.booking.id}`
             }),
           })
-
           const blockResult = await blockResponse.json()
-          
-          if (blockResult.success) {
-            console.log("[Smoobu] Dates blocked successfully")
-          } else {
-            console.warn("[Smoobu] Date blocking completed with warnings:", blockResult.message)
-          }
+          if (blockResult.success) console.log("[Smoobu] Dates blocked successfully")
         } catch (blockError) {
           console.error("[Smoobu] Error blocking dates:", blockError)
         }
       }
+      */
 
       if (data.booking) {
         try {
