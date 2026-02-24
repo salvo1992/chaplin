@@ -4,9 +4,9 @@ import Stripe from "stripe"
 import { sendModificationEmail } from "@/lib/email"
 import { FieldValue } from "firebase-admin/firestore"
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: "2024-11-20.acacia",
-})
+const stripe = process.env.STRIPE_SECRET_KEY
+  ? new Stripe(process.env.STRIPE_SECRET_KEY, { apiVersion: "2024-11-20.acacia" })
+  : null
 
 export async function GET(request: NextRequest) {
   console.log("[v0 PAYMENT SUCCESS] ====== START ======")
