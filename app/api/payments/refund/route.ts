@@ -2,11 +2,11 @@ import { type NextRequest, NextResponse } from "next/server"
 import Stripe from "stripe"
 import { getAdminDb } from "@/lib/firebase-admin"
 import { FieldValue } from "firebase-admin/firestore"
-import { nexiClient } from "@/lib/nexi-client"
+import { refundOperation, findPaymentOperation, isNexiConfigured } from "@/lib/nexi-client"
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: "2024-12-18.acacia",
-})
+const stripe = process.env.STRIPE_SECRET_KEY
+  ? new Stripe(process.env.STRIPE_SECRET_KEY, { apiVersion: "2024-12-18.acacia" })
+  : null
 
 export async function POST(request: NextRequest) {
   try {
@@ -28,20 +28,41 @@ export async function POST(request: NextRequest) {
 
     if (paymentProvider === "nexi") {
       // --- NEXI REFUND ---
-      if (!booking.nexiTransactionId) {
+      if (!isNexiConfigured()) {
         return NextResponse.json(
-          { error: "No Nexi transaction found for this booking. Refund must be processed manually." },
+          { error: "Nexi non configurato. Rimborso deve essere elaborato manualmente.", provider: "nexi", status: "pending_manual_processing" },
+          { status: 400 },
+        )
+      }
+
+      const nexiOrderId = booking.nexiOrderId
+      if (!nexiOrderId) {
+        return NextResponse.json(
+          { error: "No Nexi order found for this booking. Refund must be processed manually." },
           { status: 400 },
         )
       }
 
       try {
-        const refundResult = await nexiClient.refund({
-          transactionId: booking.nexiTransactionId,
-          amount: Math.round(amount * 100), // cents
-          currency: booking.currency || "EUR",
-          description: `Rimborso prenotazione ${bookingId}${reason ? ` - ${reason}` : ""}`,
-        })
+        // Find the operationId from the order
+        let operationId = booking.nexiOperationId
+        if (!operationId) {
+          const payOp = await findPaymentOperation(nexiOrderId)
+          if (!payOp) {
+            return NextResponse.json(
+              { error: "Operazione di pagamento Nexi non trovata. Rimborso manuale necessario." },
+              { status: 400 },
+            )
+          }
+          operationId = payOp.operationId
+        }
+
+        const refundResult = await refundOperation(
+          operationId,
+          Math.round(amount * 100),
+          booking.currency || "EUR",
+          `Rimborso prenotazione ${bookingId}${reason ? ` - ${reason}` : ""}`,
+        )
 
         await db
           .collection("bookings")
@@ -49,7 +70,7 @@ export async function POST(request: NextRequest) {
           .update({
             refundAmount: FieldValue.increment(amount),
             nexiRefundOperationId: refundResult.operationId,
-            refundStatus: "succeeded",
+            refundStatus: refundResult.operationResult || "succeeded",
             refundProvider: "nexi",
             updatedAt: FieldValue.serverTimestamp(),
           })
@@ -58,7 +79,7 @@ export async function POST(request: NextRequest) {
           success: true,
           refundId: refundResult.operationId,
           amount,
-          status: "succeeded",
+          status: refundResult.operationResult || "succeeded",
           provider: "nexi",
         })
       } catch (nexiError: any) {
@@ -86,6 +107,12 @@ export async function POST(request: NextRequest) {
       }
     } else {
       // --- STRIPE REFUND ---
+      if (!stripe) {
+        return NextResponse.json(
+          { error: "Stripe non configurato. Rimborso deve essere elaborato manualmente." },
+          { status: 400 },
+        )
+      }
       if (!booking.stripePaymentIntentId) {
         return NextResponse.json(
           { error: "No Stripe payment intent found for this booking. Refund must be processed manually." },

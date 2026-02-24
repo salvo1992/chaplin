@@ -11,11 +11,16 @@
  */
 
 const NEXI_API_KEY = process.env.NEXI_API_KEY || ""
-const IS_PRODUCTION = process.env.NODE_ENV === "production" && !NEXI_API_KEY.includes("sandbox")
+const IS_PRODUCTION = process.env.NODE_ENV === "production" && NEXI_API_KEY && !NEXI_API_KEY.includes("sandbox")
 
 const NEXI_BASE_URL = IS_PRODUCTION
   ? "https://xpay.nexi.it/api/phoenix-0.0/psp/api/v1"
   : "https://xpaysandbox.nexi.it/api/phoenix-0.0/psp/api/v1"
+
+/** Returns true if Nexi is configured (API key present) */
+export function isNexiConfigured(): boolean {
+  return !!process.env.NEXI_API_KEY
+}
 
 function generateCorrelationId(): string {
   return `chaplin-${Date.now()}-${Math.random().toString(36).substring(2, 10)}`

@@ -4,18 +4,14 @@ import { FieldValue } from "firebase-admin/firestore"
 import Stripe from "stripe"
 import { sendModificationEmail } from "@/lib/email"
 import { calculateNights, calculateDaysUntilCheckIn, calculateChangeDatesPenalty } from "@/lib/pricing"
-import { nexiClient } from "@/lib/nexi-client"
-
-if (!process.env.STRIPE_SECRET_KEY) {
-  console.error("[v0 CRITICAL] ❌ STRIPE_SECRET_KEY is missing at module load!")
-  throw new Error("STRIPE_SECRET_KEY environment variable is required")
-}
+import { createHPPOrder, isNexiConfigured } from "@/lib/nexi-client"
 
 // Stripe + Nexi dual-gateway support for change-dates payments
+// Stripe init is lazy - only fails when actually used, not at build time
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
-  apiVersion: "2024-11-20.acacia",
-})
+const stripe = process.env.STRIPE_SECRET_KEY
+  ? new Stripe(process.env.STRIPE_SECRET_KEY, { apiVersion: "2024-11-20.acacia" })
+  : null
 
 
 
@@ -258,26 +254,31 @@ export async function PUT(request: NextRequest) {
 
         if (paymentProvider === "nexi") {
           // --- NEXI PAYMENT ---
-          const nexiOrder = await nexiClient.createOrder({
-            orderId: `CHANGE_${bookingId}_${Date.now()}`,
+          if (!isNexiConfigured()) {
+            return NextResponse.json(
+              { error: "Nexi non configurato. Contatta il supporto." },
+              { status: 500 },
+            )
+          }
+          const nexiOrder = await createHPPOrder({
+            bookingId: `CHANGE-${bookingId}`,
             amount: Math.round(paymentAmount * 100),
             currency: "EUR",
             description: `Modifica date - ${bookingData?.roomName || "Camera"} (${checkIn} - ${checkOut})`,
             customerEmail: bookingData?.email,
-            resultUrl: `${baseUrl}/api/payments/nexi/callback`,
+            successUrl: `${baseUrl}/api/payments/nexi/callback`,
             cancelUrl,
-            language: "ITA",
-            metadata: {
-              bookingId,
-              type: "change_dates",
-              checkIn,
-              checkOut,
-              newTotalAmount: totalAmount.toString(),
-            },
+            callbackUrl: `${baseUrl}/api/payments/nexi/callback`,
           })
           paymentUrl = nexiOrder.hostedPage
         } else {
           // --- STRIPE PAYMENT ---
+          if (!stripe) {
+            return NextResponse.json(
+              { error: "Stripe non configurato. Contatta il supporto." },
+              { status: 500 },
+            )
+          }
           const session = await stripe.checkout.sessions.create({
             payment_method_types: ["card"],
             client_reference_id: bookingId,
