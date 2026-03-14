@@ -121,9 +121,9 @@ export function ServicesSection() {
   const content = sectionContent[language] || sectionContent.it
 
   const images = [
-    { src: "/images/3.jpg", alt: "Soggiorno" },
-    { src: "/images/4.jpg", alt: "Camera" },
-    { src: "/images/5.jpg", alt: "Bagno" },
+    { src: "/images/spa.jpg", alt: "Spa e benessere" },
+    { src: "/images/spa1.jpg", alt: "Vasca idromassaggio" },
+    { src: "/images/room-1.jpg", alt: "Camera da letto" },
   ]
 
   return (
