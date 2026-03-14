@@ -10,30 +10,47 @@ import { useLanguage } from "@/components/language-provider"
 export function HeroSection() {
   const [currentSlide, setCurrentSlide] = useState(0)
   const [isLoaded, setIsLoaded] = useState(false)
+  const [displayedText, setDisplayedText] = useState("")
+  const [isTypingComplete, setIsTypingComplete] = useState(false)
   const { t } = useLanguage()
+
+  const welcomeText = "Welcome"
 
   const heroImages = [
     {
       src: "/images/bb-hero.jpg",
       alt: "CHAPLIN Luxury Holiday House - Vista principale",
-      titleKey: "heroTitle",
-      subtitleKey: "heroSubtitle",
     },
     {
       src: "/images/pool.jpg",
       alt: "Piscina panoramica",
-      titleKey: "heroTitle2",
-      subtitleKey: "heroSubtitle2",
     },
   ]
 
+  // Typewriter effect for "Welcome"
   useEffect(() => {
     setIsLoaded(true)
+    let currentIndex = 0
+    const typingInterval = setInterval(() => {
+      if (currentIndex <= welcomeText.length) {
+        setDisplayedText(welcomeText.slice(0, currentIndex))
+        currentIndex++
+      } else {
+        clearInterval(typingInterval)
+        setIsTypingComplete(true)
+      }
+    }, 150)
+
+    return () => clearInterval(typingInterval)
+  }, [])
+
+  // Slide autoplay
+  useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % heroImages.length)
     }, 6000)
     return () => clearInterval(timer)
-  }, [])
+  }, [heroImages.length])
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % heroImages.length)
@@ -59,64 +76,63 @@ export function HeroSection() {
             className="object-cover"
             priority={index === 0}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/40 to-black/60" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/50 to-black/70" />
         </div>
       ))}
-
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(20)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-2 h-2 bg-white/20 rounded-full animate-float"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 5}s`,
-              animationDuration: `${3 + Math.random() * 4}s`,
-            }}
-          />
-        ))}
-      </div>
 
       <div className="relative z-10 h-full flex items-center justify-center">
         <div className="text-center text-white px-4 max-w-5xl mx-auto">
           <div
-            className={`transition-all duration-1500 ${isLoaded ? "animate-fade-in-up" : "opacity-0 translate-y-10"}`}
+            className={`transition-all duration-1000 ${isLoaded ? "opacity-100" : "opacity-0"}`}
           >
-            <h1 className="font-roman text-6xl md:text-8xl font-bold mb-8 text-balance text-roman-gradient animate-shimmer">
-              {t(heroImages[currentSlide].titleKey)}
-            </h1>
-            <p className="text-2xl md:text-3xl mb-10 text-balance opacity-90 font-light tracking-wide">
-              {t(heroImages[currentSlide].subtitleKey)}
-            </p>
-
-            <div
-              className="flex items-center justify-center gap-3 mb-12 animate-slide-in-up"
-              style={{ animationDelay: "0.8s" }}
-            >
-              <div className="bg-primary/20 backdrop-blur-sm rounded-full p-2">
-                <MapPin className="w-6 h-6 text-primary animate-pulse" />
-              </div>
-              <span className="text-xl font-medium">Viterbo, Italia</span>
+            {/* Typewriter Welcome Text */}
+            <div className="mb-6">
+              <span className="text-sm md:text-base uppercase tracking-[0.4em] text-white/80 font-light">
+                luxury holiday house | viterbo
+              </span>
             </div>
+            
+            <h1 className="font-cinzel text-7xl md:text-9xl font-light mb-8 tracking-wider">
+              <span className="inline-block min-w-[4ch]">
+                {displayedText}
+                <span 
+                  className={`inline-block w-[3px] h-[0.8em] bg-[#c9a84c] ml-1 align-middle ${
+                    isTypingComplete ? "animate-pulse" : "animate-blink"
+                  }`}
+                />
+              </span>
+            </h1>
 
-            <div
-              className="flex flex-col sm:flex-row gap-6 justify-center animate-slide-in-up"
-              style={{ animationDelay: "1s" }}
+            {/* Subtitle appears after typing completes */}
+            <div 
+              className={`transition-all duration-1000 delay-500 ${
+                isTypingComplete ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+              }`}
             >
-              <Button
-                size="lg"
-                className="bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary text-xl px-12 py-4 rounded-full shadow-2xl hover:shadow-primary/25 transition-all duration-300 hover:scale-105 animate-shimmer"
-              >
-                <Link href="/prenota">{t("bookYourStay")}</Link>
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-2 border-white text-white hover:bg-white hover:text-foreground text-xl px-12 py-4 rounded-full bg-white/10 backdrop-blur-sm transition-all duration-300 hover:scale-105"
-              >
-                <Link href="/servizi">{t("discoverMore")}</Link>
-              </Button>
+              <p className="text-xl md:text-2xl mb-8 text-white/90 font-light tracking-wide">
+                CHAPLIN Luxury Holiday House
+              </p>
+
+              <div className="flex items-center justify-center gap-3 mb-10">
+                <MapPin className="w-5 h-5 text-[#c9a84c]" />
+                <span className="text-lg font-light tracking-wider">Viterbo, Italia</span>
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button
+                  size="lg"
+                  className="bg-[#c9a84c] hover:bg-[#b8973f] text-black text-lg px-10 py-6 rounded-none tracking-wider font-light transition-all duration-300 hover:scale-105"
+                >
+                  <Link href="/prenota">{t("bookYourStay")}</Link>
+                </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border border-white/60 text-white hover:bg-white hover:text-black text-lg px-10 py-6 rounded-none tracking-wider font-light bg-transparent transition-all duration-300 hover:scale-105"
+                >
+                  <Link href="/servizi">{t("discoverMore")}</Link>
+                </Button>
+              </div>
             </div>
           </div>
         </div>
@@ -125,18 +141,18 @@ export function HeroSection() {
       <Button
         variant="ghost"
         size="icon"
-        className="absolute left-6 top-1/2 -translate-y-1/2 z-20 text-white hover:bg-white/20 w-14 h-14 rounded-full backdrop-blur-sm border border-white/20 transition-all duration-300 hover:scale-110"
+        className="absolute left-6 top-1/2 -translate-y-1/2 z-20 text-white hover:bg-white/10 w-12 h-12 rounded-none border border-white/30 transition-all duration-300 hover:border-white/60"
         onClick={prevSlide}
       >
-        <ChevronLeft className="w-8 h-8" />
+        <ChevronLeft className="w-6 h-6" />
       </Button>
       <Button
         variant="ghost"
         size="icon"
-        className="absolute right-6 top-1/2 -translate-y-1/2 z-20 text-white hover:bg-white/20 w-14 h-14 rounded-full backdrop-blur-sm border border-white/20 transition-all duration-300 hover:scale-110"
+        className="absolute right-6 top-1/2 -translate-y-1/2 z-20 text-white hover:bg-white/10 w-12 h-12 rounded-none border border-white/30 transition-all duration-300 hover:border-white/60"
         onClick={nextSlide}
       >
-        <ChevronRight className="w-8 h-8" />
+        <ChevronRight className="w-6 h-6" />
       </Button>
 
       <div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-20 flex gap-3">
@@ -146,8 +162,8 @@ export function HeroSection() {
             type="button"
             title={`Go to slide ${index + 1}`}
             aria-label={`Go to slide ${index + 1}`}
-            className={`w-4 h-4 rounded-full transition-all duration-300 ${
-              index === currentSlide ? "bg-white scale-125 shadow-lg" : "bg-white/50 hover:bg-white/75 hover:scale-110"
+            className={`w-12 h-[2px] transition-all duration-300 ${
+              index === currentSlide ? "bg-[#c9a84c]" : "bg-white/40 hover:bg-white/60"
             }`}
             onClick={() => setCurrentSlide(index)}
           >
@@ -156,12 +172,12 @@ export function HeroSection() {
         ))}
       </div>
 
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 animate-bounce">
-        <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-white/70 rounded-full mt-2 animate-pulse"></div>
+      {/* Scroll indicator */}
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20">
+        <div className="w-[1px] h-12 bg-white/30 relative overflow-hidden">
+          <div className="absolute top-0 left-0 w-full h-4 bg-[#c9a84c] animate-scroll-down" />
         </div>
       </div>
     </section>
   )
 }
-

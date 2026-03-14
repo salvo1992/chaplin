@@ -545,3 +545,36 @@
   opacity: 1;
   transform: scale(1);
 }
+
+/* Typewriter cursor blink animation */
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}
+
+.animate-blink {
+  animation: blink 0.8s infinite;
+}
+
+/* Scroll down indicator animation */
+@keyframes scroll-down {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+.animate-scroll-down {
+  animation: scroll-down 1.5s ease-in-out infinite;
+}
+
+/* Font Cinzel for elegant titles */
+.font-cinzel {
+  font-family: var(--font-cinzel), "Cinzel", serif;
+}
