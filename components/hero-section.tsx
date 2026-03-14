@@ -1,31 +1,33 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useMemo } from "react"
 import Image from "next/image"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import Link from "next/link"
 import { useLanguage } from "@/components/language-provider"
 import { Button } from "@/components/ui/button"
 
+const HERO_SLIDES = [
+  {
+    src: "/images/bb-hero.jpg",
+    alt: "CHAPLIN Luxury Holiday House - Vista principale",
+    tagline: "luxury holiday house | viterbo",
+    title: "CHAPLIN",
+  },
+  {
+    src: "/images/pool.jpg",
+    alt: "Piscina panoramica",
+    tagline: "luxury holiday house | viterbo",
+    title: "CHAPLIN",
+  },
+]
+
+const SLIDE_COUNT = HERO_SLIDES.length
+
 export function HeroSection() {
   const [currentSlide, setCurrentSlide] = useState(0)
   const [isLoaded, setIsLoaded] = useState(false)
   const { t } = useLanguage()
-
-  const heroSlides = [
-    {
-      src: "/images/bb-hero.jpg",
-      alt: "CHAPLIN Luxury Holiday House - Vista principale",
-      tagline: "luxury holiday house | viterbo",
-      title: "CHAPLIN",
-    },
-    {
-      src: "/images/pool.jpg",
-      alt: "Piscina panoramica",
-      tagline: "luxury holiday house | viterbo",
-      title: "CHAPLIN",
-    },
-  ]
 
   useEffect(() => {
     setIsLoaded(true)
@@ -33,23 +35,23 @@ export function HeroSection() {
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % heroSlides.length)
+      setCurrentSlide((prev) => (prev + 1) % SLIDE_COUNT)
     }, 6000)
     return () => clearInterval(timer)
-  }, [heroSlides.length])
+  }, [])
 
   const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % heroSlides.length)
+    setCurrentSlide((prev) => (prev + 1) % SLIDE_COUNT)
   }
 
   const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + heroSlides.length) % heroSlides.length)
+    setCurrentSlide((prev) => (prev - 1 + SLIDE_COUNT) % SLIDE_COUNT)
   }
 
   return (
     <section className="relative h-screen overflow-hidden">
       {/* Background Images */}
-      {heroSlides.map((slide, index) => (
+      {HERO_SLIDES.map((slide, index) => (
         <div
           key={index}
           className={`absolute inset-0 transition-opacity duration-1000 ${
@@ -76,12 +78,12 @@ export function HeroSection() {
         >
           {/* Tagline */}
           <p className="text-xs sm:text-sm tracking-[0.3em] uppercase text-white/80 mb-4 sm:mb-6 font-light">
-            {heroSlides[currentSlide].tagline}
+            {HERO_SLIDES[currentSlide].tagline}
           </p>
           
           {/* Main Title - Large serif font like reference */}
           <h1 className="font-cinzel text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-normal tracking-wide mb-6 sm:mb-10">
-            {heroSlides[currentSlide].title}
+            {HERO_SLIDES[currentSlide].title}
           </h1>
 
           {/* Booking Form Bar - Like Le Cinque Lune */}
@@ -123,7 +125,7 @@ export function HeroSection() {
 
       {/* Slide Indicators */}
       <div className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-2 sm:gap-3">
-        {heroSlides.map((_, index) => (
+        {HERO_SLIDES.map((_, index) => (
           <button
             key={index}
             onClick={() => setCurrentSlide(index)}
