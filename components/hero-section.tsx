@@ -8,7 +8,6 @@ import { useLanguage } from "@/components/language-provider"
 const HERO_SLIDES = [
   { src: "/images/bb-hero.jpg", alt: "CHAPLIN Holiday House" },
   { src: "/images/pool.jpg", alt: "Piscina privata" },
-  { src: "/images/1.jpg", alt: "Interno appartamento" },
 ]
 
 export function HeroSection() {
