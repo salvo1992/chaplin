@@ -1,117 +1,143 @@
 "use client"
 
-import { useState } from "react"
-import { Wifi, Car, Waves, Space as Spa, Wine, Mountain, Camera, Users, Bus, Utensils, MapPin } from "lucide-react"
+import Image from "next/image"
+import Link from "next/link"
+import { Button } from "@/components/ui/button"
+import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 import { useLanguage } from "@/components/language-provider"
 
 export function ServicesSection() {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
-  const { t } = useLanguage()
+  const { ref: titleRef, isVisible: titleVisible } = useScrollAnimation()
+  const { ref: contentRef, isVisible: contentVisible } = useScrollAnimation()
+  const { t, language } = useLanguage()
 
-  const services = [
-    {
-      icon: Waves,
-      titleKey: "outdoorPool",
-      descriptionKey: "outdoorPoolDesc",
-      color: "bg-[#1a1a1a]/10 text-[#1a1a1a]",
+  const sectionContent = {
+    it: {
+      title: "La nostra camera",
+      subtitle: "Suite Cielo Stellato",
+      features: ["Bagno in camera", "Colazione inclusa", "Numero di ospiti: 2", "Camere disponibili: 1"],
+      noDeposit: "Nessun anticipo, paghi al check-in",
+      freeCancellation: "Cancellazione GRATUITA!",
+      infoBtn: "Info",
+      bookBtn: "Prenota",
     },
-    {
-      icon: Wifi,
-      titleKey: "freeWifi",
-      descriptionKey: "freeWifiDesc",
-      color: "bg-[#c9a84c]/15 text-[#c9a84c]",
+    en: {
+      title: "Our room",
+      subtitle: "Starry Sky Suite",
+      features: ["En-suite bathroom", "Breakfast included", "Number of guests: 2", "Available rooms: 1"],
+      noDeposit: "No deposit, pay at check-in",
+      freeCancellation: "FREE cancellation!",
+      infoBtn: "Info",
+      bookBtn: "Book",
     },
-    {
-      icon: Car,
-      titleKey: "privateParking",
-      descriptionKey: "privateParkingDesc",
-      color: "bg-[#1a1a1a]/10 text-[#1a1a1a]",
+    fr: {
+      title: "Notre chambre",
+      subtitle: "Suite Ciel Etoile",
+      features: ["Salle de bain privee", "Petit-dejeuner inclus", "Nombre d'hotes: 2", "Chambres disponibles: 1"],
+      noDeposit: "Aucun acompte, payez a l'arrivee",
+      freeCancellation: "Annulation GRATUITE!",
+      infoBtn: "Info",
+      bookBtn: "Reserver",
     },
-    {
-      icon: Spa,
-      titleKey: "wellnessCenter",
-      descriptionKey: "wellnessCenterDesc",
-      color: "bg-[#c9a84c]/15 text-[#c9a84c]",
+    es: {
+      title: "Nuestra habitacion",
+      subtitle: "Suite Cielo Estrellado",
+      features: ["Bano en habitacion", "Desayuno incluido", "Numero de huespedes: 2", "Habitaciones disponibles: 1"],
+      noDeposit: "Sin anticipo, paga en el check-in",
+      freeCancellation: "Cancelacion GRATIS!",
+      infoBtn: "Info",
+      bookBtn: "Reservar",
     },
-    {
-      icon: Wine,
-      titleKey: "bar",
-      descriptionKey: "barDesc",
-      color: "bg-[#1a1a1a]/10 text-[#1a1a1a]",
+    de: {
+      title: "Unser Zimmer",
+      subtitle: "Suite Sternenhimmel",
+      features: ["Eigenes Bad", "Fruhstuck inklusive", "Anzahl der Gaste: 2", "Verfugbare Zimmer: 1"],
+      noDeposit: "Keine Anzahlung, Zahlung beim Check-in",
+      freeCancellation: "KOSTENLOSE Stornierung!",
+      infoBtn: "Info",
+      bookBtn: "Buchen",
     },
-    {
-      icon: Mountain,
-      titleKey: "guidedTours",
-      descriptionKey: "guidedToursDesc",
-      color: "bg-[#c9a84c]/15 text-[#c9a84c]",
-    },
-    {
-      icon: Camera,
-      titleKey: "terrace",
-      descriptionKey: "terraceDesc",
-      color: "bg-[#1a1a1a]/10 text-[#1a1a1a]",
-    },
-    {
-      icon: Bus,
-      titleKey: "airportShuttle",
-      descriptionKey: "airportShuttleDesc",
-      color: "bg-[#c9a84c]/15 text-[#c9a84c]",
-    },
-  ]
+  }
+
+  const content = sectionContent[language as keyof typeof sectionContent] || sectionContent.it
 
   return (
-    <section className="py-20 bg-secondary/30">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-6">{t("servicesTitle")}</h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto text-balance">{t("servicesDescription")}</p>
+    <section className="py-16 sm:py-20 md:py-24 bg-[#f8f8f5]">
+      <div className="container mx-auto px-4 max-w-5xl">
+        {/* Title */}
+        <div
+          ref={titleRef}
+          className={`text-center mb-10 sm:mb-12 md:mb-14 transition-all duration-1000 ${
+            titleVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        >
+          <h2 className="font-cinzel text-3xl sm:text-4xl md:text-5xl font-normal text-[#1a1a1a] mb-3 sm:mb-4 tracking-wide">
+            {content.title}
+          </h2>
+          <div className="w-12 sm:w-16 h-1 bg-[#4a90c9] mx-auto" />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-          {services.map((service, index) => {
-            const Icon = service.icon
-            return (
-              <div
-                key={index}
-                className={`card-invisible group cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl ${
-                  hoveredIndex === index ? "animate-float" : ""
-                }`}
-                onMouseEnter={() => setHoveredIndex(index)}
-                onMouseLeave={() => setHoveredIndex(null)}
-              >
-                <div className="p-6 text-center">
-                  <div
-                    className={`w-16 h-16 rounded-full ${service.color} flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform`}
-                  >
-                    <Icon className="w-8 h-8" />
-                  </div>
-                  <h3 className="font-semibold text-lg mb-2 text-foreground">{t(service.titleKey)}</h3>
-                  <p className="text-muted-foreground text-sm">{t(service.descriptionKey)}</p>
-                </div>
+        {/* Room Card - Like residenzanoe.it */}
+        <div
+          ref={contentRef}
+          className={`bg-white rounded-lg shadow-sm overflow-hidden transition-all duration-1000 delay-200 ${
+            contentVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        >
+          <div className="grid grid-cols-1 lg:grid-cols-2">
+            {/* Image */}
+            <div className="relative h-64 sm:h-80 lg:h-auto lg:min-h-[400px]">
+              <Image
+                src="/images/room-1.jpg"
+                alt={content.subtitle}
+                fill
+                className="object-cover"
+              />
+            </div>
+
+            {/* Content */}
+            <div className="p-6 sm:p-8 md:p-10 flex flex-col justify-center">
+              {/* Badges */}
+              <div className="flex flex-wrap gap-2 sm:gap-3 mb-4 sm:mb-6">
+                <span className="text-xs sm:text-sm text-green-600 font-medium">
+                  {content.noDeposit}
+                </span>
+                <span className="text-xs sm:text-sm text-green-600 font-medium">
+                  {content.freeCancellation}
+                </span>
               </div>
-            )
-          })}
-        </div>
 
-        <div className="card-invisible rounded-2xl p-8 shadow-lg">
-          <h3 className="font-display text-2xl font-bold text-center mb-8 text-foreground">
-            {t("additionalServices")}
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <Users className="w-12 h-12 text-primary mx-auto mb-4" />
-              <h4 className="font-semibold text-lg mb-2">{t("reception")}</h4>
-              <p className="text-muted-foreground">{t("receptionDesc")}</p>
-            </div>
-            <div className="text-center">
-              <Utensils className="w-12 h-12 text-primary mx-auto mb-4" />
-              <h4 className="font-semibold text-lg mb-2">{t("localCuisine")}</h4>
-              <p className="text-muted-foreground">{t("localCuisineDesc")}</p>
-            </div>
-            <div className="text-center">
-              <MapPin className="w-12 h-12 text-primary mx-auto mb-4" />
-              <h4 className="font-semibold text-lg mb-2">{t("conciergeService")}</h4>
-              <p className="text-muted-foreground">{t("conciergeServiceDesc")}</p>
+              {/* Title */}
+              <h3 className="font-cinzel text-2xl sm:text-3xl text-[#1a1a1a] mb-4 sm:mb-6">
+                {content.subtitle}
+              </h3>
+
+              {/* Features */}
+              <ul className="space-y-2 sm:space-y-3 mb-6 sm:mb-8">
+                {content.features.map((feature, index) => (
+                  <li key={index} className="flex items-center gap-2 sm:gap-3 text-sm sm:text-base text-[#6b6560]">
+                    <span className="w-1.5 h-1.5 bg-[#4a90c9] rounded-full flex-shrink-0" />
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+
+              {/* Buttons */}
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+                <Button
+                  asChild
+                  variant="outline"
+                  className="flex-1 border-[#1a1a1a] text-[#1a1a1a] hover:bg-[#1a1a1a] hover:text-white rounded-none py-5 sm:py-6 text-sm sm:text-base"
+                >
+                  <Link href="/camere/1">{content.infoBtn}</Link>
+                </Button>
+                <Button
+                  asChild
+                  className="flex-1 bg-[#4a90c9] hover:bg-[#3a7db3] text-white rounded-none py-5 sm:py-6 text-sm sm:text-base"
+                >
+                  <Link href="/prenota">{content.bookBtn}</Link>
+                </Button>
+              </div>
             </div>
           </div>
         </div>
