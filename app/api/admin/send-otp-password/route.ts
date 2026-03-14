@@ -2,7 +2,16 @@ import { NextRequest, NextResponse } from "next/server"
 import { getAdminDb } from "@/lib/firebase-admin"
 import { Resend } from "resend"
 
-const resend = new Resend(process.env.RESEND_API_KEY)
+// Lazy init - only creates Resend client when actually needed
+let _resend: Resend | null = null
+function getResend(): Resend {
+  if (!_resend) {
+    const key = process.env.RESEND_API_KEY
+    if (!key) throw new Error("RESEND_API_KEY non configurata")
+    _resend = new Resend(key)
+  }
+  return _resend
+}
 
 function generateOTP(): string {
   return Math.floor(1000 + Math.random() * 9000).toString()

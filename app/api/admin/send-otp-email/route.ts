@@ -2,12 +2,16 @@ import { NextRequest, NextResponse } from "next/server"
 import { getAdminDb } from "@/lib/firebase-admin"
 import { Resend } from "resend"
 
-function getResend() {
-  const key = process.env.RESEND_API_KEY
-  if (!key) throw new Error("RESEND_API_KEY mancante")
-  return new Resend(key)
+// Lazy init - only creates Resend client when actually needed
+let _resend: Resend | null = null
+function getResend(): Resend {
+  if (!_resend) {
+    const key = process.env.RESEND_API_KEY
+    if (!key) throw new Error("RESEND_API_KEY non configurata. Aggiungi la variabile d'ambiente.")
+    _resend = new Resend(key)
+  }
+  return _resend
 }
-const resend = getResend()
 
 // Generate random 4-digit OTP
 function generateOTP(): string {
@@ -111,7 +115,7 @@ export async function POST(request: NextRequest) {
       }
       
       try {
-        await resend.emails.send({
+        await getResend().emails.send({
           from: process.env.RESEND_FROM_EMAIL || "onboarding@resend.dev",
           to: currentEmail,
           subject: "Codice di Verifica - Cambio Email",
