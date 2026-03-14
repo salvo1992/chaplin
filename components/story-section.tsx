@@ -7,7 +7,7 @@ import { Wifi, Home, TreePine, Utensils, Tv, Wind, Star, Users, Snowflake, Flame
 export function StorySection() {
   const { language } = useLanguage()
 
-  const storyContent = {
+  const storyContent: Record<string, { title: string; subtitle: string; paragraph1: string; paragraph2: string; galleryTitle: string }> = {
     it: {
       title: "CHAPLIN Luxury Holiday House",
       subtitle: "Bed & Breakfast a Viterbo in zona centro",
@@ -30,32 +30,32 @@ export function StorySection() {
       title: "CHAPLIN Luxury Holiday House",
       subtitle: "Bed & Breakfast a Viterbo au centre-ville",
       paragraph1:
-        "CHAPLIN Luxury Holiday House est une suite exclusive en formule B&B, ideale pour une escapade en couple sous le signe de la detente et du bien-etre. L'ambiance raffinee et intime est concue pour offrir un confort maximal, avec une baignoire balnéo super deluxe equipee de 32 jets, quatre cascades massantes retroeclairees, chromotherapie et ozonisation.",
+        "CHAPLIN Luxury Holiday House est une suite exclusive en formule B&B, ideale pour une escapade en couple sous le signe de la detente et du bien-etre.",
       paragraph2:
-        "La suite dispose d'une TV 55'' avec acces a Netflix, Prime Video et Disney+, ainsi que d'une salle de bain privee avec douche hydromassante. Le vaste sejour comprend une cuisine equipee, un coin petit-dejeuner et un espace detente avec canape et fauteuil massant.",
+        "La suite dispose d'une TV 55'' avec acces a Netflix, Prime Video et Disney+, ainsi que d'une salle de bain privee avec douche hydromassante.",
       galleryTitle: "Galerie photo",
     },
     es: {
       title: "CHAPLIN Luxury Holiday House",
       subtitle: "Bed & Breakfast en Viterbo en el centro",
       paragraph1:
-        "CHAPLIN Luxury Holiday House es una suite exclusiva en formula B&B, ideal para una escapada en pareja en busca de relajacion y bienestar. El ambiente refinado e intimo esta disenado para ofrecer el maximo confort, con una banera de hidromasaje super deluxe equipada con 32 chorros, cuatro cascadas de masaje retroiluminadas, cromoterapia y ozonizacion.",
+        "CHAPLIN Luxury Holiday House es una suite exclusiva en formula B&B, ideal para una escapada en pareja en busca de relajacion y bienestar.",
       paragraph2:
-        "La suite cuenta con una TV de 55'' con acceso a Netflix, Prime Video y Disney+, ademas de un bano privado con ducha de hidromasaje. La amplia zona de estar incluye una cocina equipada, un rincon de desayuno y un area de relax con sofa y sillon de masaje.",
+        "La suite cuenta con una TV de 55'' con acceso a Netflix, Prime Video y Disney+, ademas de un bano privado con ducha de hidromasaje.",
       galleryTitle: "Galeria fotografica",
     },
     de: {
       title: "CHAPLIN Luxury Holiday House",
       subtitle: "Bed & Breakfast in Viterbo im Stadtzentrum",
       paragraph1:
-        "CHAPLIN Luxury Holiday House ist eine exklusive B&B-Suite, ideal fur einen Paaurlaub im Zeichen von Entspannung und Wohlbefinden. Das raffinierte und intime Ambiente ist darauf ausgelegt, hochsten Komfort zu bieten, mit einer Super-Deluxe-Whirlpoolwanne mit 32 Dusen, vier hinterleuchteten Massagewasserfallen, Chromotherapie und Ozonisierung.",
+        "CHAPLIN Luxury Holiday House ist eine exklusive B&B-Suite, ideal fur einen Paaurlaub im Zeichen von Entspannung und Wohlbefinden.",
       paragraph2:
-        "Die Suite verfugt uber einen 55'' Fernseher mit Zugang zu Netflix, Prime Video und Disney+ sowie ein eigenes Bad mit Hydromassage-Dusche. Der geraumige Wohnbereich umfasst eine ausgestattete Kuche, eine Fruhstucksecke und einen Entspannungsbereich mit Sofa und Massagesessel.",
+        "Die Suite verfugt uber einen 55'' Fernseher mit Zugang zu Netflix, Prime Video und Disney+ sowie ein eigenes Bad mit Hydromassage-Dusche.",
       galleryTitle: "Fotogalerie",
     },
   }
 
-  const content = storyContent[language as keyof typeof storyContent] || storyContent.it
+  const content = storyContent[language] || storyContent.it
 
   const amenities = [
     { icon: Wifi, label: "Wifi Gratis" },
@@ -82,7 +82,7 @@ export function StorySection() {
       <div className="container mx-auto px-4 max-w-4xl">
         {/* Title Section */}
         <div className="text-center mb-10 sm:mb-14 md:mb-16">
-          <h2 className="font-cinzel text-3xl sm:text-4xl md:text-5xl font-normal text-[#1a1a1a] mb-3 sm:mb-4 tracking-wide leading-tight">
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-normal text-[#1a1a1a] mb-3 sm:mb-4 tracking-wide leading-tight">
             {content.title}
           </h2>
           <p className="text-base sm:text-lg text-[#4a90c9] mb-5 sm:mb-6">
@@ -125,7 +125,7 @@ export function StorySection() {
 
         {/* Gallery Section */}
         <div>
-          <h3 className="font-cinzel text-xl sm:text-2xl text-center text-[#1a1a1a] mb-6 sm:mb-8">
+          <h3 className="font-serif text-xl sm:text-2xl text-center text-[#1a1a1a] mb-6 sm:mb-8">
             {content.galleryTitle}
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-3 md:gap-4">

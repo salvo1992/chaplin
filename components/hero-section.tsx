@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect, useMemo } from "react"
+import { useState, useEffect } from "react"
 import Image from "next/image"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import Link from "next/link"
@@ -11,41 +11,30 @@ const HERO_SLIDES = [
   {
     src: "/images/bb-hero.jpg",
     alt: "CHAPLIN Luxury Holiday House - Vista principale",
-    tagline: "luxury holiday house | viterbo",
-    title: "CHAPLIN",
   },
   {
     src: "/images/pool.jpg",
     alt: "Piscina panoramica",
-    tagline: "luxury holiday house | viterbo",
-    title: "CHAPLIN",
   },
 ]
 
-const SLIDE_COUNT = HERO_SLIDES.length
-
 export function HeroSection() {
   const [currentSlide, setCurrentSlide] = useState(0)
-  const [isLoaded, setIsLoaded] = useState(false)
   const { t } = useLanguage()
 
   useEffect(() => {
-    setIsLoaded(true)
-  }, [])
-
-  useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % SLIDE_COUNT)
+      setCurrentSlide((prev) => (prev + 1) % HERO_SLIDES.length)
     }, 6000)
     return () => clearInterval(timer)
   }, [])
 
   const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % SLIDE_COUNT)
+    setCurrentSlide((prev) => (prev + 1) % HERO_SLIDES.length)
   }
 
   const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + SLIDE_COUNT) % SLIDE_COUNT)
+    setCurrentSlide((prev) => (prev - 1 + HERO_SLIDES.length) % HERO_SLIDES.length)
   }
 
   return (
@@ -69,24 +58,20 @@ export function HeroSection() {
         </div>
       ))}
 
-      {/* Content - Like Le Cinque Lune style */}
+      {/* Content */}
       <div className="relative z-10 h-full flex items-center justify-center">
-        <div 
-          className={`text-center text-white px-4 transition-all duration-1000 ${
-            isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-        >
+        <div className="text-center text-white px-4">
           {/* Tagline */}
           <p className="text-xs sm:text-sm tracking-[0.3em] uppercase text-white/80 mb-4 sm:mb-6 font-light">
-            {HERO_SLIDES[currentSlide].tagline}
+            luxury holiday house | viterbo
           </p>
           
-          {/* Main Title - Large serif font like reference */}
-          <h1 className="font-cinzel text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-normal tracking-wide mb-6 sm:mb-10">
-            {HERO_SLIDES[currentSlide].title}
+          {/* Main Title */}
+          <h1 className="font-serif text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-normal tracking-wide mb-6 sm:mb-10">
+            CHAPLIN
           </h1>
 
-          {/* Booking Form Bar - Like Le Cinque Lune */}
+          {/* Buttons */}
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mt-8 sm:mt-12">
             <Button
               asChild

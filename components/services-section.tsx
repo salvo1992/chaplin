@@ -8,7 +8,7 @@ import { useLanguage } from "@/components/language-provider"
 export function ServicesSection() {
   const { language } = useLanguage()
 
-  const sectionContent = {
+  const sectionContent: Record<string, { title: string; subtitle: string; features: string[]; noDeposit: string; freeCancellation: string; infoBtn: string; bookBtn: string }> = {
     it: {
       title: "La nostra camera",
       subtitle: "Suite Cielo Stellato",
@@ -56,14 +56,14 @@ export function ServicesSection() {
     },
   }
 
-  const content = sectionContent[language as keyof typeof sectionContent] || sectionContent.it
+  const content = sectionContent[language] || sectionContent.it
 
   return (
     <section className="py-16 sm:py-20 md:py-24 bg-[#f8f8f5]">
       <div className="container mx-auto px-4 max-w-5xl">
         {/* Title */}
         <div className="text-center mb-10 sm:mb-12 md:mb-14">
-          <h2 className="font-cinzel text-3xl sm:text-4xl md:text-5xl font-normal text-[#1a1a1a] mb-3 sm:mb-4 tracking-wide">
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-normal text-[#1a1a1a] mb-3 sm:mb-4 tracking-wide">
             {content.title}
           </h2>
           <div className="w-12 sm:w-16 h-1 bg-[#4a90c9] mx-auto" />
@@ -95,7 +95,7 @@ export function ServicesSection() {
               </div>
 
               {/* Title */}
-              <h3 className="font-cinzel text-2xl sm:text-3xl text-[#1a1a1a] mb-4 sm:mb-6">
+              <h3 className="font-serif text-2xl sm:text-3xl text-[#1a1a1a] mb-4 sm:mb-6">
                 {content.subtitle}
               </h3>
 

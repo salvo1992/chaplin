@@ -9,7 +9,18 @@ import { useLanguage } from "@/components/language-provider"
 export function RoomsPreview() {
   const { language } = useLanguage()
 
-  const sectionContent = {
+  const sectionContent: Record<string, {
+    hostTitle: string
+    hostName: string
+    locationTitle: string
+    airportsTitle: string
+    stationsTitle: string
+    nearbyTitle: string
+    mapBtn: string
+    airports: { name: string; distance: string }[]
+    stations: { name: string; distance: string }[]
+    nearby: { name: string; distance: string }[]
+  }> = {
     it: {
       hostTitle: "Sarai ospitato/a da",
       hostName: "Roberto",
@@ -137,7 +148,7 @@ export function RoomsPreview() {
     },
   }
 
-  const content = sectionContent[language as keyof typeof sectionContent] || sectionContent.it
+  const content = sectionContent[language] || sectionContent.it
 
   return (
     <section className="py-16 sm:py-20 md:py-24 bg-white">
@@ -145,7 +156,7 @@ export function RoomsPreview() {
         {/* Host Section */}
         <div className="text-center mb-12 sm:mb-14 md:mb-16">
           <p className="text-sm sm:text-base text-[#6b6560] mb-3 sm:mb-4">{content.hostTitle}</p>
-          <h2 className="font-cinzel text-3xl sm:text-4xl md:text-5xl font-normal text-[#1a1a1a] tracking-wide">
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-normal text-[#1a1a1a] tracking-wide">
             {content.hostName}
           </h2>
         </div>
@@ -154,7 +165,7 @@ export function RoomsPreview() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 md:gap-12 mb-12 sm:mb-14 md:mb-16">
           {/* Left Column */}
           <div>
-            <h3 className="font-cinzel text-xl sm:text-2xl text-[#1a1a1a] mb-4 sm:mb-6 flex items-center gap-2">
+            <h3 className="font-serif text-xl sm:text-2xl text-[#1a1a1a] mb-4 sm:mb-6 flex items-center gap-2">
               <MapPin className="w-5 h-5 text-[#4a90c9]" />
               {content.locationTitle}
             </h3>
@@ -194,7 +205,7 @@ export function RoomsPreview() {
 
           {/* Right Column - Nearby */}
           <div>
-            <h3 className="font-cinzel text-xl sm:text-2xl text-[#1a1a1a] mb-4 sm:mb-6">
+            <h3 className="font-serif text-xl sm:text-2xl text-[#1a1a1a] mb-4 sm:mb-6">
               {content.nearbyTitle}
             </h3>
             <ul className="space-y-2 sm:space-y-3">
