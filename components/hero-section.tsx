@@ -2,135 +2,131 @@
 
 import { useState, useEffect } from "react"
 import Image from "next/image"
-import { ChevronLeft, ChevronRight } from "lucide-react"
 import Link from "next/link"
 import { useLanguage } from "@/components/language-provider"
-import { Button } from "@/components/ui/button"
+
+const HERO_SLIDES = [
+  { src: "/images/bb-hero.jpg", alt: "CHAPLIN Holiday House" },
+  { src: "/images/pool.jpg", alt: "Piscina privata" },
+  { src: "/images/1.jpg", alt: "Interno appartamento" },
+]
 
 export function HeroSection() {
   const [currentSlide, setCurrentSlide] = useState(0)
-  const [isLoaded, setIsLoaded] = useState(false)
+  const [animationStep, setAnimationStep] = useState(0)
   const { t } = useLanguage()
 
-  const heroSlides = [
-    {
-      src: "/images/bb-hero.jpg",
-      alt: "CHAPLIN Luxury Holiday House - Vista principale",
-      tagline: "luxury holiday house | viterbo",
-      title: "CHAPLIN",
-    },
-    {
-      src: "/images/pool.jpg",
-      alt: "Piscina panoramica",
-      tagline: "luxury holiday house | viterbo",
-      title: "CHAPLIN",
-    },
-  ]
-
+  // Staggered animation sequence
   useEffect(() => {
-    setIsLoaded(true)
+    const timers = [
+      setTimeout(() => setAnimationStep(1), 300),   // tagline
+      setTimeout(() => setAnimationStep(2), 800),   // welcome
+      setTimeout(() => setAnimationStep(3), 1300),  // CHAPLIN
+      setTimeout(() => setAnimationStep(4), 1800),  // line
+      setTimeout(() => setAnimationStep(5), 2300),  // scroll
+    ]
+    return () => timers.forEach(clearTimeout)
   }, [])
 
+  // Auto slide
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % heroSlides.length)
+      setCurrentSlide((prev) => (prev + 1) % HERO_SLIDES.length)
     }, 6000)
     return () => clearInterval(timer)
-  }, [heroSlides.length])
-
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % heroSlides.length)
-  }
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + heroSlides.length) % heroSlides.length)
-  }
+  }, [])
 
   return (
-    <section className="relative h-screen overflow-hidden">
-      {/* Background Images */}
-      {heroSlides.map((slide, index) => (
+    <section className="relative h-screen w-full overflow-hidden">
+      {/* Background Images with crossfade */}
+      {HERO_SLIDES.map((slide, index) => (
         <div
-          key={index}
-          className={`absolute inset-0 transition-opacity duration-1000 ${
-            index === currentSlide ? "opacity-100" : "opacity-0"
-          }`}
+          key={slide.src}
+          className="absolute inset-0 transition-opacity duration-[2000ms] ease-in-out"
+          style={{ opacity: currentSlide === index ? 1 : 0 }}
         >
           <Image
             src={slide.src}
             alt={slide.alt}
             fill
-            className="object-cover"
             priority={index === 0}
+            className="object-cover"
+            sizes="100vw"
           />
-          <div className="absolute inset-0 bg-black/40" />
         </div>
       ))}
 
-      {/* Content - Like Le Cinque Lune style */}
-      <div className="relative z-10 h-full flex items-center justify-center">
-        <div 
-          className={`text-center text-white px-4 transition-all duration-1000 ${
-            isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-        >
-          {/* Tagline */}
-          <p className="text-xs sm:text-sm tracking-[0.3em] uppercase text-white/80 mb-4 sm:mb-6 font-light">
-            {heroSlides[currentSlide].tagline}
-          </p>
-          
-          {/* Main Title - Large serif font like reference */}
-          <h1 className="font-cinzel text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-normal tracking-wide mb-6 sm:mb-10">
-            {heroSlides[currentSlide].title}
-          </h1>
+      {/* Dark overlay */}
+      <div className="absolute inset-0 bg-black/50" />
 
-          {/* Booking Form Bar - Like Le Cinque Lune */}
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mt-8 sm:mt-12">
-            <Button
-              asChild
-              size="lg"
-              className="bg-[#c9a84c] hover:bg-[#b8973f] text-white text-sm sm:text-base px-6 sm:px-10 py-5 sm:py-6 rounded-none tracking-wider font-normal"
-            >
-              <Link href="/prenota">{t("bookYourStay")}</Link>
-            </Button>
-            <Button
-              asChild
-              size="lg"
-              variant="outline"
-              className="border-white/60 text-white hover:bg-white hover:text-black text-sm sm:text-base px-6 sm:px-10 py-5 sm:py-6 rounded-none tracking-wider font-normal bg-transparent"
-            >
-              <Link href="/camere">{t("discoverMore")}</Link>
-            </Button>
-          </div>
-        </div>
+      {/* Content - centered with staggered animations */}
+      <div className="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-4">
+        
+        {/* Small tagline */}
+        <p 
+          className="text-[10px] sm:text-xs tracking-[0.4em] uppercase mb-4 sm:mb-6 transition-all duration-[1200ms] ease-out"
+          style={{
+            opacity: animationStep >= 1 ? 1 : 0,
+            transform: animationStep >= 1 ? "translateY(0)" : "translateY(20px)",
+            color: "#c9a84c",
+          }}
+        >
+          luxury holiday house | viterbo
+        </p>
+
+        {/* Main title "welcome" */}
+        <h1 
+          className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[110px] font-light tracking-[0.02em] mb-2 sm:mb-4 transition-all duration-[1200ms] ease-out lowercase"
+          style={{
+            opacity: animationStep >= 2 ? 1 : 0,
+            transform: animationStep >= 2 ? "translateY(0)" : "translateY(30px)",
+            fontFamily: "var(--font-cormorant), var(--font-playfair), Georgia, serif",
+            color: "#f5f0e8",
+          }}
+        >
+          welcome
+        </h1>
+
+        {/* Subtitle "CHAPLIN" */}
+        <p 
+          className="text-base sm:text-lg md:text-xl tracking-[0.35em] uppercase mb-6 sm:mb-8 transition-all duration-[1200ms] ease-out"
+          style={{
+            opacity: animationStep >= 3 ? 1 : 0,
+            transform: animationStep >= 3 ? "translateY(0)" : "translateY(20px)",
+            color: "#c9a84c",
+          }}
+        >
+          CHAPLIN
+        </p>
+
+        {/* Vertical decorative line */}
+        <div 
+          className="w-px bg-white/50 transition-all duration-[1000ms] ease-out"
+          style={{
+            height: animationStep >= 4 ? "50px" : "0px",
+          }}
+        />
       </div>
 
-      {/* Navigation Arrows */}
-      <button
-        onClick={prevSlide}
-        className="absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center text-white/70 hover:text-white transition-colors"
-        aria-label="Previous slide"
+      {/* Scroll indicator at bottom */}
+      <div 
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 transition-opacity duration-1000"
+        style={{ opacity: animationStep >= 5 ? 0.6 : 0 }}
       >
-        <ChevronLeft className="w-6 h-6 sm:w-8 sm:h-8" strokeWidth={1} />
-      </button>
-      <button
-        onClick={nextSlide}
-        className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center text-white/70 hover:text-white transition-colors"
-        aria-label="Next slide"
-      >
-        <ChevronRight className="w-6 h-6 sm:w-8 sm:h-8" strokeWidth={1} />
-      </button>
+        <span className="text-white/70 text-[10px] tracking-[0.25em] uppercase">scroll</span>
+        <div className="w-px h-6 bg-white/30" />
+      </div>
 
-      {/* Slide Indicators */}
-      <div className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-2 sm:gap-3">
-        {heroSlides.map((_, index) => (
+      {/* Slide indicators - horizontal lines */}
+      <div className="absolute bottom-10 right-6 sm:right-10 flex gap-2">
+        {HERO_SLIDES.map((_, index) => (
           <button
             key={index}
             onClick={() => setCurrentSlide(index)}
-            className={`w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full transition-all duration-300 ${
-              index === currentSlide ? "bg-[#c9a84c] scale-125" : "bg-white/50 hover:bg-white/70"
+            className={`h-0.5 transition-all duration-500 ${
+              currentSlide === index ? "w-8 bg-[#c9a84c]" : "w-4 bg-white/40 hover:bg-white/60"
             }`}
-            aria-label={`Go to slide ${index + 1}`}
+            aria-label={`Slide ${index + 1}`}
           />
         ))}
       </div>
