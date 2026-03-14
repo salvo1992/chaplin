@@ -1,15 +1,10 @@
 "use client"
 
 import Image from "next/image"
-import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 import { useLanguage } from "@/components/language-provider"
 import { Wifi, Home, TreePine, Utensils, Tv, Wind, Star, Users, Snowflake, Flame } from "lucide-react"
 
 export function StorySection() {
-  const { ref: titleRef, isVisible: titleVisible } = useScrollAnimation()
-  const { ref: contentRef, isVisible: contentVisible } = useScrollAnimation()
-  const { ref: amenitiesRef, isVisible: amenitiesVisible } = useScrollAnimation()
-  const { ref: galleryRef, isVisible: galleryVisible } = useScrollAnimation()
   const { language } = useLanguage()
 
   const storyContent = {
@@ -64,14 +59,14 @@ export function StorySection() {
 
   const amenities = [
     { icon: Wifi, label: "Wifi Gratis" },
-    { icon: Home, label: "Dimora storica o di prestigio" },
+    { icon: Home, label: "Dimora storica" },
     { icon: TreePine, label: "Giardino" },
     { icon: Utensils, label: "Angolo cottura" },
     { icon: Tv, label: "Televisione" },
-    { icon: Wind, label: "Phon in Camera" },
-    { icon: Star, label: "Struttura di charme" },
-    { icon: Users, label: "Struttura per famiglie" },
-    { icon: Snowflake, label: "Climatizzazione" },
+    { icon: Wind, label: "Phon" },
+    { icon: Star, label: "Charme" },
+    { icon: Users, label: "Famiglie" },
+    { icon: Snowflake, label: "Clima" },
     { icon: Flame, label: "Riscaldamento" },
   ]
 
@@ -85,30 +80,19 @@ export function StorySection() {
   return (
     <section className="py-16 sm:py-20 md:py-24 bg-white">
       <div className="container mx-auto px-4 max-w-4xl">
-        {/* Title Section - Exactly like residenzanoe.it */}
-        <div
-          ref={titleRef}
-          className={`text-center mb-10 sm:mb-14 md:mb-16 transition-all duration-1000 ${
-            titleVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-        >
+        {/* Title Section */}
+        <div className="text-center mb-10 sm:mb-14 md:mb-16">
           <h2 className="font-cinzel text-3xl sm:text-4xl md:text-5xl font-normal text-[#1a1a1a] mb-3 sm:mb-4 tracking-wide leading-tight">
             {content.title}
           </h2>
           <p className="text-base sm:text-lg text-[#4a90c9] mb-5 sm:mb-6">
             {content.subtitle}
           </p>
-          {/* Decorative blue underline - exactly like reference */}
           <div className="w-12 sm:w-16 h-1 bg-[#4a90c9] mx-auto" />
         </div>
 
-        {/* Content - Clean paragraphs like residenzanoe.it */}
-        <div
-          ref={contentRef}
-          className={`mb-12 sm:mb-14 md:mb-16 transition-all duration-1000 delay-200 ${
-            contentVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-        >
+        {/* Content */}
+        <div className="mb-12 sm:mb-14 md:mb-16">
           <p className="text-[#333] text-base sm:text-lg leading-relaxed mb-6 sm:mb-8 text-center sm:text-left">
             {content.paragraph1}
           </p>
@@ -117,25 +101,20 @@ export function StorySection() {
           </p>
         </div>
 
-        {/* Amenities - Horizontal scroll like residenzanoe.it */}
-        <div
-          ref={amenitiesRef}
-          className={`mb-12 sm:mb-14 md:mb-16 transition-all duration-1000 delay-300 ${
-            amenitiesVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-        >
+        {/* Amenities */}
+        <div className="mb-12 sm:mb-14 md:mb-16">
           <div className="flex flex-wrap justify-center gap-4 sm:gap-6 md:gap-8">
             {amenities.map((amenity, index) => {
               const Icon = amenity.icon
               return (
                 <div
                   key={index}
-                  className="flex flex-col items-center gap-2 text-center min-w-[70px] sm:min-w-[80px]"
+                  className="flex flex-col items-center gap-2 text-center min-w-[60px] sm:min-w-[70px]"
                 >
                   <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#f8f8f5] flex items-center justify-center text-[#6b6560]">
                     <Icon className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={1.5} />
                   </div>
-                  <span className="text-[10px] sm:text-xs text-[#6b6560] max-w-[70px] sm:max-w-[80px] leading-tight">
+                  <span className="text-[10px] sm:text-xs text-[#6b6560] max-w-[60px] sm:max-w-[70px] leading-tight">
                     {amenity.label}
                   </span>
                 </div>
@@ -145,12 +124,7 @@ export function StorySection() {
         </div>
 
         {/* Gallery Section */}
-        <div
-          ref={galleryRef}
-          className={`transition-all duration-1000 delay-400 ${
-            galleryVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-        >
+        <div>
           <h3 className="font-cinzel text-xl sm:text-2xl text-center text-[#1a1a1a] mb-6 sm:mb-8">
             {content.galleryTitle}
           </h3>

@@ -3,13 +3,10 @@
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 import { useLanguage } from "@/components/language-provider"
 
 export function ServicesSection() {
-  const { ref: titleRef, isVisible: titleVisible } = useScrollAnimation()
-  const { ref: contentRef, isVisible: contentVisible } = useScrollAnimation()
-  const { t, language } = useLanguage()
+  const { language } = useLanguage()
 
   const sectionContent = {
     it: {
@@ -65,25 +62,15 @@ export function ServicesSection() {
     <section className="py-16 sm:py-20 md:py-24 bg-[#f8f8f5]">
       <div className="container mx-auto px-4 max-w-5xl">
         {/* Title */}
-        <div
-          ref={titleRef}
-          className={`text-center mb-10 sm:mb-12 md:mb-14 transition-all duration-1000 ${
-            titleVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-        >
+        <div className="text-center mb-10 sm:mb-12 md:mb-14">
           <h2 className="font-cinzel text-3xl sm:text-4xl md:text-5xl font-normal text-[#1a1a1a] mb-3 sm:mb-4 tracking-wide">
             {content.title}
           </h2>
           <div className="w-12 sm:w-16 h-1 bg-[#4a90c9] mx-auto" />
         </div>
 
-        {/* Room Card - Like residenzanoe.it */}
-        <div
-          ref={contentRef}
-          className={`bg-white rounded-lg shadow-sm overflow-hidden transition-all duration-1000 delay-200 ${
-            contentVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-        >
+        {/* Room Card */}
+        <div className="bg-white rounded-lg shadow-sm overflow-hidden">
           <div className="grid grid-cols-1 lg:grid-cols-2">
             {/* Image */}
             <div className="relative h-64 sm:h-80 lg:h-auto lg:min-h-[400px]">

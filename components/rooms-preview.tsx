@@ -4,13 +4,9 @@ import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { MapPin, Plane, Train } from "lucide-react"
-import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 import { useLanguage } from "@/components/language-provider"
 
 export function RoomsPreview() {
-  const { ref: titleRef, isVisible: titleVisible } = useScrollAnimation()
-  const { ref: contentRef, isVisible: contentVisible } = useScrollAnimation()
-  const { ref: nearbyRef, isVisible: nearbyVisible } = useScrollAnimation()
   const { language } = useLanguage()
 
   const sectionContent = {
@@ -21,6 +17,7 @@ export function RoomsPreview() {
       airportsTitle: "Aeroporti",
       stationsTitle: "Stazioni Ferroviarie",
       nearbyTitle: "Nei dintorni",
+      mapBtn: "Vedi su Google Maps",
       airports: [
         { name: "Aeroporto di Roma - Fiumicino", distance: "80 km" },
         { name: "Aeroporto di Roma - Ciampino", distance: "100 km" },
@@ -45,6 +42,7 @@ export function RoomsPreview() {
       airportsTitle: "Airports",
       stationsTitle: "Train Stations",
       nearbyTitle: "Nearby",
+      mapBtn: "View on Google Maps",
       airports: [
         { name: "Rome Fiumicino Airport", distance: "80 km" },
         { name: "Rome Ciampino Airport", distance: "100 km" },
@@ -69,6 +67,7 @@ export function RoomsPreview() {
       airportsTitle: "Aeroports",
       stationsTitle: "Gares",
       nearbyTitle: "A proximite",
+      mapBtn: "Voir sur Google Maps",
       airports: [
         { name: "Aeroport de Rome - Fiumicino", distance: "80 km" },
         { name: "Aeroport de Rome - Ciampino", distance: "100 km" },
@@ -93,6 +92,7 @@ export function RoomsPreview() {
       airportsTitle: "Aeropuertos",
       stationsTitle: "Estaciones de tren",
       nearbyTitle: "En los alrededores",
+      mapBtn: "Ver en Google Maps",
       airports: [
         { name: "Aeropuerto de Roma - Fiumicino", distance: "80 km" },
         { name: "Aeropuerto de Roma - Ciampino", distance: "100 km" },
@@ -117,6 +117,7 @@ export function RoomsPreview() {
       airportsTitle: "Flughafen",
       stationsTitle: "Bahnhofe",
       nearbyTitle: "In der Nahe",
+      mapBtn: "Auf Google Maps ansehen",
       airports: [
         { name: "Flughafen Rom - Fiumicino", distance: "80 km" },
         { name: "Flughafen Rom - Ciampino", distance: "100 km" },
@@ -142,12 +143,7 @@ export function RoomsPreview() {
     <section className="py-16 sm:py-20 md:py-24 bg-white">
       <div className="container mx-auto px-4 max-w-5xl">
         {/* Host Section */}
-        <div
-          ref={titleRef}
-          className={`text-center mb-12 sm:mb-14 md:mb-16 transition-all duration-1000 ${
-            titleVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-        >
+        <div className="text-center mb-12 sm:mb-14 md:mb-16">
           <p className="text-sm sm:text-base text-[#6b6560] mb-3 sm:mb-4">{content.hostTitle}</p>
           <h2 className="font-cinzel text-3xl sm:text-4xl md:text-5xl font-normal text-[#1a1a1a] tracking-wide">
             {content.hostName}
@@ -155,12 +151,7 @@ export function RoomsPreview() {
         </div>
 
         {/* Location Info */}
-        <div
-          ref={contentRef}
-          className={`grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 md:gap-12 mb-12 sm:mb-14 md:mb-16 transition-all duration-1000 delay-200 ${
-            contentVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-        >
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 md:gap-12 mb-12 sm:mb-14 md:mb-16">
           {/* Left Column */}
           <div>
             <h3 className="font-cinzel text-xl sm:text-2xl text-[#1a1a1a] mb-4 sm:mb-6 flex items-center gap-2">
@@ -202,12 +193,7 @@ export function RoomsPreview() {
           </div>
 
           {/* Right Column - Nearby */}
-          <div
-            ref={nearbyRef}
-            className={`transition-all duration-1000 delay-300 ${
-              nearbyVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
-          >
+          <div>
             <h3 className="font-cinzel text-xl sm:text-2xl text-[#1a1a1a] mb-4 sm:mb-6">
               {content.nearbyTitle}
             </h3>
@@ -222,7 +208,7 @@ export function RoomsPreview() {
           </div>
         </div>
 
-        {/* Map Image Placeholder */}
+        {/* Map Image */}
         <div className="relative h-48 sm:h-64 md:h-80 rounded-lg overflow-hidden bg-[#f0f0f0]">
           <Image
             src="/images/bb-hero.jpg"
@@ -237,7 +223,7 @@ export function RoomsPreview() {
             >
               <Link href="https://maps.google.com" target="_blank">
                 <MapPin className="w-4 h-4 mr-2" />
-                Vedi su Google Maps
+                {content.mapBtn}
               </Link>
             </Button>
           </div>
