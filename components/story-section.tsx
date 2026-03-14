@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import { useLanguage } from "@/components/language-provider"
-import { Wifi, Home, TreePine, Utensils, Tv, Wind, Star, Users, Snowflake, Flame } from "lucide-react"
+import { Wifi, Home, Droplets, Utensils, Tv, Wind, Car, Users, Snowflake, Flame } from "lucide-react"
 
 export function StorySection() {
   const { language } = useLanguage()
@@ -10,47 +10,47 @@ export function StorySection() {
   const storyContent: Record<string, { title: string; subtitle: string; paragraph1: string; paragraph2: string; galleryTitle: string }> = {
     it: {
       title: "CHAPLIN Luxury Holiday House",
-      subtitle: "Bed & Breakfast a Viterbo in zona centro",
+      subtitle: "Appartamento esclusivo a Viterbo",
       paragraph1:
-        "CHAPLIN Luxury Holiday House e una suite esclusiva in formula B&B, ideale per una fuga di coppia all'insegna del relax e del benessere. L'ambiente raffinato e intimo e progettato per offrire il massimo comfort, con una vasca idromassaggio super deluxe dotata di 32 getti, quattro cascate massaggianti retroilluminate, cromoterapia e ozonizzazione. La sauna a infrarossi al quarzo, arricchita da cromoterapia, ionizzatore e aromaterapia, completa l'esperienza di rigenerazione.",
+        "CHAPLIN e un elegante appartamento indipendente situato a Viterbo, ideale per una fuga di coppia o per famiglie in cerca di relax e benessere. L'ambiente raffinato e curato nei minimi dettagli offre il massimo comfort: piscina privata ad uso esclusivo, spa con vasca idromassaggio dotata di 32 getti, cascate massaggianti retroilluminate, cromoterapia e ozonizzazione.",
       paragraph2:
-        "La suite dispone di una TV da 55'' con accesso a Netflix, Prime Video e Disney+, oltre a un bagno privato con doccia idromassaggio. L'ampia zona giorno include una cucina attrezzata, un angolo colazione e un'area relax con divano e poltrona massaggiante, garantendo agli ospiti un soggiorno di puro piacere e comfort.",
+        "L'appartamento dispone di una TV da 55'' con accesso a Netflix, Prime Video e Disney+, bagno privato con doccia idromassaggio, ampia zona giorno con cucina attrezzata, angolo colazione e area relax con divano e poltrona massaggiante. 57 mq di puro comfort per un soggiorno indimenticabile.",
       galleryTitle: "Galleria fotografica",
     },
     en: {
       title: "CHAPLIN Luxury Holiday House",
-      subtitle: "Bed & Breakfast in Viterbo city center",
+      subtitle: "Exclusive apartment in Viterbo",
       paragraph1:
-        "CHAPLIN Luxury Holiday House is an exclusive B&B suite, ideal for a couple's getaway focused on relaxation and wellness. The refined and intimate environment is designed to offer maximum comfort, with a super deluxe hydromassage tub equipped with 32 jets, four backlit massage waterfalls, chromotherapy, and ozonization. The infrared quartz sauna, enriched with chromotherapy, ionizer, and aromatherapy, completes the regeneration experience.",
+        "CHAPLIN is an elegant independent apartment located in Viterbo, ideal for a couple's getaway or families seeking relaxation and wellness. The refined environment, with attention to every detail, offers maximum comfort: private pool for exclusive use, spa with hydromassage tub equipped with 32 jets, backlit massage waterfalls, chromotherapy and ozonization.",
       paragraph2:
-        "The suite features a 55'' TV with access to Netflix, Prime Video, and Disney+, as well as a private bathroom with hydromassage shower. The spacious living area includes an equipped kitchen, a breakfast corner, and a relaxation area with sofa and massage armchair, ensuring guests a stay of pure pleasure and comfort.",
+        "The apartment features a 55'' TV with access to Netflix, Prime Video and Disney+, private bathroom with hydromassage shower, spacious living area with equipped kitchen, breakfast corner and relaxation area with sofa and massage armchair. 57 sqm of pure comfort for an unforgettable stay.",
       galleryTitle: "Photo Gallery",
     },
     fr: {
       title: "CHAPLIN Luxury Holiday House",
-      subtitle: "Bed & Breakfast a Viterbo au centre-ville",
+      subtitle: "Appartement exclusif a Viterbo",
       paragraph1:
-        "CHAPLIN Luxury Holiday House est une suite exclusive en formule B&B, ideale pour une escapade en couple sous le signe de la detente et du bien-etre.",
+        "CHAPLIN est un elegant appartement independant situe a Viterbo, ideal pour une escapade en couple ou en famille a la recherche de detente et de bien-etre.",
       paragraph2:
-        "La suite dispose d'une TV 55'' avec acces a Netflix, Prime Video et Disney+, ainsi que d'une salle de bain privee avec douche hydromassante.",
+        "L'appartement dispose d'une TV 55'' avec acces a Netflix, Prime Video et Disney+, salle de bain privee avec douche hydromassante. 57 m2 de pur confort.",
       galleryTitle: "Galerie photo",
     },
     es: {
       title: "CHAPLIN Luxury Holiday House",
-      subtitle: "Bed & Breakfast en Viterbo en el centro",
+      subtitle: "Apartamento exclusivo en Viterbo",
       paragraph1:
-        "CHAPLIN Luxury Holiday House es una suite exclusiva en formula B&B, ideal para una escapada en pareja en busca de relajacion y bienestar.",
+        "CHAPLIN es un elegante apartamento independiente situado en Viterbo, ideal para una escapada en pareja o familias en busca de relajacion y bienestar.",
       paragraph2:
-        "La suite cuenta con una TV de 55'' con acceso a Netflix, Prime Video y Disney+, ademas de un bano privado con ducha de hidromasaje.",
+        "El apartamento cuenta con una TV de 55'' con acceso a Netflix, Prime Video y Disney+, bano privado con ducha de hidromasaje. 57 m2 de puro confort.",
       galleryTitle: "Galeria fotografica",
     },
     de: {
       title: "CHAPLIN Luxury Holiday House",
-      subtitle: "Bed & Breakfast in Viterbo im Stadtzentrum",
+      subtitle: "Exklusive Wohnung in Viterbo",
       paragraph1:
-        "CHAPLIN Luxury Holiday House ist eine exklusive B&B-Suite, ideal fur einen Paaurlaub im Zeichen von Entspannung und Wohlbefinden.",
+        "CHAPLIN ist eine elegante unabhangige Wohnung in Viterbo, ideal fur einen Paarurlaub oder Familien auf der Suche nach Entspannung und Wohlbefinden.",
       paragraph2:
-        "Die Suite verfugt uber einen 55'' Fernseher mit Zugang zu Netflix, Prime Video und Disney+ sowie ein eigenes Bad mit Hydromassage-Dusche.",
+        "Die Wohnung verfugt uber einen 55'' Fernseher mit Zugang zu Netflix, Prime Video und Disney+, eigenes Bad mit Hydromassage-Dusche. 57 qm purer Komfort.",
       galleryTitle: "Fotogalerie",
     },
   }
@@ -58,63 +58,66 @@ export function StorySection() {
   const content = storyContent[language] || storyContent.it
 
   const amenities = [
-    { icon: Wifi, label: "Wifi Gratis" },
-    { icon: Home, label: "Dimora storica" },
-    { icon: TreePine, label: "Giardino" },
-    { icon: Utensils, label: "Angolo cottura" },
-    { icon: Tv, label: "Televisione" },
-    { icon: Wind, label: "Phon" },
-    { icon: Star, label: "Charme" },
-    { icon: Users, label: "Famiglie" },
-    { icon: Snowflake, label: "Clima" },
+    { icon: Wifi, label: "WiFi Gratis" },
+    { icon: Home, label: "Appartamento" },
+    { icon: Droplets, label: "Piscina privata" },
+    { icon: Utensils, label: "Cucina" },
+    { icon: Tv, label: "Smart TV 55''" },
+    { icon: Wind, label: "Spa & Wellness" },
+    { icon: Car, label: "Parcheggio" },
+    { icon: Users, label: "Max 4 ospiti" },
+    { icon: Snowflake, label: "Aria condiz." },
     { icon: Flame, label: "Riscaldamento" },
   ]
 
   const galleryImages = [
-    { src: "/images/bb-hero.jpg", alt: "Vista esterna" },
-    { src: "/images/spa1.jpg", alt: "Spa" },
-    { src: "/images/room-1.jpg", alt: "Camera" },
-    { src: "/images/pool.jpg", alt: "Piscina" },
+    { src: "/images/1.jpg", alt: "Interno appartamento" },
+    { src: "/images/2.jpg", alt: "Camera da letto" },
+    { src: "/images/pool.jpg", alt: "Piscina privata" },
+    { src: "/images/spa1.jpg", alt: "Spa e wellness" },
   ]
 
   return (
-    <section className="py-16 sm:py-20 md:py-24 bg-white">
+    <section className="py-16 sm:py-20 md:py-24 bg-[#f5f5f0]">
       <div className="container mx-auto px-4 max-w-4xl">
         {/* Title Section */}
-        <div className="text-center mb-10 sm:mb-14 md:mb-16">
-          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-normal text-[#1a1a1a] mb-3 sm:mb-4 tracking-wide leading-tight">
+        <div className="text-center mb-10 sm:mb-14">
+          <h2 
+            className="text-3xl sm:text-4xl md:text-5xl font-normal text-[#1a1a1a] mb-3 sm:mb-4 tracking-wide leading-tight"
+            style={{ fontFamily: "var(--font-cormorant), var(--font-playfair), Georgia, serif" }}
+          >
             {content.title}
           </h2>
-          <p className="text-base sm:text-lg text-[#4a90c9] mb-5 sm:mb-6">
+          <p className="text-base sm:text-lg text-[#c9a84c] mb-5 sm:mb-6">
             {content.subtitle}
           </p>
-          <div className="w-12 sm:w-16 h-1 bg-[#4a90c9] mx-auto" />
+          <div className="w-12 sm:w-16 h-0.5 bg-[#c9a84c] mx-auto" />
         </div>
 
         {/* Content */}
-        <div className="mb-12 sm:mb-14 md:mb-16">
-          <p className="text-[#333] text-base sm:text-lg leading-relaxed mb-6 sm:mb-8 text-center sm:text-left">
+        <div className="mb-12 sm:mb-14">
+          <p className="text-[#4a4a4a] text-base sm:text-lg leading-relaxed mb-6 text-center">
             {content.paragraph1}
           </p>
-          <p className="text-[#333] text-base sm:text-lg leading-relaxed text-center sm:text-left">
+          <p className="text-[#4a4a4a] text-base sm:text-lg leading-relaxed text-center">
             {content.paragraph2}
           </p>
         </div>
 
         {/* Amenities */}
-        <div className="mb-12 sm:mb-14 md:mb-16">
-          <div className="flex flex-wrap justify-center gap-4 sm:gap-6 md:gap-8">
+        <div className="mb-12 sm:mb-14">
+          <div className="flex flex-wrap justify-center gap-6 sm:gap-8">
             {amenities.map((amenity, index) => {
               const Icon = amenity.icon
               return (
                 <div
                   key={index}
-                  className="flex flex-col items-center gap-2 text-center min-w-[60px] sm:min-w-[70px]"
+                  className="flex flex-col items-center gap-2 text-center"
                 >
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#f8f8f5] flex items-center justify-center text-[#6b6560]">
-                    <Icon className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={1.5} />
+                  <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-[#c9a84c] shadow-sm">
+                    <Icon className="w-5 h-5" strokeWidth={1.5} />
                   </div>
-                  <span className="text-[10px] sm:text-xs text-[#6b6560] max-w-[60px] sm:max-w-[70px] leading-tight">
+                  <span className="text-xs text-[#6b6560] max-w-[70px] leading-tight">
                     {amenity.label}
                   </span>
                 </div>
@@ -125,10 +128,13 @@ export function StorySection() {
 
         {/* Gallery Section */}
         <div>
-          <h3 className="font-serif text-xl sm:text-2xl text-center text-[#1a1a1a] mb-6 sm:mb-8">
+          <h3 
+            className="text-xl sm:text-2xl text-center text-[#1a1a1a] mb-6 sm:mb-8"
+            style={{ fontFamily: "var(--font-cormorant), var(--font-playfair), Georgia, serif" }}
+          >
             {content.galleryTitle}
           </h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-3 md:gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-3">
             {galleryImages.map((image, index) => (
               <div key={index} className="aspect-square overflow-hidden relative group">
                 <Image
@@ -137,11 +143,6 @@ export function StorySection() {
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-110"
                 />
-                {index === 3 && (
-                  <div className="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <span className="text-white text-base sm:text-lg font-light">+17</span>
-                  </div>
-                )}
               </div>
             ))}
           </div>

@@ -22,20 +22,20 @@ export function RoomsPreview() {
     nearby: { name: string; distance: string }[]
   }> = {
     it: {
-      hostTitle: "Sarai ospitato/a da",
+      hostTitle: "Sarai ospitato da",
       hostName: "Roberto",
-      locationTitle: "Zona centro",
+      locationTitle: "Posizione",
       airportsTitle: "Aeroporti",
       stationsTitle: "Stazioni Ferroviarie",
-      nearbyTitle: "Nei dintorni",
+      nearbyTitle: "Nelle vicinanze",
       mapBtn: "Vedi su Google Maps",
       airports: [
-        { name: "Aeroporto di Roma - Fiumicino", distance: "80 km" },
-        { name: "Aeroporto di Roma - Ciampino", distance: "100 km" },
+        { name: "Aeroporto di Roma Fiumicino", distance: "80 km" },
+        { name: "Aeroporto di Roma Ciampino", distance: "100 km" },
       ],
       stations: [
-        { name: "Stazione di Viterbo Porta Romana", distance: "600 m" },
-        { name: "Stazione di Viterbo Porta Fiorentina", distance: "1.2 km" },
+        { name: "Stazione Viterbo Porta Romana", distance: "600 m" },
+        { name: "Stazione Viterbo Porta Fiorentina", distance: "1.2 km" },
       ],
       nearby: [
         { name: "Centro Storico di Viterbo", distance: "500 m" },
@@ -49,7 +49,7 @@ export function RoomsPreview() {
     en: {
       hostTitle: "You will be hosted by",
       hostName: "Roberto",
-      locationTitle: "City center",
+      locationTitle: "Location",
       airportsTitle: "Airports",
       stationsTitle: "Train Stations",
       nearbyTitle: "Nearby",
@@ -74,18 +74,18 @@ export function RoomsPreview() {
     fr: {
       hostTitle: "Vous serez accueilli par",
       hostName: "Roberto",
-      locationTitle: "Centre-ville",
+      locationTitle: "Emplacement",
       airportsTitle: "Aeroports",
       stationsTitle: "Gares",
       nearbyTitle: "A proximite",
       mapBtn: "Voir sur Google Maps",
       airports: [
-        { name: "Aeroport de Rome - Fiumicino", distance: "80 km" },
-        { name: "Aeroport de Rome - Ciampino", distance: "100 km" },
+        { name: "Aeroport de Rome Fiumicino", distance: "80 km" },
+        { name: "Aeroport de Rome Ciampino", distance: "100 km" },
       ],
       stations: [
-        { name: "Gare de Viterbo Porta Romana", distance: "600 m" },
-        { name: "Gare de Viterbo Porta Fiorentina", distance: "1.2 km" },
+        { name: "Gare Viterbo Porta Romana", distance: "600 m" },
+        { name: "Gare Viterbo Porta Fiorentina", distance: "1.2 km" },
       ],
       nearby: [
         { name: "Centre historique de Viterbo", distance: "500 m" },
@@ -99,18 +99,18 @@ export function RoomsPreview() {
     es: {
       hostTitle: "Seras recibido por",
       hostName: "Roberto",
-      locationTitle: "Zona centro",
+      locationTitle: "Ubicacion",
       airportsTitle: "Aeropuertos",
       stationsTitle: "Estaciones de tren",
-      nearbyTitle: "En los alrededores",
+      nearbyTitle: "Cerca",
       mapBtn: "Ver en Google Maps",
       airports: [
-        { name: "Aeropuerto de Roma - Fiumicino", distance: "80 km" },
-        { name: "Aeropuerto de Roma - Ciampino", distance: "100 km" },
+        { name: "Aeropuerto de Roma Fiumicino", distance: "80 km" },
+        { name: "Aeropuerto de Roma Ciampino", distance: "100 km" },
       ],
       stations: [
-        { name: "Estacion de Viterbo Porta Romana", distance: "600 m" },
-        { name: "Estacion de Viterbo Porta Fiorentina", distance: "1.2 km" },
+        { name: "Estacion Viterbo Porta Romana", distance: "600 m" },
+        { name: "Estacion Viterbo Porta Fiorentina", distance: "1.2 km" },
       ],
       nearby: [
         { name: "Centro historico de Viterbo", distance: "500 m" },
@@ -124,14 +124,14 @@ export function RoomsPreview() {
     de: {
       hostTitle: "Sie werden empfangen von",
       hostName: "Roberto",
-      locationTitle: "Stadtzentrum",
+      locationTitle: "Lage",
       airportsTitle: "Flughafen",
       stationsTitle: "Bahnhofe",
       nearbyTitle: "In der Nahe",
       mapBtn: "Auf Google Maps ansehen",
       airports: [
-        { name: "Flughafen Rom - Fiumicino", distance: "80 km" },
-        { name: "Flughafen Rom - Ciampino", distance: "100 km" },
+        { name: "Flughafen Rom Fiumicino", distance: "80 km" },
+        { name: "Flughafen Rom Ciampino", distance: "100 km" },
       ],
       stations: [
         { name: "Bahnhof Viterbo Porta Romana", distance: "600 m" },
@@ -151,36 +151,42 @@ export function RoomsPreview() {
   const content = sectionContent[language] || sectionContent.it
 
   return (
-    <section className="py-16 sm:py-20 md:py-24 bg-white">
+    <section className="py-16 sm:py-20 md:py-24 bg-[#f5f5f0]">
       <div className="container mx-auto px-4 max-w-5xl">
         {/* Host Section */}
-        <div className="text-center mb-12 sm:mb-14 md:mb-16">
-          <p className="text-sm sm:text-base text-[#6b6560] mb-3 sm:mb-4">{content.hostTitle}</p>
-          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-normal text-[#1a1a1a] tracking-wide">
+        <div className="text-center mb-12 sm:mb-16">
+          <p className="text-sm text-[#6b6560] mb-3">{content.hostTitle}</p>
+          <h2 
+            className="text-3xl sm:text-4xl md:text-5xl font-normal text-[#1a1a1a] tracking-wide"
+            style={{ fontFamily: "var(--font-cormorant), var(--font-playfair), Georgia, serif" }}
+          >
             {content.hostName}
           </h2>
         </div>
 
-        {/* Location Info */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 md:gap-12 mb-12 sm:mb-14 md:mb-16">
+        {/* Location Info Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-12">
           {/* Left Column */}
           <div>
-            <h3 className="font-serif text-xl sm:text-2xl text-[#1a1a1a] mb-4 sm:mb-6 flex items-center gap-2">
-              <MapPin className="w-5 h-5 text-[#4a90c9]" />
+            <h3 
+              className="text-xl sm:text-2xl text-[#1a1a1a] mb-6 flex items-center gap-2"
+              style={{ fontFamily: "var(--font-cormorant), var(--font-playfair), Georgia, serif" }}
+            >
+              <MapPin className="w-5 h-5 text-[#c9a84c]" />
               {content.locationTitle}
             </h3>
 
             {/* Airports */}
-            <div className="mb-6 sm:mb-8">
-              <h4 className="text-sm sm:text-base font-medium text-[#1a1a1a] mb-3 sm:mb-4 flex items-center gap-2">
+            <div className="mb-8">
+              <h4 className="text-sm font-medium text-[#1a1a1a] mb-4 flex items-center gap-2">
                 <Plane className="w-4 h-4 text-[#6b6560]" />
                 {content.airportsTitle}
               </h4>
               <ul className="space-y-2">
                 {content.airports.map((airport, index) => (
-                  <li key={index} className="flex justify-between text-xs sm:text-sm text-[#6b6560]">
+                  <li key={index} className="flex justify-between text-sm text-[#6b6560]">
                     <span>{airport.name}</span>
-                    <span className="text-[#4a90c9]">{airport.distance}</span>
+                    <span className="text-[#c9a84c] font-medium">{airport.distance}</span>
                   </li>
                 ))}
               </ul>
@@ -188,15 +194,15 @@ export function RoomsPreview() {
 
             {/* Train Stations */}
             <div>
-              <h4 className="text-sm sm:text-base font-medium text-[#1a1a1a] mb-3 sm:mb-4 flex items-center gap-2">
+              <h4 className="text-sm font-medium text-[#1a1a1a] mb-4 flex items-center gap-2">
                 <Train className="w-4 h-4 text-[#6b6560]" />
                 {content.stationsTitle}
               </h4>
               <ul className="space-y-2">
                 {content.stations.map((station, index) => (
-                  <li key={index} className="flex justify-between text-xs sm:text-sm text-[#6b6560]">
+                  <li key={index} className="flex justify-between text-sm text-[#6b6560]">
                     <span>{station.name}</span>
-                    <span className="text-[#4a90c9]">{station.distance}</span>
+                    <span className="text-[#c9a84c] font-medium">{station.distance}</span>
                   </li>
                 ))}
               </ul>
@@ -205,34 +211,37 @@ export function RoomsPreview() {
 
           {/* Right Column - Nearby */}
           <div>
-            <h3 className="font-serif text-xl sm:text-2xl text-[#1a1a1a] mb-4 sm:mb-6">
+            <h3 
+              className="text-xl sm:text-2xl text-[#1a1a1a] mb-6"
+              style={{ fontFamily: "var(--font-cormorant), var(--font-playfair), Georgia, serif" }}
+            >
               {content.nearbyTitle}
             </h3>
-            <ul className="space-y-2 sm:space-y-3">
+            <ul className="space-y-3">
               {content.nearby.map((place, index) => (
-                <li key={index} className="flex justify-between text-xs sm:text-sm text-[#6b6560] py-2 border-b border-[#eee]">
+                <li key={index} className="flex justify-between text-sm text-[#6b6560] py-2 border-b border-[#e0ddd5]">
                   <span>{place.name}</span>
-                  <span className="text-[#4a90c9] font-medium">{place.distance}</span>
+                  <span className="text-[#c9a84c] font-medium">{place.distance}</span>
                 </li>
               ))}
             </ul>
           </div>
         </div>
 
-        {/* Map Image */}
-        <div className="relative h-48 sm:h-64 md:h-80 rounded-lg overflow-hidden bg-[#f0f0f0]">
+        {/* Map Placeholder */}
+        <div className="relative h-64 sm:h-80 overflow-hidden bg-[#e0ddd5]">
           <Image
             src="/images/bb-hero.jpg"
-            alt="Location map"
+            alt="Location"
             fill
-            className="object-cover opacity-50"
+            className="object-cover opacity-40"
           />
           <div className="absolute inset-0 flex items-center justify-center">
             <Button
               asChild
-              className="bg-[#4a90c9] hover:bg-[#3a7db3] text-white rounded-none px-6 sm:px-8 py-4 sm:py-5 text-sm sm:text-base"
+              className="bg-[#1a1a1a] hover:bg-[#333] text-white rounded-none px-8 py-5"
             >
-              <Link href="https://maps.google.com" target="_blank">
+              <Link href="https://maps.google.com/?q=Viterbo,Italy" target="_blank" rel="noopener noreferrer">
                 <MapPin className="w-4 h-4 mr-2" />
                 {content.mapBtn}
               </Link>

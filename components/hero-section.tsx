@@ -6,117 +6,125 @@ import Link from "next/link"
 import { useLanguage } from "@/components/language-provider"
 
 const HERO_SLIDES = [
-  {
-    src: "/images/bb-hero.jpg",
-    alt: "CHAPLIN Luxury Holiday House",
-  },
-  {
-    src: "/images/pool.jpg",
-    alt: "Piscina panoramica",
-  },
+  { src: "/images/bb-hero.jpg", alt: "CHAPLIN Holiday House" },
+  { src: "/images/pool.jpg", alt: "Piscina privata" },
+  { src: "/images/1.jpg", alt: "Interno appartamento" },
 ]
 
 export function HeroSection() {
   const [currentSlide, setCurrentSlide] = useState(0)
-  const [isVisible, setIsVisible] = useState(false)
+  const [animationStep, setAnimationStep] = useState(0)
   const { t } = useLanguage()
 
-  // Fade in animation on mount
+  // Staggered animation sequence
   useEffect(() => {
-    const timer = setTimeout(() => setIsVisible(true), 100)
-    return () => clearTimeout(timer)
+    const timers = [
+      setTimeout(() => setAnimationStep(1), 300),   // tagline
+      setTimeout(() => setAnimationStep(2), 800),   // welcome
+      setTimeout(() => setAnimationStep(3), 1300),  // CHAPLIN
+      setTimeout(() => setAnimationStep(4), 1800),  // line
+      setTimeout(() => setAnimationStep(5), 2300),  // scroll
+    ]
+    return () => timers.forEach(clearTimeout)
   }, [])
 
   // Auto slide
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % HERO_SLIDES.length)
-    }, 7000)
+    }, 6000)
     return () => clearInterval(timer)
   }, [])
 
   return (
-    <section className="relative h-screen overflow-hidden">
-      {/* Background Images */}
+    <section className="relative h-screen w-full overflow-hidden">
+      {/* Background Images with crossfade */}
       {HERO_SLIDES.map((slide, index) => (
         <div
           key={slide.src}
-          className={`absolute inset-0 transition-opacity duration-[2000ms] ease-in-out ${
-            index === currentSlide ? "opacity-100" : "opacity-0"
-          }`}
+          className="absolute inset-0 transition-opacity duration-[2000ms] ease-in-out"
+          style={{ opacity: currentSlide === index ? 1 : 0 }}
         >
           <Image
             src={slide.src}
             alt={slide.alt}
             fill
-            className="object-cover"
             priority={index === 0}
+            className="object-cover"
             sizes="100vw"
           />
-          {/* Dark overlay */}
-          <div className="absolute inset-0 bg-black/50" />
         </div>
       ))}
 
-      {/* Content - Centered with fade-in animation */}
-      <div className="relative z-10 h-full flex flex-col items-center justify-center">
-        <div 
-          className={`text-center text-white transition-all duration-[1500ms] ease-out ${
-            isVisible 
-              ? "opacity-100 translate-y-0" 
-              : "opacity-0 translate-y-8"
-          }`}
+      {/* Dark overlay */}
+      <div className="absolute inset-0 bg-black/50" />
+
+      {/* Content - centered with staggered animations */}
+      <div className="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-4">
+        
+        {/* Small tagline */}
+        <p 
+          className="text-[10px] sm:text-xs tracking-[0.4em] uppercase mb-4 sm:mb-6 transition-all duration-[1200ms] ease-out"
+          style={{
+            opacity: animationStep >= 1 ? 1 : 0,
+            transform: animationStep >= 1 ? "translateY(0)" : "translateY(20px)",
+            color: "#c9a84c",
+          }}
         >
-          {/* Tagline - small spaced letters */}
-          <p 
-            className="text-[11px] sm:text-xs md:text-sm tracking-[0.35em] uppercase mb-6 md:mb-8"
-            style={{ color: "rgba(201, 168, 76, 0.9)" }}
-          >
-            luxury holiday house | viterbo
-          </p>
-          
-          {/* Main Title - Large elegant serif */}
-          <h1 
-            className="text-[42px] sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-light tracking-[0.08em] leading-none"
-            style={{ 
-              fontFamily: "var(--font-cormorant), var(--font-playfair), Georgia, serif",
-              color: "#f5f0e8"
-            }}
-          >
-            CHAPLIN
-          </h1>
+          luxury holiday house | viterbo
+        </p>
 
-          {/* Vertical decorative line */}
-          <div 
-            className={`mx-auto mt-8 md:mt-12 w-px bg-white/40 transition-all duration-[2000ms] ease-out delay-500 ${
-              isVisible ? "h-16 md:h-24 opacity-100" : "h-0 opacity-0"
-            }`}
-          />
+        {/* Main title "welcome" */}
+        <h1 
+          className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[110px] font-light tracking-[0.02em] mb-2 sm:mb-4 transition-all duration-[1200ms] ease-out lowercase"
+          style={{
+            opacity: animationStep >= 2 ? 1 : 0,
+            transform: animationStep >= 2 ? "translateY(0)" : "translateY(30px)",
+            fontFamily: "var(--font-cormorant), var(--font-playfair), Georgia, serif",
+            color: "#f5f0e8",
+          }}
+        >
+          welcome
+        </h1>
 
-          {/* Scroll indicator text */}
-          <p 
-            className={`mt-6 md:mt-8 text-[10px] sm:text-xs tracking-[0.25em] uppercase text-white/50 transition-all duration-1000 delay-1000 ${
-              isVisible ? "opacity-100" : "opacity-0"
-            }`}
-          >
-            scroll
-          </p>
-        </div>
+        {/* Subtitle "CHAPLIN" */}
+        <p 
+          className="text-base sm:text-lg md:text-xl tracking-[0.35em] uppercase mb-6 sm:mb-8 transition-all duration-[1200ms] ease-out"
+          style={{
+            opacity: animationStep >= 3 ? 1 : 0,
+            transform: animationStep >= 3 ? "translateY(0)" : "translateY(20px)",
+            color: "#c9a84c",
+          }}
+        >
+          CHAPLIN
+        </p>
+
+        {/* Vertical decorative line */}
+        <div 
+          className="w-px bg-white/50 transition-all duration-[1000ms] ease-out"
+          style={{
+            height: animationStep >= 4 ? "50px" : "0px",
+          }}
+        />
       </div>
 
-      {/* Bottom gradient for better text readability */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black/30 to-transparent z-5" />
+      {/* Scroll indicator at bottom */}
+      <div 
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 transition-opacity duration-1000"
+        style={{ opacity: animationStep >= 5 ? 0.6 : 0 }}
+      >
+        <span className="text-white/70 text-[10px] tracking-[0.25em] uppercase">scroll</span>
+        <div className="w-px h-6 bg-white/30" />
+      </div>
 
-      {/* Slide Indicators - minimal dots */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-3">
+      {/* Slide indicators - horizontal lines */}
+      <div className="absolute bottom-10 right-6 sm:right-10 flex gap-2">
         {HERO_SLIDES.map((_, index) => (
           <button
             key={index}
             onClick={() => setCurrentSlide(index)}
-            className={`w-2 h-2 rounded-full transition-all duration-500 ${
-              index === currentSlide 
-                ? "bg-[#c9a84c]" 
-                : "bg-white/30 hover:bg-white/50"
+            className={`h-0.5 transition-all duration-500 ${
+              currentSlide === index ? "w-8 bg-[#c9a84c]" : "w-4 bg-white/40 hover:bg-white/60"
             }`}
             aria-label={`Slide ${index + 1}`}
           />
