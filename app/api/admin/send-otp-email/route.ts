@@ -2,12 +2,12 @@ import { NextRequest, NextResponse } from "next/server"
 import { getAdminDb } from "@/lib/firebase-admin"
 import { Resend } from "resend"
 
-// Lazy init - only creates Resend client when actually needed
+// Lazy init - only creates Resend client when actually needed, returns null if not configured
 let _resend: Resend | null = null
-function getResend(): Resend {
+function getResend(): Resend | null {
   if (!_resend) {
     const key = process.env.RESEND_API_KEY
-    if (!key) throw new Error("RESEND_API_KEY non configurata. Aggiungi la variabile d'ambiente.")
+    if (!key) return null
     _resend = new Resend(key)
   }
   return _resend
@@ -115,7 +115,16 @@ export async function POST(request: NextRequest) {
       }
       
       try {
-        await getResend().emails.send({
+        const resend = getResend()
+        if (!resend) {
+          console.log(`[v0] RESEND_API_KEY not configured - OTP for email change: ${otp}`)
+          return NextResponse.json({ 
+            success: true, 
+            message: "Email service non configurato. OTP loggato in console per testing.",
+            devOtp: process.env.NODE_ENV === "development" ? otp : undefined
+          })
+        }
+        await resend.emails.send({
           from: process.env.RESEND_FROM_EMAIL || "onboarding@resend.dev",
           to: currentEmail,
           subject: "Codice di Verifica - Cambio Email",
