@@ -2,166 +2,138 @@
 
 import { useState, useEffect } from "react"
 import Image from "next/image"
-import { Button } from "@/components/ui/button"
-import { ChevronLeft, ChevronRight, MapPin } from "lucide-react"
+import { ChevronLeft, ChevronRight } from "lucide-react"
 import Link from "next/link"
 import { useLanguage } from "@/components/language-provider"
+import { Button } from "@/components/ui/button"
 
 export function HeroSection() {
   const [currentSlide, setCurrentSlide] = useState(0)
   const [isLoaded, setIsLoaded] = useState(false)
   const { t } = useLanguage()
 
-  const heroImages = [
+  const heroSlides = [
     {
       src: "/images/bb-hero.jpg",
       alt: "CHAPLIN Luxury Holiday House - Vista principale",
-      titleKey: "heroTitle",
-      subtitleKey: "heroSubtitle",
+      tagline: "luxury holiday house | viterbo",
+      title: "CHAPLIN",
     },
     {
       src: "/images/pool.jpg",
       alt: "Piscina panoramica",
-      titleKey: "heroTitle2",
-      subtitleKey: "heroSubtitle2",
+      tagline: "luxury holiday house | viterbo",
+      title: "CHAPLIN",
     },
   ]
 
   useEffect(() => {
     setIsLoaded(true)
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % heroImages.length)
-    }, 6000)
-    return () => clearInterval(timer)
   }, [])
 
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroSlides.length)
+    }, 6000)
+    return () => clearInterval(timer)
+  }, [heroSlides.length])
+
   const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % heroImages.length)
+    setCurrentSlide((prev) => (prev + 1) % heroSlides.length)
   }
 
   const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + heroImages.length) % heroImages.length)
+    setCurrentSlide((prev) => (prev - 1 + heroSlides.length) % heroSlides.length)
   }
 
   return (
     <section className="relative h-screen overflow-hidden">
-      {heroImages.map((image, index) => (
+      {/* Background Images */}
+      {heroSlides.map((slide, index) => (
         <div
           key={index}
-          className={`absolute inset-0 transition-all duration-2000 ease-in-out ${
-            index === currentSlide ? "opacity-100 scale-100" : "opacity-0 scale-105"
+          className={`absolute inset-0 transition-opacity duration-1000 ${
+            index === currentSlide ? "opacity-100" : "opacity-0"
           }`}
         >
           <Image
-            src={image.src || "/placeholder.svg?height=1080&width=1920&query=luxury B&B villa in Rome"}
-            alt={image.alt}
+            src={slide.src}
+            alt={slide.alt}
             fill
             className="object-cover"
             priority={index === 0}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/40 to-black/60" />
+          <div className="absolute inset-0 bg-black/40" />
         </div>
       ))}
 
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(20)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-2 h-2 bg-white/20 rounded-full animate-float"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 5}s`,
-              animationDuration: `${3 + Math.random() * 4}s`,
-            }}
-          />
-        ))}
-      </div>
-
+      {/* Content - Like Le Cinque Lune style */}
       <div className="relative z-10 h-full flex items-center justify-center">
-        <div className="text-center text-white px-4 max-w-5xl mx-auto">
-          <div
-            className={`transition-all duration-1500 ${isLoaded ? "animate-fade-in-up" : "opacity-0 translate-y-10"}`}
-          >
-            <h1 className="font-roman text-6xl md:text-8xl font-bold mb-8 text-balance text-roman-gradient animate-shimmer">
-              {t(heroImages[currentSlide].titleKey)}
-            </h1>
-            <p className="text-2xl md:text-3xl mb-10 text-balance opacity-90 font-light tracking-wide">
-              {t(heroImages[currentSlide].subtitleKey)}
-            </p>
+        <div 
+          className={`text-center text-white px-4 transition-all duration-1000 ${
+            isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        >
+          {/* Tagline */}
+          <p className="text-xs sm:text-sm tracking-[0.3em] uppercase text-white/80 mb-4 sm:mb-6 font-light">
+            {heroSlides[currentSlide].tagline}
+          </p>
+          
+          {/* Main Title - Large serif font like reference */}
+          <h1 className="font-cinzel text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-normal tracking-wide mb-6 sm:mb-10">
+            {heroSlides[currentSlide].title}
+          </h1>
 
-            <div
-              className="flex items-center justify-center gap-3 mb-12 animate-slide-in-up"
-              style={{ animationDelay: "0.8s" }}
+          {/* Booking Form Bar - Like Le Cinque Lune */}
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mt-8 sm:mt-12">
+            <Button
+              asChild
+              size="lg"
+              className="bg-[#c9a84c] hover:bg-[#b8973f] text-white text-sm sm:text-base px-6 sm:px-10 py-5 sm:py-6 rounded-none tracking-wider font-normal"
             >
-              <div className="bg-primary/20 backdrop-blur-sm rounded-full p-2">
-                <MapPin className="w-6 h-6 text-primary animate-pulse" />
-              </div>
-              <span className="text-xl font-medium">Viterbo, Italia</span>
-            </div>
-
-            <div
-              className="flex flex-col sm:flex-row gap-6 justify-center animate-slide-in-up"
-              style={{ animationDelay: "1s" }}
+              <Link href="/prenota">{t("bookYourStay")}</Link>
+            </Button>
+            <Button
+              asChild
+              size="lg"
+              variant="outline"
+              className="border-white/60 text-white hover:bg-white hover:text-black text-sm sm:text-base px-6 sm:px-10 py-5 sm:py-6 rounded-none tracking-wider font-normal bg-transparent"
             >
-              <Button
-                size="lg"
-                className="bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary text-xl px-12 py-4 rounded-full shadow-2xl hover:shadow-primary/25 transition-all duration-300 hover:scale-105 animate-shimmer"
-              >
-                <Link href="/prenota">{t("bookYourStay")}</Link>
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-2 border-white text-white hover:bg-white hover:text-foreground text-xl px-12 py-4 rounded-full bg-white/10 backdrop-blur-sm transition-all duration-300 hover:scale-105"
-              >
-                <Link href="/servizi">{t("discoverMore")}</Link>
-              </Button>
-            </div>
+              <Link href="/camere">{t("discoverMore")}</Link>
+            </Button>
           </div>
         </div>
       </div>
 
-      <Button
-        variant="ghost"
-        size="icon"
-        className="absolute left-6 top-1/2 -translate-y-1/2 z-20 text-white hover:bg-white/20 w-14 h-14 rounded-full backdrop-blur-sm border border-white/20 transition-all duration-300 hover:scale-110"
+      {/* Navigation Arrows */}
+      <button
         onClick={prevSlide}
+        className="absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center text-white/70 hover:text-white transition-colors"
+        aria-label="Previous slide"
       >
-        <ChevronLeft className="w-8 h-8" />
-      </Button>
-      <Button
-        variant="ghost"
-        size="icon"
-        className="absolute right-6 top-1/2 -translate-y-1/2 z-20 text-white hover:bg-white/20 w-14 h-14 rounded-full backdrop-blur-sm border border-white/20 transition-all duration-300 hover:scale-110"
+        <ChevronLeft className="w-6 h-6 sm:w-8 sm:h-8" strokeWidth={1} />
+      </button>
+      <button
         onClick={nextSlide}
+        className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center text-white/70 hover:text-white transition-colors"
+        aria-label="Next slide"
       >
-        <ChevronRight className="w-8 h-8" />
-      </Button>
+        <ChevronRight className="w-6 h-6 sm:w-8 sm:h-8" strokeWidth={1} />
+      </button>
 
-      <div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-20 flex gap-3">
-        {heroImages.map((_, index) => (
+      {/* Slide Indicators */}
+      <div className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-2 sm:gap-3">
+        {heroSlides.map((_, index) => (
           <button
             key={index}
-            type="button"
-            title={`Go to slide ${index + 1}`}
-            aria-label={`Go to slide ${index + 1}`}
-            className={`w-4 h-4 rounded-full transition-all duration-300 ${
-              index === currentSlide ? "bg-white scale-125 shadow-lg" : "bg-white/50 hover:bg-white/75 hover:scale-110"
-            }`}
             onClick={() => setCurrentSlide(index)}
-          >
-            <span className="sr-only">Go to slide {index + 1}</span>
-          </button>
+            className={`w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full transition-all duration-300 ${
+              index === currentSlide ? "bg-[#c9a84c] scale-125" : "bg-white/50 hover:bg-white/70"
+            }`}
+            aria-label={`Go to slide ${index + 1}`}
+          />
         ))}
-      </div>
-
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 animate-bounce">
-        <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-white/70 rounded-full mt-2 animate-pulse"></div>
-        </div>
       </div>
     </section>
   )
 }
-

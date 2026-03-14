@@ -1,268 +1,178 @@
 "use client"
 
 import Image from "next/image"
-import { Heart, Award, Users, Calendar } from "lucide-react"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 import { useLanguage } from "@/components/language-provider"
+import { Wifi, Home, TreePine, Utensils, Tv, Wind, Star, Users, Snowflake, Flame } from "lucide-react"
 
 export function StorySection() {
   const { ref: titleRef, isVisible: titleVisible } = useScrollAnimation()
   const { ref: contentRef, isVisible: contentVisible } = useScrollAnimation()
-  const { ref: statsRef, isVisible: statsVisible } = useScrollAnimation()
-  const { ref: imagesRef, isVisible: imagesVisible } = useScrollAnimation()
-  const { t, language } = useLanguage()
+  const { ref: amenitiesRef, isVisible: amenitiesVisible } = useScrollAnimation()
+  const { ref: galleryRef, isVisible: galleryVisible } = useScrollAnimation()
+  const { language } = useLanguage()
 
   const storyContent = {
     it: {
-  paragraph1:
-    "Benvenuti a CHAPLIN Luxury Holiday House! Ciao e benvenuti, sono felice di darvi il benvenuto nella nostra casa vacanze di charme situata nel cuore di Viterbo. CHAPLIN Luxury Holiday House nasce dal desiderio di offrire ai nostri ospiti un soggiorno elegante, confortevole e autentico, in una delle città più affascinanti del Lazio. Fin dal primo giorno, la nostra missione è stata quella di creare un ambiente raffinato ma accogliente, dove ogni ospite possa sentirsi a proprio agio, come a casa. Crediamo che l’attenzione ai dettagli, la disponibilità e un’accoglienza sincera siano elementi fondamentali per rendere ogni soggiorno davvero speciale.",
-
-  paragraph2:
-    "La posizione della CHAPLIN Luxury Holiday House è uno dei suoi punti di forza: ci troviamo in una zona eccellente di Viterbo, apprezzata e valutata con un punteggio altissimo dai nostri ospiti. A pochi passi dal centro storico e a soli 600 metri dalla stazione ferroviaria di Viterbo, la nostra struttura è perfetta per chi desidera esplorare la città a piedi o muoversi comodamente verso le principali destinazioni. Le vie medievali, le piazze storiche e l’atmosfera unica della città dei Papi rendono ogni passeggiata un’esperienza indimenticabile.",
-
-  paragraph3:
-    "All’interno della CHAPLIN Luxury Holiday House troverete ambienti curati con gusto, spazi luminosi e comfort pensati per garantire relax e tranquillità. Che si tratti di un viaggio di piacere, di una fuga romantica o di un soggiorno di lavoro, la nostra struttura è pensata per adattarsi a ogni esigenza. Amiamo interagire con i nostri ospiti, ascoltare le loro storie e consigliare ristoranti tipici, luoghi da visitare e percorsi meno conosciuti di Viterbo. Il nostro obiettivo è farvi vivere non solo un soggiorno, ma un’esperienza autentica, che vi faccia venire voglia di tornare.",
-
-  yearsExperience: "Anni di Esperienza",
-  happyGuests: "Ospiti Felici",
-  awardsReceived: "Riconoscimenti",
-  averageRating: "Valutazione Media",
-},
-   en: {
-  paragraph1:
-    "Welcome to CHAPLIN Luxury Holiday House. Hello and welcome! We are delighted to welcome you to our elegant holiday home located in the heart of Viterbo. CHAPLIN Luxury Holiday House was created with the idea of offering guests a refined, comfortable, and authentic stay in one of the most fascinating historic cities in Italy. From the very beginning, our goal has been to create an environment where guests feel truly welcome, relaxed, and cared for. We believe that attention to detail, availability, and genuine hospitality can transform a simple stay into a memorable experience.",
-
-  paragraph2:
-    "One of the greatest strengths of CHAPLIN Luxury Holiday House is its excellent location. Situated in a highly rated area of Viterbo, the property is within walking distance of the historic city center and just 600 meters from Viterbo’s train station. This strategic position allows guests to explore medieval streets, historic squares, and cultural landmarks with ease, while also enjoying convenient connections to nearby destinations. Viterbo’s timeless atmosphere makes every walk an unforgettable journey through history.",
-
-  paragraph3:
-    "Inside CHAPLIN Luxury Holiday House, guests will find tastefully designed interiors, bright spaces, and modern comforts created to ensure peace and relaxation. Whether you are traveling for leisure, a romantic escape, or business, our home adapts perfectly to every need. We love interacting with our guests, listening to their stories, and recommending local restaurants, hidden gems, and authentic experiences. Our aim is not just to offer accommodation, but to let you experience Viterbo in a genuine and memorable way.",
-
-  yearsExperience: "Years of Experience",
-  happyGuests: "Happy Guests",
-  awardsReceived: "Recognitions",
-  averageRating: "Average Rating",
-},
-
-fr: {
-  paragraph1:
-    "Bienvenue à CHAPLIN Luxury Holiday House. Bonjour et bienvenue! Nous sommes ravis de vous accueillir dans notre maison de vacances élégante située au cœur de Viterbo. CHAPLIN Luxury Holiday House est née du désir d’offrir à nos hôtes un séjour raffiné, confortable et authentique dans l’une des villes historiques les plus fascinantes d’Italie. Depuis le début, notre objectif est de créer un environnement où les clients se sentent réellement accueillis, détendus et pris en charge. Nous croyons que l’attention aux détails et une hospitalité sincère font toute la différence.",
-
-  paragraph2:
-    "L’un des grands atouts de CHAPLIN Luxury Holiday House est sans aucun doute son emplacement exceptionnel. Située dans une zone très appréciée de Viterbo, la maison se trouve à quelques pas du centre historique et à seulement 600 mètres de la gare ferroviaire. Cette position idéale permet d’explorer facilement les rues médiévales, les places historiques et les sites culturels, tout en bénéficiant de connexions pratiques vers les environs. L’atmosphère unique de Viterbo rend chaque promenade inoubliable.",
-
-  paragraph3:
-    "À l’intérieur de CHAPLIN Luxury Holiday House, vous découvrirez des espaces lumineux, un design soigné et des équipements modernes pensés pour le bien-être et la tranquillité. Que votre séjour soit touristique, romantique ou professionnel, notre maison s’adapte parfaitement à vos besoins. Nous aimons échanger avec nos hôtes, partager des conseils sur les restaurants locaux et suggérer des expériences authentiques pour découvrir Viterbo. Notre objectif est de vous offrir bien plus qu’un séjour: une véritable expérience.",
-
-  yearsExperience: "Années d’Expérience",
-  happyGuests: "Clients Satisfaits",
-  awardsReceived: "Reconnaissances",
-  averageRating: "Note Moyenne",
-},
-
-es: {
-  paragraph1:
-    "Bienvenido a CHAPLIN Luxury Holiday House. ¡Hola y bienvenido! Nos complace darle la bienvenida a nuestra elegante casa vacacional ubicada en el corazón de Viterbo. CHAPLIN Luxury Holiday House nace con el objetivo de ofrecer a los huéspedes una estancia refinada, cómoda y auténtica en una de las ciudades históricas más fascinantes de Italia. Desde el principio, hemos querido crear un ambiente donde los visitantes se sientan verdaderamente acogidos, relajados y atendidos. Creemos que la atención al detalle y una hospitalidad genuina marcan la diferencia.",
-
-  paragraph2:
-    "Uno de los mayores puntos fuertes de CHAPLIN Luxury Holiday House es su excelente ubicación. Situada en una zona muy valorada de Viterbo, la propiedad se encuentra a poca distancia a pie del centro histórico y a solo 600 metros de la estación de tren. Esta posición estratégica permite explorar fácilmente las calles medievales, las plazas históricas y los principales puntos culturales, además de contar con conexiones cómodas a los alrededores. El encanto atemporal de Viterbo hace que cada paseo sea inolvidable.",
-
-  paragraph3:
-    "En el interior de CHAPLIN Luxury Holiday House encontrará espacios luminosos, un diseño cuidado y comodidades modernas pensadas para el descanso y la tranquilidad. Ya sea un viaje de placer, una escapada romántica o una estancia de trabajo, nuestra casa se adapta perfectamente a cada necesidad. Nos encanta interactuar con nuestros huéspedes, compartir recomendaciones de restaurantes locales y sugerir experiencias auténticas para descubrir Viterbo. Nuestro objetivo es ofrecer algo más que alojamiento: una experiencia real y memorable.",
-
-  yearsExperience: "Años de Experiencia",
-  happyGuests: "Huéspedes Felices",
-  awardsReceived: "Reconocimientos",
-  averageRating: "Valoración Media",
-},
-
-de: {
-  paragraph1:
-    "Willkommen im CHAPLIN Luxury Holiday House. Hallo und herzlich willkommen! Wir freuen uns, Sie in unserem eleganten Ferienhaus im Herzen von Viterbo begrüßen zu dürfen. Das CHAPLIN Luxury Holiday House wurde mit dem Ziel geschaffen, unseren Gästen einen stilvollen, komfortablen und authentischen Aufenthalt in einer der faszinierendsten historischen Städte Italiens zu bieten. Von Anfang an wollten wir eine Atmosphäre schaffen, in der sich Gäste wirklich willkommen, entspannt und gut aufgehoben fühlen. Wir sind überzeugt, dass Liebe zum Detail und echte Gastfreundschaft den Unterschied machen.",
-
-  paragraph2:
-    "Eine der größten Stärken des CHAPLIN Luxury Holiday House ist seine hervorragende Lage. Das Haus befindet sich in einer sehr gut bewerteten Gegend von Viterbo, nur wenige Gehminuten vom historischen Stadtzentrum und lediglich 600 Meter vom Bahnhof entfernt. Diese ideale Lage ermöglicht es, mittelalterliche Gassen, historische Plätze und kulturelle Sehenswürdigkeiten bequem zu erkunden und gleichzeitig von guten Verkehrsanbindungen zu profitieren. Die besondere Atmosphäre Viterbos macht jeden Spaziergang zu einem Erlebnis.",
-
-  paragraph3:
-    "Im Inneren des CHAPLIN Luxury Holiday House erwarten Sie helle Räume, ein elegantes Design und moderne Annehmlichkeiten, die auf Ruhe und Erholung ausgelegt sind. Ob Urlaubsreise, romantischer Kurztrip oder Geschäftsaufenthalt – unser Haus passt sich perfekt Ihren Bedürfnissen an. Wir schätzen den persönlichen Kontakt mit unseren Gästen, geben gerne Empfehlungen zu lokalen Restaurants und authentischen Erlebnissen in Viterbo. Unser Ziel ist es, Ihnen nicht nur eine Unterkunft, sondern ein echtes Erlebnis zu bieten.",
-
-  yearsExperience: "Jahre Erfahrung",
-  happyGuests: "Zufriedene Gäste",
-  awardsReceived: "Anerkennungen",
-  averageRating: "Durchschnittliche Bewertung",
-},
-
+      title: "CHAPLIN Luxury Holiday House",
+      subtitle: "Bed & Breakfast a Viterbo in zona centro",
+      paragraph1:
+        "CHAPLIN Luxury Holiday House e una suite esclusiva in formula B&B, ideale per una fuga di coppia all'insegna del relax e del benessere. L'ambiente raffinato e intimo e progettato per offrire il massimo comfort, con una vasca idromassaggio super deluxe dotata di 32 getti, quattro cascate massaggianti retroilluminate, cromoterapia e ozonizzazione. La sauna a infrarossi al quarzo, arricchita da cromoterapia, ionizzatore e aromaterapia, completa l'esperienza di rigenerazione.",
+      paragraph2:
+        "La suite dispone di una TV da 55'' con accesso a Netflix, Prime Video e Disney+, oltre a un bagno privato con doccia idromassaggio. L'ampia zona giorno include una cucina attrezzata, un angolo colazione e un'area relax con divano e poltrona massaggiante, garantendo agli ospiti un soggiorno di puro piacere e comfort.",
+      galleryTitle: "Galleria fotografica",
+    },
+    en: {
+      title: "CHAPLIN Luxury Holiday House",
+      subtitle: "Bed & Breakfast in Viterbo city center",
+      paragraph1:
+        "CHAPLIN Luxury Holiday House is an exclusive B&B suite, ideal for a couple's getaway focused on relaxation and wellness. The refined and intimate environment is designed to offer maximum comfort, with a super deluxe hydromassage tub equipped with 32 jets, four backlit massage waterfalls, chromotherapy, and ozonization. The infrared quartz sauna, enriched with chromotherapy, ionizer, and aromatherapy, completes the regeneration experience.",
+      paragraph2:
+        "The suite features a 55'' TV with access to Netflix, Prime Video, and Disney+, as well as a private bathroom with hydromassage shower. The spacious living area includes an equipped kitchen, a breakfast corner, and a relaxation area with sofa and massage armchair, ensuring guests a stay of pure pleasure and comfort.",
+      galleryTitle: "Photo Gallery",
+    },
+    fr: {
+      title: "CHAPLIN Luxury Holiday House",
+      subtitle: "Bed & Breakfast a Viterbo au centre-ville",
+      paragraph1:
+        "CHAPLIN Luxury Holiday House est une suite exclusive en formule B&B, ideale pour une escapade en couple sous le signe de la detente et du bien-etre. L'ambiance raffinee et intime est concue pour offrir un confort maximal, avec une baignoire balnéo super deluxe equipee de 32 jets, quatre cascades massantes retroeclairees, chromotherapie et ozonisation.",
+      paragraph2:
+        "La suite dispose d'une TV 55'' avec acces a Netflix, Prime Video et Disney+, ainsi que d'une salle de bain privee avec douche hydromassante. Le vaste sejour comprend une cuisine equipee, un coin petit-dejeuner et un espace detente avec canape et fauteuil massant.",
+      galleryTitle: "Galerie photo",
+    },
+    es: {
+      title: "CHAPLIN Luxury Holiday House",
+      subtitle: "Bed & Breakfast en Viterbo en el centro",
+      paragraph1:
+        "CHAPLIN Luxury Holiday House es una suite exclusiva en formula B&B, ideal para una escapada en pareja en busca de relajacion y bienestar. El ambiente refinado e intimo esta disenado para ofrecer el maximo confort, con una banera de hidromasaje super deluxe equipada con 32 chorros, cuatro cascadas de masaje retroiluminadas, cromoterapia y ozonizacion.",
+      paragraph2:
+        "La suite cuenta con una TV de 55'' con acceso a Netflix, Prime Video y Disney+, ademas de un bano privado con ducha de hidromasaje. La amplia zona de estar incluye una cocina equipada, un rincon de desayuno y un area de relax con sofa y sillon de masaje.",
+      galleryTitle: "Galeria fotografica",
+    },
+    de: {
+      title: "CHAPLIN Luxury Holiday House",
+      subtitle: "Bed & Breakfast in Viterbo im Stadtzentrum",
+      paragraph1:
+        "CHAPLIN Luxury Holiday House ist eine exklusive B&B-Suite, ideal fur einen Paaurlaub im Zeichen von Entspannung und Wohlbefinden. Das raffinierte und intime Ambiente ist darauf ausgelegt, hochsten Komfort zu bieten, mit einer Super-Deluxe-Whirlpoolwanne mit 32 Dusen, vier hinterleuchteten Massagewasserfallen, Chromotherapie und Ozonisierung.",
+      paragraph2:
+        "Die Suite verfugt uber einen 55'' Fernseher mit Zugang zu Netflix, Prime Video und Disney+ sowie ein eigenes Bad mit Hydromassage-Dusche. Der geraumige Wohnbereich umfasst eine ausgestattete Kuche, eine Fruhstucksecke und einen Entspannungsbereich mit Sofa und Massagesessel.",
+      galleryTitle: "Fotogalerie",
+    },
   }
 
   const content = storyContent[language as keyof typeof storyContent] || storyContent.it
 
+  const amenities = [
+    { icon: Wifi, label: "Wifi Gratis" },
+    { icon: Home, label: "Dimora storica o di prestigio" },
+    { icon: TreePine, label: "Giardino" },
+    { icon: Utensils, label: "Angolo cottura" },
+    { icon: Tv, label: "Televisione" },
+    { icon: Wind, label: "Phon in Camera" },
+    { icon: Star, label: "Struttura di charme" },
+    { icon: Users, label: "Struttura per famiglie" },
+    { icon: Snowflake, label: "Climatizzazione" },
+    { icon: Flame, label: "Riscaldamento" },
+  ]
+
+  const galleryImages = [
+    { src: "/images/bb-hero.jpg", alt: "Vista esterna" },
+    { src: "/images/spa1.jpg", alt: "Spa" },
+    { src: "/images/room-1.jpg", alt: "Camera" },
+    { src: "/images/pool.jpg", alt: "Piscina" },
+  ]
+
   return (
-    <section className="py-20 bg-accent/10 relative overflow-hidden">
-      <div className="absolute inset-0 opacity-30">
-        <div className="absolute top-10 left-10 w-32 h-32 bg-primary/10 rounded-full animate-float" />
+    <section className="py-16 sm:py-20 md:py-24 bg-white">
+      <div className="container mx-auto px-4 max-w-4xl">
+        {/* Title Section - Exactly like residenzanoe.it */}
         <div
-          className="absolute bottom-20 right-20 w-24 h-24 bg-accent/20 rounded-full animate-float"
-          style={{ animationDelay: "2s" }}
-        />
+          ref={titleRef}
+          className={`text-center mb-10 sm:mb-14 md:mb-16 transition-all duration-1000 ${
+            titleVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        >
+          <h2 className="font-cinzel text-3xl sm:text-4xl md:text-5xl font-normal text-[#1a1a1a] mb-3 sm:mb-4 tracking-wide leading-tight">
+            {content.title}
+          </h2>
+          <p className="text-base sm:text-lg text-[#4a90c9] mb-5 sm:mb-6">
+            {content.subtitle}
+          </p>
+          {/* Decorative blue underline - exactly like reference */}
+          <div className="w-12 sm:w-16 h-1 bg-[#4a90c9] mx-auto" />
+        </div>
+
+        {/* Content - Clean paragraphs like residenzanoe.it */}
         <div
-          className="absolute top-1/2 left-1/4 w-16 h-16 bg-secondary/15 rounded-full animate-float"
-          style={{ animationDelay: "1s" }}
-        />
-      </div>
+          ref={contentRef}
+          className={`mb-12 sm:mb-14 md:mb-16 transition-all duration-1000 delay-200 ${
+            contentVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        >
+          <p className="text-[#333] text-base sm:text-lg leading-relaxed mb-6 sm:mb-8 text-center sm:text-left">
+            {content.paragraph1}
+          </p>
+          <p className="text-[#333] text-base sm:text-lg leading-relaxed text-center sm:text-left">
+            {content.paragraph2}
+          </p>
+        </div>
 
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Content */}
-          <div>
-            <div
-              ref={titleRef}
-              className={`transition-all duration-1000 ${titleVisible ? "animate-slide-in-left opacity-100" : "opacity-0 translate-x-[-100px]"}`}
-            >
-              <h2 className="font-cinzel text-4xl md:text-5xl font-bold text-roman-gradient mb-6 animate-text-shimmer">
-                {t("storyTitle")}
-              </h2>
-            </div>
-
-            <div
-              ref={contentRef}
-              className={`prose prose-lg max-w-none transition-all duration-1000 delay-300 ${contentVisible ? "animate-slide-in-left opacity-100" : "opacity-0 translate-x-[-50px]"}`}
-            >
-              <p
-                className="text-muted-foreground mb-6 text-lg leading-relaxed animate-fade-in-up"
-                style={{ animationDelay: "0.5s" }}
-              >
-                {content.paragraph1}
-              </p>
-              <p
-                className="text-muted-foreground mb-6 text-lg leading-relaxed animate-fade-in-up"
-                style={{ animationDelay: "0.7s" }}
-              >
-                {content.paragraph2}
-              </p>
-              <p
-                className="text-muted-foreground mb-8 text-lg leading-relaxed animate-fade-in-up"
-                style={{ animationDelay: "0.9s" }}
-              >
-                {content.paragraph3}
-              </p>
-            </div>
-
-            <div
-              ref={statsRef}
-              className={`grid grid-cols-2 md:grid-cols-4 gap-6 transition-all duration-1000 delay-600 ${statsVisible ? "animate-slide-in-up opacity-100" : "opacity-0 translate-y-[50px]"}`}
-            >
-              <div className="text-center group hover:scale-110 transition-transform duration-300">
-                <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-accent/20 rounded-full flex items-center justify-center mx-auto mb-2 group-hover:shadow-lg transition-shadow">
-                  <Calendar className="w-6 h-6 text-primary group-hover:animate-pulse" />
+        {/* Amenities - Horizontal scroll like residenzanoe.it */}
+        <div
+          ref={amenitiesRef}
+          className={`mb-12 sm:mb-14 md:mb-16 transition-all duration-1000 delay-300 ${
+            amenitiesVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        >
+          <div className="flex flex-wrap justify-center gap-4 sm:gap-6 md:gap-8">
+            {amenities.map((amenity, index) => {
+              const Icon = amenity.icon
+              return (
+                <div
+                  key={index}
+                  className="flex flex-col items-center gap-2 text-center min-w-[70px] sm:min-w-[80px]"
+                >
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#f8f8f5] flex items-center justify-center text-[#6b6560]">
+                    <Icon className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={1.5} />
+                  </div>
+                  <span className="text-[10px] sm:text-xs text-[#6b6560] max-w-[70px] sm:max-w-[80px] leading-tight">
+                    {amenity.label}
+                  </span>
                 </div>
-                <div className="font-bold text-2xl text-roman-gradient animate-counter">38+</div>
-                <div className="text-sm text-muted-foreground">{content.yearsExperience}</div>
-              </div>
-              <div
-                className="text-center group hover:scale-110 transition-transform duration-300"
-                style={{ animationDelay: "0.2s" }}
-              >
-                <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-accent/20 rounded-full flex items-center justify-center mx-auto mb-2 group-hover:shadow-lg transition-shadow">
-                  <Users className="w-6 h-6 text-primary group-hover:animate-pulse" />
-                </div>
-                <div className="font-bold text-2xl text-roman-gradient animate-counter">5000+</div>
-                <div className="text-sm text-muted-foreground">{content.happyGuests}</div>
-              </div>
-              <div
-                className="text-center group hover:scale-110 transition-transform duration-300"
-                style={{ animationDelay: "0.4s" }}
-              >
-                <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-accent/20 rounded-full flex items-center justify-center mx-auto mb-2 group-hover:shadow-lg transition-shadow">
-                  <Award className="w-6 h-6 text-primary group-hover:animate-pulse" />
-                </div>
-                <div className="font-bold text-2xl text-roman-gradient animate-counter">15+</div>
-                <div className="text-sm text-muted-foreground">{content.awardsReceived}</div>
-              </div>
-              <div
-                className="text-center group hover:scale-110 transition-transform duration-300"
-                style={{ animationDelay: "0.6s" }}
-              >
-                <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-accent/20 rounded-full flex items-center justify-center mx-auto mb-2 group-hover:shadow-lg transition-shadow">
-                  <Heart className="w-6 h-6 text-primary group-hover:animate-pulse" />
-                </div>
-                <div className="font-bold text-2xl text-roman-gradient animate-counter">4.9/5</div>
-                <div className="text-sm text-muted-foreground">{content.averageRating}</div>
-              </div>
-            </div>
+              )
+            })}
           </div>
+        </div>
 
-          <div
-            ref={imagesRef}
-            className={`relative transition-all duration-1000 delay-900 ${imagesVisible ? "animate-slide-in-right opacity-100" : "opacity-0 translate-x-[100px]"}`}
-          >
-            <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-4">
-                <div
-                  className="card-invisible overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105 animate-fade-in-up"
-                  style={{ animationDelay: "1s" }}
-                >
-                  <Image
-                    src="/images/bb-hero.jpg"
-                    alt="Villa Bella Vista - Esterno"
-                    width={300}
-                    height={200}
-                    className="w-full h-48 object-cover hover:scale-110 transition-transform duration-500"
-                  />
-                </div>
-                <div
-                  className="card-invisible overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105 animate-fade-in-up"
-                  style={{ animationDelay: "1.2s" }}
-                >
-                  <Image
-                    src="/images/spa1.jpg"
-                    alt="Colazione tradizionale"
-                    width={300}
-                    height={150}
-                    className="w-full h-32 object-cover hover:scale-110 transition-transform duration-500"
-                  />
-                </div>
+        {/* Gallery Section */}
+        <div
+          ref={galleryRef}
+          className={`transition-all duration-1000 delay-400 ${
+            galleryVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        >
+          <h3 className="font-cinzel text-xl sm:text-2xl text-center text-[#1a1a1a] mb-6 sm:mb-8">
+            {content.galleryTitle}
+          </h3>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-3 md:gap-4">
+            {galleryImages.map((image, index) => (
+              <div key={index} className="aspect-square overflow-hidden relative group">
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                {index === 3 && (
+                  <div className="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <span className="text-white text-base sm:text-lg font-light">+17</span>
+                  </div>
+                )}
               </div>
-              <div className="space-y-4 pt-8">
-                <div
-                  className="card-invisible overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105 animate-fade-in-up"
-                  style={{ animationDelay: "1.4s" }}
-                >
-                  <Image
-                    src="/images/room-1.jpg"
-                    alt="Camera elegante"
-                    width={300}
-                    height={150}
-                    className="w-full h-32 object-cover hover:scale-110 transition-transform duration-500"
-                  />
-                </div>
-                <div
-                  className="card-invisible overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105 animate-fade-in-up"
-                  style={{ animationDelay: "1.6s" }}
-                >
-                  <Image
-                    src="/images/pool.jpg"
-                    alt="Piscina panoramica"
-                    width={300}
-                    height={200}
-                    className="w-full h-48 object-cover hover:scale-110 transition-transform duration-500"
-                  />
-                </div>
-              </div>
-            </div>
-
-            <div className="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-br from-primary/20 to-accent/20 rounded-full animate-float shadow-lg" />
-            <div
-              className="absolute -bottom-4 -left-4 w-16 h-16 bg-gradient-to-br from-accent/30 to-secondary/20 rounded-full animate-float shadow-lg"
-              style={{ animationDelay: "1s" }}
-            />
-            <div
-              className="absolute top-1/2 -right-8 w-12 h-12 bg-gradient-to-br from-secondary/25 to-primary/15 rounded-full animate-float shadow-lg"
-              style={{ animationDelay: "2s" }}
-            />
+            ))}
           </div>
         </div>
       </div>
     </section>
   )
 }
-

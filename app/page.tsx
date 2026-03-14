@@ -3,9 +3,9 @@ import { HeroSection } from "@/components/hero-section"
 import { ServicesSection } from "@/components/services-section"
 import { RoomsPreview } from "@/components/rooms-preview"
 import { StorySection } from "@/components/story-section"
-import ReviewsSection from "@/components/ReviewsSection"
+// import ReviewsSection from "@/components/ReviewsSection" // DISABLED: Reviews section removed per request
 import { Footer } from "@/components/footer"
-  import { VideoCarousel } from "@/components/video-carousel"
+// import { VideoCarousel } from "@/components/video-carousel"
 
 export default function HomePage() {
   return (
@@ -16,7 +16,9 @@ export default function HomePage() {
       {/* <VideoCarousel /> */}
       <ServicesSection />
       <RoomsPreview />
+      {/* DISABLED: Reviews section removed per request
       <ReviewsSection className="mb-16" />
+      */}
       <Footer />
     </main>
   )
