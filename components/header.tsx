@@ -135,7 +135,7 @@ export function Header() {
                   <div className="w-8 h-8 bg-gradient-to-br from-[#c9a84c] to-[#d4af37] rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:rotate-12 border-2 border-white/30">
                     <Bed className="w-4 h-4 text-[#1a1a1a]" />
                   </div>
-                  <span className="font-cinzel">{t("rooms")}</span>
+                  <span className="font-cinzel">L'Appartamento</span>
                 </Link>
 
                 <Link

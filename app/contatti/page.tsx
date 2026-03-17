@@ -12,10 +12,9 @@ import { Mail, Phone, MapPin, Clock, Heart, Users, Award } from "lucide-react"
 
 const CONTACT_INFO = {
   name: "CHAPLIN Luxury Holiday House",
-  address: "Via del mandorlo 8",
-  city: "05100 terni (tr),Viterbo, Italia",
+  address: "Via della Pettinara, 48",
+  city: "01100 Viterbo (VT)",
   phone: process.env.NEXT_PUBLIC_PRIVACY_PHONE || "+39 351 719 6320",
-  email: process.env.NEXT_PUBLIC_PRIVACY_EMAIL || "Chaplinviterbo@gmail.com",
 }
 
 export default function ContactsPage() {
@@ -78,10 +77,6 @@ export default function ContactsPage() {
                     <div>
                       <p className="text-sm font-medium">{CONTACT_INFO.phone}</p>
                       <p className="text-xs text-muted-foreground">Disponibile 24/7</p>
-                    </div>
-                    <div>
-                      <p className="text-sm font-medium">{CONTACT_INFO.email}</p>
-                      <p className="text-xs text-muted-foreground">Risposta entro 24h</p>
                     </div>
                   </div>
                 </div>
