@@ -1,6 +1,6 @@
 "use client"
 import type React from "react"
-import { useState } from "react"
+import { useState, useCallback } from "react"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
@@ -8,7 +8,8 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Mail, Phone, MapPin, Clock, Heart, Users, Award } from "lucide-react"
+import { Checkbox } from "@/components/ui/checkbox"
+import { Mail, Phone, MapPin, Clock, Heart, Users, Award, Send } from "lucide-react"
 
 const CONTACT_INFO = {
   name: "CHAPLIN Luxury Holiday House",
@@ -17,15 +18,36 @@ const CONTACT_INFO = {
   phone: process.env.NEXT_PUBLIC_PRIVACY_PHONE || "+39 351 719 6320",
 }
 
+// Email offuscata per anti-spam
+const getEmail = () => {
+  const parts = ["Chaplinviterbo", "gmail", "com"]
+  return `${parts[0]}@${parts[1]}.${parts[2]}`
+}
+
 export default function ContactsPage() {
   const [formData, setFormData] = useState({ name: "", email: "", subject: "", message: "" })
   const [newsletterEmail, setNewsletterEmail] = useState("")
   const [isSubscribed, setIsSubscribed] = useState(false)
+  const [notRobot, setNotRobot] = useState(false)
+  const [emailButtonClicked, setEmailButtonClicked] = useState(false)
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
+    if (!notRobot) {
+      alert("Per favore conferma di non essere un robot")
+      return
+    }
     console.log("Contact form submitted:", formData)
   }
+
+  const handleEmailClick = useCallback(() => {
+    if (!notRobot) {
+      alert("Per favore conferma di non essere un robot prima di inviare un'email")
+      return
+    }
+    setEmailButtonClicked(true)
+    window.location.href = `mailto:${getEmail()}`
+  }, [notRobot])
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
@@ -69,14 +91,37 @@ export default function ContactsPage() {
             <div className="card-invisible p-5">
               <div className="flex items-start gap-3">
                 <Phone className="h-5 w-5 text-[#c9a84c] mt-1 flex-shrink-0" />
-                <div>
+                <div className="flex-1">
                   <h3 className="font-cinzel font-semibold text-[#c9a84c] dark:text-[#d4af37] mb-2 text-base">
                     Contatti Diretti
                   </h3>
-                  <div className="space-y-2">
+                  <div className="space-y-3">
                     <div>
                       <p className="text-sm font-medium">{CONTACT_INFO.phone}</p>
                       <p className="text-xs text-muted-foreground">Disponibile 24/7</p>
+                    </div>
+                    <div className="pt-2 border-t border-[#c9a84c]/20">
+                      <div className="flex items-center gap-2 mb-2">
+                        <Checkbox 
+                          id="notRobot" 
+                          checked={notRobot} 
+                          onCheckedChange={(checked) => setNotRobot(checked === true)}
+                          className="border-[#c9a84c]/50"
+                        />
+                        <label htmlFor="notRobot" className="text-xs text-muted-foreground cursor-pointer">
+                          Non sono un robot
+                        </label>
+                      </div>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={handleEmailClick}
+                        disabled={!notRobot}
+                        className="w-full bg-transparent text-sm border-[#c9a84c]/40 hover:bg-[#c9a84c]/10 hover:border-[#c9a84c] disabled:opacity-50"
+                      >
+                        <Send className="w-4 h-4 mr-2" />
+                        Invia Email
+                      </Button>
                     </div>
                   </div>
                 </div>
@@ -198,8 +243,24 @@ export default function ContactsPage() {
                         />
                       </div>
 
+                      <div className="md:col-span-2 flex items-center gap-2">
+                        <Checkbox 
+                          id="notRobotForm" 
+                          checked={notRobot} 
+                          onCheckedChange={(checked) => setNotRobot(checked === true)}
+                          className="border-[#c9a84c]/50"
+                        />
+                        <label htmlFor="notRobotForm" className="text-sm text-muted-foreground cursor-pointer">
+                          Non sono un robot
+                        </label>
+                      </div>
+
                       <div className="md:col-span-2">
-                        <Button type="submit" className="w-full py-5 bg-[#1a1a1a] hover:bg-[#333] text-[#f5f5f0]">
+                        <Button 
+                          type="submit" 
+                          disabled={!notRobot}
+                          className="w-full py-5 bg-[#1a1a1a] hover:bg-[#333] text-[#f5f5f0] disabled:opacity-50"
+                        >
                           Invia
                         </Button>
                       </div>
