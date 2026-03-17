@@ -5,7 +5,12 @@ import Stripe from "stripe"
 import { sendModificationEmail } from "@/lib/email"
 import { calculateNights } from "@/lib/pricing"
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, { apiVersion: "2025-09-30.clover" })
+// Lazy init - only creates Stripe client when actually needed
+const getStripe = () => {
+  const key = process.env.STRIPE_SECRET_KEY
+  if (!key) return null
+  return new Stripe(key, { apiVersion: "2025-09-30.clover" })
+}
 
 export async function PUT(request: NextRequest) {
   try {
@@ -48,6 +53,10 @@ export async function PUT(request: NextRequest) {
     const newTotalAmount = Number.parseFloat((originalAmount + priceDiff).toFixed(2))
 
     if (priceDiff > 0) {
+      const stripe = getStripe()
+      if (!stripe) {
+        return NextResponse.json({ error: "Sistema di pagamento non configurato" }, { status: 500 })
+      }
       const session = await stripe.checkout.sessions.create({
         payment_method_types: ["card"],
         line_items: [
