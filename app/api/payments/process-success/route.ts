@@ -4,9 +4,14 @@ import Stripe from "stripe"
 import { sendModificationEmail } from "@/lib/email"
 import { FieldValue } from "firebase-admin/firestore"
 
-const stripe = process.env.STRIPE_SECRET_KEY
-  ? new Stripe(process.env.STRIPE_SECRET_KEY, { apiVersion: "2024-11-20.acacia" })
-  : null
+// Lazy Stripe init - only creates client when needed, not at build time
+let _stripe: Stripe | null = null
+const getStripe = (): Stripe | null => {
+  if (!_stripe && process.env.STRIPE_SECRET_KEY) {
+    _stripe = new Stripe(process.env.STRIPE_SECRET_KEY, { apiVersion: "2024-11-20.acacia" })
+  }
+  return _stripe
+}
 
 export async function GET(request: NextRequest) {
   console.log("[v0 PAYMENT SUCCESS] ====== START ======")
@@ -24,6 +29,11 @@ export async function GET(request: NextRequest) {
   }
 
   try {
+    const stripe = getStripe()
+    if (!stripe) {
+      console.log("[v0 PAYMENT SUCCESS] Stripe not configured")
+      return NextResponse.redirect(new URL(`/user/booking/${bookingId}?error=stripe_not_configured`, request.url))
+    }
     const session = await stripe.checkout.sessions.retrieve(sessionId)
     console.log("[v0 PAYMENT SUCCESS] Stripe session status:", session.payment_status)
     console.log("[v0 PAYMENT SUCCESS] Metadata:", session.metadata)

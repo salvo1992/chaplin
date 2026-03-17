@@ -5,9 +5,14 @@ import Stripe from "stripe"
 import { sendCancellationEmail } from "@/lib/email"
 import { calculateCancellationPolicy } from "@/lib/payment-logic"
 
-const stripe = process.env.STRIPE_SECRET_KEY
-  ? new Stripe(process.env.STRIPE_SECRET_KEY, { apiVersion: "2024-11-20.acacia" })
-  : null
+// Lazy Stripe init - only creates client when needed, not at build time
+let _stripe: Stripe | null = null
+const getStripe = (): Stripe | null => {
+  if (!_stripe && process.env.STRIPE_SECRET_KEY) {
+    _stripe = new Stripe(process.env.STRIPE_SECRET_KEY, { apiVersion: "2024-11-20.acacia" })
+  }
+  return _stripe
+}
 
 export async function DELETE(request: NextRequest) {
   try {

@@ -141,9 +141,9 @@ export function Footer() {
               </div>
               <div className="flex items-center gap-3">
                 <Mail className="w-4 h-4 text-primary" />
-                <a href="mailto:Chaplinviterbo@gmail.com" className="hover:text-primary transition-colors">
-                  Chaplinviterbo@gmail.com
-                </a>
+                <Link href="/contatti" className="hover:text-primary transition-colors">
+                  Contattaci via email
+                </Link>
               </div>
               <div className="flex items-center gap-3">
                 <Clock className="w-4 h-4 text-primary" />
@@ -159,7 +159,7 @@ export function Footer() {
             <h3 className="font-semibold text-lg mb-4">{t("quickLinks")}</h3>
             <div className="space-y-2 text-sm">
               <Link href="/camere" className="block hover:text-primary transition-colors">
-                {t("rooms")}
+                L'Appartamento
               </Link>
               <Link href="/servizi" className="block hover:text-primary transition-colors">
                 {t("services")}
@@ -264,16 +264,20 @@ export function Footer() {
           {/* Copyright - ora sotto i metodi di pagamento */}
           <div className="pt-8">
             <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-background/80">
-              <p className="flex items-center gap-2">
-                © COPYRIGHT 2025 - CHAPLIN Luxury Holiday House {t("allRightsReserved")}.
-                <Link
-                  href="/admin"
-                  className="inline-flex items-center opacity-30 hover:opacity-100 transition-opacity"
-                  title="Admin"
-                >
-                  <Image src="/images/chaplin-logo.png" alt="Admin" width={20} height={20} className="rounded-sm" />
-                </Link>
-              </p>
+              <div className="flex flex-col items-center md:items-start text-center md:text-left">
+                <p className="flex items-center gap-2">
+                  <span>© COPYRIGHT 2025</span>
+                  <Link
+                    href="/admin"
+                    className="inline-flex items-center opacity-30 hover:opacity-100 transition-opacity"
+                    title="Admin"
+                  >
+                    <Image src="/images/chaplin-logo.png" alt="Admin" width={20} height={20} className="rounded-sm" />
+                  </Link>
+                </p>
+                <p>CHAPLIN Luxury Holiday House</p>
+                <p>{t("allRightsReserved")}</p>
+              </div>
 
               <div className="flex items-center gap-2">
                 <span>POWERED BY </span>

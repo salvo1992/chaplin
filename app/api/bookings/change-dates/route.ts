@@ -7,11 +7,15 @@ import { calculateNights, calculateDaysUntilCheckIn, calculateChangeDatesPenalty
 import { createHPPOrder, isNexiConfigured } from "@/lib/nexi-client"
 
 // Stripe + Nexi dual-gateway support for change-dates payments
-// Stripe init is lazy - only fails when actually used, not at build time
+// Stripe init is lazy - only creates client when needed, not at build time
 
-const stripe = process.env.STRIPE_SECRET_KEY
-  ? new Stripe(process.env.STRIPE_SECRET_KEY, { apiVersion: "2024-11-20.acacia" })
-  : null
+let _stripe: Stripe | null = null
+const getStripe = (): Stripe | null => {
+  if (!_stripe && process.env.STRIPE_SECRET_KEY) {
+    _stripe = new Stripe(process.env.STRIPE_SECRET_KEY, { apiVersion: "2024-11-20.acacia" })
+  }
+  return _stripe
+}
 
 
 
@@ -273,6 +277,7 @@ export async function PUT(request: NextRequest) {
           paymentUrl = nexiOrder.hostedPage
         } else {
           // --- STRIPE PAYMENT ---
+          const stripe = getStripe()
           if (!stripe) {
             return NextResponse.json(
               { error: "Stripe non configurato. Contatta il supporto." },
