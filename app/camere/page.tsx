@@ -406,6 +406,9 @@ export default function CamerePage() {
                 alt={photos[currentImageIndex]?.alt || ""}
                 fill
                 className="object-contain"
+                sizes="(max-width: 768px) 95vw, 1024px"
+                quality={80}
+                priority
               />
             </div>
 
@@ -441,19 +444,35 @@ export default function CamerePage() {
             </Badge>
 
             <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-2 overflow-x-auto max-w-[92vw] pb-1 px-2">
-              {photos.map((p, index) => (
-                <button
-                  key={p.src}
-                  onClick={() => setCurrentImageIndex(index)}
-                  className={`relative flex-shrink-0 w-16 h-12 rounded-lg overflow-hidden border-2 transition-all ${
-                    index === currentImageIndex
-                      ? "border-[#c9a84c] shadow-lg scale-110"
-                      : "border-white/30 hover:border-white/60"
-                  }`}
-                >
-                  <Image src={p.src} alt={`Thumbnail ${index + 1}`} fill className="object-cover" />
-                </button>
-              ))}
+              {photos.map((p, index) => {
+                // Only load thumbnails near current image for performance
+                const shouldLoad = Math.abs(index - currentImageIndex) <= 5
+                return (
+                  <button
+                    key={p.src}
+                    onClick={() => setCurrentImageIndex(index)}
+                    className={`relative flex-shrink-0 w-16 h-12 rounded-lg overflow-hidden border-2 ${
+                      index === currentImageIndex
+                        ? "border-[#c9a84c] shadow-lg scale-110"
+                        : "border-white/30 hover:border-white/60"
+                    }`}
+                  >
+                    {shouldLoad ? (
+                      <Image 
+                        src={p.src} 
+                        alt={`Thumbnail ${index + 1}`} 
+                        fill 
+                        className="object-cover" 
+                        sizes="64px"
+                        quality={50}
+                        loading="lazy"
+                      />
+                    ) : (
+                      <div className="w-full h-full bg-white/10" />
+                    )}
+                  </button>
+                )
+              })}
             </div>
           </div>
         </DialogContent>
