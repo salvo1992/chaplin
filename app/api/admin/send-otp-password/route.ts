@@ -1,17 +1,15 @@
 import { NextRequest, NextResponse } from "next/server"
 import { getAdminDb } from "@/lib/firebase-admin"
-import { Resend } from "resend"
 
-// Lazy Resend init - wrapped in closure to avoid build-time evaluation
-const getResend = (() => {
-  let instance: Resend | null = null
-  return (): Resend | null => {
-    if (!instance && process.env.RESEND_API_KEY) {
-      instance = new Resend(process.env.RESEND_API_KEY)
-    }
-    return instance
+// Lazy Resend init - dynamic import to avoid build-time evaluation
+let resendInstance: any = null
+async function getResend() {
+  if (!resendInstance && process.env.RESEND_API_KEY) {
+    const { Resend } = await import("resend")
+    resendInstance = new Resend(process.env.RESEND_API_KEY)
   }
-})()
+  return resendInstance
+}
 
 function generateOTP(): string {
   return Math.floor(1000 + Math.random() * 9000).toString()
@@ -114,7 +112,7 @@ export async function POST(request: NextRequest) {
       }
       
       try {
-        const resend = getResend()
+        const resend = await getResend()
         if (!resend) {
           console.log(`[v0] RESEND_API_KEY not configured - OTP for password change: ${otp}`)
           return NextResponse.json({ 
