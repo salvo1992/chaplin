@@ -5,7 +5,16 @@ import Stripe from "stripe"
 import { sendBookingUpdateEmail } from "@/lib/email"
 import { calculateNights } from "@/lib/pricing"
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, { apiVersion: "2024-11-20.acacia" })
+// Lazy Stripe init - wrapped in closure to avoid build-time evaluation
+const getStripe = (() => {
+  let instance: Stripe | null = null
+  return (): Stripe | null => {
+    if (!instance && process.env.STRIPE_SECRET_KEY) {
+      instance = new Stripe(process.env.STRIPE_SECRET_KEY, { apiVersion: "2024-11-20.acacia" })
+    }
+    return instance
+  }
+})()
 
 export async function POST(request: NextRequest) {
   try {
@@ -13,6 +22,11 @@ export async function POST(request: NextRequest) {
 
     if (!sessionId || !bookingId || !type) {
       return NextResponse.json({ error: "Dati mancanti" }, { status: 400 })
+    }
+
+    const stripe = getStripe()
+    if (!stripe) {
+      return NextResponse.json({ error: "Sistema di pagamento non configurato" }, { status: 500 })
     }
 
     console.log("[API] Updating booking after payment:", { sessionId, bookingId, type })
