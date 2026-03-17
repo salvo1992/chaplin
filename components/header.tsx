@@ -108,9 +108,9 @@ export function Header() {
       </header>
 
       {isMenuOpen && (
-        <div className="fixed inset-0 z-40 sidebar-overlay animate-fade-in-up" onClick={() => setIsMenuOpen(false)}>
+        <div className="fixed inset-0 z-40 bg-black/60" onClick={() => setIsMenuOpen(false)}>
           <div
-            className="fixed top-0 right-0 h-full w-80 bg-[#1a1a1a]/95 backdrop-blur-md shadow-2xl animate-slide-in-right overflow-y-auto border-l border-[#c9a84c]/20"
+            className="fixed top-0 right-0 h-full w-80 bg-[#1a1a1a]/95 backdrop-blur-sm shadow-2xl overflow-y-auto border-l border-[#c9a84c]/20"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="p-8 pt-20">
@@ -118,10 +118,10 @@ export function Header() {
                 {/* Navigation Links */}
                 <Link
                   href="/"
-                  className="group flex items-center gap-3 text-white hover:text-primary transition-all duration-300 text-lg font-bold hover:translate-x-2 hover:scale-105"
+                  className="flex items-center gap-3 text-white hover:text-[#c9a84c] transition-colors text-lg font-bold"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                    <div className="w-8 h-8 bg-gradient-to-br from-[#c9a84c] to-[#d4af37] rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:rotate-12 border-2 border-white/30">
+                  <div className="w-8 h-8 bg-[#c9a84c] rounded-full flex items-center justify-center">
                     <Home className="w-4 h-4 text-[#1a1a1a]" />
                   </div>
                   <span className="font-cinzel">{t("home")}</span>
@@ -129,10 +129,10 @@ export function Header() {
 
                 <Link
                   href="/camere"
-                  className="group flex items-center gap-3 text-white hover:text-primary transition-all duration-300 text-lg font-bold hover:translate-x-2 hover:scale-105"
+                  className="flex items-center gap-3 text-white hover:text-[#c9a84c] transition-colors text-lg font-bold"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  <div className="w-8 h-8 bg-gradient-to-br from-[#c9a84c] to-[#d4af37] rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:rotate-12 border-2 border-white/30">
+                  <div className="w-8 h-8 bg-[#c9a84c] rounded-full flex items-center justify-center">
                     <Bed className="w-4 h-4 text-[#1a1a1a]" />
                   </div>
                   <span className="font-cinzel">L'Appartamento</span>
@@ -140,10 +140,10 @@ export function Header() {
 
                 <Link
                   href="/servizi"
-                  className="group flex items-center gap-3 text-white hover:text-primary transition-all duration-300 text-lg font-bold hover:translate-x-2 hover:scale-105"
+                  className="flex items-center gap-3 text-white hover:text-[#c9a84c] transition-colors text-lg font-bold"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  <div className="w-8 h-8 bg-gradient-to-br from-[#c9a84c] to-[#d4af37] rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:rotate-12 border-2 border-white/30">
+                  <div className="w-8 h-8 bg-[#c9a84c] rounded-full flex items-center justify-center">
                     <Crown className="w-4 h-4 text-[#1a1a1a]" />
                   </div>
                   <span className="font-cinzel">{t("services")}</span>
@@ -151,10 +151,10 @@ export function Header() {
 
                 <Link
                   href="/prenota"
-                  className="group flex items-center gap-3 text-white hover:text-primary transition-all duration-300 text-lg font-bold hover:translate-x-2 hover:scale-105"
+                  className="flex items-center gap-3 text-white hover:text-[#c9a84c] transition-colors text-lg font-bold"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  <div className="w-8 h-8 bg-gradient-to-br from-[#c9a84c] to-[#d4af37] rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:rotate-12 border-2 border-white/30">
+                  <div className="w-8 h-8 bg-[#c9a84c] rounded-full flex items-center justify-center">
                     <Calendar className="w-4 h-4 text-[#1a1a1a]" />
                   </div>
                   <span className="font-cinzel">{t("booking")}</span>
@@ -162,10 +162,10 @@ export function Header() {
 
                 <Link
                   href="/contatti"
-                  className="group flex items-center gap-3 text-white hover:text-primary transition-all duration-300 text-lg font-bold hover:translate-x-2 hover:scale-105"
+                  className="flex items-center gap-3 text-white hover:text-[#c9a84c] transition-colors text-lg font-bold"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  <div className="w-8 h-8 bg-gradient-to-br from-[#c9a84c] to-[#d4af37] rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:rotate-12 border-2 border-white/30">
+                  <div className="w-8 h-8 bg-[#c9a84c] rounded-full flex items-center justify-center">
                     <Phone className="w-4 h-4 text-[#1a1a1a]" />
                   </div>
                   <span className="font-cinzel">{t("contacts")}</span>
@@ -174,11 +174,10 @@ export function Header() {
                 {/* Language Selector Section */}
                 <div className="border-t border-white/20 pt-6 mt-6">
                   <div className="flex items-center gap-2 mb-4">
-                    <Globe className="w-4 h-4 text-[#c9a84c] animate-pulse" />
+                    <Globe className="w-4 h-4 text-[#c9a84c]" />
                     <span className="text-xs font-cinzel text-white uppercase tracking-wider font-bold">
                       {t("selectLanguage") || "Language"}
                     </span>
-                    <Globe className="w-4 h-4 text-[#c9a84c] animate-pulse" />
                   </div>
 
                   <div className="grid grid-cols-2 gap-2">
@@ -205,28 +204,27 @@ export function Header() {
                 {/* Account Section */}
                 <div className="border-t border-white/20 pt-6 mt-6">
                   <div className="flex items-center gap-2 mb-4">
-                    <Sparkles className="w-4 h-4 text-[#c9a84c] animate-pulse" />
+                    <Sparkles className="w-4 h-4 text-[#c9a84c]" />
                     <span className="text-xs font-cinzel text-white uppercase tracking-wider font-bold">Account</span>
-                    <Sparkles className="w-4 h-4 text-[#c9a84c] animate-pulse" />
                   </div>
 
                   {user ? (
                     <>
                       <Link
                         href={user.role === "admin" ? "/admin" : "/user"}
-                        className="group flex items-center gap-3 text-white hover:text-primary transition-all duration-300 text-sm font-medium hover:translate-x-2 hover:scale-105 block mb-3"
+                        className="flex items-center gap-3 text-white hover:text-[#c9a84c] transition-colors text-sm font-medium mb-3"
                         onClick={() => setIsMenuOpen(false)}
                       >
-                        <div className="w-6 h-6 bg-gradient-to-br from-[#c9a84c] to-[#d4af37] rounded-full flex items-center justify-center shadow-md group-hover:shadow-lg transition-all duration-300 border border-white/30">
+                        <div className="w-6 h-6 bg-[#c9a84c] rounded-full flex items-center justify-center">
                           <Star className="w-3 h-3 text-[#1a1a1a]" />
                         </div>
                         <span className="font-cinzel">{user.role === "admin" ? t("admin") : t("user")}</span>
                       </Link>
                       <button
                         onClick={handleLogout}
-                        className="group flex items-center gap-3 text-white hover:text-primary transition-all duration-300 text-sm font-medium hover:translate-x-2 hover:scale-105 block"
+                        className="flex items-center gap-3 text-white hover:text-[#c9a84c] transition-colors text-sm font-medium"
                       >
-                        <div className="w-6 h-6 bg-gradient-to-br from-[#c9a84c] to-[#d4af37] rounded-full flex items-center justify-center shadow-md group-hover:shadow-lg transition-all duration-300 border border-white/30">
+                        <div className="w-6 h-6 bg-[#c9a84c] rounded-full flex items-center justify-center">
                           <LogOut className="w-3 h-3 text-[#1a1a1a]" />
                         </div>
                         <span className="font-cinzel">{t("logout")}</span>
@@ -236,20 +234,20 @@ export function Header() {
                     <>
                       <Link
                         href="/login"
-                        className="group flex items-center gap-3 text-white hover:text-primary transition-all duration-300 text-sm font-medium hover:translate-x-2 hover:scale-105 block mb-3"
+                        className="flex items-center gap-3 text-white hover:text-[#c9a84c] transition-colors text-sm font-medium mb-3"
                         onClick={() => setIsMenuOpen(false)}
                       >
-                        <div className="w-6 h-6 bg-gradient-to-br from-[#c9a84c] to-[#d4af37] rounded-full flex items-center justify-center shadow-md group-hover:shadow-lg transition-all duration-300 border border-white/30">
+                        <div className="w-6 h-6 bg-[#c9a84c] rounded-full flex items-center justify-center">
                           <User className="w-3 h-3 text-[#1a1a1a]" />
                         </div>
                         <span className="font-cinzel">{t("login")}</span>
                       </Link>
                       <Link
                         href="/register"
-                        className="group flex items-center gap-3 text-white hover:text-primary transition-all duration-300 text-sm font-medium hover:translate-x-2 hover:scale-105 block"
+                        className="flex items-center gap-3 text-white hover:text-[#c9a84c] transition-colors text-sm font-medium"
                         onClick={() => setIsMenuOpen(false)}
                       >
-                        <div className="w-6 h-6 bg-gradient-to-br from-[#c9a84c] to-[#d4af37] rounded-full flex items-center justify-center shadow-md group-hover:shadow-lg transition-all duration-300 border border-white/30">
+                        <div className="w-6 h-6 bg-[#c9a84c] rounded-full flex items-center justify-center">
                           <Sparkles className="w-3 h-3 text-[#1a1a1a]" />
                         </div>
                         <span className="font-cinzel">{t("register")}</span>
