@@ -8,7 +8,7 @@ import { ChevronLeft, ChevronRight, Maximize2, X } from "lucide-react"
 
 // Sample room data - in a real app this would come from props or API
 const roomImages = [
-    "/images/pool.JPG",
+    "/images/pool.jpg",
     "/chaplin/0004.JPG",
 
    "/chaplin/0007.JPG",  

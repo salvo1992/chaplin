@@ -87,10 +87,10 @@ export default function CamerePage() {
   )
 
   // ✅ FOTO: SOLO ASSET DA /public/chaplin/...
-  // Se non trovi un file, mostro placeholder (così non “scompare” tutto).
+  // Se non trovi un file, mostro placeholder (così non "scompare" tutto).
   const photos: GalleryPhoto[] = [
-    { src: "/images/pool.JPG", alt: "Copertina" },
-     { src: "/chaplin/0004.JPG", alt: "Copertina" },
+    { src: "/images/pool.jpg", alt: "Copertina" },
+    { src: "/chaplin/0004.JPG", alt: "Spa" },
 
   { src: "/chaplin/0007.JPG", alt: "Area benessere" },
   { src: "/chaplin/0012.JPG", alt: "Piscina" },
