@@ -41,7 +41,7 @@ export function HeroSection() {
       {HERO_SLIDES.map((slide, index) => (
         <div
           key={slide.src}
-          className="absolute inset-0 transition-opacity duration-[2000ms] ease-in-out"
+          className="absolute inset-0 transition-opacity duration-1000"
           style={{ opacity: currentSlide === index ? 1 : 0 }}
         >
           <Image
@@ -49,8 +49,10 @@ export function HeroSection() {
             alt={slide.alt}
             fill
             priority={index === 0}
+            loading={index === 0 ? "eager" : "lazy"}
             className="object-cover"
             sizes="100vw"
+            quality={75}
           />
         </div>
       ))}
