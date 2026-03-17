@@ -1,7 +1,16 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { Resend } from "resend"
 
-const resend = new Resend(process.env.RESEND_API_KEY)
+// Lazy Resend init - wrapped in closure to avoid build-time evaluation
+const getResend = (() => {
+  let instance: Resend | null = null
+  return (): Resend | null => {
+    if (!instance && process.env.RESEND_API_KEY) {
+      instance = new Resend(process.env.RESEND_API_KEY)
+    }
+    return instance
+  }
+})()
 
 export async function POST(request: NextRequest) {
   try {
@@ -10,6 +19,11 @@ export async function POST(request: NextRequest) {
 
     if (!bookingId || !message || !userEmail) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 })
+    }
+
+    const resend = getResend()
+    if (!resend) {
+      return NextResponse.json({ error: "Email service not configured" }, { status: 500 })
     }
 
     const structureEmail = "progettocale@gmail.com"
