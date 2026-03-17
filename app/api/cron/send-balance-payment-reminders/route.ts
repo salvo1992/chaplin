@@ -2,7 +2,16 @@ import { type NextRequest, NextResponse } from "next/server"
 import { getAdminDb } from "@/lib/firebase-admin"
 import { Resend } from "resend"
 
-const resend = new Resend(process.env.RESEND_API_KEY)
+// Lazy Resend init - wrapped in closure to avoid build-time evaluation
+const getResend = (() => {
+  let instance: Resend | null = null
+  return (): Resend | null => {
+    if (!instance && process.env.RESEND_API_KEY) {
+      instance = new Resend(process.env.RESEND_API_KEY)
+    }
+    return instance
+  }
+})()
 
 export async function GET(request: NextRequest) {
   try {
@@ -10,6 +19,11 @@ export async function GET(request: NextRequest) {
     const authHeader = request.headers.get("authorization")
     if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
+    }
+
+    const resend = getResend()
+    if (!resend) {
+      return NextResponse.json({ error: "Email service not configured" }, { status: 500 })
     }
 
     const db = getAdminDb()
