@@ -4,9 +4,14 @@ import { getAdminDb } from "@/lib/firebase-admin"
 import { FieldValue } from "firebase-admin/firestore"
 import { refundOperation, findPaymentOperation, isNexiConfigured } from "@/lib/nexi-client"
 
-const stripe = process.env.STRIPE_SECRET_KEY
-  ? new Stripe(process.env.STRIPE_SECRET_KEY, { apiVersion: "2024-12-18.acacia" })
-  : null
+// Lazy Stripe init - only creates client when needed, not at build time
+let _stripe: Stripe | null = null
+const getStripe = (): Stripe | null => {
+  if (!_stripe && process.env.STRIPE_SECRET_KEY) {
+    _stripe = new Stripe(process.env.STRIPE_SECRET_KEY, { apiVersion: "2024-12-18.acacia" })
+  }
+  return _stripe
+}
 
 export async function POST(request: NextRequest) {
   try {
@@ -107,6 +112,7 @@ export async function POST(request: NextRequest) {
       }
     } else {
       // --- STRIPE REFUND ---
+      const stripe = getStripe()
       if (!stripe) {
         return NextResponse.json(
           { error: "Stripe non configurato. Rimborso deve essere elaborato manualmente." },
