@@ -5,7 +5,16 @@ import { FieldValue } from "firebase-admin/firestore"
 import { sendModificationEmail } from "@/lib/email"
 import { calculateNights } from "@/lib/pricing"
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, { apiVersion: "2024-11-20.acacia" })
+// Lazy Stripe init - wrapped in closure to avoid build-time evaluation
+const getStripe = (() => {
+  let instance: Stripe | null = null
+  return (): Stripe | null => {
+    if (!instance && process.env.STRIPE_SECRET_KEY) {
+      instance = new Stripe(process.env.STRIPE_SECRET_KEY, { apiVersion: "2024-11-20.acacia" })
+    }
+    return instance
+  }
+})()
 
 export async function POST(request: NextRequest) {
   try {
@@ -17,6 +26,11 @@ export async function POST(request: NextRequest) {
     if (!sessionId) {
       console.error("[v0 DEBUG] ❌ Missing session ID")
       return NextResponse.json({ error: "Session ID mancante" }, { status: 400 })
+    }
+
+    const stripe = getStripe()
+    if (!stripe) {
+      return NextResponse.json({ error: "Sistema di pagamento non configurato" }, { status: 500 })
     }
 
     console.log("[v0 DEBUG] Retrieving session from Stripe...")
