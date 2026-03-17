@@ -5,14 +5,16 @@ import Stripe from "stripe"
 import { sendModificationEmail } from "@/lib/email"
 import { calculateNights } from "@/lib/pricing"
 
-// Lazy init - only creates Stripe client when actually needed, cached
-let _stripe: Stripe | null = null
-const getStripe = (): Stripe | null => {
-  if (!_stripe && process.env.STRIPE_SECRET_KEY) {
-    _stripe = new Stripe(process.env.STRIPE_SECRET_KEY, { apiVersion: "2024-11-20.acacia" })
+// Lazy Stripe init - wrapped in closure to avoid build-time evaluation
+const getStripe = (() => {
+  let instance: Stripe | null = null
+  return (): Stripe | null => {
+    if (!instance && process.env.STRIPE_SECRET_KEY) {
+      instance = new Stripe(process.env.STRIPE_SECRET_KEY, { apiVersion: "2024-11-20.acacia" })
+    }
+    return instance
   }
-  return _stripe
-}
+})()
 
 export async function PUT(request: NextRequest) {
   try {
