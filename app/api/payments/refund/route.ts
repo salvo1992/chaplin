@@ -4,14 +4,16 @@ import { getAdminDb } from "@/lib/firebase-admin"
 import { FieldValue } from "firebase-admin/firestore"
 import { refundOperation, findPaymentOperation, isNexiConfigured } from "@/lib/nexi-client"
 
-// Lazy Stripe init - only creates client when needed, not at build time
-let _stripe: Stripe | null = null
-const getStripe = (): Stripe | null => {
-  if (!_stripe && process.env.STRIPE_SECRET_KEY) {
-    _stripe = new Stripe(process.env.STRIPE_SECRET_KEY, { apiVersion: "2024-12-18.acacia" })
+// Lazy Stripe init - wrapped in closure to avoid build-time evaluation
+const getStripe = (() => {
+  let instance: Stripe | null = null
+  return (): Stripe | null => {
+    if (!instance && process.env.STRIPE_SECRET_KEY) {
+      instance = new Stripe(process.env.STRIPE_SECRET_KEY, { apiVersion: "2024-12-18.acacia" })
+    }
+    return instance
   }
-  return _stripe
-}
+})()
 
 export async function POST(request: NextRequest) {
   try {

@@ -5,14 +5,16 @@ import { sendBookingConfirmationEmail, sendModificationEmail } from "@/lib/email
 
 export const dynamic = "force-dynamic"
 
-// Stripe - lazy init to avoid build errors when env vars are missing
-let _stripe: Stripe | null = null
-const getStripe = (): Stripe | null => {
-  if (!_stripe && process.env.STRIPE_SECRET_KEY) {
-    _stripe = new Stripe(process.env.STRIPE_SECRET_KEY, { apiVersion: "2024-06-20" })
+// Lazy Stripe init - wrapped in closure to avoid build-time evaluation
+const getStripe = (() => {
+  let instance: Stripe | null = null
+  return (): Stripe | null => {
+    if (!instance && process.env.STRIPE_SECRET_KEY) {
+      instance = new Stripe(process.env.STRIPE_SECRET_KEY, { apiVersion: "2024-06-20" })
+    }
+    return instance
   }
-  return _stripe
-}
+})()
 const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET || ""
 
 async function alreadyProcessed(eventId: string) {
