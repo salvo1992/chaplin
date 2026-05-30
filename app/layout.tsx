@@ -34,13 +34,17 @@ const cormorant = Cormorant_Garamond({
 })
 
 export const metadata: Metadata = {
-  title: "CHAPLIN Luxury Holiday House",
+  title: "",
   description:
     "Experience authentic Italian hospitality at CHAPLIN Luxury Holiday House bed & breakfast in the Viterbo, Italia",
   generator: "next.js",
   icons: {
-    icon: "/images/chaplin-logo.png",
-    apple: "/images/chaplin-logo.png",
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.jpg", type: "image/png", sizes: "32x32" },
+    ],
+    apple: "/apple-icon.jpg",
+    shortcut: "/favicon.ico",
   },
   metadataBase: new URL("https://chaplinhome.vercel.app/"),
   openGraph: {
