@@ -63,21 +63,21 @@ export function HeroSection() {
       {/* Content - centered with staggered animations */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-4">
         
-        {/* Small tagline */}
+        {/* Small tagline - CHAPLIN */}
         <p 
-          className="text-[10px] sm:text-xs tracking-[0.4em] uppercase mb-4 sm:mb-6 transition-all duration-[1200ms] ease-out"
+          className="text-sm sm:text-base md:text-lg tracking-[0.35em] uppercase mb-1 sm:mb-2 transition-all duration-[1200ms] ease-out"
           style={{
             opacity: animationStep >= 1 ? 1 : 0,
             transform: animationStep >= 1 ? "translateY(0)" : "translateY(20px)",
             color: "#c9a84c",
           }}
         >
-          luxury holiday house | viterbo
+          CHAPLIN
         </p>
 
-        {/* Main title "welcome" */}
+        {/* Main title "Luxury Holiday House" */}
         <h1 
-          className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[110px] font-light tracking-[0.02em] mb-2 sm:mb-4 transition-all duration-[1200ms] ease-out lowercase"
+          className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-light tracking-[0.02em] mb-0 transition-all duration-[1200ms] ease-out"
           style={{
             opacity: animationStep >= 2 ? 1 : 0,
             transform: animationStep >= 2 ? "translateY(0)" : "translateY(30px)",
@@ -85,19 +85,19 @@ export function HeroSection() {
             color: "#f5f0e8",
           }}
         >
-          welcome
+          Luxury Holiday House
         </h1>
 
-        {/* Subtitle "CHAPLIN" */}
+        {/* Subtitle "Viterbo" */}
         <p 
-          className="text-base sm:text-lg md:text-xl tracking-[0.35em] uppercase mb-6 sm:mb-8 transition-all duration-[1200ms] ease-out"
+          className="text-base sm:text-lg md:text-xl tracking-[0.25em] uppercase mb-6 sm:mb-8 transition-all duration-[1200ms] ease-out"
           style={{
             opacity: animationStep >= 3 ? 1 : 0,
             transform: animationStep >= 3 ? "translateY(0)" : "translateY(20px)",
             color: "#c9a84c",
           }}
         >
-          CHAPLIN
+          Viterbo
         </p>
 
         {/* Vertical decorative line */}
