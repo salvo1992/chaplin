@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import { useLanguage } from "@/components/language-provider"
-import { Wifi, Home, Droplets, Utensils, Tv, Wind, Car, Users, Snowflake, Flame } from "lucide-react"
+import { Wifi, Home, Droplets, Utensils, Tv, Wind, Car, KeyRound, Snowflake, Flame } from "lucide-react"
 
 export function StorySection() {
   const { language } = useLanguage()
@@ -65,7 +65,7 @@ export function StorySection() {
     { icon: Tv, label: "Smart TV 55''" },
     { icon: Wind, label: "Spa & Wellness" },
     { icon: Car, label: "Parcheggio" },
-    { icon: Users, label: "Max 4 ospiti" },
+    { icon: KeyRound, label: "Self Check-in" },
     { icon: Snowflake, label: "Aria condiz." },
     { icon: Flame, label: "Riscaldamento" },
   ]
