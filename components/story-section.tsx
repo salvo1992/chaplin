@@ -12,9 +12,9 @@ export function StorySection() {
       title: "CHAPLIN Luxury Holiday House",
       subtitle: "Suite Esclusiva a Viterbo",
       paragraph1:
-        "CHAPLIN e un'elegante suite esclusiva situata a Viterbo, ideale per una fuga di coppia o per famiglie in cerca di relax e benessere. L'ambiente raffinato e curato nei minimi dettagli offre il massimo comfort: piscina privata ad uso esclusivo, spa con vasca idromassaggio dotata di 32 getti, cascate massaggianti retroilluminate, cromoterapia e ozonizzazione.",
+        "Una elegante suite indipendente situata nel centro storico di Viterbo, ideale per una fuga di coppia in cerca di relax.",
       paragraph2:
-        "La suite dispone di una TV da 55'' con accesso a Netflix, Prime Video e Disney+, bagno privato con doccia idromassaggio, ampia zona giorno con cucina attrezzata, angolo colazione e area relax con divano e poltrona massaggiante. 57 mq di puro comfort per un soggiorno indimenticabile.",
+        "L'ambiente e raffinato e curato nei minimi dettagli, offre il massimo comfort: zona notte, zona giorno, cucina attrezzata, bagno privato e area spa interna ad uso esclusivo. 57 mq di puro benessere per un soggiorno indimenticabile.",
       galleryTitle: "Galleria fotografica",
     },
     en: {
