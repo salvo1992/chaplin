@@ -8,10 +8,29 @@ const QUALITY = 78
 // Only touch files larger than this (bytes). Small files are already fine.
 const SIZE_THRESHOLD = 1_200_000 // 1.2MB
 
-const TARGET_DIRS = ["public/images", "public/chaplin"]
+const TARGET_DIRS = ["public"]
 
 sharp.cache(false)
 sharp.concurrency(1)
+
+async function readdirRecursive(dir) {
+  const out = []
+  let entries
+  try {
+    entries = await readdir(dir, { withFileTypes: true })
+  } catch {
+    return out
+  }
+  for (const entry of entries) {
+    const full = join(dir, entry.name)
+    if (entry.isDirectory()) {
+      out.push(...(await readdirRecursive(full)))
+    } else {
+      out.push(full)
+    }
+  }
+  return out
+}
 
 async function processFile(filePath) {
   const ext = extname(filePath).toLowerCase()
@@ -53,14 +72,8 @@ async function run() {
   let count = 0
 
   for (const dir of TARGET_DIRS) {
-    let files
-    try {
-      files = await readdir(dir)
-    } catch {
-      continue
-    }
-    for (const f of files) {
-      const fp = join(dir, f)
+    const files = await readdirRecursive(dir)
+    for (const fp of files) {
       try {
         const result = await processFile(fp)
         if (result) {
