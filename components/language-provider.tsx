@@ -107,7 +107,7 @@ const translations = {
     allReviewsSeen: "Hai visto tutte le recensioni",
 
     // Footer
-    footerDescription: "Esperienza autentica nel cuore di viterbo",
+    footerDescription: "Struttura autorizzata dal Comune di Viterbo / Regione Lazio e riconosciuta dal Ministero del Turismo",
     quickLinks: "Link Rapidi",
     followUs: "Seguici",
     allRightsReserved: "Tutti i diritti riservati",
@@ -811,7 +811,7 @@ bookingErrorOkButton: "Ok",
     allReviewsSeen: "You've seen all reviews",
 
     // Footer
-    footerDescription: "Authentic experience in the heart of viterbo",
+    footerDescription: "Property authorized by the Municipality of Viterbo / Lazio Region and recognized by the Ministry of Tourism",
     quickLinks: "Quick Links",
     followUs: "Follow Us",
     allRightsReserved: "All rights reserved",
@@ -1465,7 +1465,7 @@ bookingErrorOkButton: "Ok",
     allReviewsSeen: "Vous avez vu tous les avis",
 
     // Footer
-    footerDescription: "Expérience authentique au cœur de viterbo",
+    footerDescription: "Etablissement autorise par la Municipalite de Viterbo / Region Latium et reconnu par le Ministere du Tourisme",
     quickLinks: "Liens Rapides",
     followUs: "Suivez-nous",
     allRightsReserved: "Tous droits réservés",
@@ -2120,7 +2120,7 @@ bookingErrorOkButton: "Ok",
     allReviewsSeen: "Has visto todas las reseñas",
 
     // Footer
-    footerDescription: "Experiencia auténtica en el corazón de viterbo",
+    footerDescription: "Establecimiento autorizado por el Ayuntamiento de Viterbo / Region del Lacio y reconocido por el Ministerio de Turismo",
     quickLinks: "Enlaces Rápidos",
     followUs: "Síguenos",
     allRightsReserved: "Todos los derechos reservados",
@@ -2770,7 +2770,7 @@ bookingErrorOkButton: "Ok",
     allReviewsSeen: "Sie haben alle Bewertungen gesehen",
 
     // Footer
-    footerDescription: "Authentisches Erlebnis im Herzen von viterbo",
+    footerDescription: "Von der Gemeinde Viterbo / Region Latium genehmigte und vom Tourismusministerium anerkannte Unterkunft",
     quickLinks: "Schnelllinks",
     followUs: "Folgen Sie Uns",
     allRightsReserved: "Alle Rechte vorbehalten",
