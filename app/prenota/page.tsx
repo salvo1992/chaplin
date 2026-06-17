@@ -185,13 +185,10 @@ export default function PrenotaPage() {
 
   const basePrice = dynamicPrice || roomPrices[formData.roomType] || 0
   const adults = Number(formData.guests || "1")
-  const children = Number(formData.children || "0")
-  const totalGuests = adults + children
+  const children = 0
+  const totalGuests = adults
 
-  const extraAdults = Math.max(0, adults - 2)
-  const extraChildren = totalGuests <= 2 ? 0 : Math.max(0, children - Math.max(0, 2 - adults))
-  const extraFeePerNight = extraAdults * 60 + extraChildren * 48
-  const total = nights * (basePrice + extraFeePerNight)
+  const total = nights * basePrice
 
   // ---- Submit ----
   const handleSubmit = async (e: React.FormEvent) => {
@@ -255,19 +252,6 @@ export default function PrenotaPage() {
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target
-
-    // If changing adults or children, validate total doesn't exceed 4
-    if (name === "guests" || name === "children") {
-      const newAdults = name === "guests" ? Number(value) : adults
-      const newChildren = name === "children" ? Number(value) : children
-      const newTotal = newAdults + newChildren
-
-      if (newTotal > 4) {
-        // Don't allow change if it would exceed 4 total guests
-        return
-      }
-    }
-
     setFormData((prev) => ({ ...prev, [name]: value }))
   }
 
@@ -401,46 +385,11 @@ export default function PrenotaPage() {
                         required
                       >
                         <option value="1">1 Adulto</option>
-                        <option value="2" disabled={children >= 4}>
-                          2 Adulti
-                        </option>
-                        <option value="3" disabled={children >= 2}>
-                          3 Adulti
-                        </option>
-                        <option value="4" disabled={children >= 1}>
-                          4 Adulti
-                        </option>
+                        <option value="2">2 Adulti</option>
                       </select>
-                    </div>
-                    <div>
-                      <Label htmlFor="children">Bambini (11+ anni)</Label>
-                      <select
-                        id="children"
-                        name="children"
-                        value={formData.children}
-                        onChange={handleInputChange}
-                        className="w-full px-3 py-2 border border-input rounded-md bg-background"
-                      >
-                        <option value="0">0 Bambini</option>
-                        <option value="1" disabled={adults >= 4}>
-                          1 Bambino
-                        </option>
-                        <option value="2" disabled={adults >= 3}>
-                          2 Bambini
-                        </option>
-                        <option value="3" disabled={adults >= 2}>
-                          3 Bambini
-                        </option>
-                      </select>
-                      <p className="text-xs text-muted-foreground mt-1">
-                        Accettiamo bambini da 11 anni in su. Max 4 ospiti totali.
-                      </p>
+                      <p className="text-xs text-muted-foreground mt-1">Max 2 adulti.</p>
                     </div>
                   </div>
-
-                  {totalGuests > 4 && (
-                    <div className="text-sm text-destructive">Massimo 4 ospiti totali (adulti + bambini)</div>
-                  )}
 
                   {/* Appartamento unico - selezione camera nascosta */}
                   <input type="hidden" name="roomType" value="suite" />
@@ -504,7 +453,7 @@ export default function PrenotaPage() {
                           </li>
                           <li className="flex items-center gap-2">
                             <Users className="h-4 w-4 text-primary" />
-                            <span>Max 4 ospiti</span>
+                            <span>Max 2 ospiti</span>
                           </li>
                         </ul>
                       </div>

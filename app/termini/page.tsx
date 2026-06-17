@@ -78,7 +78,6 @@ export default function TerminiPage() {
                     <li>{t("freeCancellation7days")}</li>
                     <li>{t("cancellation7to3days")}</li>
                     <li>{t("cancellationWithin3days")}</li>
-                    <li>{t("noShow")}</li>
                   </ul>
                 </div>
               </CardContent>
@@ -135,7 +134,6 @@ export default function TerminiPage() {
                 <div>
                   <h4 className="font-semibold mb-2">{t("liabilityLimitations")}</h4>
                   <ul className="list-disc list-inside space-y-2 text-muted-foreground">
-                    <li>{t("valuablesNotResponsible")}</li>
                     <li>{t("travelInsurance")}</li>
                     <li>{t("limitedLiability")}</li>
                   </ul>
@@ -170,11 +168,18 @@ export default function TerminiPage() {
                 <div className="space-y-2">
                   <div className="flex items-center gap-2">
                     <Mail className="w-4 h-4 text-primary" />
-                    <span>{TERMS_CONTACT.email}</span>
+                    <a href={`mailto:${TERMS_CONTACT.email}`} className="hover:text-primary transition-colors">
+                      {TERMS_CONTACT.email}
+                    </a>
                   </div>
                   <div className="flex items-center gap-2">
                     <Phone className="w-4 h-4 text-primary" />
-                    <span>{TERMS_CONTACT.phone}</span>
+                    <a
+                      href={`tel:${TERMS_CONTACT.phone.replace(/\s+/g, "")}`}
+                      className="hover:text-primary transition-colors"
+                    >
+                      {TERMS_CONTACT.phone}
+                    </a>
                   </div>
                 </div>
                 <p className="text-sm text-muted-foreground mt-4">{t("lastUpdated")}</p>

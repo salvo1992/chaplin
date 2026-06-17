@@ -2,7 +2,15 @@
 const nextConfig = {
   eslint: { ignoreDuringBuilds: true },
   typescript: { ignoreBuildErrors: true },
-  images: { unoptimized: true },
+  images: {
+    // Re-enabled optimization: serves resized/compressed images instead of
+    // full-resolution originals. Loading the full-res /chaplin/*.JPG camera
+    // photos caused the browser to run Out of Memory and crash the tab.
+    formats: ["image/webp"],
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    minimumCacheTTL: 86400,
+  },
   output: "standalone",
   reactStrictMode: true,
 

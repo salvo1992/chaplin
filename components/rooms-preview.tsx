@@ -30,19 +30,19 @@ export function RoomsPreview() {
       airports: [
         { name: "Aeroporto di Roma Fiumicino (FCO)", distance: "95 km" },
         { name: "Aeroporto di Roma Ciampino (CIA)", distance: "105 km" },
-        { name: "Aeroporto di Perugia (PEG)", distance: "85 km" },
       ],
       stations: [
         { name: "Stazione Viterbo Porta Romana", distance: "1.5 km" },
         { name: "Stazione Viterbo Porta Fiorentina", distance: "2 km" },
       ],
       nearby: [
-        { name: "Centro Storico di Viterbo", distance: "1 km" },
+        { name: "Rocca Albornoz", distance: "1.2 km" },
+        { name: "Piazza Verdi", distance: "0.8 km" },
+        { name: "Santuario di Santa Rosa", distance: "0.5 km" },
+        { name: "Corso Italia", distance: "0.7 km" },
+        { name: "Piazza del Plebiscito", distance: "0.9 km" },
+        { name: "Quartiere Medievale San Pellegrino", distance: "1 km" },
         { name: "Palazzo dei Papi", distance: "1.2 km" },
-        { name: "Quartiere San Pellegrino", distance: "1.3 km" },
-        { name: "Terme dei Papi", distance: "6 km" },
-        { name: "Lago di Vico", distance: "15 km" },
-        { name: "Lago di Bolsena", distance: "25 km" },
         { name: "Civita di Bagnoregio", distance: "30 km" },
       ],
     },
@@ -56,19 +56,19 @@ export function RoomsPreview() {
       airports: [
         { name: "Rome Fiumicino Airport (FCO)", distance: "95 km" },
         { name: "Rome Ciampino Airport (CIA)", distance: "105 km" },
-        { name: "Perugia Airport (PEG)", distance: "85 km" },
       ],
       stations: [
         { name: "Viterbo Porta Romana Station", distance: "1.5 km" },
         { name: "Viterbo Porta Fiorentina Station", distance: "2 km" },
       ],
       nearby: [
-        { name: "Viterbo Historic Center", distance: "1 km" },
+        { name: "Rocca Albornoz", distance: "1.2 km" },
+        { name: "Piazza Verdi", distance: "0.8 km" },
+        { name: "Sanctuary of Santa Rosa", distance: "0.5 km" },
+        { name: "Corso Italia", distance: "0.7 km" },
+        { name: "Piazza del Plebiscito", distance: "0.9 km" },
+        { name: "Medieval San Pellegrino Quarter", distance: "1 km" },
         { name: "Papal Palace", distance: "1.2 km" },
-        { name: "San Pellegrino Quarter", distance: "1.3 km" },
-        { name: "Terme dei Papi", distance: "6 km" },
-        { name: "Lake Vico", distance: "15 km" },
-        { name: "Lake Bolsena", distance: "25 km" },
         { name: "Civita di Bagnoregio", distance: "30 km" },
       ],
     },
@@ -82,19 +82,19 @@ export function RoomsPreview() {
       airports: [
         { name: "Aeroport de Rome Fiumicino (FCO)", distance: "95 km" },
         { name: "Aeroport de Rome Ciampino (CIA)", distance: "105 km" },
-        { name: "Aeroport de Perouse (PEG)", distance: "85 km" },
       ],
       stations: [
         { name: "Gare Viterbo Porta Romana", distance: "1.5 km" },
         { name: "Gare Viterbo Porta Fiorentina", distance: "2 km" },
       ],
       nearby: [
-        { name: "Centre historique de Viterbo", distance: "1 km" },
+        { name: "Rocca Albornoz", distance: "1.2 km" },
+        { name: "Piazza Verdi", distance: "0.8 km" },
+        { name: "Sanctuaire de Santa Rosa", distance: "0.5 km" },
+        { name: "Corso Italia", distance: "0.7 km" },
+        { name: "Piazza del Plebiscito", distance: "0.9 km" },
+        { name: "Quartier medieval San Pellegrino", distance: "1 km" },
         { name: "Palais des Papes", distance: "1.2 km" },
-        { name: "Quartier San Pellegrino", distance: "1.3 km" },
-        { name: "Terme dei Papi", distance: "6 km" },
-        { name: "Lac de Vico", distance: "15 km" },
-        { name: "Lac de Bolsena", distance: "25 km" },
         { name: "Civita di Bagnoregio", distance: "30 km" },
       ],
     },
@@ -108,19 +108,19 @@ export function RoomsPreview() {
       airports: [
         { name: "Aeropuerto de Roma Fiumicino (FCO)", distance: "95 km" },
         { name: "Aeropuerto de Roma Ciampino (CIA)", distance: "105 km" },
-        { name: "Aeropuerto de Perugia (PEG)", distance: "85 km" },
       ],
       stations: [
         { name: "Estacion Viterbo Porta Romana", distance: "1.5 km" },
         { name: "Estacion Viterbo Porta Fiorentina", distance: "2 km" },
       ],
       nearby: [
-        { name: "Centro historico de Viterbo", distance: "1 km" },
+        { name: "Rocca Albornoz", distance: "1.2 km" },
+        { name: "Piazza Verdi", distance: "0.8 km" },
+        { name: "Santuario de Santa Rosa", distance: "0.5 km" },
+        { name: "Corso Italia", distance: "0.7 km" },
+        { name: "Piazza del Plebiscito", distance: "0.9 km" },
+        { name: "Barrio medieval San Pellegrino", distance: "1 km" },
         { name: "Palacio de los Papas", distance: "1.2 km" },
-        { name: "Barrio San Pellegrino", distance: "1.3 km" },
-        { name: "Terme dei Papi", distance: "6 km" },
-        { name: "Lago de Vico", distance: "15 km" },
-        { name: "Lago de Bolsena", distance: "25 km" },
         { name: "Civita di Bagnoregio", distance: "30 km" },
       ],
     },
@@ -134,19 +134,19 @@ export function RoomsPreview() {
       airports: [
         { name: "Flughafen Rom Fiumicino (FCO)", distance: "95 km" },
         { name: "Flughafen Rom Ciampino (CIA)", distance: "105 km" },
-        { name: "Flughafen Perugia (PEG)", distance: "85 km" },
       ],
       stations: [
         { name: "Bahnhof Viterbo Porta Romana", distance: "1.5 km" },
         { name: "Bahnhof Viterbo Porta Fiorentina", distance: "2 km" },
       ],
       nearby: [
-        { name: "Altstadt von Viterbo", distance: "1 km" },
+        { name: "Rocca Albornoz", distance: "1.2 km" },
+        { name: "Piazza Verdi", distance: "0.8 km" },
+        { name: "Heiligtum der Santa Rosa", distance: "0.5 km" },
+        { name: "Corso Italia", distance: "0.7 km" },
+        { name: "Piazza del Plebiscito", distance: "0.9 km" },
+        { name: "Mittelalterliches Viertel San Pellegrino", distance: "1 km" },
         { name: "Papstpalast", distance: "1.2 km" },
-        { name: "Viertel San Pellegrino", distance: "1.3 km" },
-        { name: "Terme dei Papi", distance: "6 km" },
-        { name: "Vico-See", distance: "15 km" },
-        { name: "Bolsena-See", distance: "25 km" },
         { name: "Civita di Bagnoregio", distance: "30 km" },
       ],
     },
@@ -173,11 +173,26 @@ export function RoomsPreview() {
         </div>
 
         {/* Location Info Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-12">
-          {/* Left Column */}
+        <div className="flex flex-col gap-10 mb-12">
+          {/* Top - Nearby */}
           <div>
+            <h4 className="text-sm font-medium text-[#1a1a1a] mb-4">
+              {content.nearbyTitle}
+            </h4>
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-10">
+              {content.nearby.map((place, index) => (
+                <li key={index} className="flex justify-between text-sm text-[#6b6560] py-2 border-b border-[#e0ddd5]">
+                  <span>{place.name}</span>
+                  <span className="text-[#c9a84c] font-medium">{place.distance}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Bottom - Airports & Stations */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             {/* Airports */}
-            <div className="mb-8">
+            <div>
               <h4 className="text-sm font-medium text-[#1a1a1a] mb-4 flex items-center gap-2">
                 <Plane className="w-4 h-4 text-[#c9a84c]" />
                 {content.airportsTitle}
@@ -207,21 +222,6 @@ export function RoomsPreview() {
                 ))}
               </ul>
             </div>
-          </div>
-
-          {/* Right Column - Nearby */}
-          <div>
-            <h4 className="text-sm font-medium text-[#1a1a1a] mb-4">
-              {content.nearbyTitle}
-            </h4>
-            <ul className="space-y-3">
-              {content.nearby.map((place, index) => (
-                <li key={index} className="flex justify-between text-sm text-[#6b6560] py-2 border-b border-[#e0ddd5]">
-                  <span>{place.name}</span>
-                  <span className="text-[#c9a84c] font-medium">{place.distance}</span>
-                </li>
-              ))}
-            </ul>
           </div>
         </div>
 

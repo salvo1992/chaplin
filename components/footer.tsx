@@ -2,14 +2,8 @@
 
 import Link from "next/link"
 import Image from "next/image"
-import { MapPin, Phone, Mail, Facebook, Instagram, Clock, Star, MessageCircle } from "lucide-react"
+import { MapPin, Phone, Mail, Facebook, Instagram, Clock, MessageCircle } from "lucide-react"
 import { useLanguage } from "@/components/language-provider"
-
-const TikTokIcon = (props: any) => (
-  <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" {...props}>
-    <path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z" />
-  </svg>
-)
 
 const StripeIcon = (props: any) => (
   <svg viewBox="0 0 60 25" xmlns="http://www.w3.org/2000/svg" {...props}>
@@ -113,13 +107,9 @@ export function Footer() {
               />
             </div>
             <p className="text-background/80 mb-4 text-sm leading-relaxed">{t("footerDescription")}</p>
-            <div className="flex items-center gap-1 mb-2">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-4 h-4 fill-[#c9a84c] text-[#c9a84c]" />
-              ))}
-              <span className="text-sm ml-2">4.9/5 (127 {t("reviewsTitle").toLowerCase()})</span>
-            </div>
+            <p className="text-xs text-background/60 tracking-wider mb-2">CIN: IT056059CZYAQZBIX7</p>
           </div>
+
 
           {/* Contact Info */}
           <div>
@@ -159,7 +149,7 @@ export function Footer() {
             <h3 className="font-semibold text-lg mb-4">{t("quickLinks")}</h3>
             <div className="space-y-2 text-sm">
               <Link href="/camere" className="block hover:text-primary transition-colors">
-                L'Appartamento
+                Suite Esclusiva
               </Link>
               <Link href="/servizi" className="block hover:text-primary transition-colors">
                 {t("services")}
@@ -178,7 +168,7 @@ export function Footer() {
             <h3 className="font-semibold text-lg mb-4">{t("followUs")}</h3>
             <div className="flex gap-4 mb-6">
               <a
-                href="https://www.facebook.com/profile.php?id=61562568800816"
+                href="https://www.facebook.com/people/Chaplin-Luxury-Holiday-House/100064760898219/#"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-background/80 hover:text-primary transition-colors"
@@ -187,22 +177,13 @@ export function Footer() {
                 <Facebook className="w-5 h-5" />
               </a>
               <a
-                href="https://www.instagram.com/al22suite/"
+                href="https://www.instagram.com/chaplinluxuryholidayhouse?igsh=MWEzcW5vbm5xdXRjcg=="
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-background/80 hover:text-primary transition-colors"
                 aria-label="Instagram"
               >
                 <Instagram className="w-5 h-5" />
-              </a>
-              <a
-                href="https://www.tiktok.com/@al22suite"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-background/80 hover:text-primary transition-colors"
-                aria-label="TikTok"
-              >
-                <TikTokIcon className="w-5 h-5" />
               </a>
               <a
                 href="https://wa.me/393757017689"
@@ -254,11 +235,6 @@ export function Footer() {
                 <ApplePayIcon className="h-full w-full" />
               </div>
             </div>
-          </div>
-
-          {/* CIN */}
-          <div className="flex justify-center py-4 border-b border-background/20">
-            <p className="text-xs text-background/60 tracking-wider">CIN: IT056059CZYAQZBIX7</p>
           </div>
 
           {/* Copyright - ora sotto i metodi di pagamento */}

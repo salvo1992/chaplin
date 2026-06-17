@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import { useLanguage } from "@/components/language-provider"
-import { Wifi, Home, Droplets, Utensils, Tv, Wind, Car, Users, Snowflake, Flame } from "lucide-react"
+import { Wifi, Home, Utensils, Car, KeyRound, Snowflake, Flame } from "lucide-react"
 
 export function StorySection() {
   const { language } = useLanguage()
@@ -10,48 +10,48 @@ export function StorySection() {
   const storyContent: Record<string, { title: string; subtitle: string; paragraph1: string; paragraph2: string; galleryTitle: string }> = {
     it: {
       title: "CHAPLIN Luxury Holiday House",
-      subtitle: "Appartamento esclusivo a Viterbo",
+      subtitle: "Suite Esclusiva a Viterbo",
       paragraph1:
-        "CHAPLIN e un elegante appartamento indipendente situato a Viterbo, ideale per una fuga di coppia o per famiglie in cerca di relax e benessere. L'ambiente raffinato e curato nei minimi dettagli offre il massimo comfort: piscina privata ad uso esclusivo, spa con vasca idromassaggio dotata di 32 getti, cascate massaggianti retroilluminate, cromoterapia e ozonizzazione.",
+        "Una elegante suite indipendente situata nel centro storico di Viterbo, ideale per una fuga di coppia in cerca di relax.",
       paragraph2:
-        "L'appartamento dispone di una TV da 55'' con accesso a Netflix, Prime Video e Disney+, bagno privato con doccia idromassaggio, ampia zona giorno con cucina attrezzata, angolo colazione e area relax con divano e poltrona massaggiante. 57 mq di puro comfort per un soggiorno indimenticabile.",
-      galleryTitle: "Galleria fotografica",
+        "L'ambiente e raffinato e curato nei minimi dettagli, offre il massimo comfort: zona notte, zona giorno, cucina attrezzata, bagno privato e area spa interna ad uso esclusivo. 57 mq di puro benessere per un soggiorno indimenticabile.",
+      galleryTitle: "Citta di Viterbo",
     },
     en: {
       title: "CHAPLIN Luxury Holiday House",
-      subtitle: "Exclusive apartment in Viterbo",
+      subtitle: "Exclusive Suite in Viterbo",
       paragraph1:
-        "CHAPLIN is an elegant independent apartment located in Viterbo, ideal for a couple's getaway or families seeking relaxation and wellness. The refined environment, with attention to every detail, offers maximum comfort: private pool for exclusive use, spa with hydromassage tub equipped with 32 jets, backlit massage waterfalls, chromotherapy and ozonization.",
+        "An elegant independent suite located in the historic center of Viterbo, ideal for a couple's getaway in search of relaxation.",
       paragraph2:
-        "The apartment features a 55'' TV with access to Netflix, Prime Video and Disney+, private bathroom with hydromassage shower, spacious living area with equipped kitchen, breakfast corner and relaxation area with sofa and massage armchair. 57 sqm of pure comfort for an unforgettable stay.",
-      galleryTitle: "Photo Gallery",
+        "The environment is refined and attentive to every detail, offering maximum comfort: sleeping area, living area, equipped kitchen, private bathroom and an internal spa area for exclusive use. 57 sqm of pure wellness for an unforgettable stay.",
+      galleryTitle: "City of Viterbo",
     },
     fr: {
       title: "CHAPLIN Luxury Holiday House",
-      subtitle: "Appartement exclusif a Viterbo",
+      subtitle: "Suite Exclusive a Viterbo",
       paragraph1:
-        "CHAPLIN est un elegant appartement independant situe a Viterbo, ideal pour une escapade en couple ou en famille a la recherche de detente et de bien-etre.",
+        "Une elegante suite independante situee dans le centre historique de Viterbo, ideale pour une escapade en couple a la recherche de detente.",
       paragraph2:
-        "L'appartement dispose d'une TV 55'' avec acces a Netflix, Prime Video et Disney+, salle de bain privee avec douche hydromassante. 57 m2 de pur confort.",
-      galleryTitle: "Galerie photo",
+        "L'environnement est raffine et soigne dans les moindres details, offrant un confort maximal : coin nuit, coin jour, cuisine equipee, salle de bain privee et espace spa interieur a usage exclusif. 57 m2 de pur bien-etre pour un sejour inoubliable.",
+      galleryTitle: "Ville de Viterbo",
     },
     es: {
       title: "CHAPLIN Luxury Holiday House",
-      subtitle: "Apartamento exclusivo en Viterbo",
+      subtitle: "Suite Exclusiva en Viterbo",
       paragraph1:
-        "CHAPLIN es un elegante apartamento independiente situado en Viterbo, ideal para una escapada en pareja o familias en busca de relajacion y bienestar.",
+        "Una elegante suite independiente situada en el centro historico de Viterbo, ideal para una escapada en pareja en busca de relajacion.",
       paragraph2:
-        "El apartamento cuenta con una TV de 55'' con acceso a Netflix, Prime Video y Disney+, bano privado con ducha de hidromasaje. 57 m2 de puro confort.",
-      galleryTitle: "Galeria fotografica",
+        "El ambiente es refinado y cuidado en cada detalle, ofreciendo el maximo confort: zona de noche, zona de dia, cocina equipada, bano privado y area de spa interna de uso exclusivo. 57 m2 de puro bienestar para una estancia inolvidable.",
+      galleryTitle: "Ciudad de Viterbo",
     },
     de: {
       title: "CHAPLIN Luxury Holiday House",
-      subtitle: "Exklusive Wohnung in Viterbo",
+      subtitle: "Exklusive Suite in Viterbo",
       paragraph1:
-        "CHAPLIN ist eine elegante unabhangige Wohnung in Viterbo, ideal fur einen Paarurlaub oder Familien auf der Suche nach Entspannung und Wohlbefinden.",
+        "Eine elegante unabhangige Suite im historischen Zentrum von Viterbo, ideal fur einen Paarurlaub auf der Suche nach Entspannung.",
       paragraph2:
-        "Die Wohnung verfugt uber einen 55'' Fernseher mit Zugang zu Netflix, Prime Video und Disney+, eigenes Bad mit Hydromassage-Dusche. 57 qm purer Komfort.",
-      galleryTitle: "Fotogalerie",
+        "Das Ambiente ist raffiniert und bis ins kleinste Detail gepflegt und bietet maximalen Komfort: Schlafbereich, Wohnbereich, ausgestattete Kuche, eigenes Bad und ein interner Spa-Bereich zur exklusiven Nutzung. 57 qm pures Wohlbefinden fur einen unvergesslichen Aufenthalt.",
+      galleryTitle: "Stadt Viterbo",
     },
   }
 
@@ -59,20 +59,17 @@ export function StorySection() {
 
   const amenities = [
     { icon: Wifi, label: "WiFi Gratis" },
-    { icon: Home, label: "Appartamento" },
-    { icon: Droplets, label: "Piscina privata" },
+    { icon: Home, label: "Suite Esclusiva" },
     { icon: Utensils, label: "Cucina" },
-    { icon: Tv, label: "Smart TV 55''" },
-    { icon: Wind, label: "Spa & Wellness" },
     { icon: Car, label: "Parcheggio" },
-    { icon: Users, label: "Max 4 ospiti" },
+    { icon: KeyRound, label: "Self Check-in" },
     { icon: Snowflake, label: "Aria condiz." },
     { icon: Flame, label: "Riscaldamento" },
   ]
 
   const galleryImages = [
-    { src: "/images/1.jpg", alt: "Interno appartamento" },
-    { src: "/images/2.jpg", alt: "Camera da letto" },
+    { src: "/images/1.jpg", alt: "Interno suite" },
+    { src: "/images/2.jpg", alt: "Suite" },
     { src: "/images/pool.jpg", alt: "Piscina privata" },
     { src: "/images/spa1.jpg", alt: "Spa e wellness" },
   ]

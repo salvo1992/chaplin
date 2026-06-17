@@ -3,7 +3,6 @@ import { Footer } from "@/components/footer"
 import { RoomDetails } from "@/components/room-details"
 import { RoomGallery } from "@/components/room-gallery"
 import { BookingWidget } from "@/components/booking-widget"
-import { RelatedRooms } from "@/components/related-rooms"
 
 interface RoomPageProps {
   params: {
@@ -32,8 +31,6 @@ export default function RoomPage({ params }: RoomPageProps) {
               </div>
             </div>
           </div>
-
-          <RelatedRooms currentRoomId={params.id} />
         </div>
       </div>
 
