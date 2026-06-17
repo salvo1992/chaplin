@@ -504,7 +504,7 @@ export default function PrenotaPage() {
                           </li>
                           <li className="flex items-center gap-2">
                             <Users className="h-4 w-4 text-primary" />
-                            <span>Max 4 ospiti</span>
+                            <span>Max 2 ospiti</span>
                           </li>
                         </ul>
                       </div>

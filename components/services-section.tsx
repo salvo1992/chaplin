@@ -24,7 +24,7 @@ export function ServicesSection() {
     it: {
       title: "La Suite Esclusiva",
       subtitle: "CHAPLIN Luxury Holiday House",
-      description: "Un'elegante suite esclusiva di 57 mq con piscina privata, spa e tutti i comfort per un soggiorno di relax.",
+      description: "",
       features: [
         "Piscina privata ad uso esclusivo",
         "Spa con vasca idromassaggio 32 getti",
@@ -38,12 +38,12 @@ export function ServicesSection() {
       infoBtn: "Scopri di piu",
       bookBtn: "Prenota ora",
       size: "57 mq",
-      guests: "Max 4 ospiti",
+      guests: "Max 2 ospiti",
     },
     en: {
       title: "The Apartment",
       subtitle: "CHAPLIN Luxury Holiday House",
-      description: "An elegant 57 sqm independent apartment with private pool, spa and all comforts for a relaxing stay.",
+      description: "",
       features: [
         "Private pool for exclusive use",
         "Spa with 32-jet hydromassage tub",
@@ -57,12 +57,12 @@ export function ServicesSection() {
       infoBtn: "Learn more",
       bookBtn: "Book now",
       size: "57 sqm",
-      guests: "Max 4 guests",
+      guests: "Max 2 guests",
     },
     fr: {
       title: "L'Appartement",
       subtitle: "CHAPLIN Luxury Holiday House",
-      description: "Un elegant appartement independant de 57 m2 avec piscine privee, spa et tout le confort pour un sejour relaxant.",
+      description: "",
       features: [
         "Piscine privee a usage exclusif",
         "Spa avec baignoire hydromassage 32 jets",
@@ -76,12 +76,12 @@ export function ServicesSection() {
       infoBtn: "En savoir plus",
       bookBtn: "Reserver",
       size: "57 m2",
-      guests: "Max 4 personnes",
+      guests: "Max 2 personnes",
     },
     es: {
       title: "El Apartamento",
       subtitle: "CHAPLIN Luxury Holiday House",
-      description: "Un elegante apartamento independiente de 57 m2 con piscina privada, spa y todas las comodidades para una estancia relajante.",
+      description: "",
       features: [
         "Piscina privada de uso exclusivo",
         "Spa con banera de hidromasaje de 32 chorros",
@@ -95,12 +95,12 @@ export function ServicesSection() {
       infoBtn: "Saber mas",
       bookBtn: "Reservar",
       size: "57 m2",
-      guests: "Max 4 huespedes",
+      guests: "Max 2 huespedes",
     },
     de: {
       title: "Die Wohnung",
       subtitle: "CHAPLIN Luxury Holiday House",
-      description: "Eine elegante 57 qm unabhangige Wohnung mit privatem Pool, Spa und allem Komfort fur einen entspannenden Aufenthalt.",
+      description: "",
       features: [
         "Privater Pool zur exklusiven Nutzung",
         "Spa mit 32-Dusen-Whirlpool",
@@ -114,14 +114,14 @@ export function ServicesSection() {
       infoBtn: "Mehr erfahren",
       bookBtn: "Jetzt buchen",
       size: "57 qm",
-      guests: "Max 4 Gaste",
+      guests: "Max 2 Gaste",
     },
   }
 
   const content = sectionContent[language] || sectionContent.it
 
   const images = [
-    { src: "/images/room-2.jpg", alt: "Interno suite" },
+    { src: "/chaplin/0053.JPG", alt: "Interno suite" },
     { src: "/images/spa1.jpg", alt: "Vasca idromassaggio" },
     { src: "/images/room-1.jpg", alt: "Zona notte suite" },
   ]
@@ -180,9 +180,11 @@ export function ServicesSection() {
             </p>
 
             {/* Description */}
-            <p className="text-[#6b6560] mb-6 leading-relaxed">
-              {content.description}
-            </p>
+            {content.description ? (
+              <p className="text-[#6b6560] mb-6 leading-relaxed">
+                {content.description}
+              </p>
+            ) : null}
 
             {/* Features */}
             <ul className="space-y-2 mb-8">
