@@ -51,19 +51,17 @@ export function VideoCarousel() {
   }
 
   useEffect(() => {
-    // Pause all videos except the current one
-    videoRefs.current.forEach((video, index) => {
-      if (video) {
-        if (index === currentIndex && isPlaying) {
-          video.play().catch(() => {
-            // Autoplay might be blocked, that's okay
-          })
-        } else {
-          video.pause()
-          video.currentTime = 0
-        }
+    // Only the current video is mounted now; play/pause just that one.
+    const currentVideo = videoRefs.current[currentIndex]
+    if (currentVideo) {
+      if (isPlaying) {
+        currentVideo.play().catch(() => {
+          // Autoplay might be blocked, that's okay
+        })
+      } else {
+        currentVideo.pause()
       }
-    })
+    }
   }, [currentIndex, isPlaying])
 
   useEffect(() => {
@@ -87,33 +85,47 @@ export function VideoCarousel() {
 
         <div className="relative max-w-6xl mx-auto">
           <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl bg-black">
-            {videos.map((video, index) => (
-              <div
-                key={index}
-                className={`absolute inset-0 transition-opacity duration-500 ${
-                  index === currentIndex ? "opacity-100 z-10" : "opacity-0 z-0"
-                }`}
-              >
-                <video
-                  ref={(el) => {
-                    videoRefs.current[index] = el
-                  }}
-                  className="w-full h-full object-cover"
-                  loop
-                  muted
-                  playsInline
-                  poster={`/placeholder.svg?height=720&width=1280&text=${video.title}`}
+            {videos.map((video, index) => {
+              // Only load the current video (and keep it mounted). Others render
+              // a lightweight poster so all 3 videos never buffer into memory at once.
+              const isActive = index === currentIndex
+              return (
+                <div
+                  key={index}
+                  className={`absolute inset-0 transition-opacity duration-500 ${
+                    isActive ? "opacity-100 z-10" : "opacity-0 z-0"
+                  }`}
                 >
-                  <source src={video.src} type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
+                  {isActive ? (
+                    <video
+                      ref={(el) => {
+                        videoRefs.current[index] = el
+                      }}
+                      className="w-full h-full object-cover"
+                      loop
+                      muted
+                      playsInline
+                      preload="metadata"
+                      poster={`/placeholder.svg?height=720&width=1280&text=${video.title}`}
+                    >
+                      <source src={video.src} type="video/mp4" />
+                      Your browser does not support the video tag.
+                    </video>
+                  ) : (
+                    <img
+                      src={`/placeholder.svg?height=720&width=1280&text=${video.title}`}
+                      alt={video.title}
+                      className="w-full h-full object-cover"
+                    />
+                  )}
 
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-8">
-                  <h3 className="text-white text-2xl md:text-3xl font-bold mb-2">{t(video.title)}</h3>
-                  <p className="text-white/90 text-lg">{t(video.description)}</p>
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-8">
+                    <h3 className="text-white text-2xl md:text-3xl font-bold mb-2">{t(video.title)}</h3>
+                    <p className="text-white/90 text-lg">{t(video.description)}</p>
+                  </div>
                 </div>
-              </div>
-            ))}
+              )
+            })}
 
             <Button
               variant="ghost"

@@ -295,6 +295,8 @@ export default function CamerePage() {
                   alt={photos[0]?.alt || "Copertina"}
                   fill
                   className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 58vw"
+                  quality={70}
                   onError={(e) => {
                     // @ts-expect-error next/image fallback
                     e.currentTarget.src = "/placeholder.svg"
@@ -321,6 +323,8 @@ export default function CamerePage() {
                       alt={p.alt}
                       fill
                       className="object-cover"
+                      sizes="(max-width: 768px) 50vw, 21vw"
+                      quality={65}
                       onError={(e) => {
                         // @ts-expect-error next/image fallback
                         e.currentTarget.src = "/placeholder.svg"
