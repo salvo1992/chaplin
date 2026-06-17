@@ -62,9 +62,8 @@ export function BookingWidget({ roomId }: BookingWidgetProps) {
   }, [dateRange])
 
   const subtotal = basePrice * (nights || 0)
-  const touristTax = nights * guests * 2
-  const serviceFee = 10
-  const total = subtotal + touristTax + serviceFee
+  const touristTax = nights * guests * 2.8
+  const total = subtotal + touristTax
 
   useEffect(() => {
     const checkAvailability = async () => {
@@ -126,19 +125,6 @@ export function BookingWidget({ roomId }: BookingWidgetProps) {
 
           <CardContent className="space-y-4">
             <div>
-              <Label htmlFor="widget-roomType">{t("bookingFormRoomType") || "Tipo Camera"}</Label>
-              <select
-                id="widget-roomType"
-                value={selectedRoomType}
-                onChange={(e) => setSelectedRoomType(e.target.value)}
-                className="w-full px-3 py-2 border border-input rounded-md bg-background"
-              >
-                <option value="1">{t("bookingFormPanoramicSuite") || "Camera Familiare con Balcone"}</option>
-                <option value="2">{t("bookingFormjacuziRoom") || "Camera Matrimoniale con Vasca Idromassaggio"}</option>
-              </select>
-            </div>
-
-            <div>
               <Label>{t("bookingDates") || "Date di soggiorno"}</Label>
               <BookingCalendarPicker
                 value={dateRange}
@@ -156,9 +142,9 @@ export function BookingWidget({ roomId }: BookingWidgetProps) {
                   id="widget-guests"
                   type="number"
                   min="1"
-                  max="4"
+                  max="2"
                   value={guests}
-                  onChange={(e) => setGuests(Number.parseInt(e.target.value || "1"))}
+                  onChange={(e) => setGuests(Math.min(2, Math.max(1, Number.parseInt(e.target.value || "1"))))}
                   className="pl-10"
                 />
                 <Users className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
@@ -203,10 +189,6 @@ export function BookingWidget({ roomId }: BookingWidgetProps) {
                 <span>{t("touristTax") || "Tassa di soggiorno"}</span>
                 <span>{formatMoney(touristTax)}</span>
               </div>
-              <div className="flex justify-between text-sm text-muted-foreground">
-                <span>{t("serviceFee")}</span>
-                <span>{formatMoney(serviceFee)}</span>
-              </div>
               <Separator />
               <div className="flex justify-between font-bold text-lg">
                 <span>{t("total")}</span>
@@ -241,7 +223,7 @@ export function BookingWidget({ roomId }: BookingWidgetProps) {
           roomId: selectedRoomType,
           subtotal,
           touristTax,
-          serviceFee,
+          serviceFee: 0,
           total,
         }}
       />
