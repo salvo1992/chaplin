@@ -97,7 +97,12 @@ export default function ContactsPage() {
                   </h3>
                   <div className="space-y-3">
                     <div>
-                      <p className="text-sm font-medium">{CONTACT_INFO.phone}</p>
+                      <a
+                        href={`tel:${CONTACT_INFO.phone.replace(/\s+/g, "")}`}
+                        className="text-sm font-medium hover:text-[#c9a84c] transition-colors"
+                      >
+                        {CONTACT_INFO.phone}
+                      </a>
                       <p className="text-xs text-muted-foreground">Disponibile 24/7</p>
                     </div>
                     <div className="pt-2 border-t border-[#c9a84c]/20">
