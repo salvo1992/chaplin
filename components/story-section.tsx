@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import { useLanguage } from "@/components/language-provider"
-import { Wifi, Home, Droplets, Utensils, Tv, Wind, Car, KeyRound, Snowflake, Flame } from "lucide-react"
+import { Wifi, Home, Utensils, Car, KeyRound, Snowflake, Flame } from "lucide-react"
 
 export function StorySection() {
   const { language } = useLanguage()
@@ -15,7 +15,7 @@ export function StorySection() {
         "Una elegante suite indipendente situata nel centro storico di Viterbo, ideale per una fuga di coppia in cerca di relax.",
       paragraph2:
         "L'ambiente e raffinato e curato nei minimi dettagli, offre il massimo comfort: zona notte, zona giorno, cucina attrezzata, bagno privato e area spa interna ad uso esclusivo. 57 mq di puro benessere per un soggiorno indimenticabile.",
-      galleryTitle: "Galleria fotografica",
+      galleryTitle: "Citta di Viterbo",
     },
     en: {
       title: "CHAPLIN Luxury Holiday House",
@@ -24,7 +24,7 @@ export function StorySection() {
         "An elegant independent suite located in the historic center of Viterbo, ideal for a couple's getaway in search of relaxation.",
       paragraph2:
         "The environment is refined and attentive to every detail, offering maximum comfort: sleeping area, living area, equipped kitchen, private bathroom and an internal spa area for exclusive use. 57 sqm of pure wellness for an unforgettable stay.",
-      galleryTitle: "Photo Gallery",
+      galleryTitle: "City of Viterbo",
     },
     fr: {
       title: "CHAPLIN Luxury Holiday House",
@@ -33,7 +33,7 @@ export function StorySection() {
         "Une elegante suite independante situee dans le centre historique de Viterbo, ideale pour une escapade en couple a la recherche de detente.",
       paragraph2:
         "L'environnement est raffine et soigne dans les moindres details, offrant un confort maximal : coin nuit, coin jour, cuisine equipee, salle de bain privee et espace spa interieur a usage exclusif. 57 m2 de pur bien-etre pour un sejour inoubliable.",
-      galleryTitle: "Galerie photo",
+      galleryTitle: "Ville de Viterbo",
     },
     es: {
       title: "CHAPLIN Luxury Holiday House",
@@ -42,7 +42,7 @@ export function StorySection() {
         "Una elegante suite independiente situada en el centro historico de Viterbo, ideal para una escapada en pareja en busca de relajacion.",
       paragraph2:
         "El ambiente es refinado y cuidado en cada detalle, ofreciendo el maximo confort: zona de noche, zona de dia, cocina equipada, bano privado y area de spa interna de uso exclusivo. 57 m2 de puro bienestar para una estancia inolvidable.",
-      galleryTitle: "Galeria fotografica",
+      galleryTitle: "Ciudad de Viterbo",
     },
     de: {
       title: "CHAPLIN Luxury Holiday House",
@@ -51,7 +51,7 @@ export function StorySection() {
         "Eine elegante unabhangige Suite im historischen Zentrum von Viterbo, ideal fur einen Paarurlaub auf der Suche nach Entspannung.",
       paragraph2:
         "Das Ambiente ist raffiniert und bis ins kleinste Detail gepflegt und bietet maximalen Komfort: Schlafbereich, Wohnbereich, ausgestattete Kuche, eigenes Bad und ein interner Spa-Bereich zur exklusiven Nutzung. 57 qm pures Wohlbefinden fur einen unvergesslichen Aufenthalt.",
-      galleryTitle: "Fotogalerie",
+      galleryTitle: "Stadt Viterbo",
     },
   }
 
@@ -60,10 +60,7 @@ export function StorySection() {
   const amenities = [
     { icon: Wifi, label: "WiFi Gratis" },
     { icon: Home, label: "Suite Esclusiva" },
-    { icon: Droplets, label: "Piscina privata" },
     { icon: Utensils, label: "Cucina" },
-    { icon: Tv, label: "Smart TV 55''" },
-    { icon: Wind, label: "Spa & Wellness" },
     { icon: Car, label: "Parcheggio" },
     { icon: KeyRound, label: "Self Check-in" },
     { icon: Snowflake, label: "Aria condiz." },
