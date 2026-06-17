@@ -121,7 +121,7 @@ export function ServicesSection() {
   const content = sectionContent[language] || sectionContent.it
 
   const images = [
-    { src: "/images/spa.jpg", alt: "Spa e benessere" },
+    { src: "/images/room-2.jpg", alt: "Interno suite" },
     { src: "/images/spa1.jpg", alt: "Vasca idromassaggio" },
     { src: "/images/room-1.jpg", alt: "Zona notte suite" },
   ]
