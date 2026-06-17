@@ -135,7 +135,7 @@ export function Header() {
                   <div className="w-8 h-8 bg-[#c9a84c] rounded-full flex items-center justify-center">
                     <Bed className="w-4 h-4 text-[#1a1a1a]" />
                   </div>
-                  <span className="font-cinzel">L'Appartamento</span>
+                  <span className="font-cinzel">Suite Esclusiva</span>
                 </Link>
 
                 <Link

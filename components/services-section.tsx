@@ -22,9 +22,9 @@ export function ServicesSection() {
     guests: string
   }> = {
     it: {
-      title: "L'Appartamento",
+      title: "La Suite Esclusiva",
       subtitle: "CHAPLIN Luxury Holiday House",
-      description: "Un elegante appartamento indipendente di 57 mq con piscina privata, spa e tutti i comfort per un soggiorno di relax.",
+      description: "Un'elegante suite esclusiva di 57 mq con piscina privata, spa e tutti i comfort per un soggiorno di relax.",
       features: [
         "Piscina privata ad uso esclusivo",
         "Spa con vasca idromassaggio 32 getti",
@@ -123,7 +123,7 @@ export function ServicesSection() {
   const images = [
     { src: "/images/spa.jpg", alt: "Spa e benessere" },
     { src: "/images/spa1.jpg", alt: "Vasca idromassaggio" },
-    { src: "/images/room-1.jpg", alt: "Camera da letto" },
+    { src: "/images/room-1.jpg", alt: "Zona notte suite" },
   ]
 
   return (

@@ -10,47 +10,47 @@ export function StorySection() {
   const storyContent: Record<string, { title: string; subtitle: string; paragraph1: string; paragraph2: string; galleryTitle: string }> = {
     it: {
       title: "CHAPLIN Luxury Holiday House",
-      subtitle: "Appartamento esclusivo a Viterbo",
+      subtitle: "Suite Esclusiva a Viterbo",
       paragraph1:
-        "CHAPLIN e un elegante appartamento indipendente situato a Viterbo, ideale per una fuga di coppia o per famiglie in cerca di relax e benessere. L'ambiente raffinato e curato nei minimi dettagli offre il massimo comfort: piscina privata ad uso esclusivo, spa con vasca idromassaggio dotata di 32 getti, cascate massaggianti retroilluminate, cromoterapia e ozonizzazione.",
+        "CHAPLIN e un'elegante suite esclusiva situata a Viterbo, ideale per una fuga di coppia o per famiglie in cerca di relax e benessere. L'ambiente raffinato e curato nei minimi dettagli offre il massimo comfort: piscina privata ad uso esclusivo, spa con vasca idromassaggio dotata di 32 getti, cascate massaggianti retroilluminate, cromoterapia e ozonizzazione.",
       paragraph2:
-        "L'appartamento dispone di una TV da 55'' con accesso a Netflix, Prime Video e Disney+, bagno privato con doccia idromassaggio, ampia zona giorno con cucina attrezzata, angolo colazione e area relax con divano e poltrona massaggiante. 57 mq di puro comfort per un soggiorno indimenticabile.",
+        "La suite dispone di una TV da 55'' con accesso a Netflix, Prime Video e Disney+, bagno privato con doccia idromassaggio, ampia zona giorno con cucina attrezzata, angolo colazione e area relax con divano e poltrona massaggiante. 57 mq di puro comfort per un soggiorno indimenticabile.",
       galleryTitle: "Galleria fotografica",
     },
     en: {
       title: "CHAPLIN Luxury Holiday House",
-      subtitle: "Exclusive apartment in Viterbo",
+      subtitle: "Exclusive Suite in Viterbo",
       paragraph1:
-        "CHAPLIN is an elegant independent apartment located in Viterbo, ideal for a couple's getaway or families seeking relaxation and wellness. The refined environment, with attention to every detail, offers maximum comfort: private pool for exclusive use, spa with hydromassage tub equipped with 32 jets, backlit massage waterfalls, chromotherapy and ozonization.",
+        "CHAPLIN is an elegant exclusive suite located in Viterbo, ideal for a couple's getaway or families seeking relaxation and wellness. The refined environment, with attention to every detail, offers maximum comfort: private pool for exclusive use, spa with hydromassage tub equipped with 32 jets, backlit massage waterfalls, chromotherapy and ozonization.",
       paragraph2:
-        "The apartment features a 55'' TV with access to Netflix, Prime Video and Disney+, private bathroom with hydromassage shower, spacious living area with equipped kitchen, breakfast corner and relaxation area with sofa and massage armchair. 57 sqm of pure comfort for an unforgettable stay.",
+        "The suite features a 55'' TV with access to Netflix, Prime Video and Disney+, private bathroom with hydromassage shower, spacious living area with equipped kitchen, breakfast corner and relaxation area with sofa and massage armchair. 57 sqm of pure comfort for an unforgettable stay.",
       galleryTitle: "Photo Gallery",
     },
     fr: {
       title: "CHAPLIN Luxury Holiday House",
-      subtitle: "Appartement exclusif a Viterbo",
+      subtitle: "Suite Exclusive a Viterbo",
       paragraph1:
-        "CHAPLIN est un elegant appartement independant situe a Viterbo, ideal pour une escapade en couple ou en famille a la recherche de detente et de bien-etre.",
+        "CHAPLIN est une elegante suite exclusive situee a Viterbo, ideale pour une escapade en couple ou en famille a la recherche de detente et de bien-etre.",
       paragraph2:
-        "L'appartement dispose d'une TV 55'' avec acces a Netflix, Prime Video et Disney+, salle de bain privee avec douche hydromassante. 57 m2 de pur confort.",
+        "La suite dispose d'une TV 55'' avec acces a Netflix, Prime Video et Disney+, salle de bain privee avec douche hydromassante. 57 m2 de pur confort.",
       galleryTitle: "Galerie photo",
     },
     es: {
       title: "CHAPLIN Luxury Holiday House",
-      subtitle: "Apartamento exclusivo en Viterbo",
+      subtitle: "Suite Exclusiva en Viterbo",
       paragraph1:
-        "CHAPLIN es un elegante apartamento independiente situado en Viterbo, ideal para una escapada en pareja o familias en busca de relajacion y bienestar.",
+        "CHAPLIN es una elegante suite exclusiva situada en Viterbo, ideal para una escapada en pareja o familias en busca de relajacion y bienestar.",
       paragraph2:
-        "El apartamento cuenta con una TV de 55'' con acceso a Netflix, Prime Video y Disney+, bano privado con ducha de hidromasaje. 57 m2 de puro confort.",
+        "La suite cuenta con una TV de 55'' con acceso a Netflix, Prime Video y Disney+, bano privado con ducha de hidromasaje. 57 m2 de puro confort.",
       galleryTitle: "Galeria fotografica",
     },
     de: {
       title: "CHAPLIN Luxury Holiday House",
-      subtitle: "Exklusive Wohnung in Viterbo",
+      subtitle: "Exklusive Suite in Viterbo",
       paragraph1:
-        "CHAPLIN ist eine elegante unabhangige Wohnung in Viterbo, ideal fur einen Paarurlaub oder Familien auf der Suche nach Entspannung und Wohlbefinden.",
+        "CHAPLIN ist eine elegante exklusive Suite in Viterbo, ideal fur einen Paarurlaub oder Familien auf der Suche nach Entspannung und Wohlbefinden.",
       paragraph2:
-        "Die Wohnung verfugt uber einen 55'' Fernseher mit Zugang zu Netflix, Prime Video und Disney+, eigenes Bad mit Hydromassage-Dusche. 57 qm purer Komfort.",
+        "Die Suite verfugt uber einen 55'' Fernseher mit Zugang zu Netflix, Prime Video und Disney+, eigenes Bad mit Hydromassage-Dusche. 57 qm purer Komfort.",
       galleryTitle: "Fotogalerie",
     },
   }
@@ -59,7 +59,7 @@ export function StorySection() {
 
   const amenities = [
     { icon: Wifi, label: "WiFi Gratis" },
-    { icon: Home, label: "Appartamento" },
+    { icon: Home, label: "Suite Esclusiva" },
     { icon: Droplets, label: "Piscina privata" },
     { icon: Utensils, label: "Cucina" },
     { icon: Tv, label: "Smart TV 55''" },
@@ -71,8 +71,8 @@ export function StorySection() {
   ]
 
   const galleryImages = [
-    { src: "/images/1.jpg", alt: "Interno appartamento" },
-    { src: "/images/2.jpg", alt: "Camera da letto" },
+    { src: "/images/1.jpg", alt: "Interno suite" },
+    { src: "/images/2.jpg", alt: "Suite" },
     { src: "/images/pool.jpg", alt: "Piscina privata" },
     { src: "/images/spa1.jpg", alt: "Spa e wellness" },
   ]
