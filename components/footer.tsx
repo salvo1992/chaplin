@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import Image from "next/image"
-import { MapPin, Phone, Mail, Facebook, Instagram, Clock, Star, MessageCircle } from "lucide-react"
+import { MapPin, Phone, Mail, Facebook, Instagram, Clock, MessageCircle } from "lucide-react"
 import { useLanguage } from "@/components/language-provider"
 
 const StripeIcon = (props: any) => (
@@ -107,13 +107,9 @@ export function Footer() {
               />
             </div>
             <p className="text-background/80 mb-4 text-sm leading-relaxed">{t("footerDescription")}</p>
-            <div className="flex items-center gap-1 mb-2">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-4 h-4 fill-[#c9a84c] text-[#c9a84c]" />
-              ))}
-              <span className="text-sm ml-2">4.9/5 (127 {t("reviewsTitle").toLowerCase()})</span>
-            </div>
+            <p className="text-xs text-background/60 tracking-wider mb-2">CIN: IT056059CZYAQZBIX7</p>
           </div>
+
 
           {/* Contact Info */}
           <div>
@@ -239,11 +235,6 @@ export function Footer() {
                 <ApplePayIcon className="h-full w-full" />
               </div>
             </div>
-          </div>
-
-          {/* CIN */}
-          <div className="flex justify-center py-4 border-b border-background/20">
-            <p className="text-xs text-background/60 tracking-wider">CIN: IT056059CZYAQZBIX7</p>
           </div>
 
           {/* Copyright - ora sotto i metodi di pagamento */}
