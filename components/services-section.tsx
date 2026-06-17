@@ -166,16 +166,6 @@ export function ServicesSection() {
 
           {/* Content */}
           <div>
-            {/* Badges */}
-            <div className="flex flex-wrap gap-3 mb-4">
-              <span className="text-xs px-3 py-1 bg-green-50 text-green-700 rounded-full">
-                {content.noDeposit}
-              </span>
-              <span className="text-xs px-3 py-1 bg-green-50 text-green-700 rounded-full">
-                {content.freeCancellation}
-              </span>
-            </div>
-
             {/* Title */}
             <h3 
               className="text-2xl sm:text-3xl text-[#1a1a1a] mb-2"
